@@ -12,14 +12,19 @@
 <title>Pinyin</title>
 </head>
 <body>
-<textarea id="han" name="han" rows="8" cols="40">汉语拼音</textarea>
+<div><textarea id="han" name="han" rows="8" cols="40">汉语拼音</textarea></div>
+Single Pinyin:
 <div id="pin"></div>
+<hr />
+Multi Pinyin:
+<div id="pin2"></div>
 <script type="text/javascript">/*<![CDATA[*/
     function $(id){
         return document.getElementById(id);
     }
     $("han").onkeyup = function(){
-        $("pin").innerHTML = pinyin(this.value);
+        $("pin").innerHTML = pinyin(this.value, true, ",");
+        $("pin2").innerHTML = pinyin(this.value);
     };
 /*]]>*/</script>
 </body>

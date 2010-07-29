@@ -477,6 +477,10 @@ var pinyin = function(){
         ["Zuo","做作坐左座昨凿琢撮佐笮酢唑祚胙怍阼柞乍侳咗岝岞挫捽柮椊砟秨稓筰糳繓苲莋葃葄蓙袏諎醋鈼鑿飵嘬阝"]
     ];
 
+    /*
+     * Note: 除 Firefox 之外，IE,Chrome,Safari,Opera
+     *       均为 s.split("")[i] 比 s.charAt(i) 的性能好。
+     */
     var PINYIN_DICT_CACHE = {};
     for(var i=0,l=PINYIN_DICT.length; i<l; i++){
         var hans = PINYIN_DICT[i][1];
@@ -488,19 +492,32 @@ var pinyin = function(){
             PINYIN_DICT_CACHE[han].push(PINYIN_DICT[i][0]);
         }
     }
+    delete PINYIN_DICT;
 
-    return function(c){
-        var len = c.length;
-        if(len==0){
-            return "";
-        }else if(len==1){
-            return PINYIN_DICT_CACHE[c] || c;
+    /**
+    * @param {String} hans 要转为拼音的目标字符串（汉字）。
+    * @param {Boolean} single 是否仅返回匹配的第一个拼音。
+    * @param {String} sp 返回结果的分隔符，默认返回数组集合。
+    * @return {String,Array}
+    */
+    return function(hans, single, sp){
+        var len = hans.length;
+        if(len==0){return single?"":[];}
+        if(len==1){
+            var y = PINYIN_DICT_CACHE[hans];
+            if(single){return y&&y[0]?y[0]:hans;}
+            return y || [hans];
         }else{
             var py = [];
-            for(var i=0; i<len; i++){
-                py[py.length] = PINYIN_DICT_CACHE[c.charAt(i)] || c.charAt(i);
+            for(var i=0,y; i<len; i++){
+                y = PINYIN_DICT_CACHE[hans.charAt(i)];
+                if(y){
+                    py[py.length] = single?y[0]:y;
+                }else{
+                    py[py.length] = hans.charAt(i);
+                }
             }
-            return py;
+            return single?py.join(sp||""):py;
         }
     }
 }();
