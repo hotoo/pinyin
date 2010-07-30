@@ -9,10 +9,20 @@
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <script type="text/javascript" src="pinyin.dict.src.js"></script>
+<style type="text/css" media="screen">
+#pin,#pin2{
+    border:1px solid #ccc;
+    pidding:5px;
+    white-space:-moz-pre-wrap; white-space:-pre-wrap; white-space:-o-pre-wrap; white-space:pre-wrap;
+    word-wrap:break-word; word-break:normal;
+}
+</style>
 <title>Pinyin</title>
 </head>
 <body>
-<div><textarea id="han" name="han" rows="8" cols="40">汉语拼音</textarea></div>
+    <div><textarea id="han" name="han" rows="8" cols="40">天将降大任于斯人也。
+    This is a test for English.
+    </textarea></div>
 Single Pinyin:
 <div id="pin"></div>
 <hr />
@@ -24,7 +34,7 @@ Multi Pinyin:
     }
     $("han").onkeyup = function(){
         $("pin").innerHTML = pinyin(this.value, true, ",");
-        $("pin2").innerHTML = pinyin(this.value);
+        $("pin2").innerHTML = pinyin(this.value, false,",");
     };
 /*]]>*/</script>
 </body>
