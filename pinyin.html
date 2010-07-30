@@ -8,7 +8,6 @@
 <meta name="author" content="闲耘 (mail[AT]xianyun.org)" />
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-<script type="text/javascript" src="pinyin.dict.src.js"></script>
 <style type="text/css" media="screen">
 #pin,#pin2{
     border:1px solid #ccc;
@@ -20,14 +19,18 @@
 <title>Pinyin</title>
 </head>
 <body>
-    <div><textarea id="han" name="han" rows="8" cols="40">天将降大任于斯人也。
-    This is a test for English.
-    </textarea></div>
+    <div><textarea id="han" name="han" rows="8" cols="40">天将降大任于斯人也。This is a test for English.</textarea></div>
 Single Pinyin:
 <div id="pin"></div>
 <hr />
 Multi Pinyin:
 <div id="pin2"></div>
+
+<script id="src-dict" type="text/javascript" src="pinyin.dict.src.js"></script>
+<!--注意：不要同时导入多个词典库，否则多音字组合时性能非常成问题。-->
+<!--<script type="text/javascript" src="pinyin.tone.src.js"></script>-->
+<!--<script type="text/javascript" src="pinyin.tone2.src.js"></script>-->
+<script type="text/javascript" src="pinyin.js"></script>
 <script type="text/javascript">/*<![CDATA[*/
     function $(id){
         return document.getElementById(id);
