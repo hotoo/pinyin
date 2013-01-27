@@ -2,32 +2,53 @@
  * pinyin(hans [,single] [,split]);
  * 极速，灵活，全面的拼音转换算法。
  *
+ * @see http://py.kdd.cc/
  * @author 闲耘™ (@hotoo <hotoo.cn[AT]gmail.com>)
  * @version 2010/07/30, v1.0
  */
 
-var PINYIN_DICT_CACHE = {};
-/**
- * 设置拼音词典库。
- * 并进行缓存。
- * @param {Array} dict, 拼音词典数据。
- * @return {Boolean} 设置成功返回 true，否则返回 false.
- */
-function setDictionary(dict){
-  var len = dict.length;
-  if(0 === len){return false;}
-  PINYIN_DICT_CACHE = {};
+// 拼音词库。
+var DICT = require("./pinyin-dict");
+// 声母表。
+var INITIALS = "zh,ch,sh,b,p,m,f,d,t,n,l,g,k,h,j,q,x,r,z,c,s".split(",");
+// 韵母表。
+var FINALS = "ang,eng,ing,ong,an,en,in,un,er,ai,ei,ui,ao,ou,iu,ie,ve,a,o,e,i,u,v".split(",");
+var PINYIN_FORMAT =  {
+  NORMAL: 0,  // 普通格式，不带音标。
+  TONE: 1,    // 标准模式，音标中
+  TONE2: 2    // 声调中拼音之后，使用数字 1~4 标识。
+};
+// 带音标字符。
+var PHONETIC_SYMBOL = {
+  "ā": "a1",
+  "á": "a2",
+  "ǎ": "a3",
+  "à": "a4",
+  "ē": "e1"
+  // ...
+};
+var re_phonetic_symbol_source = "";
+for(var k in PHONETIC_SYMBOL){
+    re_phonetic_symbol_source += k;
+}
+var RE_PHONETIC_SYMBOL = new RegExp('(['+re_phonetic_symbol_source+'])', 'g');
+var RE_TONE2 = /[1-4]$/;
 
-  for(var i=0,hans,l=len; i<l; i++){
-    hans = dict[i][1];
-    for(var j=0,han,m=hans.length; j<m; j++){
-      han = hans.charAt(j);
-      if(!PINYIN_DICT_CACHE.hasOwnProperty(han)){
-        PINYIN_DICT_CACHE[han] = [];
-      }
-      PINYIN_DICT_CACHE[han].push(dict[i][0]);
+/**
+ * 修复拼音词库表中的格式。
+ * @param {String} pinyin.
+ * @param {PINYIN_FORMAT}
+ * @return {String}
+ */
+function toFixed(pinyin, format){
+  return pinyin.replace(RE_PHONETIC_SYMBOL, function($0, $1){
+    var py = PHONETIC_SYMBOL[$1];
+    if(format === PINYIN_FORMAT.NORMAL){
+      return py.replace(RE_TONE2, "");
+    }else if(format === PINYIN_FORMAT.TONE2){
+      return py;
     }
-  }
+  });
 }
 
 /*
@@ -58,13 +79,13 @@ function pinyin(hans, single, sp){
   var len = hans.length;
   if(len==0){return single?"":[];}
   if(len==1){
-    var y = PINYIN_DICT_CACHE[hans];
+    var y = DICT[hans].split(",");
     if(single){return y&&y[0]?y[0]:hans;}
     return y || [hans];
   }else{
     var py = [];
     for(var i=0,y; i<len; i++){
-      y = PINYIN_DICT_CACHE[hans.charAt(i)];
+      y = DICT[hans.charAt(i)].split(",");
       if(y){
         py[py.length] = single?y[0]:y;
       }else{
@@ -82,5 +103,19 @@ function pinyin(hans, single, sp){
   }
 }
 
-exports.setDictionary = setDictionary;
-exports.convert = pinyin;
+/**
+ * 声母(Initials)、韵母(Finals)。
+ * @param {String/Number/RegExp/Date/Function/Array/Object}
+ * @return {String/Number/RegExp/Date/Function/Array/Object}
+ */
+function initials(pinyin){
+  for(var i=0,l=DOUBLE_INITIALS.length; i<l; i++){
+    if(pinyin.indexOf(DOUBLE_INITIALS[i]) === 0){
+      return DOUBLE_INITIALS[i];
+    }
+  }
+  return "";
+}
+
+module.exports = pinyin;
+exports.NORMAL = PINYIN_FORMAT.NORMAL;
