@@ -1,0 +1,61 @@
+# 汉语拼音(pinyin)
+
+---
+
+// 转换中文字符为拼音。
+
+---
+
+## 使用说明
+
+    var pinyin = require("pinyin");
+
+    pinyin("重点");
+    pinyin("重点", {
+      style: pinyin.STYLE_NORMAL,
+      heteronym: true
+    });
+
+## API
+
+### 方法 `<Array> pinyin(words[, options])`
+
+将传入的中文字符(words)转换成拼音符号。
+
+options 是可选的，可以设定拼音风格，或打开多音字选项。
+
+### 参数 `<Boolean> options.heteronym`
+
+是否启用多音字模式，默认关闭。
+
+关闭多音字模式时，返回每个汉字第一个匹配的拼音。
+
+启用多音字模式时，返回多音字的所有拼音列表。
+
+### 属性 `.STYLE_NORMAL`
+
+普通风格，即不带音标。
+
+如：`pin yin`
+
+### 属性 `.STYLE_TONE`
+
+声调风格，拼音声调在韵母第一个字母上。
+
+如：`pīn yīn`
+
+### 属性 `.STYLE_TONE2`
+
+声调风格2，即拼音声调在各个拼音之后，用数字 [0-4] 进行表示。
+
+如：`pin1 yin1`
+
+### 属性 `.STYLE_INITIALS`
+
+声母风格，只返回各个拼音的声母部分。
+
+如：`p y`
+
+### 属性 `.STYLE_FIRST_LETTER`
+
+首字母风格，只返回拼音的首字母部分。

@@ -1,0 +1,22 @@
+{
+    "name": "pinyin",
+    "version": "1.0.0",
+    "root": "util",
+    "description": "",
+    "homepage": "",
+    "author": "",
+    "repository": {
+        "type": "git",
+        "url": ""
+    },
+    "bugs": {
+        "url": ""
+    },
+    "license": "MIT",
+    "dependencies": {
+    },
+    "tests": ["pinyin"],
+    "output": {
+        "pinyin.js": "."
+    }
+}
