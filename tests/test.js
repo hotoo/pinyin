@@ -27,18 +27,15 @@ function product(a,b){
 var hans1 = "天将将大任于斯人也";
 var hans2 = "在地球重力的影响下，重心不稳。";
 
-console.log(pinyin(hans1));
-console.log(pinyin(hans2));
+console.log(pinyin(hans1).join(" "));
+console.log(pinyin(hans2).join(","));
 console.log(pinyin(hans2, {
-  delimiter: ",",
   style: pinyin.STYLE_TONE
-}));
+}).join(" "));
 console.log(pinyin(hans2, {
-  delimiter: ",",
   style: pinyin.STYLE_NORMAL
-}));
-console.log(pinyin(hans2, {
-  delimiter: ",",
+}).join(" "));
+console.log("TONE2:", pinyin(hans2, {
   style: pinyin.STYLE_TONE2
 }));
 console.log(pinyin(hans2, {

@@ -57,7 +57,7 @@ for(var k in PHONETIC_SYMBOL){
     re_phonetic_symbol_source += k;
 }
 var RE_PHONETIC_SYMBOL = new RegExp('(['+re_phonetic_symbol_source+'])', 'g');
-var RE_TONE2 = /[0-4]$/;
+var RE_TONE2 = /([aeoiuvnm])([0-4])$/;
 var DEFAULT_OPTIONS = {
   style: PINYIN_STYLE.TONE, // 风格
   heteronym: false // 多音字
@@ -78,12 +78,13 @@ function extend(origin, more){
 
 /**
  * 修复拼音词库表中的格式。
- * @param {String} pinyin.
+ * @param {String} pinyin, 单个拼音。
  * @param {PINYIN_STYLE} style.
  * @return {String}
  */
 function toFixed(pinyin, style){
   var handle;
+  var tone; // 声调。
   switch(style){
   case PINYIN_STYLE.INITIALS:
     return initials(pinyin);
@@ -91,12 +92,13 @@ function toFixed(pinyin, style){
     return pinyin.charAt(0);
   case PINYIN_STYLE.NORMAL:
     handle = function($0, $1){
-      return PHONETIC_SYMBOL[$1].replace(RE_TONE2, "");
+      return PHONETIC_SYMBOL[$1].replace(RE_TONE2, "$1");
     }
     break;
   case PINYIN_STYLE.TONE2:
     handle = function($0, $1){
-      return PHONETIC_SYMBOL[$1];
+      tone = PHONETIC_SYMBOL[$1].replace(RE_TONE2, "$2");
+      return PHONETIC_SYMBOL[$1].replace(RE_TONE2, "$1");
     }
     break;
   case PINYIN_STYLE.TONE:
@@ -106,7 +108,11 @@ function toFixed(pinyin, style){
     }
     break;
   }
-  return pinyin.replace(RE_PHONETIC_SYMBOL, handle);
+  var py = pinyin.replace(RE_PHONETIC_SYMBOL, handle);
+  if(style === PINYIN_STYLE.TONE2){
+    py += tone;
+  }
+  return py;
 }
 
 /**
