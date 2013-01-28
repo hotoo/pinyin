@@ -1,7 +1,31 @@
 define(function(require, exports, module) {
 
   // 拼音词库。
-  var DICT = require("./pinyin-dict");
+  // 加载压缩合并的数据(118KB)。
+  var dict_combo = require("./pinyin-dict-combo");
+  function buildPinyinCache(dict_combo){
+    var hans;
+    var uncomboed = {};
+    for(var py in dict_combo){
+      hans = dict_combo[py];
+      for(var i=0,han,l=hans.length; i<l; i++){
+        han = hans.charAt(i);
+        if(!uncomboed.hasOwnProperty(han)){
+          uncomboed[han] = py;
+        }else{
+          uncomboed[han] += ","+py;
+        }
+      }
+    }
+    return uncomboed;
+  }
+  var DICT = buildPinyinCache(dict_combo);
+  dict_combo = null;
+  delete dict_combo;
+
+  // 加载未压缩的数据(334KB)。
+  //var DICT = require("./pinyin-dict");
+
   // 声母表。
   var INITIALS = "zh,ch,sh,b,p,m,f,d,t,n,l,g,k,h,j,q,x,r,z,c,s,yu,y,w".split(",");
   // 韵母表。
