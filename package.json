@@ -2,15 +2,15 @@
     "name": "pinyin",
     "version": "1.0.0",
     "root": "util",
-    "description": "",
+    "description": "转换汉字为拼音",
     "homepage": "",
     "author": "",
     "repository": {
         "type": "git",
-        "url": ""
+        "url": "git@github.com:hotoo/pinyin.js.git"
     },
     "bugs": {
-        "url": ""
+        "url": "https://github.com/hotoo/pinyin.js/issues"
     },
     "license": "MIT",
     "dependencies": {
