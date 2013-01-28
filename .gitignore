@@ -21,3 +21,6 @@ node_modules
 _site
 sea-modules
 .jscoverage/
+tmp/*
+Desktop.ini
+Thumb.db

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta name="generator" content="gvim" />
+<meta name="author" content="闲耘 (mail[AT]xianyun.org)" />
+<link rel="icon" href="favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<style type="text/css" media="screen">
+#pin,#pin2{
+    border:1px solid #ccc;
+    pidding:5px;
+    white-space:-moz-pre-wrap; white-space:-pre-wrap; white-space:-o-pre-wrap; white-space:pre-wrap;
+    word-wrap:break-word; word-break:normal;
+}
+</style>
+<title>Pinyin</title>
+</head>
+<body>
+    <div><textarea id="han" name="han" rows="8" cols="40">天将降大任于斯人也。This is a test for English.</textarea></div>
+Single Pinyin:
+<div id="pin"></div>
+<hr />
+Multi Pinyin:
+<div id="pin2"></div>
+
+<script id="src-dict" type="text/javascript" src="pinyin.dict.src.js"></script>
+<!--注意：不要同时导入多个词典库，否则多音字组合时性能非常成问题。-->
+<!--<script type="text/javascript" src="pinyin.tone.src.js"></script>-->
+<!--<script type="text/javascript" src="pinyin.tone2.src.js"></script>-->
+<script type="text/javascript" src="pinyin.js"></script>
+<script type="text/javascript">/*<![CDATA[*/
+    function $(id){
+        return document.getElementById(id);
+    }
+    $("han").onkeyup = function(){
+        $("pin").innerHTML = pinyin(this.value, true, ",");
+        $("pin2").innerHTML = pinyin(this.value, false,",");
+    };
+/*]]>*/</script>
+</body>
+</html>
