@@ -59,7 +59,6 @@ for(var k in PHONETIC_SYMBOL){
 var RE_PHONETIC_SYMBOL = new RegExp('(['+re_phonetic_symbol_source+'])', 'g');
 var RE_TONE2 = /[0-4]$/;
 var DEFAULT_OPTIONS = {
-  delimiter: " ",
   style: PINYIN_STYLE.TONE, // 风格
   heteronym: false // 多音字
 };
@@ -124,7 +123,7 @@ function single_pinyin(han, options){
   if(!DICT.hasOwnProperty(han)){return [han];}
   var pys = DICT[han].split(",");
   if(!options.heteronym){
-    return toFixed(pys[0], options.style);
+    return [toFixed(pys[0], options.style)];
   }
   // 临时存储已存在的拼音，避免重复。
   var py_cached = {};
@@ -148,15 +147,12 @@ function single_pinyin(han, options){
 function pinyin(hans, options){
   if("string" !== typeof hans){return [];}
   options = extend(DEFAULT_OPTIONS, options);
-  if(hans.length > 1){
-    //options.heteronym = false;
-  }
   var len = hans.length;
   var py = [];
   for(var i=0,l=len; i<l; i++){
-    py.push.call(py, single_pinyin(hans[i], options));
+    py.push(single_pinyin(hans[i], options));
   }
-  return options.heteronym ? py : py.join(options.delimiter);
+  return py;
 }
 
 
