@@ -2,9 +2,11 @@
  * pinyin(hans [,single] [,split]);
  * 极速，灵活，全面的拼音转换算法。
  *
+ * TODO: 使用不带音标的拼音风格时，去除重复的拼音。
+ *
  * @see http://py.kdd.cc/
  * @author 闲耘™ (@hotoo <hotoo.cn[AT]gmail.com>)
- * @version 2010/07/30, v1.0
+ * @version 2013/01/28, v2.0
  */
 
 // 拼音词库。

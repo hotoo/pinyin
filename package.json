@@ -1,5 +1,5 @@
 {
-  "name": "pinyin.js",
+  "name": "pinyin",
   "version": "0.0.1",
   "description": "Chinese Pinyin converter.",
   "main": "src/pinyin.js",
