@@ -126,10 +126,17 @@ function single_pinyin(han, options){
   if(!options.heteronym){
     return toFixed(pys[0], options.style);
   }
-  for(var i=0,l=pys.length; i<l; i++){
-    pys[i] = toFixed(pys[i], options.style);
+  // 临时存储已存在的拼音，避免重复。
+  var py_cached = {};
+  var pinyins = [];
+  for(var i=0,py,l=pys.length; i<l; i++){
+    py = toFixed(pys[i], options.style);
+    if(py_cached.hasOwnProperty(py)){continue;}
+    py_cached[py] = py;
+
+    pinyins.push(py);
   }
-  return pys;
+  return pinyins;
 }
 /**
  * @param {String} hans 要转为拼音的目标字符串（汉字）。
