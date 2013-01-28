@@ -55,5 +55,10 @@ console.log(pinyin("拼个南呵", {
   style: pinyin.STYLE_TONE,
   heteronym: true
 }));
+console.log(pinyin("拼个南呵", {
+  delimiter: " ",
+  style: pinyin.STYLE_FIRST_LETTER,
+  heteronym: true
+}));
 
 //assert.equal(pinyin.convert(hans, true, ""), "PinYin");

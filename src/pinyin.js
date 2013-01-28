@@ -16,10 +16,11 @@ var INITIALS = "zh,ch,sh,b,p,m,f,d,t,n,l,g,k,h,j,q,x,r,z,c,s,yu,y,w".split(",");
 // 韵母表。
 var FINALS = "ang,eng,ing,ong,an,en,in,un,er,ai,ei,ui,ao,ou,iu,ie,ve,a,o,e,i,u,v".split(",");
 var PINYIN_STYLE =  {
-  NORMAL: 0,  // 普通格式，不带音标。
-  TONE: 1,    // 标准模式，音标中
+  NORMAL: 0,  // 普通风格，不带音标。
+  TONE: 1,    // 标准风格，音标在韵母的第一个字母上。
   TONE2: 2,   // 声调中拼音之后，使用数字 1~4 标识。
-  INITIALS: 3 // 只需要声母部分
+  INITIALS: 3,// 仅需要声母部分。
+  FIRST_LETTER: 4 // 仅保留首字母。
 };
 // 带音标字符。
 var PHONETIC_SYMBOL = {
@@ -79,25 +80,34 @@ function extend(origin, more){
 /**
  * 修复拼音词库表中的格式。
  * @param {String} pinyin.
- * @param {PINYIN_STYLE}
+ * @param {PINYIN_STYLE} style.
  * @return {String}
  */
 function toFixed(pinyin, style){
-  if(style === PINYIN_STYLE.INITIALS){
+  var handle;
+  switch(style){
+  case PINYIN_STYLE.INITIALS:
     return initials(pinyin);
-  }
-  return pinyin.replace(RE_PHONETIC_SYMBOL, function($0, $1){
-    var py = PHONETIC_SYMBOL[$1];
-    switch(style){
-    case PINYIN_STYLE.NORMAL:
-      return py.replace(RE_TONE2, "");
-    case PINYIN_STYLE.TONE2:
-      return py;
-    case PINYIN_STYLE.TONE:
-    default:
+  case PINYIN_STYLE.FIRST_LETTER:
+    return pinyin.charAt(0);
+  case PINYIN_STYLE.NORMAL:
+    handle = function($0, $1){
+      return PHONETIC_SYMBOL[$1].replace(RE_TONE2, "");
+    }
+    break;
+  case PINYIN_STYLE.TONE2:
+    handle = function($0, $1){
+      return PHONETIC_SYMBOL[$1];
+    }
+    break;
+  case PINYIN_STYLE.TONE:
+  default:
+    handle = function($0, $1){
       return $1;
     }
-  });
+    break;
+  }
+  return pinyin.replace(RE_PHONETIC_SYMBOL, handle);
 }
 
 /**
@@ -162,3 +172,4 @@ module.exports.STYLE_NORMAL = PINYIN_STYLE.NORMAL;
 module.exports.STYLE_TONE = PINYIN_STYLE.TONE;
 module.exports.STYLE_TONE2 = PINYIN_STYLE.TONE2;
 module.exports.STYLE_INITIALS = PINYIN_STYLE.INITIALS;
+module.exports.STYLE_FIRST_LETTER = PINYIN_STYLE.FIRST_LETTER;
