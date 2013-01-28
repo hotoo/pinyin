@@ -21,7 +21,6 @@ for(var i=0,a,l=WORDS.length; i<l; i++){
     words += w;
   }
 }
-console.log("words count:", words.length);
 
 // 从快典网查询，带注音的 GBK 编码拼音，Iconv 无法正常转换编码，
 // 而其注音格式参数无效，未完成。
@@ -41,6 +40,12 @@ function getKDDPinyinDict(han){
     }, function(response){
     });
 }
+
+// 各个汉字的读音独立存储。
+var PINYIN_DATA = {};
+// 同音字合并存储。
+var PINYIN_DATA_MIXED = {};
+var counts = 0;
 function getPinyinDict(han){
   remote("http://zi.artx.cn/zi/search/?dsearch_kind=1&dsearch_main="+
     encodeURIComponent(han)+"&x=0&y=0", "POST", function(html){
@@ -49,11 +54,28 @@ function getPinyinDict(han){
       var idx = html.indexOf(py_start);
       var idx2 = html.indexOf(py_end, idx);
       if(idx < 0){
-        console.log('"'+han+'": "No Found.",');
+        PINYIN_DATA["Unknow"] = han;
+        PINYIN_DATA_MIXED[han] = "Unknow";
         return;
+      }else{
+        var s_py = html.substring(idx+py_start.length, idx2);
+        var a_py = s_py.split(",");
+        for(var i=0,l=a_py.length; i<l; i++){
+          PINYIN_DATA[han] = s_py;
+          if(!PINYIN_DATA_MIXED.hasOwnProperty(a_py[i])){
+            PINYIN_DATA_MIXED[a_py[i]] = han;
+          }else{
+            PINYIN_DATA_MIXED[a_py[i]] += han;
+          }
+        }
       }
-      var py = html.substring(idx+py_start.length, idx2);
-      console.log('"'+han+'": "'+py+'",');
+
+      counts++;
+      // finished.
+      if(words.length === counts){
+        //console.log(JSON.stringify(PINYIN_DATA));
+        console.log(JSON.stringify(PINYIN_DATA_MIXED));
+      }
     },
     function(response){
     }
