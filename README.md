@@ -16,11 +16,15 @@
 
     var pinyin = require("pinyin");
 
-    pinyin("重心");
-    pinyin("重心", {
-      style: pinyin.STYLE_NORMAL, // 风格
-      heteronym: true             // 多音字
-    });
+    console.log(pinyin("中心"));    // [ [ 'zhōng' ], [ 'xīn' ] ]
+    console.log(pinyin("中心", {
+      heteronym: true               // 启用多音字模式
+    }));                            // [ [ 'zhōng', 'zhòng' ], [ 'xīn' ] ]
+    console.log(pinyin("中心", {
+      style: pinyin.STYLE_INITIALS, // 设置拼音风格
+      heteronym: true
+    }));                            // [ [ 'zh' ], [ 'x' ] ]
+
 
 ## API
 
@@ -41,31 +45,37 @@ options 是可选的，可以设定拼音风格，或打开多音字选项。
 
 启用多音字模式时，返回多音字的所有拼音列表。
 
-### 属性 `.STYLE_NORMAL`
+### 参数 `<Object> options.style`
+
+指定拼音 风格。可以通过以下几种 `STYLE_` 开头的静态属性进行指定。
+
+### 静态属性 `.STYLE_NORMAL`
 
 普通风格，即不带音标。
 
 如：`pin yin`
 
-### 属性 `.STYLE_TONE`
+### 静态属性 `.STYLE_TONE`
 
 声调风格，拼音声调在韵母第一个字母上。
 
+注：这是默认的风格。
+
 如：`pīn yīn`
 
-### 属性 `.STYLE_TONE2`
+### 静态属性 `.STYLE_TONE2`
 
 声调风格2，即拼音声调在各个拼音之后，用数字 [0-4] 进行表示。
 
 如：`pin1 yin1`
 
-### 属性 `.STYLE_INITIALS`
+### 静态属性 `.STYLE_INITIALS`
 
 声母风格，只返回各个拼音的声母部分。
 
 如：`中国` 的拼音 `zh g`
 
-### 属性 `.STYLE_FIRST_LETTER`
+### 静态属性 `.STYLE_FIRST_LETTER`
 
 首字母风格，只返回拼音的首字母部分。
 
