@@ -1,15 +1,12 @@
 /**
- * pinyin(hans [,single] [,split]);
+ * pinyin(hans[, options]);
  * 极速，灵活，全面的拼音转换算法。
  *
- * TODO: 使用不带音标的拼音风格时，去除重复的拼音。
- *
- * @see http://py.kdd.cc/
  * @author 闲耘™ (@hotoo <hotoo.cn[AT]gmail.com>)
- * @version 2013/01/28, v2.0
+ * @version 2013/01/28, v2.1
  */
 
-// 拼音词库。
+// 拼音词库，node 版无需使用压缩合并的拼音库。
 var DICT = require("./pinyin-dict");
 // 声母表。
 var INITIALS = "zh,ch,sh,b,p,m,f,d,t,n,l,g,k,h,j,q,x,r,z,c,s,yu,y,w".split(",");
@@ -77,9 +74,9 @@ function extend(origin, more){
 }
 
 /**
- * 修复拼音词库表中的格式。
+ * 修改拼音词库表中的格式。
  * @param {String} pinyin, 单个拼音。
- * @param {PINYIN_STYLE} style.
+ * @param {PINYIN_STYLE} style, 拼音风格。
  * @return {String}
  */
 function toFixed(pinyin, style){
@@ -117,7 +114,7 @@ function toFixed(pinyin, style){
 
 /**
  * 单字拼音转换。
- * @param {String} han, 汉字
+ * @param {String} han, 单个汉字
  * @return {Array} 返回拼音列表，多音字会有多个拼音项。
  */
 function single_pinyin(han, options){
@@ -145,10 +142,8 @@ function single_pinyin(han, options){
 }
 /**
  * @param {String} hans 要转为拼音的目标字符串（汉字）。
- * @param {Boolean} single 是否仅保留匹配的第一个拼音。
- * @param {String} sp 返回结果的分隔符，默认返回数组集合。
- * @return {String,Array} 如果 sp 为 null，则返回 Array。
- *                        否则，返回以 sp 分隔的字符串。
+ * @param {Object} options, 可选，用于指定拼音风格，是否启用多音字。
+ * @return {Array} 返回的拼音列表。
  */
 function pinyin(hans, options){
   if("string" !== typeof hans){return [];}
