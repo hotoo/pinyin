@@ -57,5 +57,17 @@ console.log(pinyin("拼个南呵", {
   style: pinyin.STYLE_FIRST_LETTER,
   heteronym: true
 }));
+    console.log(pinyin("中心"));
+    console.log(pinyin("中心", {
+      heteronym: true               // 多音字
+    }));
+    console.log(pinyin("中心", {
+      style: pinyin.STYLE_INITIALS, // 风格
+      heteronym: true               // 多音字
+    }));
+
+console.log(pinyin("思", {
+  heteronym: true
+}));
 
 //assert.equal(pinyin.convert(hans, true, ""), "PinYin");

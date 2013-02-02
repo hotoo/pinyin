@@ -77,7 +77,7 @@ function remote(url, type, callback, errorback){
 
     req.on('error', function(e) {
         if("function" == typeof errorback){errorback(e);}
-        console.error('problem with request: ' + e.message);
+        console.error('problem with request: ' + url + e.message);
     });
 
     if(options.method === "POST"){

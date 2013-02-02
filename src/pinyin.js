@@ -6,8 +6,17 @@
  * @version 2013/01/28, v2.1
  */
 
+// 分词模块
+var Segment = require("segment").Segment;
+var segment = new Segment();
+// 使用默认的识别模块及字典
+segment.useDefault();
+
+// 词语拼音库。
+var PHRASES_DICT = require("./phrases-dict0.js");
+
 // 拼音词库，node 版无需使用压缩合并的拼音库。
-var DICT = require("./pinyin-dict");
+var PINYIN_DICT = require("./pinyin-dict");
 // 声母表。
 var INITIALS = "zh,ch,sh,b,p,m,f,d,t,n,l,g,k,h,j,q,x,r,z,c,s,yu,y,w".split(",");
 // 韵母表。
@@ -20,35 +29,7 @@ var PINYIN_STYLE =  {
   FIRST_LETTER: 4 // 仅保留首字母。
 };
 // 带音标字符。
-var PHONETIC_SYMBOL = {
-  "ā": "a1",
-  "á": "a2",
-  "ǎ": "a3",
-  "à": "a4",
-  "ē": "e1",
-  "é": "e2",
-  "ě": "e3",
-  "è": "e4",
-  "ō": "o1",
-  "ó": "o2",
-  "ǒ": "o3",
-  "ò": "o4",
-  "ī": "i1",
-  "í": "i2",
-  "ǐ": "i3",
-  "ì": "i4",
-  "ū": "u1",
-  "ú": "u2",
-  "ǔ": "u3",
-  "ù": "u4",
-  "ü": "v0",
-  "ǘ": "v2",
-  "ǚ": "v3",
-  "ǜ": "v4",
-  "ń": "n2",
-  "ň": "n3",
-  "": "m2"
-};
+var PHONETIC_SYMBOL = require("./phonetic-symbol.js");
 var re_phonetic_symbol_source = "";
 for(var k in PHONETIC_SYMBOL){
     re_phonetic_symbol_source += k;
@@ -123,8 +104,8 @@ function single_pinyin(han, options){
   if(han.length !== 1){
     return single_pinyin(han.charAt(0), options);
   }
-  if(!DICT.hasOwnProperty(han)){return [han];}
-  var pys = DICT[han].split(",");
+  if(!PINYIN_DICT.hasOwnProperty(han)){return [han];}
+  var pys = PINYIN_DICT[han].split(",");
   if(!options.heteronym){
     return [toFixed(pys[0], options.style)];
   }
@@ -140,6 +121,24 @@ function single_pinyin(han, options){
   }
   return pinyins;
 }
+
+/**
+ * 词语注音
+ * @param {String} phrases, 指定的词组。
+ * @param {Object} options, 选项。
+ * @return {Array}
+ */
+function phrases_pinyin(phrases, options){
+  if(PHRASES_DICT.hasOwnProperty(phrases)){
+    return PHRASES_DICT[phrases];
+  }
+  var py = [];
+  for(var i=0,l=phrases.length; i<l; i++){
+    py.push(single_pinyin(phrases[i], options));
+  }
+  return py;
+}
+
 /**
  * @param {String} hans 要转为拼音的目标字符串（汉字）。
  * @param {Object} options, 可选，用于指定拼音风格，是否启用多音字。
@@ -148,11 +147,22 @@ function single_pinyin(han, options){
 function pinyin(hans, options){
   if("string" !== typeof hans){return [];}
   options = extend(DEFAULT_OPTIONS, options);
+  var phrases = segment.doSegment(hans);
+  console.log("phrases:", phrases);
   var len = hans.length;
   var py = [];
-  for(var i=0,l=len; i<l; i++){
-    py.push(single_pinyin(hans[i], options));
+  for(var i=0,words,l=phrases.length; i<l; i++){
+    words = phrases[i].w;
+    if(words.length===1){
+      py.push(single_pinyin(words, options));
+    }else{
+      //py.push.apply(py, phrases_pinyin(words, options));
+      py.push(phrases_pinyin(words, options));
+    }
   }
+  //for(var i=0,l=len; i<l; i++){
+    //py.push(single_pinyin(hans[i], options));
+  //}
   return py;
 }
 
