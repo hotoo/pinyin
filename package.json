@@ -14,6 +14,10 @@
     "type": "git",
     "url": "git://github.com/hotoo/node-pinyin.git"
   },
+  "dependencies": {
+    "segment": "0.0.2",
+    "simplebig": "0.0.3"
+  },
   "keywords": ["拼音", "Pinyin"],
   "author": "闲耘 <hotoo.cn@gmail.com>",
   "license": "MIT"

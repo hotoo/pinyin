@@ -13,7 +13,7 @@ var segment = new Segment();
 segment.useDefault();
 
 // 词语拼音库。
-var PHRASES_DICT = require("./phrases-dict0.js");
+var PHRASES_DICT = require("./phrases-dict.js");
 
 // 拼音词库，node 版无需使用压缩合并的拼音库。
 var PINYIN_DICT = require("./pinyin-dict");
