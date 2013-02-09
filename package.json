@@ -1,22 +1,23 @@
 {
-    "name": "pinyin",
-    "version": "1.0.0",
-    "root": "util",
-    "description": "转换汉字为拼音",
-    "homepage": "",
-    "author": "",
-    "repository": {
-        "type": "git",
-        "url": "git@github.com:hotoo/pinyin.js.git"
-    },
-    "bugs": {
-        "url": "https://github.com/hotoo/pinyin.js/issues"
-    },
-    "license": "MIT",
-    "dependencies": {
-    },
-    "tests": ["pinyin"],
-    "output": {
-        "pinyin.js": "."
-    }
+  "name": "pinyin",
+  "version": "2.0.0",
+  "root": "util",
+  "description": "转换汉字为拼音",
+  "keywords": ["拼音", "Pinyin"],
+  "homepage": "https://github.com/hotoo/pinyin.js",
+  "author": "闲耘 <hotoo.cn@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:hotoo/pinyin.js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hotoo/pinyin.js/issues"
+  },
+  "dependencies": {
+  },
+  "tests": ["pinyin"],
+  "license": "MIT",
+  "output": {
+    "pinyin.js": "."
+  }
 }
