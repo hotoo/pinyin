@@ -2,19 +2,23 @@
 
 ---
 
-// 转换中文字符为拼音。
+转换中文字符为拼音。
+
+注：这是基于浏览器运行的版本，另外还同步提供了更强的 [NodeJS 版本](https://github.com/hotoo/node-pinyin)
 
 ---
 
 ## 使用说明
 
-    var pinyin = require("pinyin");
+```javascript
+var pinyin = require("pinyin");
 
-    pinyin("重点");
-    pinyin("重点", {
-      style: pinyin.STYLE_NORMAL,
-      heteronym: true
-    });
+pinyin("重点");
+pinyin("重点", {
+  style: pinyin.STYLE_NORMAL,
+  heteronym: true
+});
+```
 
 ## API
 
@@ -53,6 +57,8 @@ options 是可选的，可以设定拼音风格，或打开多音字选项。
 ### 属性 `.STYLE_INITIALS`
 
 声母风格，只返回各个拼音的声母部分。
+
+例外，对于只有韵母的汉字（如『爱、啊』等），会先转成不带音标的普通风格。
 
 如：`p y`
 

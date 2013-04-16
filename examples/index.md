@@ -9,5 +9,9 @@ seajs.use('pinyin', function(pinyin){
     style: pinyin.STYLE_NORMAL,
     heteronym: true
   }));
+  console.log(pinyin("啊", {
+    style: pinyin.STYLE_FIRST_LETTER,
+    heteronym: true
+  }));
 });
 ````
