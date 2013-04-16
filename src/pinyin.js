@@ -99,12 +99,15 @@ define(function(require, exports, module) {
    */
   function toFixed(pinyin, style){
     var handle;
-    var tone; // 声调。
+    var tone = ""; // 声调，默认无声调。
     switch(style){
     case PINYIN_STYLE.INITIALS:
       return initials(pinyin);
     case PINYIN_STYLE.FIRST_LETTER:
-      return pinyin.charAt(0);
+      handle = function($0, $1){
+        return PHONETIC_SYMBOL[$1].replace(RE_TONE2, "$1");
+      };
+      //return pinyin.charAt(0);
     case PINYIN_STYLE.NORMAL:
       handle = function($0, $1){
         return PHONETIC_SYMBOL[$1].replace(RE_TONE2, "$1");
@@ -112,6 +115,9 @@ define(function(require, exports, module) {
       break;
     case PINYIN_STYLE.TONE2:
       handle = function($0, $1){
+        if(!PHONETIC_SYMBOL.hasOwnProperty($1)){
+          return $1;
+        }
         tone = PHONETIC_SYMBOL[$1].replace(RE_TONE2, "$2");
         return PHONETIC_SYMBOL[$1].replace(RE_TONE2, "$1");
       }
@@ -124,8 +130,14 @@ define(function(require, exports, module) {
       break;
     }
     var py = pinyin.replace(RE_PHONETIC_SYMBOL, handle);
-    if(style === PINYIN_STYLE.TONE2){
+    switch(style){
+    case PINYIN_STYLE.TONE2:
       py += tone;
+      break;
+    case PINYIN_STYLE.FIRST_LETTER:
+      py = py.charAt(0);
+      break;
+    default:
     }
     return py;
   }
