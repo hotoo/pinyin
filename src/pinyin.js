@@ -109,7 +109,7 @@ function single_pinyin(han, options){
   if(!options.heteronym){
     return [toFixed(pys[0], options.style)];
   }
-  // 临时存储已存在的拼音，避免重复。
+  // 临时存储已存在的拼音，避免多音字拼音转换为非注音风格出现重复。
   var py_cached = {};
   var pinyins = [];
   for(var i=0,py,l=pys.length; i<l; i++){
@@ -129,12 +129,16 @@ function single_pinyin(han, options){
  * @return {Array}
  */
 function phrases_pinyin(phrases, options){
-  if(PHRASES_DICT.hasOwnProperty(phrases)){
-    return PHRASES_DICT[phrases];
-  }
   var py = [];
-  for(var i=0,l=phrases.length; i<l; i++){
-    py.push(single_pinyin(phrases[i], options));
+  if(PHRASES_DICT.hasOwnProperty(phrases)){
+    py = PHRASES_DICT[phrases];
+    py.forEach(function(item, idx, arr){
+      arr[idx] = [toFixed(item[0], options.style)];
+    });
+  }else{
+    for(var i=0,l=phrases.length; i<l; i++){
+      py.push(single_pinyin(phrases[i], options));
+    }
   }
   return py;
 }
@@ -148,22 +152,21 @@ function pinyin(hans, options){
   if("string" !== typeof hans){return [];}
   options = extend(DEFAULT_OPTIONS, options);
   var phrases = segment.doSegment(hans);
-  console.log("phrases:", phrases);
+  //console.log("phrases:", phrases);
   var len = hans.length;
-  var py = [];
+  var pys = [];
   for(var i=0,words,l=phrases.length; i<l; i++){
     words = phrases[i].w;
     if(words.length===1){
-      py.push(single_pinyin(words, options));
+      pys.push(single_pinyin(words, options));
     }else{
-      //py.push.apply(py, phrases_pinyin(words, options));
-      py.push(phrases_pinyin(words, options));
+      pys = pys.concat(phrases_pinyin(words, options));
     }
   }
   //for(var i=0,l=len; i<l; i++){
     //py.push(single_pinyin(hans[i], options));
   //}
-  return py;
+  return pys;
 }
 
 
