@@ -1,5 +1,6 @@
 define(function(require) {
 
+  var expect = require("expect");
   var pinyin = require('../src/pinyin');
 
   function deepEquals(a, b){
