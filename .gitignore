@@ -24,3 +24,4 @@ sea-modules
 tmp/*
 Desktop.ini
 Thumb.db
+.cache/*
