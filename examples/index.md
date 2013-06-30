@@ -2,16 +2,57 @@
 
 ---
 
-````javascript
+<style>
+textarea{width:90%; height:100px;}
+</style>
+
+### 输入
+
+<div>
+  <textarea id="input"></textarea>
+</div>
+
+### 输出
+
+<div>
+  <input type="radio" name="style" id="style-normal" value="STYLE_NORMAL" />
+  <label for="style-normal">普通风格</label>
+  <input type="radio" name="style" id="style-tone" value="STYLE_TONE" checked />
+  <label for="style-tone">声调风格</label>
+  <input type="radio" name="style" id="style-tone2" value="STYLE_TONE2" />
+  <label for="style-tone2">音标风格</label>
+  <input type="radio" name="style" id="style-initials" value="STYLE_INITIALS" />
+  <label for="style-initials">声母风格</label>
+  <input type="radio" name="style" id="style-first-letter" value="STYLE_FIRST_LETTER" />
+  <label for="style-first-letter">首字母风格</label>
+</div>
+<div>
+  <textarea readonly id="output"></textarea>
+</div>
+
+
+<script>
 seajs.use('pinyin', function(pinyin){
-  console.log(pinyin("重点"));
-  console.log(pinyin("重点", {
-    style: pinyin.STYLE_NORMAL,
-    heteronym: true
-  }));
-  console.log(pinyin("啊", {
-    style: pinyin.STYLE_FIRST_LETTER,
-    heteronym: true
-  }));
+
+  var $ = function(id){return document.getElementById(id);}
+  var styles = document.getElementsByName("style");
+
+  function build(){
+    var han = $("input").value;
+    var style = "STYLE_TONE";
+    for(var i=0,l=styles.length; i<l; i++){
+      if(styles[i].checked){
+        style = styles[i].value;
+      }
+    }
+    $("output").value = pinyin(han, {
+      style: pinyin[style]
+    }).join(" ");
+  };
+
+  $("input").onkeyup = build;
+  for(var i=0,l=styles.length; i<l; i++){
+    styles[i].onclick = build;
+  }
 });
-````
+</script>
