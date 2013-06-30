@@ -1,8 +1,8 @@
 {
   "name": "pinyin",
   "version": "2.0.0",
-  "root": "util",
-  "description": "转换汉字为拼音",
+  "family": "hotoo",
+  "description": "转换汉字为拼音『极速』",
   "keywords": ["拼音", "Pinyin"],
   "homepage": "https://github.com/hotoo/pinyin.js",
   "author": "闲耘 <hotoo.cn@gmail.com>",
@@ -13,11 +13,8 @@
   "bugs": {
     "url": "https://github.com/hotoo/pinyin.js/issues"
   },
-  "dependencies": {
+  "spm": {
+    "output": ["pinyin.js"]
   },
-  "tests": ["pinyin"],
-  "license": "MIT",
-  "output": {
-    "pinyin.js": "."
-  }
+  "license": "MIT"
 }
