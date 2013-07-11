@@ -150,10 +150,6 @@ define(function(require, exports, module) {
   function single_pinyin(han, options){
     if("string" !== typeof han){return [];}
     options = extend(DEFAULT_OPTIONS, options);
-    if(han.length !== 1){
-      return single_pinyin(han.charAt(0), options);
-    }
-    if(!DICT.hasOwnProperty(han)){return [han];}
     var pys = DICT[han].split(",");
     if(!options.heteronym){
       return [toFixed(pys[0], options.style)];
@@ -178,10 +174,22 @@ define(function(require, exports, module) {
   function pinyin(hans, options){
     if("string" !== typeof hans){return [];}
     options = extend(DEFAULT_OPTIONS, options);
-    var len = hans.length;
     var py = [];
-    for(var i=0,l=len; i<l; i++){
-      py.push(single_pinyin(hans[i], options));
+
+    for(var i=0,han,nonhans="",l=hans.length; i<l; i++){
+      han = hans[i];
+      if(DICT.hasOwnProperty(han)){
+        if(nonhans.length > 0){
+          py.push([nonhans]);
+        }
+        py.push(single_pinyin(han, options));
+        nonhans = ""; // reset non-hans.
+      }else{
+        nonhans += han;
+      }
+    }
+    if(nonhans.length > 0){
+      py.push([nonhans]);
     }
     return py;
   }

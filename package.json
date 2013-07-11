@@ -1,6 +1,6 @@
 {
   "name": "pinyin",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "family": "hotoo",
   "description": "转换汉字为拼音『极速』",
   "keywords": ["拼音", "Pinyin"],

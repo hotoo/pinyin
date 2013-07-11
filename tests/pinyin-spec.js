@@ -90,7 +90,7 @@ define(function(require) {
       STYLE_TONE:         [["wǒ"],["shì"],["shuí"]],
       STYLE_TONE2:        [["wo3"],["shi4"],["shui2"]],
       STYLE_INITIALS:     [["w"],["sh"],["sh"]],
-      STYLE_FIRST_LETTER: [["w"],["s"],["s"]],
+      STYLE_FIRST_LETTER: [["w"],["s"],["s"]]
     } ],
 
     // 多音词
@@ -99,7 +99,7 @@ define(function(require) {
       STYLE_TONE:         [["zhōng","zhòng"],["guó"]],
       STYLE_TONE2:        [["zhong1","zhong4"],["guo2"]],
       STYLE_INITIALS:     [["zh"],["g"]],
-      STYLE_FIRST_LETTER: [["z"],["g"]],
+      STYLE_FIRST_LETTER: [["z"],["g"]]
     } ],
     [ "重心", {
       STYLE_NORMAL:       [["zhong","chong"],["xin"]],
@@ -107,6 +107,47 @@ define(function(require) {
       STYLE_TONE2:        [["zhong4","chong2"],["xin1"]],
       STYLE_INITIALS:     [["zh","ch"],["x"]],
       STYLE_FIRST_LETTER: [["z","c"],["x"]],
+    } ],
+
+    // 英文
+    [ "a", {
+      STYLE_NORMAL:       [["a"]],
+      STYLE_TONE:         [["a"]],
+      STYLE_TONE2:        [["a"]],
+      STYLE_INITIALS:     [["a"]],
+      STYLE_FIRST_LETTER: [["a"]]
+    } ],
+    [ "aa", {
+      STYLE_NORMAL:       [["aa"]],
+      STYLE_TONE:         [["aa"]],
+      STYLE_TONE2:        [["aa"]],
+      STYLE_INITIALS:     [["aa"]],
+      STYLE_FIRST_LETTER: [["aa"]]
+    } ],
+    [ "a a", {
+      STYLE_NORMAL:       [["a a"]],
+      STYLE_TONE:         [["a a"]],
+      STYLE_TONE2:        [["a a"]],
+      STYLE_INITIALS:     [["a a"]],
+      STYLE_FIRST_LETTER: [["a a"]]
+    } ],
+
+    // 中英混合
+    [ "拼音(pinyin)", {
+      STYLE_NORMAL:       [["pin"],["yin"],["(pinyin)"]],
+      STYLE_TONE:         [["pīn"],["yīn"],["(pinyin)"]],
+      STYLE_TONE2:        [["pin1"],["yin1"],["(pinyin)"]],
+      STYLE_INITIALS:     [["p"],["y"],["(pinyin)"]],
+      STYLE_FIRST_LETTER: [["p"],["y"],["(pinyin)"]]
+    } ],
+
+    // 中英混合，多音字
+    [ "中国(china)", {
+      STYLE_NORMAL:       [["zhong"],["guo"],["(china)"]],
+      STYLE_TONE:         [["zhōng","zhòng"],["guó"],["(china)"]],
+      STYLE_TONE2:        [["zhong1","zhong4"],["guo2"],["(china)"]],
+      STYLE_INITIALS:     [["zh"],["g"],["(china)"]],
+      STYLE_FIRST_LETTER: [["z"],["g"],["(china)"]]
     } ]
   ];
 
@@ -123,15 +164,17 @@ define(function(require) {
             single_pinyin[i] = [py[i][0]];
           }
           var _py = pinyin(han, {style: pinyin[style]});
-          it('pinyin("'+han+'", '+style+') : '+JSON.stringify(_py)+' === '+JSON.stringify(single_pinyin), function() {
+          it('pinyin("'+han+'", '+style+') : '+
+            JSON.stringify(_py)+' === '+JSON.stringify(single_pinyin), function() {
+
             //console.log(pinyin(han, {style:pinyin[style]}), py, style, pinyin[style]);
-            if(han==="中" && style==="STYLE_TONE"){
-              console.log(_py, single_pinyin);
-            }
             expect(deepEquals(_py, single_pinyin)).to.equal(true);
           });
           var _py2 = pinyin(han, {style: pinyin[style], heteronym:true});
           it('pinyin("'+han+'", '+style+',heteronym) : '+_py2+' === '+py, function() {
+            if(!deepEquals(_py2, py)){
+            console.log(_py2, py, style, pinyin[style]);
+            }
             expect(deepEquals(_py2, py)).to.equal(true);
           });
         })(han, opt, style);
