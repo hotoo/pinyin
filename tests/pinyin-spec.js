@@ -171,7 +171,9 @@ define(function(require) {
             expect(deepEquals(_py, single_pinyin)).to.equal(true);
           });
           var _py2 = pinyin(han, {style: pinyin[style], heteronym:true});
-          it('pinyin("'+han+'", '+style+',heteronym) : '+_py2+' === '+py, function() {
+          it('pinyin("'+han+'", '+style+',heteronym) : '+
+            JSON.stringify(_py2)+' === '+JSON.stringify(py), function() {
+
             if(!deepEquals(_py2, py)){
             console.log(_py2, py, style, pinyin[style]);
             }
