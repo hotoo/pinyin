@@ -1,0 +1,195 @@
+<!DOCTYPE HTML>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8">
+    <title>hotoo/pinyin - 演示文档</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="nico 0.4.1" />
+    <link type="image/x-icon" href="../static/css/favicon.ico" rel="icon">
+    <link rel="stylesheet" href="../static/css/normalize.css" />
+    <link rel="stylesheet" href="../static/css/site.css" />
+    <link rel="stylesheet" href="../static/css/solarized.css" />
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36247332-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    if (location.port) {
+       return;
+    }
+    ga.src = 'https://ssl.google-analytics.com/ga.js'; 
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+<script src="http://assets.spmjs.org/seajs/seajs/2.0.0/??sea.js,plugin-combo.js,plugin-debug.js,plugin-style.js"></script>
+
+<script src="../dist/pinyin.js"></script>
+<script>
+  (function() {
+
+  var query = location.search.substring(1).split('&');
+  var srcdir = 'src';
+
+  if (contain(query, 'dist')) {
+    srcdir = 'dist';
+  } else if (contain(query, 'cov')) {
+    srcdir = 'src-cov';
+  }
+
+  seajs.config({
+    alias: {
+      "$": 'jquery/jquery/1.10.1/jquery',
+      "$-debug": 'jquery/jquery/1.10.1/jquery-debug',
+      jquery: 'jquery/jquery/1.10.1/jquery',
+      "jquery-debug": 'jquery/jquery/1.10.1/jquery-debug',
+      expect: "gallery/expect/0.2.0/expect",
+      puerh: "popomore/puerh/0.1.0/puerh",
+      sinon: "gallery/sinon/1.6.0/sinon"
+    },
+    map: [function(uri) {
+      // resolve id
+      var m = uri.match(/hotoo\/pinyin\/2.1.0\/(.*)/);
+      if (m) {
+        return resolve(m[1]);
+      }
+      return uri;
+    }],
+    comboExcludes: {test: function(uri) {
+      return uri.indexOf('http://assets.spmjs.org') === -1;
+    }}
+  });
+
+  function resolve(file) {
+    if (contain(query, 'debug')) {
+      if (file.indexOf('-debug') === -1) {
+        file = file.replace(/\.(\w+)$/, '-debug.$1');
+      }
+    }
+    return seajs.resolve("../" + srcdir + "/" + file);
+  }
+
+  function contain(arr, value) {
+    for (var i in arr) {
+      if (arr[i] === value) {
+        return true;
+      }
+    }
+    return false;
+  }
+    seajs.use([]);
+
+    seajs.config({alias: {
+      "$-debug": 'jquery/jquery/1.10.1/jquery-debug'
+        ,"pinyin-dict-combo": resolve("pinyin-dict-combo.js")
+        ,"pinyin-dict": resolve("pinyin-dict.js")
+        ,"pinyin": resolve("pinyin.js")
+    }});
+  })();
+</script>
+    <script src="../static/js/site.js"></script>
+    <!--[if lt IE 9]>
+    <script src="../static/js/html5shiv.js"></script>
+    <![endif]-->
+    
+  </head>
+  <body>
+    <div id="body-wrapper">
+      <aside id="sidebar-wrapper">
+      <h1>
+          <a href="../">Pinyin</a><sup class="package-root"><a href="/">hotoo</a></sup>
+      </h1>
+        <p class="version">当前版本：<a href="http://aralejs.org/docs/online-status.html#hotoo-pinyin" title="点击查看此组件发布情况">2.1.0</a></p>
+        <p class="description">汉字拼音转换工具 Web 版。</p>
+        <a class="source" href="git@github.com:hotoo/pinyin.js.git" target="_blank">View the Project</a>
+        <ul id="navigation" role="navigation">
+          <li><a href="../">文档</a></li>
+          <li><a href="index.html">演示</a></li>
+          <li><a class="test-link" href="../tests/runner.html" target="_blank">用例</a></li>
+          <li><a class="issue-link" href="https://github.com/hotoo/pinyin.js/issues" target="_blank">讨论</a></li>
+        </ul>
+        
+<div id="output-card">
+    <h3>hotoo/pinyin/2.1.0/<a target="_blank" id="output-file"></a></h3>
+    <p>这是模块的输出文件，请 require 或 seajs.use 以上 ID 来使用本文件，具体 API 请阅读文档。</p>
+</div>
+
+      </aside>
+      <div id="content-wrapper">
+        <div id="content">
+<article class="hentry">
+  <h1 class="entry-title">演示文档</h1>
+  <div class="entry-content">
+    <style>
+textarea{width:90%; height:100px;}
+</style>
+<h3 id="输入">输入</h3>
+<div>
+  <textarea id="input"></textarea>
+</div>
+<h3 id="输出">输出</h3>
+<div>
+  <input type="radio" name="style" id="style-normal" value="STYLE_NORMAL" />
+  <label for="style-normal">普通风格</label>
+  <input type="radio" name="style" id="style-tone" value="STYLE_TONE" checked />
+  <label for="style-tone">声调风格</label>
+  <input type="radio" name="style" id="style-tone2" value="STYLE_TONE2" />
+  <label for="style-tone2">音标风格</label>
+  <input type="radio" name="style" id="style-initials" value="STYLE_INITIALS" />
+  <label for="style-initials">声母风格</label>
+  <input type="radio" name="style" id="style-first-letter" value="STYLE_FIRST_LETTER" />
+  <label for="style-first-letter">首字母风格</label>
+</div>
+
+<div>
+  <textarea readonly id="output"></textarea>
+</div>
+
+<script>
+seajs.use('pinyin', function(pinyin){
+
+  var $ = function(id){return document.getElementById(id);}
+  var styles = document.getElementsByName("style");
+
+  function build(){
+    var han = $("input").value;
+    var style = "STYLE_TONE";
+    for(var i=0,l=styles.length; i<l; i++){
+      if(styles[i].checked){
+        style = styles[i].value;
+      }
+    }
+    $("output").value = pinyin(han, {
+      style: pinyin[style]
+    }).join(" ");
+  };
+
+  $("input").onkeyup = build;
+  for(var i=0,l=styles.length; i<l; i++){
+    styles[i].onclick = build;
+  }
+});
+</script>
+
+  </div>
+</article>
+</div>
+      </div>
+      
+    </div>
+    <div id="footer-wrapper">
+      <footer>
+        <p class="powered"><a href="http://aralejs.org">Arale</a> •
+<a href="http://aliceui.org">Alice</a> •
+<a href="http://seajs.org">SeaJS</a> •
+<a href="https://spmjs.org">spmjs.org</a> •
+<a href="http://lab.lepture.com/nico/">nico</a>
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>

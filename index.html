@@ -1,0 +1,187 @@
+<!DOCTYPE HTML>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8">
+    <title>hotoo/pinyin - 汉字拼音转换工具。</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="nico 0.4.1" />
+    <link type="image/x-icon" href="./static/css/favicon.ico" rel="icon">
+    <link rel="stylesheet" href="./static/css/normalize.css" />
+    <link rel="stylesheet" href="./static/css/site.css" />
+    <link rel="stylesheet" href="./static/css/solarized.css" />
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36247332-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    if (location.port) {
+       return;
+    }
+    ga.src = 'https://ssl.google-analytics.com/ga.js'; 
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+<script src="http://assets.spmjs.org/seajs/seajs/2.0.0/??sea.js,plugin-combo.js,plugin-debug.js,plugin-style.js"></script>
+
+<script src="./dist/pinyin.js"></script>
+<script>
+  (function() {
+
+  var query = location.search.substring(1).split('&');
+  var srcdir = 'src';
+
+  if (contain(query, 'dist')) {
+    srcdir = 'dist';
+  } else if (contain(query, 'cov')) {
+    srcdir = 'src-cov';
+  }
+
+  seajs.config({
+    alias: {
+      "$": 'jquery/jquery/1.10.1/jquery',
+      "$-debug": 'jquery/jquery/1.10.1/jquery-debug',
+      jquery: 'jquery/jquery/1.10.1/jquery',
+      "jquery-debug": 'jquery/jquery/1.10.1/jquery-debug',
+      expect: "gallery/expect/0.2.0/expect",
+      puerh: "popomore/puerh/0.1.0/puerh",
+      sinon: "gallery/sinon/1.6.0/sinon"
+    },
+    map: [function(uri) {
+      // resolve id
+      var m = uri.match(/hotoo\/pinyin\/2.1.0\/(.*)/);
+      if (m) {
+        return resolve(m[1]);
+      }
+      return uri;
+    }],
+    comboExcludes: {test: function(uri) {
+      return uri.indexOf('http://assets.spmjs.org') === -1;
+    }}
+  });
+
+  function resolve(file) {
+    if (contain(query, 'debug')) {
+      if (file.indexOf('-debug') === -1) {
+        file = file.replace(/\.(\w+)$/, '-debug.$1');
+      }
+    }
+    return seajs.resolve("./" + srcdir + "/" + file);
+  }
+
+  function contain(arr, value) {
+    for (var i in arr) {
+      if (arr[i] === value) {
+        return true;
+      }
+    }
+    return false;
+  }
+    seajs.use([]);
+
+    seajs.config({alias: {
+      "$-debug": 'jquery/jquery/1.10.1/jquery-debug'
+        ,"pinyin-dict-combo": resolve("pinyin-dict-combo.js")
+        ,"pinyin-dict": resolve("pinyin-dict.js")
+        ,"pinyin": resolve("pinyin.js")
+    }});
+  })();
+</script>
+    <script src="./static/js/site.js"></script>
+    <!--[if lt IE 9]>
+    <script src="./static/js/html5shiv.js"></script>
+    <![endif]-->
+    
+  </head>
+  <body>
+    <div id="body-wrapper">
+      <aside id="sidebar-wrapper">
+      <h1>
+          <a href="./">Pinyin</a><sup class="package-root"><a href="/">hotoo</a></sup>
+      </h1>
+        <p class="version">当前版本：<a href="http://aralejs.org/docs/online-status.html#hotoo-pinyin" title="点击查看此组件发布情况">2.1.0</a></p>
+        <p class="description">汉字拼音转换工具 Web 版。</p>
+        <a class="source" href="git@github.com:hotoo/pinyin.js.git" target="_blank">View the Project</a>
+        <ul id="navigation" role="navigation">
+          <li><a href="./">文档</a></li>
+          <li><a href="examples/">演示</a></li>
+          <li><a class="test-link" href="tests/runner.html" target="_blank">用例</a></li>
+          <li><a class="issue-link" href="https://github.com/hotoo/pinyin.js/issues" target="_blank">讨论</a></li>
+        </ul>
+        
+<div id="output-card">
+    <h3>hotoo/pinyin/2.1.0/<a target="_blank" id="output-file"></a></h3>
+    <p>这是模块的输出文件，请 require 或 seajs.use 以上 ID 来使用本文件，具体 API 请阅读文档。</p>
+</div>
+
+      </aside>
+      <div id="content-wrapper">
+        <div id="content">
+<article class="hentry">
+  <h1 class="entry-title">汉字拼音转换工具。</h1>
+  <div class="entry-content">
+    <p>转换中文字符为拼音。</p>
+
+<p>注：这是基于浏览器运行的版本，另外还同步提供了更强的 <a href="https://github.com/hotoo/node-pinyin">NodeJS 版本</a></p>
+
+<hr/>
+<h2 id="使用说明">使用说明</h2><div class="highlight"><pre><code class="javascript"><span class="keyword">var</span> pinyin = require(<span class="string">"hotoo/pinyin/2.1.0/pinyin"</span>);
+
+pinyin(<span class="string">"重点"</span>);
+pinyin(<span class="string">"重点"</span>, {
+  style: pinyin.STYLE_NORMAL,
+  heteronym: <span class="literal">true</span>
+});
+</code></pre></div><h2 id="api">API</h2><h3 id="方法-lt-array-gt-pinyin-words-options">方法 <code>&lt;Array&gt; pinyin(words[, options])</code></h3>
+<p>将传入的中文字符(words)转换成拼音符号。</p>
+
+<p>options 是可选的，可以设定拼音风格，或打开多音字选项。</p>
+<h3 id="参数-lt-boolean-gt-options-heteronym">参数 <code>&lt;Boolean&gt; options.heteronym</code></h3>
+<p>是否启用多音字模式，默认关闭。</p>
+
+<p>关闭多音字模式时，返回每个汉字第一个匹配的拼音。</p>
+
+<p>启用多音字模式时，返回多音字的所有拼音列表。</p>
+<h3 id="属性-style-normal">属性 <code>.STYLE_NORMAL</code></h3>
+<p>普通风格，即不带音标。</p>
+
+<p>如：<code>pin yin</code></p>
+<h3 id="属性-style-tone">属性 <code>.STYLE_TONE</code></h3>
+<p>声调风格，拼音声调在韵母第一个字母上。</p>
+
+<p>如：<code>pīn yīn</code></p>
+<h3 id="属性-style-tone2">属性 <code>.STYLE_TONE2</code></h3>
+<p>声调风格2，即拼音声调在各个拼音之后，用数字 [0-4] 进行表示。</p>
+
+<p>如：<code>pin1 yin1</code></p>
+<h3 id="属性-style-initials">属性 <code>.STYLE_INITIALS</code></h3>
+<p>声母风格，只返回各个拼音的声母部分。</p>
+
+<p>例外，对于只有韵母的汉字（如『爱、啊』等），会先转成不带音标的普通风格。</p>
+
+<p>如：<code>p y</code></p>
+<h3 id="属性-style-first-letter">属性 <code>.STYLE_FIRST_LETTER</code></h3>
+<p>首字母风格，只返回拼音的首字母部分。</p>
+
+  </div>
+</article>
+</div>
+      </div>
+      
+    </div>
+    <div id="footer-wrapper">
+      <footer>
+        <p class="powered"><a href="http://aralejs.org">Arale</a> •
+<a href="http://aliceui.org">Alice</a> •
+<a href="http://seajs.org">SeaJS</a> •
+<a href="https://spmjs.org">spmjs.org</a> •
+<a href="http://lab.lepture.com/nico/">nico</a>
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>
