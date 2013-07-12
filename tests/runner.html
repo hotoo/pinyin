@@ -21,14 +21,10 @@
   })();
 
 </script>
-<<<<<<< HEAD
 
 <script src="http://assets.spmjs.org/seajs/seajs/2.0.0/??sea.js,plugin-combo.js,plugin-debug.js,plugin-style.js"></script>
 
 <script src="../dist/pinyin.js"></script>
-=======
-<script src="http://assets.spmjs.org/seajs/seajs/2.0.0/??sea.js,plugin-combo.js,plugin-style.js"></script>
->>>>>>> e1ee694a494a5c403073959e6044bf485f9a9f84
 <script>
   (function() {
 
@@ -43,28 +39,17 @@
 
   seajs.config({
     alias: {
-<<<<<<< HEAD
       "$": 'jquery/jquery/1.10.1/jquery',
       "$-debug": 'jquery/jquery/1.10.1/jquery-debug',
       jquery: 'jquery/jquery/1.10.1/jquery',
       "jquery-debug": 'jquery/jquery/1.10.1/jquery-debug',
-=======
-      "$": 'jquery/jquery/1.7.2/jquery',
-      jquery: 'jquery/jquery/1.7.2/jquery',
-      "jquery-debug": 'jquery/jquery/1.7.2/jquery-debug',
-      mocha: "gallery/mocha/1.9.0/mocha",
->>>>>>> e1ee694a494a5c403073959e6044bf485f9a9f84
       expect: "gallery/expect/0.2.0/expect",
       puerh: "popomore/puerh/0.1.0/puerh",
       sinon: "gallery/sinon/1.6.0/sinon"
     },
     map: [function(uri) {
       // resolve id
-<<<<<<< HEAD
       var m = uri.match(/hotoo\/pinyin\/2.1.0\/(.*)/);
-=======
-      var m = uri.match(/hotoo\/pinyin\/2.0.0\/(.*)/);
->>>>>>> e1ee694a494a5c403073959e6044bf485f9a9f84
       if (m) {
         return resolve(m[1]);
       }
@@ -81,11 +66,7 @@
         file = file.replace(/\.(\w+)$/, '-debug.$1');
       }
     }
-<<<<<<< HEAD
     return seajs.resolve("../" + srcdir + "/" + file);
-=======
-    return seajs.resolve("..//" + srcdir + "/" + file);
->>>>>>> e1ee694a494a5c403073959e6044bf485f9a9f84
   }
 
   function contain(arr, value) {
@@ -99,30 +80,19 @@
     seajs.use([]);
 
     seajs.config({alias: {
-<<<<<<< HEAD
       "$-debug": 'jquery/jquery/1.10.1/jquery-debug'
-=======
-      "$-debug": 'jquery/jquery/1.7.2/jquery-debug'
->>>>>>> e1ee694a494a5c403073959e6044bf485f9a9f84
         ,"pinyin-dict-combo": resolve("pinyin-dict-combo.js")
         ,"pinyin-dict": resolve("pinyin-dict.js")
         ,"pinyin": resolve("pinyin.js")
     }});
   })();
 </script>
-<<<<<<< HEAD
     <script src="http://assets.spmjs.org/gallery/mocha/1.9.0/mocha.js"></script>
-=======
->>>>>>> e1ee694a494a5c403073959e6044bf485f9a9f84
   </head>
   <body>
     <div id="mocha"></div>
     <script>
-<<<<<<< HEAD
       (function() {
-=======
-      seajs.use('mocha', function() {
->>>>>>> e1ee694a494a5c403073959e6044bf485f9a9f84
         mocha.setup('bdd');
         var tests = ["pinyin-spec.js"];
 
@@ -138,11 +108,7 @@
             mocha.run()
           }
         })
-<<<<<<< HEAD
       })();
-=======
-      });
->>>>>>> e1ee694a494a5c403073959e6044bf485f9a9f84
     </script>
   </body>
 </html>

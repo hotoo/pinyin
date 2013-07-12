@@ -4,11 +4,7 @@
     <meta charset="UTF-8">
     <title>hotoo/pinyin - 演示文档</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-<<<<<<< HEAD
     <meta name="generator" content="nico 0.4.1" />
-=======
-    <meta name="generator" content="nico 0.3.1" />
->>>>>>> e1ee694a494a5c403073959e6044bf485f9a9f84
     <link type="image/x-icon" href="../static/css/favicon.ico" rel="icon">
     <link rel="stylesheet" href="../static/css/normalize.css" />
     <link rel="stylesheet" href="../static/css/site.css" />
@@ -29,14 +25,10 @@
   })();
 
 </script>
-<<<<<<< HEAD
 
 <script src="http://assets.spmjs.org/seajs/seajs/2.0.0/??sea.js,plugin-combo.js,plugin-debug.js,plugin-style.js"></script>
 
 <script src="../dist/pinyin.js"></script>
-=======
-<script src="http://assets.spmjs.org/seajs/seajs/2.0.0/??sea.js,plugin-combo.js,plugin-style.js"></script>
->>>>>>> e1ee694a494a5c403073959e6044bf485f9a9f84
 <script>
   (function() {
 
@@ -51,28 +43,17 @@
 
   seajs.config({
     alias: {
-<<<<<<< HEAD
       "$": 'jquery/jquery/1.10.1/jquery',
       "$-debug": 'jquery/jquery/1.10.1/jquery-debug',
       jquery: 'jquery/jquery/1.10.1/jquery',
       "jquery-debug": 'jquery/jquery/1.10.1/jquery-debug',
-=======
-      "$": 'jquery/jquery/1.7.2/jquery',
-      jquery: 'jquery/jquery/1.7.2/jquery',
-      "jquery-debug": 'jquery/jquery/1.7.2/jquery-debug',
-      mocha: "gallery/mocha/1.9.0/mocha",
->>>>>>> e1ee694a494a5c403073959e6044bf485f9a9f84
       expect: "gallery/expect/0.2.0/expect",
       puerh: "popomore/puerh/0.1.0/puerh",
       sinon: "gallery/sinon/1.6.0/sinon"
     },
     map: [function(uri) {
       // resolve id
-<<<<<<< HEAD
       var m = uri.match(/hotoo\/pinyin\/2.1.0\/(.*)/);
-=======
-      var m = uri.match(/hotoo\/pinyin\/2.0.0\/(.*)/);
->>>>>>> e1ee694a494a5c403073959e6044bf485f9a9f84
       if (m) {
         return resolve(m[1]);
       }
@@ -89,11 +70,7 @@
         file = file.replace(/\.(\w+)$/, '-debug.$1');
       }
     }
-<<<<<<< HEAD
     return seajs.resolve("../" + srcdir + "/" + file);
-=======
-    return seajs.resolve("..//" + srcdir + "/" + file);
->>>>>>> e1ee694a494a5c403073959e6044bf485f9a9f84
   }
 
   function contain(arr, value) {
@@ -107,11 +84,7 @@
     seajs.use([]);
 
     seajs.config({alias: {
-<<<<<<< HEAD
       "$-debug": 'jquery/jquery/1.10.1/jquery-debug'
-=======
-      "$-debug": 'jquery/jquery/1.7.2/jquery-debug'
->>>>>>> e1ee694a494a5c403073959e6044bf485f9a9f84
         ,"pinyin-dict-combo": resolve("pinyin-dict-combo.js")
         ,"pinyin-dict": resolve("pinyin-dict.js")
         ,"pinyin": resolve("pinyin.js")
@@ -130,13 +103,8 @@
       <h1>
           <a href="../">Pinyin</a><sup class="package-root"><a href="/">hotoo</a></sup>
       </h1>
-<<<<<<< HEAD
         <p class="version">当前版本：<a href="http://aralejs.org/docs/online-status.html#hotoo-pinyin" title="点击查看此组件发布情况">2.1.0</a></p>
         <p class="description">汉字拼音转换工具 Web 版。</p>
-=======
-        <p class="version">当前版本：<a href="http://aralejs.org/docs/online-status.html#-pinyin" title="点击查看此组件发布情况">2.0.0</a></p>
-        <p class="description">转换汉字为拼音『极速』</p>
->>>>>>> e1ee694a494a5c403073959e6044bf485f9a9f84
         <a class="source" href="git@github.com:hotoo/pinyin.js.git" target="_blank">View the Project</a>
         <ul id="navigation" role="navigation">
           <li><a href="../">文档</a></li>
@@ -146,11 +114,7 @@
         </ul>
         
 <div id="output-card">
-<<<<<<< HEAD
     <h3>hotoo/pinyin/2.1.0/<a target="_blank" id="output-file"></a></h3>
-=======
-    <h3>hotoo/pinyin/2.0.0/<a target="_blank" id="output-file"></a></h3>
->>>>>>> e1ee694a494a5c403073959e6044bf485f9a9f84
     <p>这是模块的输出文件，请 require 或 seajs.use 以上 ID 来使用本文件，具体 API 请阅读文档。</p>
 </div>
 
@@ -163,21 +127,12 @@
     <style>
 textarea{width:90%; height:100px;}
 </style>
-<<<<<<< HEAD
 <h3 id="输入">输入</h3>
 <div>
   <textarea id="input"></textarea>
 </div>
 <h3 id="输出">输出</h3>
 <div>
-=======
-
-<h3 id="输入">输入</h3><div>
-  <textarea id="input"></textarea>
-</div>
-
-<h3 id="输出">输出</h3><div>
->>>>>>> e1ee694a494a5c403073959e6044bf485f9a9f84
   <input type="radio" name="style" id="style-normal" value="STYLE_NORMAL" />
   <label for="style-normal">普通风格</label>
   <input type="radio" name="style" id="style-tone" value="STYLE_TONE" checked />
@@ -189,18 +144,11 @@ textarea{width:90%; height:100px;}
   <input type="radio" name="style" id="style-first-letter" value="STYLE_FIRST_LETTER" />
   <label for="style-first-letter">首字母风格</label>
 </div>
-<<<<<<< HEAD
 
-=======
->>>>>>> e1ee694a494a5c403073959e6044bf485f9a9f84
 <div>
   <textarea readonly id="output"></textarea>
 </div>
 
-<<<<<<< HEAD
-=======
-
->>>>>>> e1ee694a494a5c403073959e6044bf485f9a9f84
 <script>
 seajs.use('pinyin', function(pinyin){
 

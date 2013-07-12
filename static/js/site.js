@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 seajs.use(['jquery', 'arale/popup/1.1.0/popup'], function($, Popup) {
-=======
-seajs.use(['jquery', 'arale/popup/1.0.1/popup'], function($, Popup) {
->>>>>>> e1ee694a494a5c403073959e6044bf485f9a9f84
 
   $(function(){
     $('h4 em, h3 em, h3 code, h4 code').parent().addClass('doc-api')
@@ -39,21 +35,15 @@ seajs.use(['jquery', 'arale/popup/1.0.1/popup'], function($, Popup) {
     var version = $('#sidebar-wrapper .version a').html();
     new Popup({
       trigger: '#sidebar-wrapper h1 > a',
-<<<<<<< HEAD
       template: '<div class="popup-install">spm install <a href="https://spmjs.org/'+family+'/'+name+'/">'
       +family+'/'+name+'@'+version+'</a></div>',
       effect: 'fade',      
-=======
-      template: '<div class="popup-install">spm install '
-      +family+'/'+name+'@'+version+'</div>',
->>>>>>> e1ee694a494a5c403073959e6044bf485f9a9f84
       align: {
         baseXY: [0, '100%+5']
       }
     });
   }
 
-<<<<<<< HEAD
   new Popup({
     trigger: '#maintainers',
     template: '<div class="popup-install">强烈建议提交 issue 交流（点击上方[讨论]），您会得到更高质量的反馈。</div>',
@@ -64,8 +54,6 @@ seajs.use(['jquery', 'arale/popup/1.0.1/popup'], function($, Popup) {
     }
   });
 
-=======
->>>>>>> e1ee694a494a5c403073959e6044bf485f9a9f84
   // output card
   if ($('#module-output')[0] && Popup) {
     new Popup({

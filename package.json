@@ -1,14 +1,8 @@
 {
   "name": "pinyin",
-<<<<<<< HEAD
   "version": "2.1.0",
   "family": "hotoo",
   "description": "汉字拼音转换工具 Web 版。",
-=======
-  "version": "2.0.0",
-  "family": "hotoo",
-  "description": "转换汉字为拼音『极速』",
->>>>>>> e1ee694a494a5c403073959e6044bf485f9a9f84
   "keywords": ["拼音", "Pinyin"],
   "homepage": "https://github.com/hotoo/pinyin.js",
   "author": "闲耘 <hotoo.cn@gmail.com>",

@@ -90,11 +90,7 @@ define(function(require) {
       STYLE_TONE:         [["wǒ"],["shì"],["shuí"]],
       STYLE_TONE2:        [["wo3"],["shi4"],["shui2"]],
       STYLE_INITIALS:     [["w"],["sh"],["sh"]],
-<<<<<<< HEAD
       STYLE_FIRST_LETTER: [["w"],["s"],["s"]]
-=======
-      STYLE_FIRST_LETTER: [["w"],["s"],["s"]],
->>>>>>> e1ee694a494a5c403073959e6044bf485f9a9f84
     } ],
 
     // 多音词
@@ -103,11 +99,7 @@ define(function(require) {
       STYLE_TONE:         [["zhōng","zhòng"],["guó"]],
       STYLE_TONE2:        [["zhong1","zhong4"],["guo2"]],
       STYLE_INITIALS:     [["zh"],["g"]],
-<<<<<<< HEAD
       STYLE_FIRST_LETTER: [["z"],["g"]]
-=======
-      STYLE_FIRST_LETTER: [["z"],["g"]],
->>>>>>> e1ee694a494a5c403073959e6044bf485f9a9f84
     } ],
     [ "重心", {
       STYLE_NORMAL:       [["zhong","chong"],["xin"]],
@@ -115,7 +107,6 @@ define(function(require) {
       STYLE_TONE2:        [["zhong4","chong2"],["xin1"]],
       STYLE_INITIALS:     [["zh","ch"],["x"]],
       STYLE_FIRST_LETTER: [["z","c"],["x"]],
-<<<<<<< HEAD
     } ],
 
     // 英文
@@ -157,8 +148,6 @@ define(function(require) {
       STYLE_TONE2:        [["zhong1","zhong4"],["guo2"],["(china)"]],
       STYLE_INITIALS:     [["zh"],["g"],["(china)"]],
       STYLE_FIRST_LETTER: [["z"],["g"],["(china)"]]
-=======
->>>>>>> e1ee694a494a5c403073959e6044bf485f9a9f84
     } ]
   ];
 
@@ -175,28 +164,17 @@ define(function(require) {
             single_pinyin[i] = [py[i][0]];
           }
           var _py = pinyin(han, {style: pinyin[style]});
-<<<<<<< HEAD
           it('pinyin("'+han+'", '+style+') : '+
             JSON.stringify(_py)+' === '+JSON.stringify(single_pinyin), function() {
 
             //console.log(pinyin(han, {style:pinyin[style]}), py, style, pinyin[style]);
-=======
-          it('pinyin("'+han+'", '+style+') : '+JSON.stringify(_py)+' === '+JSON.stringify(single_pinyin), function() {
-            //console.log(pinyin(han, {style:pinyin[style]}), py, style, pinyin[style]);
-            if(han==="中" && style==="STYLE_TONE"){
-              console.log(_py, single_pinyin);
-            }
->>>>>>> e1ee694a494a5c403073959e6044bf485f9a9f84
             expect(deepEquals(_py, single_pinyin)).to.equal(true);
           });
           var _py2 = pinyin(han, {style: pinyin[style], heteronym:true});
           it('pinyin("'+han+'", '+style+',heteronym) : '+_py2+' === '+py, function() {
-<<<<<<< HEAD
             if(!deepEquals(_py2, py)){
             console.log(_py2, py, style, pinyin[style]);
             }
-=======
->>>>>>> e1ee694a494a5c403073959e6044bf485f9a9f84
             expect(deepEquals(_py2, py)).to.equal(true);
           });
         })(han, opt, style);
