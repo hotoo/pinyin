@@ -12,6 +12,7 @@ server:
 watch:
 	@nico server -C $(THEME)/nico.js --watch
 
+<<<<<<< HEAD
 publish-doc: clean build-doc
 	@ghp-import _site
 	@git push origin gh-pages
@@ -19,6 +20,12 @@ publish-doc: clean build-doc
 publish:
 	@spm publish
 
+=======
+publish: clean build-doc
+	@ghp-import _site
+	@git push origin gh-pages
+
+>>>>>>> e1ee694a494a5c403073959e6044bf485f9a9f84
 clean:
 	@rm -fr _site
 
@@ -36,3 +43,7 @@ coverage:
 
 
 .PHONY: build-doc debug server publish clean test coverage
+<<<<<<< HEAD
+=======
+
+>>>>>>> e1ee694a494a5c403073959e6044bf485f9a9f84

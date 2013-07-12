@@ -6,6 +6,7 @@
 }
 
 /* alipay iconfont */
+<<<<<<< HEAD
 @font-face {
     font-family: "rei";
     src: url("https://i.alipayobjects.com/common/fonts/rei.eot?20130423"); /* IE9 */
@@ -13,6 +14,15 @@
     url("https://i.alipayobjects.com/common/fonts/rei.woff?20130423") format("woff"), /* chrome 6+、firefox 3.6+、Safari5.1+、Opera 11+ */
     url("https://i.alipayobjects.com/common/fonts/rei.ttf?20130423")  format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+ */
     url("https://i.alipayobjects.com/common/fonts/rei.svg?20130423#rei") format("svg"); /* iOS 4.1- */
+=======
+@font-face {  
+    font-family: "rei";
+    src: url("https://i.alipayobjects.com/common/fonts/rei.eot?20130123"); /* IE9 */
+    src: url("https://i.alipayobjects.com/common/fonts/rei.eot?20130123#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("https://i.alipayobjects.com/common/fonts/rei.woff?20130123") format("woff"), /* chrome 6+、firefox 3.6+、Safari5.1+、Opera 11+ */
+    url("https://i.alipayobjects.com/common/fonts/rei.ttf?20130123")  format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+ */
+    url("https://i.alipayobjects.com/common/fonts/rei.svg?20130123#rei") format("svg"); /* iOS 4.1- */
+>>>>>>> e1ee694a494a5c403073959e6044bf485f9a9f84
 }
 .iconfont {
     font-family:"rei";
@@ -26,7 +36,11 @@
 
 body {
     background-color: #F2F0E9;
+<<<<<<< HEAD
     background-image: url(gray_jean.png);
+=======
+    background-image: url(bg.gif);
+>>>>>>> e1ee694a494a5c403073959e6044bf485f9a9f84
     text-rendering: optimizelegibility;
 }
 
@@ -34,6 +48,7 @@ pre, code, tt {
     font-family: Consolas,"Liberation Mono",Courier,monospace;
 }
 
+<<<<<<< HEAD
 table {
     padding: 0;border-collapse: collapse;
 }
@@ -64,6 +79,8 @@ table tr th :last-child, table tr td :last-child {
     margin-bottom: 0;
 }
 
+=======
+>>>>>>> e1ee694a494a5c403073959e6044bf485f9a9f84
 #body-wrapper {
     margin-left: auto;
     margin-right: auto;
@@ -464,6 +481,7 @@ table tr th :last-child, table tr td :last-child {
     padding: 6px;
     border: 1px solid #ddd;
     color: #777;
+<<<<<<< HEAD
 }
 
 .popup-install a {
@@ -489,4 +507,7 @@ table tr th :last-child, table tr td :last-child {
 #maintainers img {
     position: relative;
     top: 3px;
+=======
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2) inset;
+>>>>>>> e1ee694a494a5c403073959e6044bf485f9a9f84
 }

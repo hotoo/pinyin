@@ -150,6 +150,13 @@ define(function(require, exports, module) {
   function single_pinyin(han, options){
     if("string" !== typeof han){return [];}
     options = extend(DEFAULT_OPTIONS, options);
+<<<<<<< HEAD
+=======
+    if(han.length !== 1){
+      return single_pinyin(han.charAt(0), options);
+    }
+    if(!DICT.hasOwnProperty(han)){return [han];}
+>>>>>>> e1ee694a494a5c403073959e6044bf485f9a9f84
     var pys = DICT[han].split(",");
     if(!options.heteronym){
       return [toFixed(pys[0], options.style)];
@@ -174,6 +181,7 @@ define(function(require, exports, module) {
   function pinyin(hans, options){
     if("string" !== typeof hans){return [];}
     options = extend(DEFAULT_OPTIONS, options);
+<<<<<<< HEAD
     var py = [];
 
     for(var i=0,han,nonhans="",l=hans.length; i<l; i++){
@@ -190,6 +198,12 @@ define(function(require, exports, module) {
     }
     if(nonhans.length > 0){
       py.push([nonhans]);
+=======
+    var len = hans.length;
+    var py = [];
+    for(var i=0,l=len; i<l; i++){
+      py.push(single_pinyin(hans[i], options));
+>>>>>>> e1ee694a494a5c403073959e6044bf485f9a9f84
     }
     return py;
   }
