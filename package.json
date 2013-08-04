@@ -4,11 +4,11 @@
   "family": "hotoo",
   "description": "汉字拼音转换工具 Web 版。",
   "keywords": ["拼音", "Pinyin"],
-  "homepage": "https://github.com/hotoo/pinyin.js",
+  "homepage": "http://hotoo.me/pinyin.js",
   "author": "闲耘 <hotoo.cn@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "git@github.com:hotoo/pinyin.js.git"
+    "url": "https://github.com/hotoo/pinyin.js.git"
   },
   "bugs": {
     "url": "https://github.com/hotoo/pinyin.js/issues"
