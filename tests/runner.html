@@ -22,9 +22,13 @@
 
 </script>
 
-<script src="http://assets.spmjs.org/seajs/seajs/2.0.0/??sea.js,plugin-combo.js,plugin-debug.js,plugin-style.js"></script>
-
-<script src="../dist/pinyin.js"></script>
+<script src="http://assets.spmjs.org/??
+seajs/seajs/2.1.1/sea.js,
+seajs/seajs-combo/1.0.0/seajs-combo.js,
+seajs/seajs-debug/1.0.0/seajs-debug.js,
+seajs/seajs-style/1.0.0/seajs-style.js,
+seajs/seajs-health/0.1.0/seajs-health.js,
+jquery/jquery/1.7.2/jquery.js"></script>
 <script>
   (function() {
 
@@ -33,18 +37,20 @@
 
   if (contain(query, 'dist')) {
     srcdir = 'dist';
+    
+      seajs.use("../dist/pinyin.js");
   } else if (contain(query, 'cov')) {
     srcdir = 'src-cov';
   }
 
   seajs.config({
     alias: {
-      "$": 'jquery/jquery/1.10.1/jquery',
-      "$-debug": 'jquery/jquery/1.10.1/jquery-debug',
-      jquery: 'jquery/jquery/1.10.1/jquery',
-      "jquery-debug": 'jquery/jquery/1.10.1/jquery-debug',
+      "$": 'jquery/jquery/1.7.2/jquery',
+      "jquery": 'jquery/jquery/1.7.2/jquery',
+      "jquery-debug": 'jquery/jquery/1.7.2/jquery-debug',
       expect: "gallery/expect/0.2.0/expect",
       puerh: "popomore/puerh/0.1.0/puerh",
+      handlebars: "gallery/handlebars/1.0.2/handlebars",
       sinon: "gallery/sinon/1.6.0/sinon"
     },
     map: [function(uri) {
@@ -66,7 +72,7 @@
         file = file.replace(/\.(\w+)$/, '-debug.$1');
       }
     }
-    return seajs.resolve("../" + srcdir + "/" + file);
+    return seajs.resolve("../" + srcdir + "/" + file + '#');
   }
 
   function contain(arr, value) {
@@ -80,11 +86,20 @@
     seajs.use([]);
 
     seajs.config({alias: {
-      "$-debug": 'jquery/jquery/1.10.1/jquery-debug'
+      "$-debug": 'jquery/jquery/1.7.2/jquery-debug'
         ,"pinyin-dict-combo": resolve("pinyin-dict-combo.js")
         ,"pinyin-dict": resolve("pinyin-dict.js")
         ,"pinyin": resolve("pinyin.js")
     }});
+
+    // 加载依赖的 css 文件
+    var cssArray = [];
+    for (var i=0; i<cssArray.length; i++) {
+      if (cssArray[i].indexOf('.css') < 0) {
+        cssArray.splice(i, 1);
+      }
+    }
+    seajs.use(cssArray);
   })();
 </script>
     <script src="http://assets.spmjs.org/gallery/mocha/1.9.0/mocha.js"></script>

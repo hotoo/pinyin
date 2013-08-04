@@ -1,8 +1,15 @@
 @font-face {
-    font-family: "Marcellus";
+    font-family: 'Actor';
     font-style: normal;
     font-weight: 400;
-    src: local("Marcellus"), local("Marcellus-Regular"), url("marcellus.woff") format("woff");
+    src: local('Actor Regular'), local('Actor-Regular'), url(Actor.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Marmelad';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Marmelad'), local('Marmelad-Regular'), url(marmelad.woff) format('woff');
 }
 
 /* alipay iconfont */
@@ -18,8 +25,6 @@
     font-family:"rei";
     font-style: normal;
     font-weight: normal;
-    font-size: 12px;
-    color: #4d4d4d;
     cursor: default;
     -webkit-font-smoothing: antialiased;
 }
@@ -97,7 +102,7 @@ table tr th :last-child, table tr td :last-child {
 }
 #sidebar-wrapper h1 {
     margin: 0;
-    font-family: "Marcellus", sans-serif;
+    font-family: "Marmelad", sans-serif;
 }
 #sidebar-wrapper .version {
     font-size: 12px;
@@ -194,7 +199,7 @@ table tr th :last-child, table tr td :last-child {
 }
 #content .entry-title {
     margin-bottom: 12px;
-    font-family: "Marcellus", sans-serif;
+    font-family: "Marmelad", sans-serif;
 }
 #content .meta {
     color: #BCBCBD;
@@ -219,7 +224,7 @@ table tr th :last-child, table tr td :last-child {
     margin-top: 40px;
     padding-bottom: 4px;
     border-bottom: 1px solid #ccc;
-    font-family: "Marcellus", sans-serif;
+    font-family: "Marmelad", sans-serif;
 }
 #content hr {
     display: block;
@@ -230,11 +235,11 @@ table tr th :last-child, table tr td :last-child {
 }
 #content pre {
     margin: 6px 0;
-    border: 1px solid #ccc;
+    border: 1px solid #eee;
     padding: 6px 10px;
     overflow: auto;
-    border-radius: 3px;
-    background-color: #F8F8F8;
+    border-radius: 2px;
+    background-color: #f8f8f9;
     line-height: 19px;
     font-size: 13px;
     white-space: pre;
@@ -335,6 +340,26 @@ table tr th :last-child, table tr td :last-child {
     text-decoration: none;
     color: #fff;
     line-height: 1;
+}
+
+.entry-content h1 a.anchor,
+.entry-content h2 a.anchor,
+.entry-content h3 a.anchor,
+.entry-content h4 a.anchor,
+.entry-content h5 a.anchor,
+.entry-content h6 a.anchor {
+    margin-left: 10px;
+    cursor: pointer;
+    text-decoration: none;
+    visibility: hidden;
+}
+.entry-content h1:hover a.anchor,
+.entry-content h2:hover a.anchor,
+.entry-content h3:hover a.anchor,
+.entry-content h4:hover a.anchor,
+.entry-content h5:hover a.anchor,
+.entry-content h6:hover a.anchor {
+    visibility: visible;
 }
 
 #sidenav {
@@ -489,4 +514,37 @@ table tr th :last-child, table tr td :last-child {
 #maintainers img {
     position: relative;
     top: 3px;
+}
+
+.other-versions {
+    margin: 0;
+    padding: 3px 8px;
+    font-size: 12px;
+    background: #fff;
+    list-style: none;
+    line-height: 1.8;
+    display: none;
+    border: 1px solid #bbb;
+}
+
+.other-versions li {
+    padding-left: 3px;
+}
+
+.other-versions li.other-versions-title {
+    color: #777;
+    padding-left: 0;
+    margin-bottom: 5px;
+    padding-bottom: 2px;
+    border-bottom: 1px dashed #ddd;
+    text-align: center;
+}
+
+.other-versions a {
+    text-decoration:none;
+    color: #08c;
+}
+
+.other-versions a:hover {
+    text-decoration:underline;
 }

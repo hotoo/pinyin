@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>hotoo/pinyin - 演示文档</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="generator" content="nico 0.4.1" />
+    <meta name="generator" content="nico 0.4.4" />
     <link type="image/x-icon" href="../static/css/favicon.ico" rel="icon">
     <link rel="stylesheet" href="../static/css/normalize.css" />
     <link rel="stylesheet" href="../static/css/site.css" />
@@ -26,9 +26,13 @@
 
 </script>
 
-<script src="http://assets.spmjs.org/seajs/seajs/2.0.0/??sea.js,plugin-combo.js,plugin-debug.js,plugin-style.js"></script>
-
-<script src="../dist/pinyin.js"></script>
+<script src="http://assets.spmjs.org/??
+seajs/seajs/2.1.1/sea.js,
+seajs/seajs-combo/1.0.0/seajs-combo.js,
+seajs/seajs-debug/1.0.0/seajs-debug.js,
+seajs/seajs-style/1.0.0/seajs-style.js,
+seajs/seajs-health/0.1.0/seajs-health.js,
+jquery/jquery/1.7.2/jquery.js"></script>
 <script>
   (function() {
 
@@ -37,18 +41,20 @@
 
   if (contain(query, 'dist')) {
     srcdir = 'dist';
+    
+      seajs.use("../dist/pinyin.js");
   } else if (contain(query, 'cov')) {
     srcdir = 'src-cov';
   }
 
   seajs.config({
     alias: {
-      "$": 'jquery/jquery/1.10.1/jquery',
-      "$-debug": 'jquery/jquery/1.10.1/jquery-debug',
-      jquery: 'jquery/jquery/1.10.1/jquery',
-      "jquery-debug": 'jquery/jquery/1.10.1/jquery-debug',
+      "$": 'jquery/jquery/1.7.2/jquery',
+      "jquery": 'jquery/jquery/1.7.2/jquery',
+      "jquery-debug": 'jquery/jquery/1.7.2/jquery-debug',
       expect: "gallery/expect/0.2.0/expect",
       puerh: "popomore/puerh/0.1.0/puerh",
+      handlebars: "gallery/handlebars/1.0.2/handlebars",
       sinon: "gallery/sinon/1.6.0/sinon"
     },
     map: [function(uri) {
@@ -70,7 +76,7 @@
         file = file.replace(/\.(\w+)$/, '-debug.$1');
       }
     }
-    return seajs.resolve("../" + srcdir + "/" + file);
+    return seajs.resolve("../" + srcdir + "/" + file + '#');
   }
 
   function contain(arr, value) {
@@ -84,11 +90,20 @@
     seajs.use([]);
 
     seajs.config({alias: {
-      "$-debug": 'jquery/jquery/1.10.1/jquery-debug'
+      "$-debug": 'jquery/jquery/1.7.2/jquery-debug'
         ,"pinyin-dict-combo": resolve("pinyin-dict-combo.js")
         ,"pinyin-dict": resolve("pinyin-dict.js")
         ,"pinyin": resolve("pinyin.js")
     }});
+
+    // 加载依赖的 css 文件
+    var cssArray = [];
+    for (var i=0; i<cssArray.length; i++) {
+      if (cssArray[i].indexOf('.css') < 0) {
+        cssArray.splice(i, 1);
+      }
+    }
+    seajs.use(cssArray);
   })();
 </script>
     <script src="../static/js/site.js"></script>
@@ -105,7 +120,7 @@
       </h1>
         <p class="version">当前版本：<a href="http://aralejs.org/docs/online-status.html#hotoo-pinyin" title="点击查看此组件发布情况">2.1.0</a></p>
         <p class="description">汉字拼音转换工具 Web 版。</p>
-        <a class="source" href="git@github.com:hotoo/pinyin.js.git" target="_blank">View the Project</a>
+        <a class="source" href="https://github.com/hotoo/pinyin.js.git" target="_blank">View the Project</a>
         <ul id="navigation" role="navigation">
           <li><a href="../">文档</a></li>
           <li><a href="index.html">演示</a></li>
@@ -127,11 +142,11 @@
     <style>
 textarea{width:90%; height:100px;}
 </style>
-<h3 id="输入">输入</h3>
+<h3 id="输入">输入<a href="#输入" class="anchor">¶</a></h3>
 <div>
   <textarea id="input"></textarea>
 </div>
-<h3 id="输出">输出</h3>
+<h3 id="输出">输出<a href="#输出" class="anchor">¶</a></h3>
 <div>
   <input type="radio" name="style" id="style-normal" value="STYLE_NORMAL" />
   <label for="style-normal">普通风格</label>
@@ -185,7 +200,7 @@ seajs.use('pinyin', function(pinyin){
       <footer>
         <p class="powered"><a href="http://aralejs.org">Arale</a> •
 <a href="http://aliceui.org">Alice</a> •
-<a href="http://seajs.org">SeaJS</a> •
+<a href="http://seajs.org">Sea.js</a> •
 <a href="https://spmjs.org">spmjs.org</a> •
 <a href="http://lab.lepture.com/nico/">nico</a>
         </p>
