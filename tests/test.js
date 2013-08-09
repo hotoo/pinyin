@@ -6,24 +6,22 @@
  */
 
 var assert = require("assert");
+var should = require("should");
 var pinyin = require("../src/pinyin");
 
-/*
- * 笛卡尔乘积，返回两个数组的所有可能的组合。
- * @param {Array}
- * @param {Array}
- * @return {Array}
- */
-function product(a,b){
-  var r=[];
-  for (var i=0,l=a.length; i<l; i++){
-    for (var j=0,m=b.length; j<m; j++){
-      r[r.length] = (a[i] instanceof Array) ? a[i].concat(b[j]) : [].concat(a[i],b[j]);
-    }
-  }
-  return r;
-}
+describe("单个汉字", function(){
+  it("单", function(){
+    var py = pinyin("单");
+    pinyin("单").should.eql([["dān"]]);
+  });
+});
 
+console.log(pinyin('本票通【航旅专业版】',{
+        style: pinyin.STYLE_NORMAL,
+        heteronym: false
+    }));
+
+return;
 var hans1 = "天将将大任于斯人也";
 var hans2 = "在地球重力的影响下，重心不稳。";
 

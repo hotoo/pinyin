@@ -1,14 +1,17 @@
 {
-  "name": "pinyin2",
-  "version": "0.1.0",
-  "description": "Chinese Pinyin converter.",
+  "name": "pinyinjs",
+  "version": "2.0.1",
+  "description": "汉语拼音转换工具。",
   "main": "src/pinyin.js",
+  "bin": {
+    "pinyin": "./bin/pinyin"
+  },
   "directories": {
     "example": "examples",
     "test": "tests"
   },
   "scripts": {
-    "test": "tests/pinyin.js"
+    "test": "mocha -R spec tests/test.js"
   },
   "repository": {
     "type": "git",
@@ -16,7 +19,8 @@
   },
   "dependencies": {
     "segment": "0.0.2",
-    "simplebig": "0.0.3"
+    "simplebig": "0.0.3",
+    "commander": "~1.1.1"
   },
   "keywords": ["拼音", "Pinyin"],
   "author": "闲耘 <hotoo.cn@gmail.com>",

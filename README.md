@@ -1,30 +1,35 @@
 
 # JavaScript 拼音
 
-用 Javascript 将汉字转为拼音，方便汉字注音、排序。
+将汉语转为拼音。可以用于汉字注音、排序、检索。
 
-支持将汉字转换为多种不同风格的拼音。
+## 特性
+
+* 根据词组智能匹配最正确的拼音。
+* 支持多音字。
+* 简单的繁体支持。
+* 支持多种不同拼音风格。
 
 ## 安装
 
-暂时未托管到 npmjs.org
-
-    git clone git://github.com/hotoo/node-pinyin.git
-    npm install ./node-pinyin
+```
+npm install pinyinjs
+```
 
 ## 用法
 
-    var pinyin = require("pinyin");
+```js
+var pinyin = require("pinyin");
 
-    console.log(pinyin("中心"));    // [ [ 'zhōng' ], [ 'xīn' ] ]
-    console.log(pinyin("中心", {
-      heteronym: true               // 启用多音字模式
-    }));                            // [ [ 'zhōng', 'zhòng' ], [ 'xīn' ] ]
-    console.log(pinyin("中心", {
-      style: pinyin.STYLE_INITIALS, // 设置拼音风格
-      heteronym: true
-    }));                            // [ [ 'zh' ], [ 'x' ] ]
-
+console.log(pinyin("中心"));    // [ [ 'zhōng' ], [ 'xīn' ] ]
+console.log(pinyin("中心", {
+  heteronym: true               // 启用多音字模式
+}));                            // [ [ 'zhōng', 'zhòng' ], [ 'xīn' ] ]
+console.log(pinyin("中心", {
+  style: pinyin.STYLE_INITIALS, // 设置拼音风格
+  heteronym: true
+}));                            // [ [ 'zh' ], [ 'x' ] ]
+```
 
 ## API
 
