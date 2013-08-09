@@ -1,6 +1,6 @@
 {
   "name": "pinyinjs",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "汉语拼音转换工具。",
   "main": "src/pinyin.js",
   "bin": {
