@@ -1,6 +1,6 @@
 {
   "name": "pinyin",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "family": "hotoo",
   "description": "汉字拼音转换工具 Web 版。",
   "keywords": ["拼音", "Pinyin"],
