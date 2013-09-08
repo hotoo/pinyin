@@ -20,7 +20,7 @@ build:
 	@spm build
 
 publish: build
-	@spm publish
+	@spm publish -s spmjs
 
 clean:
 	@rm -fr _site
