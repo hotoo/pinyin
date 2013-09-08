@@ -55,9 +55,15 @@ jquery/jquery/1.7.2/jquery.js"></script>
     },
     map: [function(uri) {
       // resolve id
-      var m = uri.match(/hotoo\/pinyin\/2.1.0\/(.*)/);
+      var m = uri.match(/hotoo\/pinyin\/2.1.1\/(.*)/);
       if (m) {
         return resolve(m[1]);
+      }
+      return uri;
+    }, function(uri) {
+      var m = uri.match(/([A-Za-z\-]+)\/[A-Za-z\-]+\/[\.0-9]+\/.+/);
+      if (m && !/seajs|jquery|gallery|arale|alice/.test(m[1])) {
+        return 'http://yuan.alipay.im/assets/' + m[0];
       }
       return uri;
     }],
@@ -103,6 +109,10 @@ jquery/jquery/1.7.2/jquery.js"></script>
   })();
 </script>
     <script src="http://assets.spmjs.org/gallery/mocha/1.9.0/mocha.js"></script>
+    <script src="http://assets.spmjs.org/gallery/sinon/1.6.0/sinon.js"></script>
+    <!--[if lte IE 8]>
+    <script src="http://assets.spmjs.org/gallery/sinon/1.6.0/sinon-ie.js"></script>
+    <![endif]--> 
   </head>
   <body>
     <div id="mocha"></div>

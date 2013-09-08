@@ -1,4 +1,4 @@
-define("hotoo/pinyin/2.0.0/pinyin-debug", [ "./pinyin-dict-combo-debug" ], function(require, exports, module) {
+define("hotoo/pinyin/2.1.1/pinyin-debug", [ "./pinyin-dict-combo-debug" ], function(require, exports, module) {
     // 拼音词库。
     // 加载压缩合并的数据(118KB)。
     var dict_combo = require("./pinyin-dict-combo-debug");
@@ -159,12 +159,6 @@ define("hotoo/pinyin/2.0.0/pinyin-debug", [ "./pinyin-dict-combo-debug" ], funct
             return [];
         }
         options = extend(DEFAULT_OPTIONS, options);
-        if (han.length !== 1) {
-            return single_pinyin(han.charAt(0), options);
-        }
-        if (!DICT.hasOwnProperty(han)) {
-            return [ han ];
-        }
         var pys = DICT[han].split(",");
         if (!options.heteronym) {
             return [ toFixed(pys[0], options.style) ];
@@ -192,10 +186,21 @@ define("hotoo/pinyin/2.0.0/pinyin-debug", [ "./pinyin-dict-combo-debug" ], funct
             return [];
         }
         options = extend(DEFAULT_OPTIONS, options);
-        var len = hans.length;
         var py = [];
-        for (var i = 0, l = len; i < l; i++) {
-            py.push(single_pinyin(hans[i], options));
+        for (var i = 0, han, nonhans = "", l = hans.length; i < l; i++) {
+            han = hans[i];
+            if (DICT.hasOwnProperty(han)) {
+                if (nonhans.length > 0) {
+                    py.push([ nonhans ]);
+                }
+                py.push(single_pinyin(han, options));
+                nonhans = "";
+            } else {
+                nonhans += han;
+            }
+        }
+        if (nonhans.length > 0) {
+            py.push([ nonhans ]);
         }
         return py;
     }
@@ -220,7 +225,7 @@ define("hotoo/pinyin/2.0.0/pinyin-debug", [ "./pinyin-dict-combo-debug" ], funct
     module.exports.STYLE_FIRST_LETTER = PINYIN_STYLE.FIRST_LETTER;
 });
 
-define("hotoo/pinyin/2.0.0/pinyin-dict-combo-debug", [], {
+define("hotoo/pinyin/2.1.1/pinyin-dict-combo-debug", [], {
     "yā,ā": "吖",
     "ā,ē": "阿",
     "hē,a,kē": "呵",
@@ -1334,7 +1339,7 @@ define("hotoo/pinyin/2.0.0/pinyin-dict-combo-debug", [], {
     "bǎo,shí": "宲",
     "huì": "屶絵繪绘嬒汇惠晦慧秽贿讳卉诲烩彗蕙喙恚蟪荟僡嘒匯嚖圚寭屷彚彙恵憓懳徻暳槥橞檅櫘泋滙潓獩燴璤瞺篲穢翙翽蔧薉薈詯誨諱譓譿賄鐬闠阓靧頮顪餯颒",
     "dáo": "捯",
-    "tè": "忑慝",
+    "tè": "特忑慝",
     "dāo,tiáo,mù": "朷",
     "táo": "洮陶逃桃淘萄鼗啕咷祹綯蜪裪绹迯醄鋾鞉鞀饀騊駣",
     "zhào,dào": "箌",

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>hotoo/pinyin - 汉字拼音转换工具。</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="generator" content="nico 0.4.4" />
+    <meta name="generator" content="nico 0.4.7" />
     <link type="image/x-icon" href="./static/css/favicon.ico" rel="icon">
     <link rel="stylesheet" href="./static/css/normalize.css" />
     <link rel="stylesheet" href="./static/css/site.css" />
@@ -59,9 +59,15 @@ jquery/jquery/1.7.2/jquery.js"></script>
     },
     map: [function(uri) {
       // resolve id
-      var m = uri.match(/hotoo\/pinyin\/2.1.0\/(.*)/);
+      var m = uri.match(/hotoo\/pinyin\/2.1.1\/(.*)/);
       if (m) {
         return resolve(m[1]);
+      }
+      return uri;
+    }, function(uri) {
+      var m = uri.match(/([A-Za-z\-]+)\/[A-Za-z\-]+\/[\.0-9]+\/.+/);
+      if (m && !/seajs|jquery|gallery|arale|alice/.test(m[1])) {
+        return 'http://yuan.alipay.im/assets/' + m[0];
       }
       return uri;
     }],
@@ -118,7 +124,7 @@ jquery/jquery/1.7.2/jquery.js"></script>
       <h1>
           <a href="./">Pinyin</a><sup class="package-root"><a href="/">hotoo</a></sup>
       </h1>
-        <p class="version">当前版本：<a href="http://aralejs.org/docs/online-status.html#hotoo-pinyin" title="点击查看此组件发布情况">2.1.0</a></p>
+        <p class="version">当前版本：<a href="http://aralejs.org/docs/online-status.html#hotoo-pinyin" title="点击查看此组件发布情况">2.1.1</a></p>
         <p class="description">汉字拼音转换工具 Web 版。</p>
         <a class="source" href="https://github.com/hotoo/pinyin.js.git" target="_blank">View the Project</a>
         <ul id="navigation" role="navigation">
@@ -129,7 +135,7 @@ jquery/jquery/1.7.2/jquery.js"></script>
         </ul>
         
 <div id="output-card">
-    <h3>hotoo/pinyin/2.1.0/<a target="_blank" id="output-file"></a></h3>
+    <h3>hotoo/pinyin/2.1.1/<a target="_blank" id="output-file"></a></h3>
     <p>这是模块的输出文件，请 require 或 seajs.use 以上 ID 来使用本文件，具体 API 请阅读文档。</p>
 </div>
 
@@ -144,7 +150,7 @@ jquery/jquery/1.7.2/jquery.js"></script>
 <p>注：这是基于浏览器运行的版本，另外还同步提供了更强的 <a href="https://github.com/hotoo/node-pinyin">NodeJS 版本</a></p>
 
 <hr/>
-<h2 id="使用说明">使用说明<a href="#使用说明" class="anchor">¶</a></h2><div class="highlight"><pre><code class="javascript"><span class="keyword">var</span> pinyin = require(<span class="string">"hotoo/pinyin/2.1.0/pinyin"</span>);
+<h2 id="使用说明">使用说明<a href="#使用说明" class="anchor">¶</a></h2><div class="highlight"><pre><code class="javascript"><span class="keyword">var</span> pinyin = require(<span class="string">"hotoo/pinyin/2.1.1/pinyin"</span>);
 
 pinyin(<span class="string">"重点"</span>);
 pinyin(<span class="string">"重点"</span>, {

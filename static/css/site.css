@@ -34,7 +34,10 @@ body {
     background-image: url(gray_jean.png);
     text-rendering: optimizelegibility;
 }
-
+a {
+    color: #55A4F2;
+    text-decoration: none;
+}
 pre, code, tt {
     font-family: Consolas,"Liberation Mono",Courier,monospace;
 }
@@ -215,10 +218,6 @@ table tr th :last-child, table tr td :last-child {
 }
 #content li {
     line-height: 1.6;
-}
-.hentry a {
-    color: #55A4F2;
-    text-decoration: none;
 }
 #content h2 {
     margin-top: 40px;

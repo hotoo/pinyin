@@ -32,15 +32,17 @@ seajs.use(['$'], function($) {
 
 });
 
-seajs.use(['$', 'arale/popup/1.1.1/popup', 'gallery/underscore/1.4.4/underscore'], function($, Popup, _) {
+seajs.use(['$', 'arale/popup/1.1.3/popup', 'gallery/underscore/1.4.4/underscore'], function($, Popup, _) {
 
   if ($('#sidebar-wrapper').length === 0) {
     return;
   }
 
   var family = $('#sidebar-wrapper h1 sup a').html();
-  var name = $('#sidebar-wrapper h1 > a').html().toLowerCase();
+  var name = $('#sidebar-wrapper h1 > a').html();
+  name = (name || '').toLowerCase();
   var version = $('#sidebar-wrapper .version a').html();
+  version = (version || '').toLowerCase();
 
   new Popup({
     trigger: '#maintainers',
