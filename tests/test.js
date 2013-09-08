@@ -14,6 +14,10 @@ describe("单个汉字", function(){
     var py = pinyin("单");
     pinyin("单").should.eql([["dān"]]);
   });
+  it("特", function(){
+    var py = pinyin("特");
+    pinyin("特").should.eql([["tè"]]);
+  });
 });
 
 console.log(pinyin('本票通【航旅专业版】',{
