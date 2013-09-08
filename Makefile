@@ -16,7 +16,10 @@ publish-doc: clean build-doc
 	@ghp-import _site
 	@git push origin gh-pages
 
-publish:
+build:
+	@spm build
+
+publish: build
 	@spm publish
 
 clean:
