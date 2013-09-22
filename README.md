@@ -1,7 +1,9 @@
 
-# JavaScript 拼音
+# 汉语拼音转换工具(JavaScript 版)
 
 将汉语转为拼音。可以用于汉字注音、排序、检索。
+
+Python 版请关注 [mozillazg/python-pinyin](https://github.com/mozillazg/python-pinyin)
 
 ## 特性
 
