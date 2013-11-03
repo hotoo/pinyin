@@ -65,3 +65,7 @@ options 是可选的，可以设定拼音风格，或打开多音字选项。
 ### 属性 `.STYLE_FIRST_LETTER`
 
 首字母风格，只返回拼音的首字母部分。
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/hotoo/pinyin.js/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
