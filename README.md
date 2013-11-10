@@ -20,8 +20,10 @@ npm install pinyinjs
 
 ## 用法
 
+开发者：
+
 ```js
-var pinyin = require("pinyin");
+var pinyin = require("pinyinjs");
 
 console.log(pinyin("中心"));    // [ [ 'zhōng' ], [ 'xīn' ] ]
 console.log(pinyin("中心", {
@@ -31,6 +33,14 @@ console.log(pinyin("中心", {
   style: pinyin.STYLE_INITIALS, // 设置拼音风格
   heteronym: true
 }));                            // [ [ 'zh' ], [ 'x' ] ]
+```
+
+命令行：
+
+```sh
+$ pinyin 中心
+zhōng xīn
+$ pinyin -h
 ```
 
 ## API
