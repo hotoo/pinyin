@@ -22,6 +22,9 @@
     "simplebig": "0.0.3",
     "commander": "~1.1.1"
   },
+  "devDependencies": {
+    "expect": "0.0.2"
+  },
   "keywords": ["拼音", "Pinyin"],
   "author": "闲耘 <hotoo.cn@gmail.com>",
   "license": "MIT"

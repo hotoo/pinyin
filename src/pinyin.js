@@ -155,17 +155,27 @@ function pinyin(hans, options){
   //console.log("phrases:", phrases);
   var len = hans.length;
   var pys = [];
-  for(var i=0,words,l=phrases.length; i<l; i++){
+  for(var i=0,nohans="",words,l=phrases.length; i<l; i++){
     words = phrases[i].w;
-    if(words.length===1){
-      pys.push(single_pinyin(words, options));
+    if(PINYIN_DICT.hasOwnProperty(words.charAt(0))){
+      if(nohans.length > 0){
+        pys.push([nohans]);
+        nohans = ""; // reset non-chinese words.
+      }
+      if(words.length===1){
+          pys.push(single_pinyin(words, options));
+      }else{
+        pys = pys.concat(phrases_pinyin(words, options));
+      }
     }else{
-      pys = pys.concat(phrases_pinyin(words, options));
+      nohans += words;
     }
   }
-  //for(var i=0,l=len; i<l; i++){
-    //py.push(single_pinyin(hans[i], options));
-  //}
+  // 清理最后的非中文字符串。
+  if(nohans.length > 0){
+    pys.push([nohans]);
+    nohans = ""; // reset non-chinese words.
+  }
   return pys;
 }
 
