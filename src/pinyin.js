@@ -62,7 +62,7 @@ function extend(origin, more){
  */
 function toFixed(pinyin, style){
   var handle;
-  var tone; // 声调。
+  var tone = ""; // 声调。
   switch(style){
   case PINYIN_STYLE.INITIALS:
     return initials(pinyin);
