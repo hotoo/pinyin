@@ -98,6 +98,29 @@ options 是可选的，可以设定拼音风格，或打开多音字选项。
 
 如：`p y`
 
+## Q&A
+
+### 为什么 node 版和 Web 版的拼音程序要有两个不同的仓库？
+
+pinyin 目前有运行在浏览器端的 [Web版](https://github.com/hotoo/pinyin.js)
+和运行在服务端的 [Node版](https://github.com/hotoo/node-pinyin)
+
+其中 Web版较 Node版稍简单，没有使用分词算法，并且考虑了网络传输对词库进行了压缩处理。
+
+| 特性         | Web版                                              | Node版                           |
+|--------------|----------------------------------------------------|----------------------------------|
+| 拼音库       | 数据格式优化，压缩的更小。加载完成后使用算法解压。 | 原始格式，没有压缩。             |
+| 分词         | 没有分词                                           | 使用分词算法，多音字拼音更准确。 |
+| 拼音频度排序 | 有根据拼音使用频度优先级排序。                     | 同 Web版。                       |
+| 繁体中文     | 没有繁体中文支持。                                 | 有简单的繁简汉字转换。           |
+
+### 为什么不使用更好的繁简转换？
+
+对于拼音来说，把繁简汉字做简单的映射并转换成拼音是合理的。
+而使用类似 [cconv](https://code.google.com/p/cconv/) 这样的转换库，虽然转换结果更
+符合本地化语境，但是对于汉字变化后的拼音来说，已经不是繁体原字的拼音了。
+
+
 ## 参考
 
 * [在线汉语字典](http://zi.artx.cn/zi/)
@@ -106,6 +129,4 @@ options 是可选的，可以设定拼音风格，或打开多音字选项。
 * [字符转拼音 javascript pinyin](http://www.cnblogs.com/jinweijie/archive/2008/02/03/1063289.html)
   ([pinyin.rar](http://cid-80b2ed83de3c7c17.skydrive.live.com/self.aspx/Code/pinyin.rar))
 * [Javascript Input Method Editors](http://jsime.sourceforge.net/) ([中文](http://leen.name/ime/pinyin.html), [En](http://leen.name/ime/english.html))
-* [现在汉语的词汇数量及分布](http://blog.cathayan.org/item/1593) -
-  可以考虑通过分词算法的配合提高拼音准确率。不过词库如此之大，作为 JavaScript
-  库似乎不是很合适。往后再说。
+* [现在汉语的词汇数量及分布](http://blog.cathayan.org/item/1593)
