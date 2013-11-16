@@ -98,49 +98,38 @@ define(function(require, exports, module) {
    * @return {String}
    */
   function toFixed(pinyin, style){
-    var handle;
-    var tone = ""; // 声调，默认无声调。
+    var tone = ""; // 声调。
     switch(style){
     case PINYIN_STYLE.INITIALS:
       return initials(pinyin);
+
     case PINYIN_STYLE.FIRST_LETTER:
-      handle = function($0, $1){
-        return PHONETIC_SYMBOL[$1].replace(RE_TONE2, "$1");
-      };
-      //return pinyin.charAt(0);
+      var first_letter = pinyin.charAt(0);
+      if(PHONETIC_SYMBOL.hasOwnProperty(first_letter)){
+        first_letter = PHONETIC_SYMBOL[first_letter].charAt(0);
+      }
+      return first_letter;
+
     case PINYIN_STYLE.NORMAL:
-      handle = function($0, $1){
-        return PHONETIC_SYMBOL[$1].replace(RE_TONE2, "$1");
-      }
-      break;
+      return pinyin.replace(RE_PHONETIC_SYMBOL, function($0, $1_phonetic){
+        return PHONETIC_SYMBOL[$1_phonetic].replace(RE_TONE2, "$1");
+      });
+
     case PINYIN_STYLE.TONE2:
-      handle = function($0, $1){
-        if(!PHONETIC_SYMBOL.hasOwnProperty($1)){
-          return $1;
-        }
+      var py = pinyin.replace(RE_PHONETIC_SYMBOL, function($0, $1){
+        // 声调数值。
         tone = PHONETIC_SYMBOL[$1].replace(RE_TONE2, "$2");
+
         return PHONETIC_SYMBOL[$1].replace(RE_TONE2, "$1");
-      }
-      break;
+      });
+      return py + tone;
+
     case PINYIN_STYLE.TONE:
     default:
-      handle = function($0, $1){
-        return $1;
-      }
-      break;
+      return pinyin;
     }
-    var py = pinyin.replace(RE_PHONETIC_SYMBOL, handle);
-    switch(style){
-    case PINYIN_STYLE.TONE2:
-      py += tone;
-      break;
-    case PINYIN_STYLE.FIRST_LETTER:
-      py = py.charAt(0);
-      break;
-    default:
-    }
-    return py;
   }
+
 
   /**
    * 单字拼音转换。
