@@ -6,6 +6,8 @@
  * @version 2013/01/28, v2.1
  */
 
+// FIXME: 其他几种风格的拼音测试未通过。
+
 // 分词模块
 var Segment = require("segment").Segment;
 var segment = new Segment();
@@ -13,7 +15,7 @@ var segment = new Segment();
 segment.useDefault();
 
 // 词语拼音库。
-var PHRASES_DICT = require("./phrases-dict.js");
+var PHRASES_DICT = require("./phrases-dict");
 
 // 拼音词库，node 版无需使用压缩合并的拼音库。
 var PINYIN_DICT = require("./pinyin-dict");
@@ -61,36 +63,36 @@ function extend(origin, more){
  * @return {String}
  */
 function toFixed(pinyin, style){
-  var handle;
   var tone = ""; // 声调。
   switch(style){
   case PINYIN_STYLE.INITIALS:
     return initials(pinyin);
+
   case PINYIN_STYLE.FIRST_LETTER:
-    return pinyin.charAt(0);
+    var first_letter = pinyin.charAt(0);
+    if(PHONETIC_SYMBOL.hasOwnProperty(first_letter)){
+      first_letter = PHONETIC_SYMBOL[first_letter].charAt(0);
+    }
+    return first_letter;
+
   case PINYIN_STYLE.NORMAL:
-    handle = function($0, $1){
-      return PHONETIC_SYMBOL[$1].replace(RE_TONE2, "$1");
-    }
-    break;
+    return pinyin.replace(RE_PHONETIC_SYMBOL, function($0, $1_phonetic){
+      return PHONETIC_SYMBOL[$1_phonetic].replace(RE_TONE2, "$1");
+    });
+
   case PINYIN_STYLE.TONE2:
-    handle = function($0, $1){
+    var py = pinyin.replace(RE_PHONETIC_SYMBOL, function($0, $1){
+      // 声调数值。
       tone = PHONETIC_SYMBOL[$1].replace(RE_TONE2, "$2");
+
       return PHONETIC_SYMBOL[$1].replace(RE_TONE2, "$1");
-    }
-    break;
+    });
+    return py + tone;
+
   case PINYIN_STYLE.TONE:
   default:
-    handle = function($0, $1){
-      return $1;
-    }
-    break;
+    return pinyin;
   }
-  var py = pinyin.replace(RE_PHONETIC_SYMBOL, handle);
-  if(style === PINYIN_STYLE.TONE2){
-    py += tone;
-  }
-  return py;
 }
 
 /**
@@ -131,7 +133,8 @@ function single_pinyin(han, options){
 function phrases_pinyin(phrases, options){
   var py = [];
   if(PHRASES_DICT.hasOwnProperty(phrases)){
-    py = PHRASES_DICT[phrases];
+    //! copy pinyin result.
+    py = PHRASES_DICT[phrases].slice();
     py.forEach(function(item, idx, arr){
       arr[idx] = [toFixed(item[0], options.style)];
     });
@@ -149,28 +152,36 @@ function phrases_pinyin(phrases, options){
  * @return {Array} 返回的拼音列表。
  */
 function pinyin(hans, options){
+
   if("string" !== typeof hans){return [];}
+
   options = extend(DEFAULT_OPTIONS, options);
+
   var phrases = segment.doSegment(hans);
-  //console.log("phrases:", phrases);
   var len = hans.length;
   var pys = [];
+
   for(var i=0,nohans="",words,l=phrases.length; i<l; i++){
     words = phrases[i].w;
     if(PINYIN_DICT.hasOwnProperty(words.charAt(0))){
+
+      // ends of non-chinese words.
       if(nohans.length > 0){
         pys.push([nohans]);
         nohans = ""; // reset non-chinese words.
       }
+
       if(words.length===1){
           pys.push(single_pinyin(words, options));
       }else{
         pys = pys.concat(phrases_pinyin(words, options));
       }
+
     }else{
       nohans += words;
     }
   }
+
   // 清理最后的非中文字符串。
   if(nohans.length > 0){
     pys.push([nohans]);
