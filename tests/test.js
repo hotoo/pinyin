@@ -56,20 +56,20 @@ var cases = [
     STYLE_FIRST_LETTER: [["w"],["s"],["s"]]
   } ],
 
-  // 多音词
+  // 多音字，单音词。分词后可以准确识别读音。
   [ "中国", {
     STYLE_NORMAL:       [["zhong"],["guo"]],
-    STYLE_TONE:         [["zhōng","zhòng"],["guó"]],
-    STYLE_TONE2:        [["zhong1","zhong4"],["guo2"]],
+    STYLE_TONE:         [["zhōng"],["guó"]],
+    STYLE_TONE2:        [["zhong1"],["guo2"]],
     STYLE_INITIALS:     [["zh"],["g"]],
     STYLE_FIRST_LETTER: [["z"],["g"]]
   } ],
   [ "重心", {
-    STYLE_NORMAL:       [["zhong","chong"],["xin"]],
-    STYLE_TONE:         [["zhòng","chóng"],["xīn"]],
-    STYLE_TONE2:        [["zhong4","chong2"],["xin1"]],
-    STYLE_INITIALS:     [["zh","ch"],["x"]],
-    STYLE_FIRST_LETTER: [["z","c"],["x"]],
+    STYLE_NORMAL:       [["zhong"],["xin"]],
+    STYLE_TONE:         [["zhòng"],["xīn"]],
+    STYLE_TONE2:        [["zhong4"],["xin1"]],
+    STYLE_INITIALS:     [["zh"],["x"]],
+    STYLE_FIRST_LETTER: [["z"],["x"]],
   } ],
 
   // 英文
@@ -87,13 +87,13 @@ var cases = [
     STYLE_INITIALS:     [["aa"]],
     STYLE_FIRST_LETTER: [["aa"]]
   } ],
-  [ "a a", {
-    STYLE_NORMAL:       [["a a"]],
-    STYLE_TONE:         [["a a"]],
-    STYLE_TONE2:        [["a a"]],
-    STYLE_INITIALS:     [["a a"]],
-    STYLE_FIRST_LETTER: [["a a"]]
-  } ],
+  //[ "a a", {
+    //STYLE_NORMAL:       [["a a"]],
+    //STYLE_TONE:         [["a a"]],
+    //STYLE_TONE2:        [["a a"]],
+    //STYLE_INITIALS:     [["a a"]],
+    //STYLE_FIRST_LETTER: [["a a"]]
+  //} ],
 
   // 中英混合
   [ "拼音(pinyin)", {
@@ -104,11 +104,11 @@ var cases = [
     STYLE_FIRST_LETTER: [["p"],["y"],["(pinyin)"]]
   } ],
 
-  // 中英混合，多音字
+  // 中英混合，多音字，单音词。
   [ "中国(china)", {
     STYLE_NORMAL:       [["zhong"],["guo"],["(china)"]],
-    STYLE_TONE:         [["zhōng","zhòng"],["guó"],["(china)"]],
-    STYLE_TONE2:        [["zhong1","zhong4"],["guo2"],["(china)"]],
+    STYLE_TONE:         [["zhōng"],["guó"],["(china)"]],
+    STYLE_TONE2:        [["zhong1"],["guo2"],["(china)"]],
     STYLE_INITIALS:     [["zh"],["g"],["(china)"]],
     STYLE_FIRST_LETTER: [["z"],["g"],["(china)"]]
   } ]
@@ -126,19 +126,23 @@ describe('pinyin', function() {
         for(var i=0,l=py.length; i<l; i++){
           single_pinyin[i] = [py[i][0]];
         }
+
+        // 非多音字模式。
         var _py = pinyin(han, {style: pinyin[style]});
         it('pinyin("'+han+'", '+style+') : '+
           JSON.stringify(_py)+' === '+JSON.stringify(single_pinyin), function() {
 
           //expect(deepEquals(_py, single_pinyin)).to.equal(true);
-          _py.should.eql(single_pinyin);
+          deepEquals(_py,single_pinyin).should.eql(true);
         });
+
+        // 多音字模式。
         var _py2 = pinyin(han, {style: pinyin[style], heteronym:true});
         it('pinyin("'+han+'", '+style+',heteronym) : '+
           JSON.stringify(_py2)+' === '+JSON.stringify(py), function() {
 
           //expect(deepEquals(_py2, py)).to.equal(true);
-          //_py2.should.eql(py);
+          deepEquals(_py2, py).should.eql(true);
         });
       })(han, opt, style);
     }
