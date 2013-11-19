@@ -127,7 +127,8 @@ pinyin 目前有运行在浏览器端的 [Web版](https://github.com/hotoo/pinyi
 ### 为什么不使用更好的繁简转换？
 
 对于拼音来说，把繁简汉字做简单的映射并转换成拼音是合理的。
-而使用类似 [cconv](https://code.google.com/p/cconv/) 这样的转换库，虽然转换结果更
+而使用类似 [OpenCC](https://github.com/BYVoid/OpenCC)
+[cconv](https://code.google.com/p/cconv/) 这样的转换库，虽然转换结果更
 符合本地化语境，但是对于汉字变化后的拼音来说，已经不是繁体原字的拼音了。
 
 
