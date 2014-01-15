@@ -94,6 +94,13 @@ var cases = [
     //STYLE_INITIALS:     [["a a"]],
     //STYLE_FIRST_LETTER: [["a a"]]
   //} ],
+  [ "一 一", {
+    STYLE_NORMAL:       [["yi"],["yi"]],
+    STYLE_TONE:         [["yī"],["yī"]],
+    STYLE_TONE2:        [["yi1"],["yi1"]],
+    STYLE_INITIALS:     [["y"],["y"]],
+    STYLE_FIRST_LETTER: [["y"],["y"]]
+  } ],
 
   // 中英混合
   [ "拼音(pinyin)", {
@@ -192,147 +199,3 @@ function deepEquals(a, b){
     break;
   }
 }
-
-
-return;
-
-
-
-describe("单个汉字", function(){
-  it("单", function(){
-    var py = pinyin("单");
-    pinyin("单").should.eql([["dān"]]);
-  });
-  it("特", function(){
-    var py = pinyin("特");
-    pinyin("特").should.eql([["tè"]]);
-  });
-});
-
-
-var MULTI_PINYIN_TESTS = [
-  ["一二三四五", [ ['yī'], ['èr'], ['sān'], ['sì'], ['wǔ'] ] ],
-  ["特别", [ ['tè'], ['bié'] ]],
-  ["中国", [ ['zhōng'], ['guó'] ] ]
-];
-
-describe("多个汉字", function(){
-
-  each(MULTI_PINYIN_TESTS, function(test, index){
-
-    var word = test[0];
-    var result = test[1];
-
-    it(word, function(){
-
-      var py = pinyin(word);
-      py.should.eql(result);
-
-    });
-
-  });
-
-});
-
-function makeTest(groupName, testCases, options){
-
-  describe(groupName, function(){
-
-    each(testCases, function(test, index){
-
-      var word = test[0];
-      var result = test[1];
-
-      it(word, function(){
-
-        var py = pinyin(word, options);
-        py.should.eql(result);
-
-      });
-
-    });
-
-  });
-}
-
-var SINGLE_MULTI_PINYIN_TESTCASE = [
-  ["中", [["zhong"]]]
-];
-makeTest("单个多音字", SINGLE_MULTI_PINYIN_TESTCASE);
-
-function each(list, handler){
-  for(var i=0,l=list.length; i<l; i++){
-    handler.call(list, list[i] ,i);
-  }
-}
-
-return;
-
-var bug = [
-["赤灵碎石",""],
-["黄瑙碎石",""],
-["青曜碎石",""]
-]
-
-each(bug, function(test, index){
-  console.log(test[0], pinyin(test[0], {
-    style: pinyin.STYLE_TONE2
-  }));
-  console.log(test[0], pinyin(test[0], {
-    style: pinyin.STYLE_TONE2
-  }));
-});
-
-console.log(pinyin('本票通【航旅专业版】',{
-        style: pinyin.STYLE_NORMAL,
-        heteronym: false
-    }));
-
-return;
-var hans1 = "天将将大任于斯人也";
-var hans2 = "在地球重力的影响下，重心不稳。";
-
-console.log(pinyin(hans1).join(" "));
-console.log(pinyin(hans2).join(","));
-console.log(pinyin(hans2, {
-  style: pinyin.STYLE_TONE
-}).join(" "));
-console.log(pinyin(hans2, {
-  style: pinyin.STYLE_NORMAL
-}).join(" "));
-console.log("TONE2:", pinyin(hans2, {
-  style: pinyin.STYLE_TONE2
-}));
-console.log(pinyin(hans2, {
-  delimiter: ",",
-  style: pinyin.STYLE_INITIALS
-}));
-
-console.log(pinyin("重", {
-  delimiter: " ",
-  heteronym: true
-}));
-console.log(pinyin("拼个南呵", {
-  delimiter: " ",
-  style: pinyin.STYLE_TONE,
-  heteronym: true
-}));
-console.log(pinyin("拼个南呵", {
-  delimiter: " ",
-  style: pinyin.STYLE_FIRST_LETTER,
-  heteronym: true
-}));
-    console.log(pinyin("中心"));
-    console.log(pinyin("中心", {
-      heteronym: true               // 多音字
-    }));
-    console.log(pinyin("中心", {
-      style: pinyin.STYLE_INITIALS, // 风格
-      heteronym: true               // 多音字
-    }));
-
-console.log(pinyin("思", {
-  heteronym: true
-}));
-
-//assert.equal(pinyin.convert(hans, true, ""), "PinYin");
