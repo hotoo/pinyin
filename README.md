@@ -1,6 +1,8 @@
 
 # 汉语拼音转换工具(JavaScript 版)
 
+----
+
 [![Build Status](https://secure.travis-ci.org/hotoo/node-pinyin.png?branch=master)](https://travis-ci.org/hotoo/node-pinyin)
 [![Coverage Status](https://coveralls.io/repos/hotoo/node-pinyin/badge.png?branch=master)](https://coveralls.io/r/hotoo/node-pinyin)
 
