@@ -2,6 +2,9 @@
 
 ---
 
+[![Build Status](https://secure.travis-ci.org/hotoo/pinyin.png?branch=master)](https://travis-ci.org/hotoo/pinyin)
+[![Coverage Status](https://coveralls.io/repos/hotoo/pinyin/badge.png?branch=master)](https://coveralls.io/r/hotoo/pinyin)
+
 转换中文字符为拼音。
 
 注：这是基于浏览器运行的版本，另外还同步提供了更强的 [NodeJS 版本](https://github.com/hotoo/node-pinyin)
@@ -68,4 +71,3 @@ options 是可选的，可以设定拼音风格，或打开多音字选项。
 
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/hotoo/pinyin.js/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
