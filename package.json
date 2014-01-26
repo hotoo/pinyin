@@ -1,6 +1,6 @@
 {
   "name": "pinyin",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "family": "hotoo",
   "description": "汉字拼音转换工具 Web 版。",
   "keywords": ["拼音", "Pinyin"],
@@ -12,6 +12,9 @@
   },
   "bugs": {
     "url": "https://github.com/hotoo/pinyin.js/issues"
+  },
+  "scripts": {
+    "prepublish": "spm build"
   },
   "spm": {
     "output": ["pinyin.js"]

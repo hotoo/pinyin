@@ -83,8 +83,8 @@ seajs.use(['$', 'arale/popup/1.1.3/popup', 'gallery/underscore/1.4.4/underscore'
     lastestLink = 'http://aralejs.org/' + name + '/';
   } else {
     versionJsonLink = 'http://yuan.alipay.im/repository/'+family+'/'+name+'/?define';
-    versionDocLink = 'http://yuan.alipay.im/+/' + family +'/' + name + '/';
-    lastestLink = 'http://yuan.alipay.im/' + family +'/' + name + '/';    
+    versionDocLink = 'http://arale.alipay.im/+/' + family +'/' + name + '/';
+    lastestLink = 'http://arale.alipay.im/' + family +'/' + name + '/';
   }
 
   seajs.use(versionJsonLink, function(package) {

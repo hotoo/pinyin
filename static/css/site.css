@@ -91,7 +91,7 @@ table tr th :last-child, table tr td :last-child {
 #sidebar-wrapper {
     float: left;
     position: fixed;
-    color: #9c9277;
+    color: #787878;
     text-shadow: 0 1px 0 #fff;
     font-size: 14px;
     width: 220px;
@@ -108,7 +108,16 @@ table tr th :last-child, table tr td :last-child {
     font-family: "Marmelad", sans-serif;
 }
 #sidebar-wrapper .version {
+    font-size: 13px;
+}
+#sidebar-wrapper .description {
+    background-color: rgba(0, 0, 0, 0.02);
+    border-radius: 3px;
+    box-shadow: 1px 1px 2px #ddd inset;
     font-size: 12px;
+    line-height: 1.5;
+    padding: 4px;
+    color: #888;
 }
 #sidebar-wrapper .source, .source-button {
     background-color: #276195;

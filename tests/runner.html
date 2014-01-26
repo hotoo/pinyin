@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
     <title>Pinyin Mocha Runner</title>
     <link href="../static/css/mocha.css" type="text/css" rel="stylesheet" charset="utf-8">
+  </head>
+  <body>
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -16,7 +18,7 @@
     if (location.port) {
        return;
     }
-    ga.src = 'https://ssl.google-analytics.com/ga.js'; 
+    ga.src = 'https://ssl.google-analytics.com/ga.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
 
@@ -55,14 +57,14 @@ jquery/jquery/1.7.2/jquery.js"></script>
     },
     map: [function(uri) {
       // resolve id
-      var m = uri.match(/hotoo\/pinyin\/2.1.1\/(.*)/);
+      var m = uri.match(/hotoo\/pinyin\/2.1.2\/(.*)/);
       if (m) {
         return resolve(m[1]);
       }
       return uri;
     }, function(uri) {
       var m = uri.match(/([A-Za-z\-]+)\/[A-Za-z\-]+\/[\.0-9]+\/.+/);
-      if (m && !/seajs|jquery|gallery|arale|alice/.test(m[1])) {
+      if (m && /alipay/.test(m[1])) {
         return 'http://yuan.alipay.im/assets/' + m[0];
       }
       return uri;
@@ -113,8 +115,6 @@ jquery/jquery/1.7.2/jquery.js"></script>
     <!--[if lte IE 8]>
     <script src="http://assets.spmjs.org/gallery/sinon/1.6.0/sinon-ie.js"></script>
     <![endif]--> 
-  </head>
-  <body>
     <div id="mocha"></div>
     <script>
       (function() {
