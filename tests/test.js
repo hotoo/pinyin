@@ -1,9 +1,3 @@
-/**
- * @overview
- *
- * @author 闲耘™ (hotoo.cn[AT]gmail.com)
- * @version 2013/01/27
- */
 
 var assert = require("assert");
 //var expect = require("expect");
