@@ -11,7 +11,7 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "mocha -R spec tests/test.js"
+    "test": "make test"
   },
   "repository": {
     "type": "git",
@@ -23,6 +23,7 @@
     "commander": "~1.1.1"
   },
   "devDependencies": {
+    "mocha": "1.17.1",
     "expect": "0.0.2"
   },
   "keywords": ["拼音", "Pinyin"],
