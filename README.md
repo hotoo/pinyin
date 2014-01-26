@@ -1,6 +1,10 @@
 
 # 汉语拼音转换工具(JavaScript 版)
 
+[![Build Status](https://secure.travis-ci.org/hotoo/node-pinyin.png?branch=master)](https://travis-ci.org/hotoo/node-pinyin)
+[![Coverage Status](https://coveralls.io/repos/hotoo/node-pinyin/badge.png?branch=master)](https://coveralls.io/r/hotoo/node-pinyin)
+
+
 将汉语转为拼音。可以用于汉字注音、排序、检索。
 
 Python 版请关注 [mozillazg/python-pinyin](https://github.com/mozillazg/python-pinyin)
