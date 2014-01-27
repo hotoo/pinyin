@@ -3,6 +3,7 @@
 
 ----
 
+[![NPM version](https://badge.fury.io/js/pinyinjs.png)](http://badge.fury.io/js/pinyinjs)
 [![Build Status](https://secure.travis-ci.org/hotoo/node-pinyin.png?branch=master)](https://travis-ci.org/hotoo/node-pinyin)
 [![Coverage Status](https://coveralls.io/repos/hotoo/node-pinyin/badge.png?branch=master)](https://coveralls.io/r/hotoo/node-pinyin)
 
