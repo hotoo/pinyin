@@ -116,4 +116,4 @@ module.exports = [
 
   // 十四画
   "矗"
-];
+].join("");
