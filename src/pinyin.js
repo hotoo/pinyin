@@ -18,7 +18,10 @@ segment.useDefault();
 var PHRASES_DICT = require("./phrases-dict");
 
 // 拼音词库，node 版无需使用压缩合并的拼音库。
-var PINYIN_DICT = require("./pinyin-dict");
+var PINYIN_DICT_FREQUENT = require("./dict-zi-frequent");
+var PINYIN_DICT_INFREQUENT = require("./dict-zi-infrequent");
+var PINYIN_DICT = merge(PINYIN_DICT_FREQUENT, PINYIN_DICT_INFREQUENT);
+
 // 声母表。
 var INITIALS = "zh,ch,sh,b,p,m,f,d,t,n,l,g,k,h,j,q,x,r,z,c,s,yu,y,w".split(",");
 // 韵母表。
@@ -43,8 +46,23 @@ var DEFAULT_OPTIONS = {
   heteronym: false // 多音字
 };
 
+// merge
+// @parma {Object} 不定项参数。
+// @return {Object} 新的对象。
+function merge( /* ... */ ){
+  var obj = {};
+  for(var i=0,l=arguments.length; i<l; i++){
+    for(var k in arguments[i]){
+      if(!arguments[i].hasOwnProperty(k)){continue;}
+      obj[k] = arguments[i][k];
+    }
+  }
+  return obj;
+}
+
+// 将 more 的属性值，覆盖 origin 中已有的属性。
+// @return 返回新的对象。
 function extend(origin, more){
-  if(!more){return origin;}
   var obj = {};
   for(var k in origin){
     if(more.hasOwnProperty(k)){
