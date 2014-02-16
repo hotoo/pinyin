@@ -1,20 +1,13 @@
-// 自动抓取单个汉字拼音。
 
-var remote = require("./remote");
-var URLEncoder = require("./urlencode");
-
+//var remote = require("./remote");
+//var URLEncoder = require("./urlencode");
 var request = require("request");
 
-var frequent = require("./zi/frequent");
-var frequent2 = require("./zi/frequent2");
-
+var SERVER = "http://zi.artx.cn";
 
 // 各个汉字的读音独立存储。
-var PINYIN_DATA = {};
 // 同音字合并存储。
-var PINYIN_DATA_MIXED = {};
-var SERVER = "http://zi.artx.cn";
-var counts = 0;
+
 function getPinyinDict(han){
   request(SERVER + "/zi/search/?dsearch_kind=1&dsearch_kind2=on&dsearch_main="+
       encodeURIComponent(han), "GET", function(error, response, html){
@@ -75,8 +68,11 @@ function chunk(array, process, context, callback){
   }, delay);
 }
 
-chunk("中汉字".split(""), getPinyinDict);
-//chunk((frequent + frequent2).split(""), getPinyinDict);
+
+// @param {Array} hans 汉字集合。
+exports.dict = function(hans){
+  chunk(hans, getPinyinDict);
+};
 
 
 // 从快典网查询，带注音的 GBK 编码拼音，Iconv 无法正常转换编码，
