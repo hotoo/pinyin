@@ -1,12 +1,3 @@
-/**
- * pinyin(hans[, options]);
- * 极速，灵活，全面的拼音转换算法。
- *
- * @author 闲耘™ (@hotoo <hotoo.cn[AT]gmail.com>)
- * @version 2013/01/28, v2.1
- */
-
-// FIXME: 其他几种风格的拼音测试未通过。
 
 // 分词模块
 var Segment = require("segment").Segment;
@@ -44,19 +35,6 @@ var DEFAULT_OPTIONS = {
   heteronym: false // 多音字
 };
 
-// merge
-// @parma {Object} 不定项参数。
-// @return {Object} 新的对象。
-function merge( /* ... */ ){
-  var obj = {};
-  for(var i=0,l=arguments.length; i<l; i++){
-    for(var k in arguments[i]){
-      if(!arguments[i].hasOwnProperty(k)){continue;}
-      obj[k] = arguments[i][k];
-    }
-  }
-  return obj;
-}
 
 // 将 more 的属性值，覆盖 origin 中已有的属性。
 // @return 返回新的对象。
