@@ -18,9 +18,7 @@ segment.useDefault();
 var PHRASES_DICT = require("./phrases-dict");
 
 // 拼音词库，node 版无需使用压缩合并的拼音库。
-var PINYIN_DICT_FREQUENT = require("./dict-zi-frequent");
-var PINYIN_DICT_INFREQUENT = require("./dict-zi-infrequent");
-var PINYIN_DICT = merge(PINYIN_DICT_FREQUENT, PINYIN_DICT_INFREQUENT);
+var PINYIN_DICT = require("./dict-zi");
 
 // 声母表。
 var INITIALS = "zh,ch,sh,b,p,m,f,d,t,n,l,g,k,h,j,q,x,r,z,c,s,yu,y,w".split(",");
@@ -119,16 +117,22 @@ function toFixed(pinyin, style){
  * @return {Array} 返回拼音列表，多音字会有多个拼音项。
  */
 function single_pinyin(han, options){
+
   if("string" !== typeof han){return [];}
-  options = extend(DEFAULT_OPTIONS, options);
   if(han.length !== 1){
     return single_pinyin(han.charAt(0), options);
   }
-  if(!PINYIN_DICT.hasOwnProperty(han)){return [han];}
-  var pys = PINYIN_DICT[han].split(",");
+
+  options = extend(DEFAULT_OPTIONS, options);
+  var hanCode = han.charCodeAt(0);
+
+  if(!PINYIN_DICT[hanCode]){return [han];}
+
+  var pys = PINYIN_DICT[hanCode].split(",");
   if(!options.heteronym){
     return [toFixed(pys[0], options.style)];
   }
+
   // 临时存储已存在的拼音，避免多音字拼音转换为非注音风格出现重复。
   var py_cached = {};
   var pinyins = [];
@@ -179,9 +183,12 @@ function pinyin(hans, options){
   var len = hans.length;
   var pys = [];
 
-  for(var i=0,nohans="",words,l=phrases.length; i<l; i++){
+  for(var i=0,nohans="",firstCharCode,words,l=phrases.length; i<l; i++){
+
     words = phrases[i].w;
-    if(PINYIN_DICT.hasOwnProperty(words.charAt(0))){
+    firstCharCode = words.charCodeAt(0);
+
+    if(PINYIN_DICT[firstCharCode]){
 
       // ends of non-chinese words.
       if(nohans.length > 0){
