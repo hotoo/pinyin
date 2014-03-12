@@ -3,7 +3,7 @@
 
 ----
 
-[![NPM version](https://badge.fury.io/js/pinyinjs.png)](http://badge.fury.io/js/pinyinjs)
+[![NPM version](https://badge.fury.io/js/pinyin.png)](http://badge.fury.io/js/pinyin)
 [![Build Status](https://secure.travis-ci.org/hotoo/node-pinyin.png?branch=master)](https://travis-ci.org/hotoo/node-pinyin)
 [![Coverage Status](https://coveralls.io/repos/hotoo/node-pinyin/badge.png?branch=master)](https://coveralls.io/r/hotoo/node-pinyin)
 
@@ -22,7 +22,7 @@ Python 版请关注 [mozillazg/python-pinyin](https://github.com/mozillazg/pytho
 ## 安装
 
 ```
-npm install pinyinjs
+npm install pinyin
 ```
 
 ## 用法
@@ -30,7 +30,7 @@ npm install pinyinjs
 开发者：
 
 ```js
-var pinyin = require("pinyinjs");
+var pinyin = require("pinyin");
 
 console.log(pinyin("中心"));    // [ [ 'zhōng' ], [ 'xīn' ] ]
 console.log(pinyin("中心", {
