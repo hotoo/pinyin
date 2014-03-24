@@ -101,7 +101,6 @@ function single_pinyin(han, options){
     return single_pinyin(han.charAt(0), options);
   }
 
-  options = extend(DEFAULT_OPTIONS, options);
   var hanCode = han.charCodeAt(0);
 
   if(!PINYIN_DICT[hanCode]){return [han];}
@@ -155,7 +154,7 @@ function pinyin(hans, options){
 
   if("string" !== typeof hans){return [];}
 
-  options = extend(DEFAULT_OPTIONS, options);
+  options = extend(DEFAULT_OPTIONS, options || {});
 
   var phrases = segment.doSegment(hans);
   var len = hans.length;
