@@ -32,7 +32,7 @@ textarea{width:90%; height:100px;}
 
 
 <script>
-seajs.use('pinyin', function(pinyin){
+seajs.use('../src/pinyin', function(pinyin){
 
   var $ = function(id){return document.getElementById(id);}
   var styles = document.getElementsByName("style");
