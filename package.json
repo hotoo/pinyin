@@ -1,23 +1,45 @@
 {
   "name": "pinyin",
-  "version": "2.1.2",
-  "family": "hotoo",
-  "description": "汉字拼音转换工具 Web 版。",
+  "version": "2.3.0",
+  "description": "汉语拼音转换工具。",
   "keywords": ["拼音", "Pinyin"],
-  "homepage": "http://hotoo.me/pinyin.js",
+  "homepage": "http://pinyin.hotoo.me/",
   "author": "闲耘 <hotoo.cn@gmail.com>",
+  "main": "index.js",
+  "bin": {
+    "pinyin": "./bin/pinyin"
+  },
+  "directories": {
+    "example": "examples",
+    "test": "tests"
+  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/hotoo/pinyin.js.git"
+    "url": "https://github.com/hotoo/pinyin.git"
   },
   "bugs": {
-    "url": "https://github.com/hotoo/pinyin.js/issues"
+    "url": "https://github.com/hotoo/pinyin/issues"
   },
   "scripts": {
-    "prepublish": "spm build"
+    "prepublish": "spm build",
+    "test": "make test"
+  },
+  "dependencies": {
+    "segment": "0.0.5",
+    "commander": "~1.1.1"
+  },
+  "devDependencies": {
+    "mocha": "1.17.1",
+    "expect.js": "0.3.1",
+    "iconv": "2.1.0",
+    "request": "2.33.0"
   },
   "spm": {
-    "output": ["pinyin.js"]
+    "main": "index.js",
+    "devDependencies": {
+      "expect.js": "0.3.1"
+    },
+    "tests": "tests/*-spec.js"
   },
   "license": "MIT"
 }
