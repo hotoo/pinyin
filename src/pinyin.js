@@ -1,9 +1,16 @@
 
+var isNode = typeof process === "object" &&
+  process.toString() === "[object process]";
+
 // 分词模块
-var Segment = require("segment").Segment;
-var segment = new Segment();
-// 使用默认的识别模块及字典
-segment.useDefault();
+var Segment;
+
+if(isNode){
+  Segment = module["require"]("segment").Segment;
+  var segment = new Segment();
+  // 使用默认的识别模块及字典
+  segment.useDefault();
+}
 
 // 词语拼音库。
 var PHRASES_DICT = require("./phrases-dict");
@@ -156,13 +163,13 @@ function pinyin(hans, options){
 
   options = extend(DEFAULT_OPTIONS, options || {});
 
-  var phrases = segment.doSegment(hans);
+  var phrases = isNode ? segment.doSegment(hans) : hans;
   var len = hans.length;
   var pys = [];
 
   for(var i=0,nohans="",firstCharCode,words,l=phrases.length; i<l; i++){
 
-    words = phrases[i].w;
+    words = isNode ? phrases[i].w : phrases[i];
     firstCharCode = words.charCodeAt(0);
 
     if(PINYIN_DICT[firstCharCode]){
