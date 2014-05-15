@@ -12,8 +12,7 @@ before_script:
 
 script:
   - node_modules/spm/bin/spm-test
-  - node_modules/.bin/mocha -R spec tests/detector-spec.js
-  - node_modules/.bin/mocha -R spec tests/morerule-test.js
+  - node_modules/.bin/mocha -R spec tests/pinyin-spec.js
 
 after_success:
   - node_modules/spm/bin/spm-test --coveralls | node_modules/.bin/coveralls
