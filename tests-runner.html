@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Pinyin Mocha Runner</title>
+    <link href="./static/css/mocha.css" type="text/css" rel="stylesheet" charset="utf-8">
+  </head>
+  <body>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-50522089-2', 'spm documentation');
+  ga('send', 'pageview');
+</script>
+<script src="http://static.alipayobjects.com/??seajs/seajs/2.2.0/sea.js,seajs/seajs-text/1.0.2/seajs-text.js"></script>
+
+<script>
+  (function() {
+  seajs.config({
+    base: "./"
+  });
+
+  seajs.config({
+    alias: {"expect.js":"sea-modules/expect.js/0.3.1/index.js"}
+  });
+})();
+</script>
+    <script src="./static/js/mocha.js?nowrap"></script>
+    <div id="mocha"></div>
+    <script>
+      (function() {
+        var query = location.search.substring(1).split('&');
+        var contain = function(arr, value) {
+          for (var i in arr) {
+            if (arr[i] === value) {
+              return true;
+            }
+          }
+          return false;
+        };
+        seajs.config({
+          map: [function(url) {
+            if (!contain(query, 'cov')) {
+              return url;
+            }
+            var sources = [''
+              ,'index.js'
+            ];
+            sources = sources.slice(1);
+            for (var i=0; i<sources.length; i++) {
+              if (url.indexOf(sources[i]) > 0) {
+                return url.replace(/\.js$/g, '-cov.js');
+              }
+            }
+            return url;
+          }]
+        });
+
+        mocha.setup('bdd');
+        var tests = ["tests/pinyin-spec.js"];
+
+        var specs = [];
+        for (var i = 0; i < tests.length; i++) {
+          specs[i] = './' + tests[i];
+        }
+
+        seajs.use(specs, function() {
+          if (window.mochaPhantomJS) {
+            mochaPhantomJS.run()
+          } else {
+            mocha.run()
+          }
+        })
+      })();
+    </script>
+  </body>
+</html>

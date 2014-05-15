@@ -1,159 +1,72 @@
 <!DOCTYPE HTML>
-<html lang="zh">
+<html lang="en">
   <head>
     <meta charset="UTF-8">
-    <title>hotoo/pinyin - 演示文档</title>
+    <title>pinyin - 演示文档</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="nico 0.5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link type="image/x-icon" href="../static/css/favicon.ico" rel="icon">
     <link rel="stylesheet" href="../static/css/normalize.css" />
     <link rel="stylesheet" href="../static/css/site.css" />
     <link rel="stylesheet" href="../static/css/solarized.css" />
-<script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-36247332-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    if (location.port) {
-       return;
-    }
-    ga.src = 'https://ssl.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-50522089-2', 'spm documentation');
+  ga('send', 'pageview');
 </script>
+<script src="http://static.alipayobjects.com/??seajs/seajs/2.2.0/sea.js,seajs/seajs-text/1.0.2/seajs-text.js"></script>
 
-<script src="http://assets.spmjs.org/??
-seajs/seajs/2.1.1/sea.js,
-seajs/seajs-combo/1.0.0/seajs-combo.js,
-seajs/seajs-debug/1.0.0/seajs-debug.js,
-seajs/seajs-style/1.0.0/seajs-style.js,
-seajs/seajs-health/0.1.0/seajs-health.js,
-jquery/jquery/1.7.2/jquery.js"></script>
 <script>
   (function() {
-
-  var query = location.search.substring(1).split('&');
-  var srcdir = 'src';
-
-  if (contain(query, 'dist')) {
-    srcdir = 'dist';
-    
-      seajs.use("../dist/pinyin.js");
-  } else if (contain(query, 'cov')) {
-    srcdir = 'src-cov';
-  }
-
   seajs.config({
-    alias: {
-      "$": 'jquery/jquery/1.7.2/jquery',
-      "jquery": 'jquery/jquery/1.7.2/jquery',
-      "jquery-debug": 'jquery/jquery/1.7.2/jquery-debug',
-      expect: "gallery/expect/0.2.0/expect",
-      puerh: "popomore/puerh/0.1.0/puerh",
-      handlebars: "gallery/handlebars/1.0.2/handlebars",
-      sinon: "gallery/sinon/1.6.0/sinon"
-    },
-    map: [function(uri) {
-      // resolve id
-      var m = uri.match(/hotoo\/pinyin\/2.1.2\/(.*)/);
-      if (m) {
-        return resolve(m[1]);
-      }
-      return uri;
-    }, function(uri) {
-      var m = uri.match(/([A-Za-z\-]+)\/[A-Za-z\-]+\/[\.0-9]+\/.+/);
-      if (m && /alipay/.test(m[1])) {
-        return 'http://yuan.alipay.im/assets/' + m[0];
-      }
-      return uri;
-    }],
-    comboExcludes: {test: function(uri) {
-      return uri.indexOf('http://assets.spmjs.org') === -1;
-    }}
+    base: "../"
   });
 
-  function resolve(file) {
-    if (contain(query, 'debug')) {
-      if (file.indexOf('-debug') === -1) {
-        file = file.replace(/\.(\w+)$/, '-debug.$1');
-      }
-    }
-    return seajs.resolve("../" + srcdir + "/" + file + '#');
-  }
-
-  function contain(arr, value) {
-    for (var i in arr) {
-      if (arr[i] === value) {
-        return true;
-      }
-    }
-    return false;
-  }
-    seajs.use([]);
-
-    seajs.config({alias: {
-      "$-debug": 'jquery/jquery/1.7.2/jquery-debug'
-        ,"pinyin-dict-combo": resolve("pinyin-dict-combo.js")
-        ,"pinyin-dict": resolve("pinyin-dict.js")
-        ,"pinyin": resolve("pinyin.js")
-    }});
-
-    // 加载依赖的 css 文件
-    var cssArray = [];
-    for (var i=0; i<cssArray.length; i++) {
-      if (cssArray[i].indexOf('.css') < 0) {
-        cssArray.splice(i, 1);
-      }
-    }
-    seajs.use(cssArray);
-  })();
+  seajs.config({
+    alias: {"expect.js":"sea-modules/expect.js/0.3.1/index.js"}
+  });
+})();
 </script>
-    <script src="../static/js/site.js"></script>
     <!--[if lt IE 9]>
     <script src="../static/js/html5shiv.js"></script>
     <![endif]-->
-    
   </head>
-  <body>
-    <div id="body-wrapper">
-      <aside id="sidebar-wrapper">
+  <body class="spmjs">
+    <div class="body-wrapper">
+      <aside class="sidebar-wrapper">
       <h1>
-          <a href="../">Pinyin</a><sup class="package-root"><a href="/">hotoo</a></sup>
+          <a href="../">Pinyin</a>
       </h1>
-        <p class="version">当前版本：<a href="http://aralejs.org/docs/online-status.html#hotoo-pinyin" title="点击查看此组件发布情况">2.1.2</a></p>
-        <p class="description">汉字拼音转换工具 Web 版。</p>
-        <a class="source" href="https://github.com/hotoo/pinyin.js.git" target="_blank">View the Project</a>
-        <ul id="navigation" role="navigation">
-          <li><a href="../">文档</a></li>
-          <li><a href="index.html">演示</a></li>
-          <li><a class="test-link" href="../tests/runner.html" target="_blank">用例</a></li>
-          <li><a class="issue-link" href="https://github.com/hotoo/pinyin.js/issues" target="_blank">讨论</a></li>
+        <p class="sidebar-version">Version: <a href="http://spmjs.io/package/pinyin" title="">2.3.0</a></p>
+        <p class="sidebar-description" data-keyword="拼音">汉语拼音转换工具。</p>
+        <a class="sidebar-source" href="https://github.com/hotoo/pinyin" target="_blank">View the Project</a>
+        <ul class="sidebar-navigation" role="navigation">
+          <li><a href="../">Doc</a></li>
+          <li><a href="index.html">Demo</a></li>
+          <li><a class="test-link" href="../tests-runner.html" target="_blank">Test</a></li>
+          <li><a class="issue-link" href="https://github.com/hotoo/pinyin/issues" target="_blank">Issues</a></li>
         </ul>
         
-<div id="output-card">
-    <h3>hotoo/pinyin/2.1.2/<a target="_blank" id="output-file"></a></h3>
-    <p>这是模块的输出文件，请 require 或 seajs.use 以上 ID 来使用本文件，样式文件请自行 link。</p>
-</div>
 
       </aside>
-      <div id="content-wrapper">
-        <div id="content">
+      <div class="content-wrapper">
+        
 <article class="hentry">
   <h1 class="entry-title">演示文档</h1>
   <div class="entry-content">
     <style>
 textarea{width:90%; height:100px;}
 </style>
-<h3 id="输入">输入<a href="#输入" class="anchor">¶</a></h3>
-<div>
+
+<h3 id="输入">输入<a href="#输入" class="anchor">¶</a></h3><div>
   <textarea id="input"></textarea>
 </div>
-<h3 id="输出">输出<a href="#输出" class="anchor">¶</a></h3>
-<div>
+
+<h3 id="输出">输出<a href="#输出" class="anchor">¶</a></h3><div>
   <input type="radio" name="style" id="style-normal" value="STYLE_NORMAL" />
   <label for="style-normal">普通风格</label>
   <input type="radio" name="style" id="style-tone" value="STYLE_TONE" checked />
@@ -165,13 +78,13 @@ textarea{width:90%; height:100px;}
   <input type="radio" name="style" id="style-first-letter" value="STYLE_FIRST_LETTER" />
   <label for="style-first-letter">首字母风格</label>
 </div>
-
 <div>
   <textarea readonly id="output"></textarea>
 </div>
 
+
 <script>
-seajs.use('pinyin', function(pinyin){
+seajs.use('../src/pinyin', function(pinyin){
 
   var $ = function(id){return document.getElementById(id);}
   var styles = document.getElementsByName("style");
@@ -198,16 +111,15 @@ seajs.use('pinyin', function(pinyin){
 
   </div>
 </article>
-</div>
+
       </div>
       
     </div>
-    <div id="footer-wrapper">
+    <div class="footer-wrapper">
       <footer>
-        <p class="powered"><a href="http://aralejs.org">Arale</a> •
-<a href="http://aliceui.org">Alice</a> •
+        <p class="footer-powered"><a href="http://spmjs.io">spmjs.io</a> •
+<a href="https://github.com/spmjs/spm">spm</a> •
 <a href="http://seajs.org">Sea.js</a> •
-<a href="https://spmjs.org">spmjs.org</a> •
 <a href="http://lab.lepture.com/nico/">nico</a>
         </p>
       </footer>

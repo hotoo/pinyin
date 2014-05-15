@@ -1,41 +1,68 @@
-THEME = $(HOME)/.spm/themes/arale
+version = $(shell cat package.json | grep version | awk -F'"' '{print $$4}')
+
+install:
+	@spm install
+	@npm install
+
+build:
+	@spm build
+
+publish: build publish-doc
+	@spm publish
+	@npm publish
+	@git tag $(version)
+	@git push origin $(version)
 
 build-doc:
-	@nico build -v -C $(THEME)/nico.js
-
-debug:
-	@nico server -C $(THEME)/nico.js --watch debug
-
-server:
-	@nico server -C $(THEME)/nico.js
+	@spm doc build
 
 watch:
-	@nico server -C $(THEME)/nico.js --watch
+	@spm doc watch
 
 publish-doc: clean build-doc
 	@ghp-import _site
 	@git push origin gh-pages
 
-build:
-	@spm build
-
-publish:
-	@spm publish -s spmjs
-
 clean:
 	@rm -fr _site
 
 
-reporter = spec
-url = tests/runner.html
-test:
-	@mocha-phantomjs --reporter=${reporter} http://127.0.0.1:8000/${url}
+runner = _site/tests/runner.html
 
-coverage:
+test-npm:
+	@mocha -R spec tests/test.js
+
+test-spm:
+	@spm test
+
+test: test-npm test-spm
+
+output = _site/coverage.html
+coverage: build-doc
 	@rm -fr _site/src-cov
 	@jscoverage --encoding=utf8 src _site/src-cov
-	@$(MAKE) test reporter=json-cov url=tests/runner.html?coverage=1 | node $(THEME)/html-cov.js > tests/coverage.html
-	@echo "Build coverage to tests/coverage.html"
+	@mocha-browser ${runner}?cov -S -R html-cov > ${output}
+	@echo "Build coverage to ${output}"
 
 
-.PHONY: build-doc debug server publish clean test coverage
+ZI_DICT_FREQUENT = ./tools/dict/zi-frequent.js
+ZI_DICT_INFREQUENT = ./tools/dict/zi-infrequent.js
+ZI_DICT= ./tools/dict/dict-zi.js
+
+dict-web:
+	@echo 'module.exports = {'        >  $(ZI_DICT_FREQUENT)
+	@node ./tools/robot-frequent.js   >> $(ZI_DICT_FREQUENT)
+	@echo '};'                        >> $(ZI_DICT_FREQUENT)
+	@echo 'module.exports = {'        >  $(ZI_DICT_INFREQUENT)
+	@node ./tools/robot-infrequent.js >> $(ZI_DICT_INFREQUENT)
+	@echo '};'                        >> $(ZI_DICT_INFREQUENT)
+
+dict-node:
+	@echo 'var dict = [];'            >  $(ZI_DICT)
+	@node ./tools/robot-zdic-zi.js    >> $(ZI_DICT)
+	@echo 'module.exports = dict;'    >> $(ZI_DICT)
+
+infrequent:
+	@node ./tools/infrequent.js > ./tools/zi/infrequent.js
+
+.PHONY: build-doc publish-doc server clean test coverage
