@@ -7,7 +7,7 @@ install:
 build:
 	@spm build
 
-publish: build publish-doc
+publish: publish-doc
 	@spm publish
 	@npm publish
 	@git tag $(version)
