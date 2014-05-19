@@ -21,7 +21,6 @@
     "url": "https://github.com/hotoo/pinyin/issues"
   },
   "scripts": {
-    "prepublish": "spm build",
     "test": "make test"
   },
   "dependencies": {
