@@ -7,6 +7,29 @@ var Segment;
 var PHRASES_DICT;
 var PINYIN_DICT;
 
+
+// 解压拼音库。
+// @param {Object} dict_combo, 压缩的拼音库。
+// @param {Object} 解压的拼音库。
+function buildPinyinCache(dict_combo){
+  var hans;
+  var uncomboed = {};
+
+  for(var py in dict_combo){
+    hans = dict_combo[py];
+    for(var i=0,han,l=hans.length; i<l; i++){
+      han = hans.charCodeAt(i);
+      if(!uncomboed.hasOwnProperty(han)){
+        uncomboed[han] = py;
+      }else{
+        uncomboed[han] += ","+py;
+      }
+    }
+  }
+
+  return uncomboed;
+}
+
 if(isNode){
   Segment = module["require"]("segment").Segment;
   var segment = new Segment();
@@ -20,7 +43,8 @@ if(isNode){
   // 拼音词库，node 版无需使用压缩合并的拼音库。
   PINYIN_DICT = module["require"]("./dict-zi");
 }else{
-  PINYIN_DICT = require("./pinyin-dict-combo");
+  PINYIN_DICT = buildPinyinCache(require("./dict-zi-web"));
+  console.log(PINYIN_DICT)
 }
 
 
