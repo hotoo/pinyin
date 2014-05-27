@@ -25,3 +25,4 @@ tmp/*
 Desktop.ini
 Thumb.db
 .cache/*
+dist/
