@@ -4,19 +4,25 @@ var isNode = typeof process === "object" &&
 
 // 分词模块
 var Segment;
+var PHRASES_DICT;
+var PINYIN_DICT;
 
 if(isNode){
   Segment = module["require"]("segment").Segment;
   var segment = new Segment();
   // 使用默认的识别模块及字典
   segment.useDefault();
+
+
+  // 词语拼音库。
+  PHRASES_DICT = module["require"]("./phrases-dict");
+
+  // 拼音词库，node 版无需使用压缩合并的拼音库。
+  PINYIN_DICT = module["require"]("./dict-zi");
+}else{
+  PINYIN_DICT = require("./pinyin-dict-combo");
 }
 
-// 词语拼音库。
-var PHRASES_DICT = require("./phrases-dict");
-
-// 拼音词库，node 版无需使用压缩合并的拼音库。
-var PINYIN_DICT = require("./dict-zi");
 
 // 声母表。
 var INITIALS = "zh,ch,sh,b,p,m,f,d,t,n,l,g,k,h,j,q,x,r,z,c,s,yu,y,w".split(",");
