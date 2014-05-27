@@ -41,13 +41,13 @@
       <h1>
           <a href="./">Pinyin</a>
       </h1>
-        <p class="sidebar-version">Version: <a href="http://spmjs.io/package/pinyin" title="">2.3.0</a></p>
+        <p class="sidebar-version">Version: <a href="http://spmjs.io/package/pinyin" title="">2.3.1</a></p>
         <p class="sidebar-description" data-keyword="拼音">汉语拼音转换工具。</p>
         <a class="sidebar-source" href="https://github.com/hotoo/pinyin" target="_blank">View the Project</a>
         <ul class="sidebar-navigation" role="navigation">
           <li><a href="./">Doc</a></li>
           <li><a href="examples/">Demo</a></li>
-          <li><a class="test-link" href="tests-runner.html" target="_blank">Test</a></li>
+          <li><a class="test-link" href="tests/runner.html" target="_blank">Test</a></li>
           <li><a class="issue-link" href="https://github.com/hotoo/pinyin/issues" target="_blank">Issues</a></li>
         </ul>
         
@@ -110,9 +110,11 @@ $ pinyin -h</code></pre></div><h2 id="api">API<a href="#api" class="anchor">¶</
 <p>例外，对于只有韵母的汉字（如『爱、啊』等），会先转成不带音标的普通风格。</p>
 <h3 id="静态属性-style-first-letter">静态属性 <code>.STYLE_FIRST_LETTER</code><a href="#静态属性-style-first-letter" class="anchor">¶</a></h3><p>首字母风格，只返回拼音的首字母部分。</p>
 <p>如：<code>p y</code></p>
-<h2 id="test">Test<a href="#test" class="anchor">¶</a></h2><pre>npm test</pre><h2 id="q-amp-a">Q&amp;A<a href="#q-amp-a" class="anchor">¶</a></h2><h3 id="为什么-node-版和-web-版的拼音程序要有两个不同的仓库？">为什么 node 版和 Web 版的拼音程序要有两个不同的仓库？<a href="#为什么-node-版和-web-版的拼音程序要有两个不同的仓库？" class="anchor">¶</a></h3><p><code>pinyin</code> 目前可以同时运行在 Node 服务器端和 Web 浏览器端。</p>
+<h2 id="test">Test<a href="#test" class="anchor">¶</a></h2><pre>npm test</pre><h2 id="q-amp-a">Q&amp;A<a href="#q-amp-a" class="anchor">¶</a></h2><h3 id="node-版和-web-版有什么异同？">node 版和 web 版有什么异同？<a href="#node-版和-web-版有什么异同？" class="anchor">¶</a></h3><p><code>pinyin</code> 目前可以同时运行在 Node 服务器端和 Web 浏览器端。
+API 和使用方式完成一致。</p>
 <p>但 Web 版较 Node 版稍简单，拼音库只有常用字部分，没有使用分词算法，
 并且考虑了网络传输对词库进行了压缩处理。</p>
+<p>由于分词和繁体中文的特性，部分情况下的结果也不尽相同。</p>
 <table>
 <thead>
 <tr>

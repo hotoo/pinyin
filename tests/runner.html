@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Pinyin Mocha Runner</title>
-    <link href="./static/css/mocha.css" type="text/css" rel="stylesheet" charset="utf-8">
+    <link href="../static/css/mocha.css" type="text/css" rel="stylesheet" charset="utf-8">
   </head>
   <body>
 <script>
@@ -21,7 +21,7 @@
 <script>
   (function() {
   seajs.config({
-    base: "./"
+    base: "../"
   });
 
   seajs.config({
@@ -29,7 +29,7 @@
   });
 })();
 </script>
-    <script src="./static/js/mocha.js?nowrap"></script>
+    <script src="../static/js/mocha.js?nowrap"></script>
     <div id="mocha"></div>
     <script>
       (function() {
@@ -48,6 +48,9 @@
               return url;
             }
             var sources = [''
+              ,'src/pinyin'
+              ,'src/dict-zi-web'
+              ,'src/phonetic-symbol'
               ,'index.js'
             ];
             sources = sources.slice(1);
@@ -65,7 +68,7 @@
 
         var specs = [];
         for (var i = 0; i < tests.length; i++) {
-          specs[i] = './' + tests[i];
+          specs[i] = '../' + tests[i];
         }
 
         seajs.use(specs, function() {

@@ -4,19 +4,49 @@ var isNode = typeof process === "object" &&
 
 // 分词模块
 var Segment;
+var PHRASES_DICT;
+var PINYIN_DICT;
+
+
+// 解压拼音库。
+// @param {Object} dict_combo, 压缩的拼音库。
+// @param {Object} 解压的拼音库。
+function buildPinyinCache(dict_combo){
+  var hans;
+  var uncomboed = {};
+
+  for(var py in dict_combo){
+    hans = dict_combo[py];
+    for(var i=0,han,l=hans.length; i<l; i++){
+      han = hans.charCodeAt(i);
+      if(!uncomboed.hasOwnProperty(han)){
+        uncomboed[han] = py;
+      }else{
+        uncomboed[han] += ","+py;
+      }
+    }
+  }
+
+  return uncomboed;
+}
 
 if(isNode){
   Segment = module["require"]("segment").Segment;
   var segment = new Segment();
   // 使用默认的识别模块及字典
   segment.useDefault();
+
+
+  // 词语拼音库。
+  PHRASES_DICT = module["require"]("./phrases-dict");
+
+  // 拼音词库，node 版无需使用压缩合并的拼音库。
+  PINYIN_DICT = module["require"]("./dict-zi");
+}else{
+  PINYIN_DICT = buildPinyinCache(require("./dict-zi-web"));
+  console.log(PINYIN_DICT)
 }
 
-// 词语拼音库。
-var PHRASES_DICT = require("./phrases-dict");
-
-// 拼音词库，node 版无需使用压缩合并的拼音库。
-var PINYIN_DICT = require("./dict-zi");
 
 // 声母表。
 var INITIALS = "zh,ch,sh,b,p,m,f,d,t,n,l,g,k,h,j,q,x,r,z,c,s,yu,y,w".split(",");

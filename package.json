@@ -1,6 +1,6 @@
 {
   "name": "pinyin",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "description": "汉语拼音转换工具。",
   "keywords": ["拼音", "Pinyin"],
   "homepage": "http://pinyin.hotoo.me/",
@@ -21,7 +21,6 @@
     "url": "https://github.com/hotoo/pinyin/issues"
   },
   "scripts": {
-    "prepublish": "spm build",
     "test": "make test"
   },
   "dependencies": {
