@@ -1,0 +1,10 @@
+dist
+_site
+sea-modules
+node_modules
+.git
+tests
+examples
+test
+src/phrases-dict.js
+tools/
