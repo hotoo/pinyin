@@ -2,7 +2,7 @@
 var pinyin = require("../src/pinyin");
 
 var hans = [
-  "朝阳",
+  "中国(china)",
 ];
 
 for(var i=0,l=hans.length; i<l; i++){

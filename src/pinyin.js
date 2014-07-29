@@ -165,15 +165,14 @@ function phrases_pinyin(phrases, options){
   var py = [];
   if(PHRASES_DICT.hasOwnProperty(phrases)){
     //! copy pinyin result.
-    py = PHRASES_DICT[phrases].slice();
-  //console.log("A",py)
-    py.forEach(function(item, idx, arr){
+    PHRASES_DICT[phrases].forEach(function(item, idx){
+      py[idx] = [];
       if (options.heteronym){
-        item.forEach(function(py_item, py_index, pys){
-          pys[py_index] = toFixed(py_item, options.style);
+        item.forEach(function(py_item, py_index){
+          py[idx][py_index] = toFixed(py_item, options.style);
         });
       } else {
-        arr[idx] = [toFixed(item[0], options.style)];
+        py[idx][0] = toFixed(item[0], options.style);
       }
     });
   }else{
@@ -181,7 +180,6 @@ function phrases_pinyin(phrases, options){
       py.push(single_pinyin(phrases[i], options));
     }
   }
-  console.log("D",py)
   return py;
 }
 
