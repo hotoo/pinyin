@@ -1,0 +1,21 @@
+{
+  "name": "pinyin",
+  "main": "index.js",
+  "version": "2.3.2",
+  "homepage": "https://github.com/hotoo/pinyin",
+  "authors": [
+    "hotoo <hotoo.cn@gmail.com>"
+  ],
+  "description": "Chinese Pinyin Convertor.",
+  "keywords": [
+    "pinyin"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

@@ -16,7 +16,7 @@
   ga('create', 'UA-50522089-2', 'spm documentation');
   ga('send', 'pageview');
 </script>
-<script src="http://static.alipayobjects.com/??seajs/seajs/2.2.0/sea.js,seajs/seajs-text/1.0.2/seajs-text.js"></script>
+<script src="http://static.alipayobjects.com/seajs/seajs/2.2.0/sea.js"></script>
 
 <script>
   (function() {
@@ -42,17 +42,32 @@
           }
           return false;
         };
+        if (contain(query, 'cov')) {
+          if (console && console.log) {
+            console.log = function() {};
+          }
+        }
         seajs.config({
           map: [function(url) {
             if (!contain(query, 'cov')) {
               return url;
             }
             var sources = [''
-              ,'index.js'
+              ,'src/pinyin'
+              ,'src/dict-zi-web'
+              ,'src/phonetic-symbol'
+              ,'index'
             ];
+            var matcher = url.match('http:\/\/(.*?)\/(.*)');
+            var file;
+            if (matcher) {
+              file = matcher[2].replace(/\.js$/, '');
+            } else {
+              return url;
+            }
             sources = sources.slice(1);
             for (var i=0; i<sources.length; i++) {
-              if (url.indexOf(sources[i]) > 0) {
+              if (file === sources[i]) {
                 return url.replace(/\.js$/g, '-cov.js');
               }
             }

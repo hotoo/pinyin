@@ -25,3 +25,5 @@ tmp/*
 Desktop.ini
 Thumb.db
 .cache/*
+dist/
+npm-debug.log

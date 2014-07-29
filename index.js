@@ -1,2 +1,2 @@
 
-module.exports = require("src/pinyin");
+module.exports = require("./src/pinyin");

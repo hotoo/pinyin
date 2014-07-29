@@ -7,7 +7,7 @@ install:
 build:
 	@spm build
 
-publish: build publish-doc
+publish: publish-doc
 	@spm publish
 	@npm publish
 	@git tag $(version)
@@ -22,6 +22,7 @@ watch:
 publish-doc: clean build-doc
 	@ghp-import _site
 	@git push origin gh-pages
+	@spm doc publish
 
 clean:
 	@rm -fr _site
@@ -48,6 +49,7 @@ coverage: build-doc
 ZI_DICT_FREQUENT = ./tools/dict/zi-frequent.js
 ZI_DICT_INFREQUENT = ./tools/dict/zi-infrequent.js
 ZI_DICT= ./tools/dict/dict-zi.js
+ZI_DICT_WEB= ./tools/dict/dict-zi-web.js
 
 dict-web:
 	@echo 'module.exports = {'        >  $(ZI_DICT_FREQUENT)
@@ -56,6 +58,7 @@ dict-web:
 	@echo 'module.exports = {'        >  $(ZI_DICT_INFREQUENT)
 	@node ./tools/robot-infrequent.js >> $(ZI_DICT_INFREQUENT)
 	@echo '};'                        >> $(ZI_DICT_INFREQUENT)
+	@node ./tools/combo-dict.js 			 > $(ZI_DICT_WEB)
 
 dict-node:
 	@echo 'var dict = [];'            >  $(ZI_DICT)

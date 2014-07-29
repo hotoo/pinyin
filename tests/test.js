@@ -189,3 +189,5 @@ function deepEquals(a, b){
     break;
   }
 }
+
+console.log("DEEP EQUALS:", deepEquals([["zhong"],["guo"]] , [["zhong"],["guo"]]))

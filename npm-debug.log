@@ -1,0 +1,109 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'publish', '-f' ]
+2 info using npm@1.4.13
+3 info using node@v0.11.13
+4 warn using --force I sure hope you know what you are doing.
+5 verbose publish [ '.' ]
+6 verbose cache add [ '.', null ]
+7 verbose cache add name=undefined spec="." args=[".",null]
+8 verbose parsed url { protocol: null,
+8 verbose parsed url   slashes: null,
+8 verbose parsed url   auth: null,
+8 verbose parsed url   host: null,
+8 verbose parsed url   port: null,
+8 verbose parsed url   hostname: null,
+8 verbose parsed url   hash: null,
+8 verbose parsed url   search: null,
+8 verbose parsed url   query: null,
+8 verbose parsed url   pathname: '.',
+8 verbose parsed url   path: '.',
+8 verbose parsed url   href: '.' }
+9 silly lockFile 3a52ce78- .
+10 verbose lock . /Users/hotoo/.npm/3a52ce78-.lock
+11 verbose tar pack [ '/Users/hotoo/.npm/pinyin/2.3.0/package.tgz', '.' ]
+12 verbose tarball /Users/hotoo/.npm/pinyin/2.3.0/package.tgz
+13 verbose folder .
+14 info prepublish pinyin@2.3.0
+15 verbose unsafe-perm in lifecycle true
+16 silly lockFile 1f1177db-tar tar://.
+17 verbose lock tar://. /Users/hotoo/.npm/1f1177db-tar.lock
+18 silly lockFile 5107f2cb-too-npm-pinyin-2-3-0-package-tgz tar:///Users/hotoo/.npm/pinyin/2.3.0/package.tgz
+19 verbose lock tar:///Users/hotoo/.npm/pinyin/2.3.0/package.tgz /Users/hotoo/.npm/5107f2cb-too-npm-pinyin-2-3-0-package-tgz.lock
+20 silly lockFile 1f1177db-tar tar://.
+21 silly lockFile 1f1177db-tar tar://.
+22 silly lockFile 5107f2cb-too-npm-pinyin-2-3-0-package-tgz tar:///Users/hotoo/.npm/pinyin/2.3.0/package.tgz
+23 silly lockFile 5107f2cb-too-npm-pinyin-2-3-0-package-tgz tar:///Users/hotoo/.npm/pinyin/2.3.0/package.tgz
+24 silly lockFile 1e24376e-s-hotoo-npm-pinyin-2-3-0-package /Users/hotoo/.npm/pinyin/2.3.0/package
+25 verbose lock /Users/hotoo/.npm/pinyin/2.3.0/package /Users/hotoo/.npm/1e24376e-s-hotoo-npm-pinyin-2-3-0-package.lock
+26 silly lockFile 1e24376e-s-hotoo-npm-pinyin-2-3-0-package /Users/hotoo/.npm/pinyin/2.3.0/package
+27 silly lockFile 1e24376e-s-hotoo-npm-pinyin-2-3-0-package /Users/hotoo/.npm/pinyin/2.3.0/package
+28 silly lockFile 3a52ce78- .
+29 silly lockFile 3a52ce78- .
+30 silly publish { name: 'pinyin',
+30 silly publish   version: '2.3.0',
+30 silly publish   description: '汉语拼音转换工具。',
+30 silly publish   keywords: [ '拼音', 'Pinyin' ],
+30 silly publish   homepage: 'http://pinyin.hotoo.me/',
+30 silly publish   author: { name: '闲耘', email: 'hotoo.cn@gmail.com' },
+30 silly publish   main: 'index.js',
+30 silly publish   bin: { pinyin: './bin/pinyin' },
+30 silly publish   directories: { example: 'examples', test: 'tests' },
+30 silly publish   repository: { type: 'git', url: 'https://github.com/hotoo/pinyin.git' },
+30 silly publish   bugs: { url: 'https://github.com/hotoo/pinyin/issues' },
+30 silly publish   scripts: { prepublish: 'spm build', test: 'make test' },
+30 silly publish   dependencies: { segment: '0.0.5', commander: '~1.1.1' },
+30 silly publish   devDependencies:
+30 silly publish    { mocha: '1.17.1',
+30 silly publish      'expect.js': '0.3.1',
+30 silly publish      iconv: '2.1.0',
+30 silly publish      request: '2.33.0' },
+30 silly publish   spm:
+30 silly publish    { main: 'index.js',
+30 silly publish      devDependencies: { 'expect.js': '0.3.1' },
+30 silly publish      tests: 'tests/*-spec.js' },
+30 silly publish   license: 'MIT',
+30 silly publish   gitHead: '87a9cfa050c2a578bb4884e9f7b05df096bddf11',
+30 silly publish   readme: '# 汉字拼音转换工具。\n\n---\n\n[![NPM version](https://badge.fury.io/js/pinyin.png)](http://badge.fury.io/js/pinyin)\n[![spm package](http://spmjs.io/badge/pinyin)](http://spmjs.io/package/pinyin)\n[![Build Status](https://secure.travis-ci.org/hotoo/pinyin.png?branch=master)](https://travis-ci.org/hotoo/pinyin)\n[![Coverage Status](https://coveralls.io/repos/hotoo/pinyin/badge.png?branch=master)](https://coveralls.io/r/hotoo/pinyin)\n\n转换中文字符为拼音。可以用于汉字注音、排序、检索。\n\n> 注：这个版本同时支持在 Node 和 Web 浏览器环境运行，\n> 之前的 [hotoo/node-pinyin](https://github.com/hotoo/node-pinyin) 仓库即将下线。\n>\n> Python 版请关注 [mozillazg/python-pinyin](https://github.com/mozillazg/python-pinyin)\n\n---\n\n## 特性\n\n* 根据词组智能匹配最正确的拼音。\n* 支持多音字。\n* 简单的繁体支持。\n* 支持多种不同拼音风格。\n\n## 安装\n\nvia npm:\n\n```bash\nnpm install pinyin\n```\n\nvia spm@3.x:\n\n```bash\nspm install pinyin\n```\n\n## 用法\n\n开发者：\n\n```js\nvar pinyin = require("pinyin");\n\nconsole.log(pinyin("中心"));    // [ [ \'zhōng\' ], [ \'xīn\' ] ]\nconsole.log(pinyin("中心", {\n  heteronym: true               // 启用多音字模式\n}));                            // [ [ \'zhōng\', \'zhòng\' ], [ \'xīn\' ] ]\nconsole.log(pinyin("中心", {\n  style: pinyin.STYLE_INITIALS, // 设置拼音风格\n  heteronym: true\n}));                            // [ [ \'zh\' ], [ \'x\' ] ]\n```\n\n命令行：\n\n```bash\n$ pinyin 中心\nzhōng xīn\n$ pinyin -h\n```\n\n## API\n\n### 方法 `<Array> pinyin(words[, options])`\n\n将传入的中文字符串(words)转换成拼音符号串。\n\noptions 是可选的，可以设定拼音风格，或打开多音字选项。\n\n返回二维数组，第一维每个数组项位置对应每个中文字符串位置。\n第二维是各个汉字的读音列表，多音字会有多个拼音项。\n\n### 参数 `<Boolean> options.heteronym`\n\n是否启用多音字模式，默认关闭。\n\n关闭多音字模式时，返回每个汉字第一个匹配的拼音。\n\n启用多音字模式时，返回多音字的所有拼音列表。\n\n### 参数 `<Object> options.style`\n\n指定拼音 风格。可以通过以下几种 `STYLE_` 开头的静态属性进行指定。\n\n### 静态属性 `.STYLE_NORMAL`\n\n普通风格，即不带音标。\n\n如：`pin yin`\n\n### 静态属性 `.STYLE_TONE`\n\n声调风格，拼音声调在韵母第一个字母上。\n\n注：这是默认的风格。\n\n如：`pīn yīn`\n\n### 静态属性 `.STYLE_TONE2`\n\n声调风格2，即拼音声调在各个拼音之后，用数字 [0-4] 进行表示。\n\n如：`pin1 yin1`\n\n### 静态属性 `.STYLE_INITIALS`\n\n声母风格，只返回各个拼音的声母部分。\n\n如：`中国` 的拼音 `zh g`\n\n例外，对于只有韵母的汉字（如『爱、啊』等），会先转成不带音标的普通风格。\n\n### 静态属性 `.STYLE_FIRST_LETTER`\n\n首字母风格，只返回拼音的首字母部分。\n\n如：`p y`\n\n\n## Test\n\n```\nnpm test\n```\n\n## Q&A\n\n### 为什么 node 版和 Web 版的拼音程序要有两个不同的仓库？\n\n`pinyin` 目前可以同时运行在 Node 服务器端和 Web 浏览器端。\n\n但 Web 版较 Node 版稍简单，拼音库只有常用字部分，没有使用分词算法，\n并且考虑了网络传输对词库进行了压缩处理。\n\n| 特性         | Web 版                          | Node 版                           |\n|--------------|--------------------------------|----------------------------------|\n| 拼音库       | 常用字库。压缩、合并           | 完整字库。不压缩、合并           |\n| 分词         | 没有分词                       | 使用分词算法，多音字拼音更准确。 |\n| 拼音频度排序 | 有根据拼音使用频度优先级排序。 | 同 Web 版。                       |\n| 繁体中文     | 没有繁体中文支持。             | 有简单的繁简汉字转换。           |\n\n由于这些区别，测试不同运行环境的用例也不尽相同。\n\n### 为什么不使用更好的繁简转换？\n\n对于拼音来说，把繁简汉字做简单的映射并转换成拼音是合理的。\n而使用类似 [OpenCC](https://github.com/BYVoid/OpenCC)\n[cconv](https://code.google.com/p/cconv/) 这样的转换库，虽然转换结果更\n符合本地化语境，但是对于汉字变化后的拼音来说，已经不是繁体原字的拼音了。\n\n\n## 参考\n\n* [在线汉语字典](http://zi.artx.cn/zi/)\n* [快典网](http://py.kdd.cc/)\n* [将汉字转换成拼音](https://code.google.com/p/chinese-character-2-pinyin/)\n* [字符转拼音 javascript pinyin](http://www.cnblogs.com/jinweijie/archive/2008/02/03/1063289.html)\n  ([pinyin.rar](http://cid-80b2ed83de3c7c17.skydrive.live.com/self.aspx/Code/pinyin.rar))\n* [Javascript Input Method Editors](http://jsime.sourceforge.net/) ([中文](http://leen.name/ime/pinyin.html), [En](http://leen.name/ime/english.html))\n* [现在汉语的词汇数量及分布](http://blog.cathayan.org/item/1593)\n',
+30 silly publish   readmeFilename: 'README.md',
+30 silly publish   _id: 'pinyin@2.3.0',
+30 silly publish   _shasum: '0bd3d0f083bfa28f947e0353e5c4e56490758213',
+30 silly publish   _from: '.' }
+31 verbose url raw pinyin
+32 verbose url resolving [ 'https://registry.npmjs.org/', './pinyin' ]
+33 verbose url resolved https://registry.npmjs.org/pinyin
+34 info trying registry request attempt 1 at 14:03:44
+35 http PUT https://registry.npmjs.org/pinyin
+36 http 403 https://registry.npmjs.org/pinyin
+37 verbose headers { date: 'Tue, 03 Jun 2014 06:03:49 GMT',
+37 verbose headers   server: 'CouchDB/1.5.0 (Erlang OTP/R14B04)',
+37 verbose headers   'content-type': 'application/json',
+37 verbose headers   'cache-control': 'max-age=1',
+37 verbose headers   'content-length': '84',
+37 verbose headers   'accept-ranges': 'bytes',
+37 verbose headers   via: '1.1 varnish',
+37 verbose headers   'x-served-by': 'cache-ty68-TYO',
+37 verbose headers   'x-cache': 'MISS',
+37 verbose headers   'x-cache-hits': '0',
+37 verbose headers   'x-timer': 'S1401775425.825233,VS0,VE3587',
+37 verbose headers   connection: 'close' }
+38 error publish Failed PUT 403
+39 error Error: forbidden Cannot replace previously published version: 2.3.0: pinyin
+39 error     at RegClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:274:14)
+39 error     at Request._callback (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:212:65)
+39 error     at Request.self.callback (/usr/local/lib/node_modules/npm/node_modules/request/request.js:123:22)
+39 error     at Request.EventEmitter.emit (events.js:110:17)
+39 error     at Request.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:893:14)
+39 error     at Request.EventEmitter.emit (events.js:129:20)
+39 error     at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:844:12)
+39 error     at IncomingMessage.EventEmitter.emit (events.js:129:20)
+39 error     at _stream_readable.js:898:16
+39 error     at process._tickCallback (node.js:343:11)
+40 error If you need help, you may report this *entire* log,
+40 error including the npm and node versions, at:
+40 error     <http://github.com/npm/npm/issues>
+41 error System Darwin 13.2.0
+42 error command "node" "/usr/local/bin/npm" "publish" "-f"
+43 error cwd /Users/hotoo/workbench/JavaScript/pinyin
+44 error node -v v0.11.13
+45 error npm -v 1.4.13
+46 verbose exit [ 1, true ]

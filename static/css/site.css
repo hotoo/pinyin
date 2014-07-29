@@ -54,7 +54,7 @@ body.spmjs {
 .spmjs .content-wrapper {
   float: right;
   width: 69%;
-  font-size: 14px;
+  font-size: 16px;
   -webkit-font-smoothing: antialiased;
   -webkit-text-stroke-width: 0.2px;
   -moz-osx-font-smoothing: grayscale;
@@ -64,7 +64,7 @@ body.spmjs {
   font-family:"Open Sans", sans-serif;
 }
 .spmjs .sidebar-wrapper .sidebar-version {
-  font-size: 13px;
+  font-size: 14px;
 }
 .spmjs .sidebar-wrapper .sidebar-description {
   background-color: rgba(0, 0, 0, 0.02);
@@ -100,6 +100,7 @@ body.spmjs {
   vertical-align: middle;
   width: 90%;
   text-align: center;
+  font-size: 16px;
 }
 .spmjs .sidebar-wrapper .sidebar-source:hover {
   background-color: #399add;
