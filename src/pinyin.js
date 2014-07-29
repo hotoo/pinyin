@@ -73,6 +73,8 @@ var DEFAULT_OPTIONS = {
 
 
 // 将 more 的属性值，覆盖 origin 中已有的属性。
+// @param {Object} origin.
+// @param {Object} more.
 // @return 返回新的对象。
 function extend(origin, more){
   var obj = {};
@@ -86,12 +88,10 @@ function extend(origin, more){
   return obj;
 }
 
-/**
- * 修改拼音词库表中的格式。
- * @param {String} pinyin, 单个拼音。
- * @param {PINYIN_STYLE} style, 拼音风格。
- * @return {String}
- */
+// 修改拼音词库表中的格式。
+// @param {String} pinyin, 单个拼音。
+// @param {PINYIN_STYLE} style, 拼音风格。
+// @return {String}
 function toFixed(pinyin, style){
   var tone = ""; // 声调。
   switch(style){
@@ -125,11 +125,9 @@ function toFixed(pinyin, style){
   }
 }
 
-/**
- * 单字拼音转换。
- * @param {String} han, 单个汉字
- * @return {Array} 返回拼音列表，多音字会有多个拼音项。
- */
+// 单字拼音转换。
+// @param {String} han, 单个汉字
+// @return {Array} 返回拼音列表，多音字会有多个拼音项。
 function single_pinyin(han, options){
 
   if("string" !== typeof han){return [];}
@@ -159,12 +157,10 @@ function single_pinyin(han, options){
   return pinyins;
 }
 
-/**
- * 词语注音
- * @param {String} phrases, 指定的词组。
- * @param {Object} options, 选项。
- * @return {Array}
- */
+// 词语注音
+// @param {String} phrases, 指定的词组。
+// @param {Object} options, 选项。
+// @return {Array}
 function phrases_pinyin(phrases, options){
   var py = [];
   if(PHRASES_DICT.hasOwnProperty(phrases)){
@@ -181,11 +177,9 @@ function phrases_pinyin(phrases, options){
   return py;
 }
 
-/**
- * @param {String} hans 要转为拼音的目标字符串（汉字）。
- * @param {Object} options, 可选，用于指定拼音风格，是否启用多音字。
- * @return {Array} 返回的拼音列表。
- */
+// @param {String} hans 要转为拼音的目标字符串（汉字）。
+// @param {Object} options, 可选，用于指定拼音风格，是否启用多音字。
+// @return {Array} 返回的拼音列表。
 function pinyin(hans, options){
 
   if("string" !== typeof hans){return [];}
@@ -229,11 +223,9 @@ function pinyin(hans, options){
 }
 
 
-/**
- * 声母(Initials)、韵母(Finals)。
- * @param {String/Number/RegExp/Date/Function/Array/Object}
- * @return {String/Number/RegExp/Date/Function/Array/Object}
- */
+// 格式化为声母(Initials)、韵母(Finals)。
+// @param {String}
+// @return {String}
 function initials(pinyin){
   for(var i=0,l=INITIALS.length; i<l; i++){
     if(pinyin.indexOf(INITIALS[i]) === 0){
