@@ -166,14 +166,22 @@ function phrases_pinyin(phrases, options){
   if(PHRASES_DICT.hasOwnProperty(phrases)){
     //! copy pinyin result.
     py = PHRASES_DICT[phrases].slice();
+  //console.log("A",py)
     py.forEach(function(item, idx, arr){
-      arr[idx] = [toFixed(item[0], options.style)];
+      if (options.heteronym){
+        item.forEach(function(py_item, py_index, pys){
+          pys[py_index] = toFixed(py_item, options.style);
+        });
+      } else {
+        arr[idx] = [toFixed(item[0], options.style)];
+      }
     });
   }else{
     for(var i=0,l=phrases.length; i<l; i++){
       py.push(single_pinyin(phrases[i], options));
     }
   }
+  console.log("D",py)
   return py;
 }
 
