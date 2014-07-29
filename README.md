@@ -31,7 +31,7 @@ via npm:
 npm install pinyin
 ```
 
-via spm@3.x:
+via spm3:
 
 ```bash
 spm install pinyin
@@ -158,6 +158,7 @@ API 和使用方式完成一致。
 ## 参考
 
 * [在线汉语字典](http://zi.artx.cn/zi/)
+* [汉典网](http://www.zdic.net/)
 * [快典网](http://py.kdd.cc/)
 * [将汉字转换成拼音](https://code.google.com/p/chinese-character-2-pinyin/)
 * [字符转拼音 javascript pinyin](http://www.cnblogs.com/jinweijie/archive/2008/02/03/1063289.html)

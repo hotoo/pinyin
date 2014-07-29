@@ -1,6 +1,6 @@
 #!/usr/bin/env node
+
 var commander = require('commander');
-//require('colors');
 var pinyin = require("../src/pinyin");
 
 commander.
@@ -8,7 +8,7 @@ commander.
   usage('[options] 汉字').
   option('-v, --version', 'output the version number').
   option('-s, --style <style>', 'pinyin styles').
-  //option('-h, --heteronym', 'output heteronym pinyins').
+  option('-h, --heteronym', 'output heteronym pinyins').
   parse(process.argv);
 
 if (commander.list) {
