@@ -44,7 +44,6 @@ if(isNode){
   PINYIN_DICT = module["require"]("./dict-zi");
 }else{
   PINYIN_DICT = buildPinyinCache(require("./dict-zi-web"));
-  console.log(PINYIN_DICT)
 }
 
 
@@ -244,9 +243,10 @@ function initials(pinyin){
   return "";
 }
 
+pinyin.STYLE_NORMAL = PINYIN_STYLE.NORMAL;
+pinyin.STYLE_TONE = PINYIN_STYLE.TONE;
+pinyin.STYLE_TONE2 = PINYIN_STYLE.TONE2;
+pinyin.STYLE_INITIALS = PINYIN_STYLE.INITIALS;
+pinyin.STYLE_FIRST_LETTER = PINYIN_STYLE.FIRST_LETTER;
+
 module.exports = pinyin;
-module.exports.STYLE_NORMAL = PINYIN_STYLE.NORMAL;
-module.exports.STYLE_TONE = PINYIN_STYLE.TONE;
-module.exports.STYLE_TONE2 = PINYIN_STYLE.TONE2;
-module.exports.STYLE_INITIALS = PINYIN_STYLE.INITIALS;
-module.exports.STYLE_FIRST_LETTER = PINYIN_STYLE.FIRST_LETTER;
