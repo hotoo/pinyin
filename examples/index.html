@@ -27,7 +27,7 @@
   });
 
   seajs.config({
-    alias: {"expect.js":"sea-modules/expect.js/0.3.1/index.js"}
+    alias: {"expect.js":"sea-modules/expect.js/0.3.1/index.js","url":"sea-modules/url/1.2.0/url.js"}
   });
 })();
 </script>
@@ -62,7 +62,7 @@
 textarea{width:90%; height:100px;}
 </style>
 
-<h3 id="输入">输入<a href="#输入" class="anchor">¶</a></h3><div>
+<h3 id="输入汉字">输入<a href="?han=简体中文汉字">汉字</a><a href="#输入汉字" class="anchor">¶</a></h3><div>
   <textarea id="input"></textarea>
 </div>
 
@@ -84,10 +84,11 @@ textarea{width:90%; height:100px;}
 
 
 <script>
-seajs.use('../src/pinyin', function(pinyin){
+seajs.use(['../src/pinyin', 'url'], function(pinyin, Url){
 
   var $ = function(id){return document.getElementById(id);}
   var styles = document.getElementsByName("style");
+  var han = new Url(location.href).getParam("han");
 
   function build(){
     var han = $("input").value;
@@ -106,6 +107,9 @@ seajs.use('../src/pinyin', function(pinyin){
   for(var i=0,l=styles.length; i<l; i++){
     styles[i].onclick = build;
   }
+
+  $("input").value = han;
+  build();
 });
 </script>
 
