@@ -6,7 +6,7 @@
 textarea{width:90%; height:100px;}
 </style>
 
-### 输入
+### 输入[汉字](?han=简体中文汉字)
 
 <div>
   <textarea id="input"></textarea>
