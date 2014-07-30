@@ -6,7 +6,7 @@
 textarea{width:90%; height:100px;}
 </style>
 
-### 输入
+### 输入[汉字](?han=简体中文汉字)
 
 <div>
   <textarea id="input"></textarea>
@@ -32,10 +32,11 @@ textarea{width:90%; height:100px;}
 
 
 <script>
-seajs.use('../src/pinyin', function(pinyin){
+seajs.use(['../src/pinyin', 'url'], function(pinyin, Url){
 
   var $ = function(id){return document.getElementById(id);}
   var styles = document.getElementsByName("style");
+  var han = new Url(location.href).getParam("han");
 
   function build(){
     var han = $("input").value;
@@ -54,5 +55,8 @@ seajs.use('../src/pinyin', function(pinyin){
   for(var i=0,l=styles.length; i<l; i++){
     styles[i].onclick = build;
   }
+
+  $("input").value = han;
+  build();
 });
 </script>

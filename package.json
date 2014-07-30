@@ -36,7 +36,8 @@
   "spm": {
     "main": "index.js",
     "devDependencies": {
-      "expect.js": "0.3.1"
+      "expect.js": "0.3.1",
+      "url": "1.2.0"
     },
     "tests": "tests/*-spec.js"
   },
