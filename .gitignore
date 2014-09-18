@@ -27,3 +27,4 @@ Thumb.db
 .cache/*
 dist/
 npm-debug.log
+spm_modules/
