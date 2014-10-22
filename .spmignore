@@ -8,3 +8,4 @@ examples
 test
 src/phrases-dict.js
 tools/
+.travis.yml
