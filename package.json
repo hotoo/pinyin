@@ -39,6 +39,9 @@
       "expect.js": "0.3.1",
       "url": "1.2.0"
     },
+    "engines": {
+      "seajs": "2.3.0"
+    },
     "tests": "tests/*-spec.js"
   },
   "license": "MIT"
