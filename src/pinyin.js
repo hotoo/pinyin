@@ -3,7 +3,6 @@ var isNode = typeof process === "object" &&
   process.toString() === "[object process]";
 
 // 分词模块
-var Segment;
 var PHRASES_DICT;
 var PINYIN_DICT;
 
@@ -30,22 +29,13 @@ function buildPinyinCache(dict_combo){
   return uncomboed;
 }
 
+
 if(isNode){
-  Segment = module["require"]("segment").Segment;
-  var segment = new Segment();
-  // 使用默认的识别模块及字典
-  segment.useDefault();
-
-
-  // 词语拼音库。
-  PHRASES_DICT = module["require"]("./phrases-dict");
-
   // 拼音词库，node 版无需使用压缩合并的拼音库。
   PINYIN_DICT = module["require"]("./dict-zi");
 }else{
   PINYIN_DICT = buildPinyinCache(require("./dict-zi-web"));
 }
-
 
 // 声母表。
 var INITIALS = "zh,ch,sh,b,p,m,f,d,t,n,l,g,k,h,j,q,x,r,z,c,s,yu,y,w".split(",");
@@ -68,9 +58,9 @@ var RE_PHONETIC_SYMBOL = new RegExp('(['+re_phonetic_symbol_source+'])', 'g');
 var RE_TONE2 = /([aeoiuvnm])([0-4])$/;
 var DEFAULT_OPTIONS = {
   style: PINYIN_STYLE.TONE, // 风格
-  heteronym: false // 多音字
+  heteronym: false, // 多音字
+  phrases: true // 是否启用词组匹配
 };
-
 
 // 将 more 的属性值，覆盖 origin 中已有的属性。
 // @param {Object} origin.
@@ -163,7 +153,7 @@ function single_pinyin(han, options){
 // @return {Array}
 function phrases_pinyin(phrases, options){
   var py = [];
-  if(PHRASES_DICT.hasOwnProperty(phrases)){
+  if(PHRASES_DICT && PHRASES_DICT.hasOwnProperty(phrases)){
     //! copy pinyin result.
     PHRASES_DICT[phrases].forEach(function(item, idx){
       py[idx] = [];
@@ -192,13 +182,27 @@ function pinyin(hans, options){
 
   options = extend(DEFAULT_OPTIONS, options || {});
 
-  var phrases = isNode ? segment.doSegment(hans) : hans;
+  options.phrases = isNode && options.phrases;
+
+  var phrases = [hans];
+
+  if(options.phrases){
+    var Segment = module["require"]("segment").Segment;
+    var segment = new Segment();
+    // 使用默认的识别模块及字典
+    segment.useDefault();
+    // 词语拼音库。
+    PHRASES_DICT = module["require"]("./phrases-dict");
+    phrases = segment.doSegment(hans);
+  }
+
+
   var len = hans.length;
   var pys = [];
 
   for(var i=0,nohans="",firstCharCode,words,l=phrases.length; i<l; i++){
 
-    words = isNode ? phrases[i].w : phrases[i];
+    words = options.phrases ? phrases[i].w : phrases[i];
     firstCharCode = words.charCodeAt(0);
 
     if(PINYIN_DICT[firstCharCode]){
@@ -210,7 +214,7 @@ function pinyin(hans, options){
       }
 
       if(words.length===1){
-          pys.push(single_pinyin(words, options));
+        pys.push(single_pinyin(words, options));
       }else{
         pys = pys.concat(phrases_pinyin(words, options));
       }
