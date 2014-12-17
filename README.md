@@ -17,7 +17,7 @@ npm install node-pinyin
 ## 用法
 
 ```js
-var pinyin = require("pinyin");
+var pinyin = require("node-pinyin");
 
 console.log(pinyin("重心"));    // [ [ 'zhong' ], [ 'xin' ] ]
 console.log(pinyin("重心", {
