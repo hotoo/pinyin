@@ -1,48 +1,36 @@
 {
-  "name": "pinyin",
-  "version": "2.3.3",
+  "name": "node-pinyin",
+  "version": "0.1.0",
   "description": "汉语拼音转换工具。",
-  "keywords": ["拼音", "Pinyin"],
-  "homepage": "http://pinyin.hotoo.me/",
-  "author": "闲耘 <hotoo.cn@gmail.com>",
+  "keywords": [
+    "拼音",
+    "Pinyin"
+  ],
+  "author": "TooBug <i@toobug.net>",
   "main": "index.js",
   "bin": {
     "pinyin": "./bin/pinyin"
   },
   "directories": {
-    "example": "examples",
     "test": "tests"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/hotoo/pinyin.git"
+    "url": "https://github.com/toobug/pinyin.git"
   },
   "bugs": {
-    "url": "https://github.com/hotoo/pinyin/issues"
+    "url": "https://github.com/toobug/pinyin/issues"
   },
   "scripts": {
-    "test": "make test"
+    "test": "./node_modules/mocha/bin/mocha ./tests/*.js",
+    "test-cov": "./node_modules/istanbul/lib/cli.js cover node_modules/mocha/bin/_mocha ./tests/*.js"
   },
   "dependencies": {
-    "segment": "0.0.5",
     "commander": "~1.1.1"
   },
   "devDependencies": {
-    "mocha": "1.17.1",
-    "expect.js": "0.3.1",
-    "iconv": "2.1.0",
-    "request": "2.33.0"
-  },
-  "spm": {
-    "main": "index.js",
-    "devDependencies": {
-      "expect.js": "0.3.1",
-      "url": "1.2.0"
-    },
-    "engines": {
-      "seajs": "2.3.0"
-    },
-    "tests": "tests/*-spec.js"
+    "mocha": "^2.0.1",
+    "should": "^4.4.1"
   },
   "license": "MIT"
 }
