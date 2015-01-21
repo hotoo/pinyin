@@ -7,7 +7,6 @@ commander.
   version(require('../package').version).
   usage('[options] 汉字').
   option('-v, --version', 'output the version number').
-  option('-s, --style <style>', 'pinyin styles').
   option('-h, --heteronym', 'output heteronym pinyins').
   parse(process.argv);
 
@@ -21,7 +20,6 @@ if (commander.args.length === 0) {
 }
 
 console.log(pinyin(commander.args.join(" "), {
-  style: pinyin["STYLE_" + (commander.style || "TONE").toUpperCase()],
   heteronym: commander.heteronym || false
 }).join(" "));
 
