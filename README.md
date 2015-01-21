@@ -1,5 +1,8 @@
 # 汉字拼音转换工具
 
+[![npm](http://img.shields.io/npm/v/node-pinyin.svg)](https://www.npmjs.com/package/node-pinyin)
+[![npm](http://img.shields.io/npm/l/node-pinyin.svg)](https://www.npmjs.com/package/node-pinyin)
+
 > 本工具fork自<https://github.com/hotoo/pinyin>，原库以MIT协议开源，本库也以MIT协议开源。
 
 ## 功能
