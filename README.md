@@ -28,8 +28,8 @@ console.log(pinyin("重心", {
 命令行：
 
 ```bash
-$ pinyin 中心
-zhōng xīn
+$ pinyin 重心
+zhòng xīn
 $ pinyin -h
 ```
 
