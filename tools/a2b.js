@@ -14,7 +14,7 @@ for(var ascii in dict){
 	]));
 }
 
-// fs.writeFileSync(path.join(root,'data/dict.bin'),Buffer.concat(result));
+fs.writeFileSync(path.join(root,'data/dict.bin'),Buffer.concat(result));
 
 function getBufferArr(number,bytes){
 	var ret = [];
