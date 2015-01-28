@@ -2,6 +2,7 @@
 
 [![npm](http://img.shields.io/npm/v/node-pinyin.svg)](https://www.npmjs.com/package/node-pinyin)
 [![npm](http://img.shields.io/npm/l/node-pinyin.svg)](https://www.npmjs.com/package/node-pinyin)
+[![Travis](https://img.shields.io/travis/TooBug/pinyin.svg)](https://travis-ci.org/TooBug/pinyin/)
 
 > 本工具fork自<https://github.com/hotoo/pinyin>，原库以MIT协议开源，本库也以MIT协议开源。
 
