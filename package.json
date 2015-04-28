@@ -1,6 +1,6 @@
 {
   "name": "node-pinyin",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "汉语拼音转换工具。",
   "keywords": [
     "拼音",

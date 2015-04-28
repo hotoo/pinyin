@@ -160,7 +160,7 @@ var getPinyin = function(word){
     // console.log('adjusted output offset',offset);
     return offset;
   },function(buffer){
-    return buffer.length > 2 && +buffer[buffer.length - 1] === 10;
+    return buffer.length > 3 && +buffer[buffer.length - 1] === 10;
   },function(buffer){
     var ascii = buffer[0]*256*256 + buffer[1]*256 + buffer[2];
     if(ascii === wordAscii){
