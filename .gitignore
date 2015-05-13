@@ -28,3 +28,5 @@ Thumb.db
 dist/
 npm-debug.log
 spm_modules/
+tools/dict/error.log
+coverage/

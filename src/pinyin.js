@@ -3,7 +3,7 @@ var isNode = typeof process === "object" &&
   process.toString() === "[object process]";
 
 // 分词模块
-var Segment;
+var jieba;
 var PHRASES_DICT;
 var PINYIN_DICT;
 
@@ -31,11 +31,11 @@ function buildPinyinCache(dict_combo){
 }
 
 if(isNode){
-  Segment = module["require"]("segment").Segment;
-  var segment = new Segment();
-  // 使用默认的识别模块及字典
-  segment.useDefault();
-
+  jieba = module['require']('nodejieba');
+  jieba.loadDict(
+      "./node_modules/nodejieba/dict/jieba.dict.utf8",
+      "./node_modules/nodejieba/dict/hmm_model.utf8",
+      "./node_modules/nodejieba/dict/user.dict.utf8");
 
   // 词语拼音库。
   PHRASES_DICT = module["require"]("./phrases-dict");
@@ -192,13 +192,13 @@ function pinyin(hans, options){
 
   options = extend(DEFAULT_OPTIONS, options || {});
 
-  var phrases = isNode ? segment.doSegment(hans) : hans;
+  var phrases = isNode ? jieba.cutSync(hans) : hans;
   var len = hans.length;
   var pys = [];
 
   for(var i=0,nohans="",firstCharCode,words,l=phrases.length; i<l; i++){
 
-    words = isNode ? phrases[i].w : phrases[i];
+    words = phrases[i];
     firstCharCode = words.charCodeAt(0);
 
     if(PINYIN_DICT[firstCharCode]){

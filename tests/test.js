@@ -87,11 +87,11 @@ var cases = [
     //STYLE_FIRST_LETTER: [["a a"]]
   //} ],
   [ "一 一", {
-    STYLE_NORMAL:       [["yi"],["yi"]],
-    STYLE_TONE:         [["yī"],["yī"]],
-    STYLE_TONE2:        [["yi1"],["yi1"]],
-    STYLE_INITIALS:     [["y"],["y"]],
-    STYLE_FIRST_LETTER: [["y"],["y"]]
+    STYLE_NORMAL:       [["yi"],[' '],["yi"]],
+    STYLE_TONE:         [["yī"],[' '],["yī"]],
+    STYLE_TONE2:        [["yi1"],[' '],["yi1"]],
+    STYLE_INITIALS:     [["y"],[' '],["y"]],
+    STYLE_FIRST_LETTER: [["y"],[' '],["y"]]
   } ],
 
   // 中英混合
@@ -110,7 +110,16 @@ var cases = [
     STYLE_TONE2:        [["zhong1"],["guo2"],["(china)"]],
     STYLE_INITIALS:     [["zh"],["g"],["(china)"]],
     STYLE_FIRST_LETTER: [["z"],["g"],["(china)"]]
-  } ]
+  } ],
+
+  // 中英混合，多音字，单音词。
+  [ "0套价", {
+    STYLE_NORMAL:       [["0"],["tao"],["jia","jie"]],
+    STYLE_TONE:         [["0"],["tào"],["jià","jiè","jie"]],
+    STYLE_TONE2:        [["0"],["tao4"],["jia4","jie4","jie"]],
+    STYLE_INITIALS:     [["0"],["t"],["j"]],
+    STYLE_FIRST_LETTER: [["0"],["t"],["j"]]
+  } ],
 ];
 
 describe('pinyin', function() {
@@ -189,5 +198,3 @@ function deepEquals(a, b){
     break;
   }
 }
-
-console.log("DEEP EQUALS:", deepEquals([["zhong"],["guo"]] , [["zhong"],["guo"]]))
