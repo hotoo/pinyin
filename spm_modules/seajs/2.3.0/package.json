@@ -1,0 +1,30 @@
+{
+  "family": "seajs",
+  "name": "seajs",
+  "version": "2.3.0",
+  "description": "A Module Loader for the Web",
+  "homepage": "http://seajs.org/",
+  "keywords": ["module", "loader"],
+  "author": "Frank Wang <lifesinger@gmail.com>",
+  "engines": {
+    "node": ">= 0.6.0"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "seatools": "*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/seajs/seajs.git"
+  },
+  "main": "./lib/sea.js",
+  "spm": {
+    "main": "./dist/sea.js"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://seajs.org/LICENSE.md"
+    }
+  ]
+}

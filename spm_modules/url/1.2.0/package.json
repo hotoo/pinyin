@@ -1,0 +1,25 @@
+{
+  "name": "url",
+  "version": "1.2.0",
+  "description": "Uniform Resource Locator.",
+  "homepage": "https://github.com/hotoo/url",
+  "author": "闲耘<hotoo.cn@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/hotoo/url.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hotoo/url/issues"
+  },
+  "scripts": {
+  },
+  "keywords": ["utility"],
+  "licenses": "MIT",
+  "spm": {
+    "main": "url.js",
+    "devDependencies": {
+      "expect.js": "0.3.1"
+    },
+    "tests": "tests/*-spec.js"
+  }
+}
