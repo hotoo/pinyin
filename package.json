@@ -2,7 +2,10 @@
   "name": "pinyin",
   "version": "2.3.3",
   "description": "汉语拼音转换工具。",
-  "keywords": ["拼音", "Pinyin"],
+  "keywords": [
+    "拼音",
+    "Pinyin"
+  ],
   "homepage": "http://pinyin.hotoo.me/",
   "author": "闲耘 <hotoo.cn@gmail.com>",
   "main": "index.js",
@@ -24,8 +27,9 @@
     "test": "make test"
   },
   "dependencies": {
-    "segment": "0.0.5",
-    "commander": "~1.1.1"
+    "commander": "~1.1.1",
+    "nodejieba": "^0.2.11",
+    "segment": "0.0.5"
   },
   "devDependencies": {
     "mocha": "1.17.1",
