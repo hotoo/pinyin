@@ -41,7 +41,7 @@ if (!location.port) {
       <h1>
           <a href="../">Pinyin</a>
       </h1>
-      <p class="sidebar-version">Version: <a href="http://spmjs.io/package/pinyin" title="">2.4.0</a></p>
+      <p class="sidebar-version">Version: <a href="http://spmjs.io/package/pinyin" title="">2.4.1</a></p>
         <p class="sidebar-description" data-keyword="拼音">汉语拼音转换工具。</p>
         <a class="sidebar-source" href="https://github.com/hotoo/pinyin" target="_blank">View the Project</a>
         <ul class="sidebar-navigation" role="navigation">
@@ -157,7 +157,7 @@ seajs.use(['../src/pinyin', 'url'], function(pinyin, Url){
       seajs.use("../static/js/arale-qrcode.js?nowrap", function(QRCode) {
         var url = location.href;
         if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
-          url = url.replace(location.hostname, '10.22.16.239');
+          url = url.replace(location.hostname, '192.168.0.110');
         }
         var el = new QRCode({
           text: url,
