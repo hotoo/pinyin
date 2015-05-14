@@ -33,9 +33,9 @@ function buildPinyinCache(dict_combo){
 if(isNode){
   jieba = module['require']('nodejieba');
   jieba.loadDict(
-      "./node_modules/nodejieba/dict/jieba.dict.utf8",
-      "./node_modules/nodejieba/dict/hmm_model.utf8",
-      "./node_modules/nodejieba/dict/user.dict.utf8");
+      __dirname + "/../node_modules/nodejieba/dict/jieba.dict.utf8",
+      __dirname + "/../node_modules/nodejieba/dict/hmm_model.utf8",
+      __dirname + "/../node_modules/nodejieba/dict/user.dict.utf8");
 
   // 词语拼音库。
   PHRASES_DICT = module["require"]("./phrases-dict");
