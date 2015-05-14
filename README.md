@@ -2,7 +2,7 @@
 
 ---
 
-[![NPM version](https://badge.fury.io/js/pinyin.png)](http://badge.fury.io/js/pinyin)
+[![NPM version](https://badge.fury.io/js/pinyin.png)](https://www.npmjs.com/package/pinyin)
 [![spm package](http://spmjs.io/badge/pinyin)](http://spmjs.io/package/pinyin)
 [![Build Status](https://secure.travis-ci.org/hotoo/pinyin.png?branch=master)](https://travis-ci.org/hotoo/pinyin)
 [![Coverage Status](https://coveralls.io/repos/hotoo/pinyin/badge.png?branch=master)](https://coveralls.io/r/hotoo/pinyin)
