@@ -29,7 +29,7 @@
   },
   "dependencies": {
     "commander": "~1.1.1",
-    "nodejieba": "^0.2.11"
+    "nodejieba": "~0.2.13"
   },
   "devDependencies": {
     "mocha": "1.17.1",
