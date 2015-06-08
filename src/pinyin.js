@@ -32,10 +32,6 @@ function buildPinyinCache(dict_combo){
 
 if(isNode){
   jieba = module['require']('nodejieba');
-  jieba.loadDict(
-      __dirname + "/../node_modules/nodejieba/dict/jieba.dict.utf8",
-      __dirname + "/../node_modules/nodejieba/dict/hmm_model.utf8",
-      __dirname + "/../node_modules/nodejieba/dict/user.dict.utf8");
 
   // 词语拼音库。
   PHRASES_DICT = module["require"]("./phrases-dict");
@@ -192,7 +188,7 @@ function pinyin(hans, options){
 
   options = extend(DEFAULT_OPTIONS, options || {});
 
-  var phrases = isNode ? jieba.cutSync(hans) : hans;
+  var phrases = isNode ? jieba.cut(hans) : hans;
   var len = hans.length;
   var pys = [];
 
