@@ -34,7 +34,6 @@
   "devDependencies": {
     "mocha": "1.17.1",
     "expect.js": "0.3.1",
-    "iconv": "2.1.0",
     "request": "2.33.0"
   },
   "spm": {
