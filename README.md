@@ -2,10 +2,19 @@
 
 ---
 
-[![NPM version](https://badge.fury.io/js/pinyin.png)](https://www.npmjs.com/package/pinyin)
-[![spm package](http://spmjs.io/badge/pinyin)](http://spmjs.io/package/pinyin)
-[![Build Status](https://secure.travis-ci.org/hotoo/pinyin.png?branch=master)](https://travis-ci.org/hotoo/pinyin)
-[![Coverage Status](https://coveralls.io/repos/hotoo/pinyin/badge.png?branch=master)](https://coveralls.io/r/hotoo/pinyin)
+[![NPM version][npm-badge]][npm-url]
+[![spm version][spm-badge]][spm-url]
+[![Build Status][travis-badge]][travis-url]
+[![Coverage Status][coveralls-badge]][coveralls-url]
+
+[npm-badge]: https://img.shields.io/npm/v/pinyin.svg?style=flat
+[npm-url]: https://www.npmjs.com/package/pinyin
+[spm-badge]: http://spmjs.io/badge/pinyin
+[spm-url]: http://spmjs.io/package/pinyin
+[travis-badge]: https://travis-ci.org/hotoo/pinyin.svg
+[travis-url]: https://travis-ci.org/hotoo/pinyin
+[coveralls-badge]: https://coveralls.io/repos/hotoo/pinyin/badge.svg?branch=master
+[coveralls-url]: https://coveralls.io/r/hotoo/pinyin
 
 转换中文字符为拼音。可以用于汉字注音、排序、检索。
 
@@ -66,7 +75,7 @@ $ pinyin -h
 
 ### 方法 `<Array> pinyin(words[, options])`
 
-将传入的中文字符串(words)转换成拼音符号串。
+将传入的中文字符串 (words) 转换成拼音符号串。
 
 options 是可选的，可以设定拼音风格，或打开多音字选项。
 
@@ -101,7 +110,7 @@ options 是可选的，可以设定拼音风格，或打开多音字选项。
 
 ### 静态属性 `.STYLE_TONE2`
 
-声调风格2，即拼音声调在各个拼音之后，用数字 [0-4] 进行表示。
+声调风格 2，即拼音声调在各个拼音之后，用数字 [0-4] 进行表示。
 
 如：`pin1 yin1`
 
