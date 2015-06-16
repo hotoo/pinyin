@@ -11,7 +11,7 @@ node_js:
   - "iojs-2"
 
 install:
-  - npm install spm@ninja coveralls mocha
+  - npm install spm coveralls mocha
 
 before_script:
   - node_modules/spm/bin/spm-install
