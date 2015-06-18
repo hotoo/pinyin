@@ -1,6 +1,11 @@
 
 # CHANGELOG
 
+## 2.5.0 (2015-06-18)
+
+* featute（分词）: 增加分词选项，默认不开启分词（不兼容选项）
+* test(performance): 增加了性能测试。
+
 ## 2.4.4 (2015-06-08)
 
 * Upgrade dependency nodejieba@1.0.1, fixed #41
