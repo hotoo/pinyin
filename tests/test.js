@@ -1,5 +1,4 @@
 
-var expect = require("expect.js");
 var should = require("should");
 var pinyin = require("../src/pinyin");
 
