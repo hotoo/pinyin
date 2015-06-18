@@ -1,5 +1,6 @@
 
 var expect = require("expect.js");
+var should = require("should");
 var pinyin = require("../src/pinyin");
 
 
@@ -51,17 +52,38 @@ var cases = [
   // 多音字，单音词。分词后可以准确识别读音。
   [ "中国", {
     STYLE_NORMAL:       [["zhong"],["guo"]],
-    STYLE_TONE:         [["zhōng"],["guó"]],
-    STYLE_TONE2:        [["zhong1"],["guo2"]],
+    STYLE_TONE:         {
+      normal: [["zhōng","zhòng"],["guó"]],
+      segment: [["zhōng"],["guó"]]
+    },
+    STYLE_TONE2:        {
+      normal: [["zhong1","zhong4"],["guo2"]],
+      segment: [["zhong1"],["guo2"]]
+    },
     STYLE_INITIALS:     [["zh"],["g"]],
     STYLE_FIRST_LETTER: [["z"],["g"]]
   } ],
   [ "重心", {
-    STYLE_NORMAL:       [["zhong"],["xin"]],
-    STYLE_TONE:         [["zhòng"],["xīn"]],
-    STYLE_TONE2:        [["zhong4"],["xin1"]],
-    STYLE_INITIALS:     [["zh"],["x"]],
-    STYLE_FIRST_LETTER: [["z"],["x"]],
+    STYLE_NORMAL:       {
+      normal: [["zhong","chong"],["xin"]],
+      segment: [["zhong"],["xin"]]
+    },
+    STYLE_TONE:         {
+      normal: [["zhòng","chóng"],["xīn"]],
+      segment: [["zhòng"],["xīn"]]
+    },
+    STYLE_TONE2:        {
+      normal: [["zhong4","chong2"],["xin1"]],
+      segment: [["zhong4"],["xin1"]]
+    },
+    STYLE_INITIALS:     {
+      normal: [["zh","ch"],["x"]],
+      segment: [["zh"],["x"]]
+    },
+    STYLE_FIRST_LETTER: {
+      normal: [["z","c"],["x"]],
+      segment: [["z"],["x"]]
+    },
   } ],
 
   // 英文
@@ -106,8 +128,14 @@ var cases = [
   // 中英混合，多音字，单音词。
   [ "中国(china)", {
     STYLE_NORMAL:       [["zhong"],["guo"],["(china)"]],
-    STYLE_TONE:         [["zhōng"],["guó"],["(china)"]],
-    STYLE_TONE2:        [["zhong1"],["guo2"],["(china)"]],
+    STYLE_TONE:         {
+      normal: [["zhōng","zhòng"],["guó"],["(china)"]],
+      segment: [["zhōng"],["guó"],["(china)"]]
+    },
+    STYLE_TONE2:        {
+      normal: [["zhong1","zhong4"],["guo2"],["(china)"]],
+      segment: [["zhong1"],["guo2"],["(china)"]]
+    },
     STYLE_INITIALS:     [["zh"],["g"],["(china)"]],
     STYLE_FIRST_LETTER: [["z"],["g"],["(china)"]]
   } ],
@@ -130,6 +158,12 @@ describe('pinyin', function() {
     for(var style in opt){
       (function(han, opt, style){
         var py = opt[style];
+        var pys = py;
+        // 有多音字的词组。
+        if (py.normal && py.segment) {
+          pys = py.segment;
+          py =  py.normal;
+        }
         var single_pinyin = [];
         for(var i=0,l=py.length; i<l; i++){
           single_pinyin[i] = [py[i][0]];
@@ -140,61 +174,30 @@ describe('pinyin', function() {
         it('pinyin("'+han+'", '+style+') : '+
           JSON.stringify(_py)+' === '+JSON.stringify(single_pinyin), function() {
 
-          expect(deepEquals(_py, single_pinyin)).to.equal(true);
+          _py.should.eql(single_pinyin);
         });
 
-        // 多音字模式。
+        // 普通多音字模式。
         var _py2 = pinyin(han, {style: pinyin[style], heteronym:true});
         it('pinyin("'+han+'", '+style+',heteronym) : '+
           JSON.stringify(_py2)+' === '+JSON.stringify(py), function() {
 
-          expect(deepEquals(_py2, py)).to.equal(true);
+          _py2.should.eql(py);
         });
+
+        // 分词多音字模式。
+        var _py2s = pinyin(han, {
+          style: pinyin[style],
+          heteronym: true,
+          segment: true,
+        });
+        it('pinyin("'+han+'", '+style+',heteronym,segment) : '+
+          JSON.stringify(_py2s)+' === '+JSON.stringify(pys), function() {
+
+          _py2s.should.eql(pys);
+        });
+
       })(han, opt, style);
     }
   }
 });
-
-function deepEquals(a, b){
-  if(a === b){return true;}
-  var typeA = Object.prototype.toString.call(a);
-  var typeB = Object.prototype.toString.call(b);
-  if(typeA !== typeB){return false;}
-  var eq = true;
-  var re_blank = /\s{2,}/, s_blank = " ";
-  switch(typeA){
-  case '[object String]':
-  case '[object Number]':
-  case '[object Boolean]':
-    return a === b;
-  case '[object RegExp]':
-    return a.source === b.source &&
-      a.ignoreCase === b.ignoreCase &&
-      a.multiline == b.multiline &&
-      a.global === b.global;
-  case '[object Object]':
-    for(var k in a){
-      if(!a.hasOwnProperty(k)){continue;}
-      if(!b.hasOwnProperty(k)){return false;}
-      eq = eq && deepEquals(a[k], b[k]);
-    }
-    if(!eq){return false;}
-    for(var k in b){
-      if(!b.hasOwnProperty(k)){continue;}
-      if(!a.hasOwnProperty(k)){return false;}
-    }
-    return true;
-  case '[object Array]':
-    if(a.length !== b.length){return false;}
-    for(var i=0,l=a.length; i<l; i++){
-      eq = eq && deepEquals(a[i], b[i]);
-    }
-    return eq;
-  case '[object Function]':
-    return a.toString().replace(re_blank, s_blank) ===
-      b.toString().replace(re_blank, s_blank);
-  default:
-    throw new Error("Not support type "+typeA);
-    break;
-  }
-}

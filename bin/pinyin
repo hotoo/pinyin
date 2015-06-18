@@ -1,13 +1,13 @@
 #!/usr/bin/env node
 
 var commander = require('commander');
-var pinyin = require("../src/pinyin");
 
 commander.
   version(require('../package').version).
   usage('[options] 汉字').
   option('-v, --version', 'output the version number').
   option('-s, --style <style>', 'pinyin styles').
+  option('-S, --segment', 'segmentation word to phrases').
   option('-h, --heteronym', 'output heteronym pinyins').
   parse(process.argv);
 
@@ -20,11 +20,14 @@ if (commander.args.length === 0) {
   commander.help();
 }
 
-console.log(pinyin(commander.args.join(" "), {
+var pinyin = require("../src/pinyin");
+var options = {
   style: pinyin["STYLE_" + (commander.style || "TONE").toUpperCase()],
-  heteronym: commander.heteronym || false
-}).join(" "));
+  heteronym: commander.heteronym || false,
+  segment: commander.segment || false,
+};
+var words = commander.args.join(" ");
+var py = pinyin(words, options).join(" ");
+console.log(py);
 
- /*
- vim:ft=javascript
- */
+// vim:ft=javascript
