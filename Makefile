@@ -30,6 +30,9 @@ clean:
 
 runner = _site/tests/runner.html
 
+benchmark:
+	@node tests/benchmark.test.js
+
 test-cli:
 	@mocha -R spec tests/cli.test.js
 
@@ -39,7 +42,7 @@ test-npm:
 test-spm:
 	@spm test
 
-test: test-npm test-spm test-cli
+test: test-npm test-spm test-cli benchmark
 
 output = _site/coverage.html
 coverage: build-doc
