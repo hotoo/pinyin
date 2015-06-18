@@ -46,7 +46,7 @@ suite.add('pinyin 中文', function(){
 })
 .on('cycle', function(event) {
   var mem = process.memoryUsage().rss;
-  console.log(String(event.target) + ' memory usage: %s bytes.' + formatNunber(mem - memory));
+  console.log(String(event.target) + ' memory usage: %s bytes.', formatNunber(mem - memory));
   memory = mem;
 })
 .on('complete', function() {
