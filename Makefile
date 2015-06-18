@@ -13,7 +13,7 @@ publish: publish-doc
 	@git tag $(version)
 	@git push origin $(version)
 
-build-doc:
+build-doc: clean
 	@spm doc build
 
 watch:
@@ -30,13 +30,19 @@ clean:
 
 runner = _site/tests/runner.html
 
+benchmark:
+	@node tests/benchmark.test.js
+
+test-cli:
+	@mocha -R spec tests/cli.test.js
+
 test-npm:
 	@mocha -R spec tests/test.js
 
 test-spm:
 	@spm test
 
-test: test-npm test-spm
+test: test-npm test-spm test-cli benchmark
 
 output = _site/coverage.html
 coverage: build-doc

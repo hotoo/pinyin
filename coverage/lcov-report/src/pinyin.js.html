@@ -15,10 +15,10 @@
 <div class="header high">
     <h1>Code coverage report for <span class="entity">src/pinyin.js</span></h1>
     <h2>
-        Statements: <span class="metric">81.2% <small>(95 / 117)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Branches: <span class="metric">69.57% <small>(32 / 46)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Functions: <span class="metric">72.73% <small>(8 / 11)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Lines: <span class="metric">83.19% <small>(94 / 113)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">80.51% <small>(95 / 118)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">63.46% <small>(33 / 52)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">66.67% <small>(8 / 12)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">82.46% <small>(94 / 114)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
     <div class="path"><a href="../index.html">All files</a> &#187; <a href="index.html">src/</a> &#187; pinyin.js</div>
@@ -272,7 +272,8 @@
 245
 246
 247
-248</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+248
+249</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -307,9 +308,10 @@
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -346,13 +348,14 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">120</span>
 <span class="cline-any cline-yes">120</span>
-<span class="cline-any cline-yes">240</span>
+<span class="cline-any cline-yes">360</span>
 <span class="cline-any cline-yes">180</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">60</span>
+<span class="cline-any cline-yes">180</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">120</span>
@@ -464,7 +467,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">120</span>
 <span class="cline-any cline-yes">120</span>
-<span class="cline-any cline-yes">120</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">120</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -551,12 +553,13 @@ function buildPinyinCache(dict_combo){
   return uncomboed;
 }
 &nbsp;
+<span class="fstat-no" title="function not covered" >function segment(hans) {</span>
+<span class="cstat-no" title="statement not covered" >    jieba = jieba || module['require']('nodejieba');</span>
+    // 词语拼音库。
+<span class="cstat-no" title="statement not covered" >    PHRASES_DICT = PHRASES_DICT || module["require"]("./phrases-dict");</span>
+<span class="cstat-no" title="statement not covered" >    return jieba.cut(hans)</span>
+}
 <span class="missing-if-branch" title="if path not taken" >I</span>if(isNode){
-<span class="cstat-no" title="statement not covered" >  jieba = module['require']('nodejieba');</span>
-&nbsp;
-  // 词语拼音库。
-<span class="cstat-no" title="statement not covered" >  PHRASES_DICT = module["require"]("./phrases-dict");</span>
-&nbsp;
   // 拼音词库，node 版无需使用压缩合并的拼音库。
 <span class="cstat-no" title="statement not covered" >  PINYIN_DICT = module["require"]("./dict-zi");</span>
 }else{
@@ -585,6 +588,7 @@ var RE_PHONETIC_SYMBOL = new RegExp('(['+re_phonetic_symbol_source+'])', 'g');
 var RE_TONE2 = /([aeoiuvnm])([0-4])$/;
 var DEFAULT_OPTIONS = {
   style: PINYIN_STYLE.TONE, // 风格
+  segment: false, // 分词。
   heteronym: false // 多音字
 };
 &nbsp;
@@ -709,8 +713,7 @@ function pinyin(hans, options){
 &nbsp;
   options = extend(DEFAULT_OPTIONS, options || <span class="branch-1 cbranch-no" title="branch not covered" >{})</span>;
 &nbsp;
-  var phrases = isNode ? <span class="branch-0 cbranch-no" title="branch not covered" >jieba.cut(hans) </span>: hans;
-  var len = hans.length;
+  var phrases = isNode &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >options.segment </span>? <span class="branch-0 cbranch-no" title="branch not covered" >segment(hans) </span>: hans;
   var pys = [];
 &nbsp;
   for(var i=0,nohans="",firstCharCode,words,l=phrases.length; i&lt;l; i++){
@@ -771,7 +774,7 @@ module.exports = pinyin;
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Jun 08 2015 15:21:22 GMT+0800 (CST)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Jun 18 2015 10:47:38 GMT+0800 (CST)</div>
 </div>
 <script src="../prettify.js"></script>
 <script>

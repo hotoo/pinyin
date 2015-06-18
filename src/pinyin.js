@@ -30,12 +30,13 @@ function buildPinyinCache(dict_combo){
   return uncomboed;
 }
 
+function segment(hans) {
+    jieba = jieba || module['require']('nodejieba');
+    // 词语拼音库。
+    PHRASES_DICT = PHRASES_DICT || module["require"]("./phrases-dict");
+    return jieba.cut(hans)
+}
 if(isNode){
-  jieba = module['require']('nodejieba');
-
-  // 词语拼音库。
-  PHRASES_DICT = module["require"]("./phrases-dict");
-
   // 拼音词库，node 版无需使用压缩合并的拼音库。
   PINYIN_DICT = module["require"]("./dict-zi");
 }else{
@@ -64,6 +65,7 @@ var RE_PHONETIC_SYMBOL = new RegExp('(['+re_phonetic_symbol_source+'])', 'g');
 var RE_TONE2 = /([aeoiuvnm])([0-4])$/;
 var DEFAULT_OPTIONS = {
   style: PINYIN_STYLE.TONE, // 风格
+  segment: false, // 分词。
   heteronym: false // 多音字
 };
 
@@ -188,8 +190,7 @@ function pinyin(hans, options){
 
   options = extend(DEFAULT_OPTIONS, options || {});
 
-  var phrases = isNode ? jieba.cut(hans) : hans;
-  var len = hans.length;
+  var phrases = isNode && options.segment ? segment(hans) : hans;
   var pys = [];
 
   for(var i=0,nohans="",firstCharCode,words,l=phrases.length; i<l; i++){
