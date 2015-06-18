@@ -58,6 +58,10 @@ console.log(pinyin("中心", {
   heteronym: true               // 启用多音字模式
 }));                            // [ [ 'zhōng', 'zhòng' ], [ 'xīn' ] ]
 console.log(pinyin("中心", {
+  heteronym: true,              // 启用多音字模式
+  segment: true                 // 启用分词，以解决多音字问题。
+}));                            // [ [ 'zhōng' ], [ 'xīn' ] ]
+console.log(pinyin("中心", {
   style: pinyin.STYLE_INITIALS, // 设置拼音风格
   heteronym: true
 }));                            // [ [ 'zh' ], [ 'x' ] ]
@@ -81,6 +85,11 @@ options 是可选的，可以设定拼音风格，或打开多音字选项。
 
 返回二维数组，第一维每个数组项位置对应每个中文字符串位置。
 第二维是各个汉字的读音列表，多音字会有多个拼音项。
+
+### 参数 `<Boolean> options.segment`
+
+是否启用分词模式，中文分词有助于极大的降低多音字问题。
+但性能会极大的下降，内存也会使用更多。
 
 ### 参数 `<Boolean> options.heteronym`
 
