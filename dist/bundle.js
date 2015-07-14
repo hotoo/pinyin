@@ -46,18 +46,195 @@ this["pinyin"] =
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__(1)
+	window['url'] = __webpack_require__(2);
 
 /***/ },
 /* 1 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
-	module.exports = __webpack_require__(4);
+	module.exports = __webpack_require__(5);
 
 
 /***/ },
 /* 2 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
+
+	
+	//             2.protocol  4.username 5.password 7.hostname     8.port     9.path   10.search 11.hash
+	//                    |           |       |           |            |          |           |       |
+	//                 ------       -----  ------    -----------     -----    ----------- --------- -----
+	var RE_URL = /^((?:(\w+:)\/\/)?((\w+):?(\w+)?@)?(([^\/\?:]+)(?:\:(\d+))?))(\/[^\?#]+)?(\?[^#]+)?(#.*)?/;
+	//             -----------------------------------------------------------
+	//                                |             -------------------------
+	//                            1.origin                    |
+	//                                                    6.host
+	
+	var Url = function(url){
+	  var u = RE_URL.exec(url);
+	
+	  this.uri = url;
+	  this.origin = u[1];
+	  this.protocol = u[2];
+	  //! URI已解码的授权组成部分，未实现。
+	  this.authority;
+	  this.username = u[4];
+	  this.password = u[5];
+	  this.host = u[6] || "";
+	  this.hostname = u[7] || "";
+	  this.port = u[8] || "";
+	  this.path = u[9] || "/";
+	  this.search = u[10] || "";
+	  this._query = parseQuery(this.search);
+	  this.hash = u[11] || "";
+	};
+	
+	// get origin info.
+	// @return {String}
+	Url.prototype.getOrigin = function(){
+	  return this.protocol + "//" + this.getHost();
+	};
+	
+	// get host info.
+	// @return {String}
+	Url.prototype.getHost = function(){
+	  return this.hostname + (this.port ? ":" + this.port : "");
+	};
+	
+	function parseQuery(query){
+	  var q = "?";
+	  var eq = "=";
+	  var and = "&";
+	
+	  var rst = {};
+	
+	  if(!query){return rst;}
+	
+	  query = query.replace(/^\?/, "");
+	  var list = query.split(and);
+	
+	  for(var i=0,eqi,pair,key,val,l=list.length; i<l; i++){
+	    pair = list[i];
+	    eqi = pair.indexOf(eq);
+	    key = decodeURIComponent(pair.substring(0, eqi)) || "";
+	    val = decodeURIComponent(pair.substring(eqi+1)) || "";
+	
+	    if(!rst.hasOwnProperty(key)){
+	      rst[key] = [val];
+	    }else{
+	      rst[key].push(val);
+	    }
+	  }
+	
+	  return rst;
+	}
+	
+	// make querystring from object.
+	// @param {Object} object, key:value pair object.
+	// @return {String}
+	function makeQueryString(object){
+	  var query = [];
+	  for(var key in object){
+	    if(!object.hasOwnProperty(key)){continue;}
+	    var _key = encodeURIComponent(key);
+	    var values = object[key];
+	    if(isArray(values)){
+	      for(var i=0,l=values.length; i<l; i++){
+	        query.push(_key + '=' + encodeURIComponent(values[i]));
+	      }
+	    }else{
+	      query.push(_key + '=' + encodeURIComponent(values));
+	    }
+	  }
+	  return (query.length === 0 ? '' : '?') + query.join('&');
+	}
+	
+	// Get param, if has more than one, return the first one.
+	// if has no-one, return null.
+	//
+	// @param {String} key, param name.
+	// @return {String, null}
+	Url.prototype.getParam = function(key){
+	  return this._query.hasOwnProperty(key) ? this._query[key][0] : null;
+	};
+	
+	// Get params if has more than one.
+	// @param {String} key, param name.
+	// @return {Array} params.
+	Url.prototype.getParams = function(key){
+	  return this._query.hasOwnProperty(key) ? this._query[key] : [];
+	};
+	
+	// Delete param.
+	// TODO: delete spec name and values param.
+	// @param {String} name, param name.
+	// @return {Url} this.
+	Url.prototype.delParam = function(name){
+	  try{
+	    delete this._query[name];
+	    this.search = makeQueryString(this._query);
+	  }catch(ex){}
+	  return this;
+	};
+	
+	// Add or replace params.
+	// @param {String} name, param name.
+	// @param {String} value, param values.
+	// @return {Url} this.
+	Url.prototype.setParam = function(name, value){
+	  if(!isArray(value)){value = [value];}
+	  this._query[name] = value;
+	  this.search = makeQueryString(this._query);
+	  return this;
+	};
+	
+	// Add params.
+	// @param {String} name, param name.
+	// @param {String,Array} value, param values.
+	// @return {Url} this.
+	Url.prototype.addParam = function(name, value){
+	  if(!isArray(value)){value = [value];}
+	  if(this._query.hasOwnProperty(name)){
+	    this._query[name] = this._query[name].concat(value);
+	  }else{
+	    this._query[name] = value;
+	  }
+	  this.search = makeQueryString(this._query);
+	  return this;
+	};
+	
+	// Clear all param datas.
+	// @return {Url} this.
+	Url.prototype.clearParams = function(){
+	  this._query = {};
+	  this.search = makeQueryString(this._query);
+	  return this;
+	};
+	
+	Url.prototype.toString = function(){
+	  return this.protocol + '//' +
+	    (this.username ? this.username + ':' + this.password + '@' : '') +
+	    this.hostname +
+	    // default port donot print.
+	    (this.port ? ':' + this.port : '') +
+	    this.path + makeQueryString(this._query) + this.hash;
+	};
+	
+	Url.verify = function(uri){
+	  return RE_URL.test(uri);
+	};
+	
+	function isArray(object){
+	  return Object.prototype.toString.call(object) === "[object Array]";
+	}
+	
+	
+	module.exports = Url;
+
+
+/***/ },
+/* 3 */
+/***/ function(module, exports) {
 
 	module.exports = {
 	"èr":"二贰",
@@ -1607,8 +1784,8 @@ this["pinyin"] =
 
 
 /***/ },
-/* 3 */
-/***/ function(module, exports, __webpack_require__) {
+/* 4 */
+/***/ function(module, exports) {
 
 	// 带音标字符。
 	module.exports = {
@@ -1643,7 +1820,7 @@ this["pinyin"] =
 
 
 /***/ },
-/* 4 */
+/* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process, module) {
@@ -1688,7 +1865,7 @@ this["pinyin"] =
 	  // 拼音词库，node 版无需使用压缩合并的拼音库。
 	  PINYIN_DICT = module["require"]("./dict-zi");
 	}else{
-	  PINYIN_DICT = buildPinyinCache(__webpack_require__(2));
+	  PINYIN_DICT = buildPinyinCache(__webpack_require__(3));
 	}
 	
 	
@@ -1704,7 +1881,7 @@ this["pinyin"] =
 	  FIRST_LETTER: 4 // 仅保留首字母。
 	};
 	// 带音标字符。
-	var PHONETIC_SYMBOL = __webpack_require__(3);
+	var PHONETIC_SYMBOL = __webpack_require__(4);
 	var re_phonetic_symbol_source = "";
 	for(var k in PHONETIC_SYMBOL){
 	    re_phonetic_symbol_source += k;
@@ -1894,59 +2071,75 @@ this["pinyin"] =
 	
 	module.exports = pinyin;
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6), __webpack_require__(5)(module)))
-
-/***/ },
-/* 5 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = function(module) {
-		if(!module.webpackPolyfill) {
-			module.deprecate = function() {};
-			module.paths = [];
-			// module.parent = undefined by default
-			module.children = [];
-			module.webpackPolyfill = 1;
-		}
-		return module;
-	}
-
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6), __webpack_require__(7)(module)))
 
 /***/ },
 /* 6 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
 	// shim for using process in browser
 	
 	var process = module.exports = {};
 	var queue = [];
 	var draining = false;
+	var currentQueue;
+	var queueIndex = -1;
+	
+	function cleanUpNextTick() {
+	    draining = false;
+	    if (currentQueue.length) {
+	        queue = currentQueue.concat(queue);
+	    } else {
+	        queueIndex = -1;
+	    }
+	    if (queue.length) {
+	        drainQueue();
+	    }
+	}
 	
 	function drainQueue() {
 	    if (draining) {
 	        return;
 	    }
+	    var timeout = setTimeout(cleanUpNextTick);
 	    draining = true;
-	    var currentQueue;
+	
 	    var len = queue.length;
 	    while(len) {
 	        currentQueue = queue;
 	        queue = [];
-	        var i = -1;
-	        while (++i < len) {
-	            currentQueue[i]();
+	        while (++queueIndex < len) {
+	            currentQueue[queueIndex].run();
 	        }
+	        queueIndex = -1;
 	        len = queue.length;
 	    }
+	    currentQueue = null;
 	    draining = false;
+	    clearTimeout(timeout);
 	}
+	
 	process.nextTick = function (fun) {
-	    queue.push(fun);
-	    if (!draining) {
+	    var args = new Array(arguments.length - 1);
+	    if (arguments.length > 1) {
+	        for (var i = 1; i < arguments.length; i++) {
+	            args[i - 1] = arguments[i];
+	        }
+	    }
+	    queue.push(new Item(fun, args));
+	    if (queue.length === 1 && !draining) {
 	        setTimeout(drainQueue, 0);
 	    }
 	};
 	
+	// v8 likes predictible objects
+	function Item(fun, array) {
+	    this.fun = fun;
+	    this.array = array;
+	}
+	Item.prototype.run = function () {
+	    this.fun.apply(null, this.array);
+	};
 	process.title = 'browser';
 	process.browser = true;
 	process.env = {};
@@ -1974,6 +2167,22 @@ this["pinyin"] =
 	    throw new Error('process.chdir is not supported');
 	};
 	process.umask = function() { return 0; };
+
+
+/***/ },
+/* 7 */
+/***/ function(module, exports) {
+
+	module.exports = function(module) {
+		if(!module.webpackPolyfill) {
+			module.deprecate = function() {};
+			module.paths = [];
+			// module.parent = undefined by default
+			module.children = [];
+			module.webpackPolyfill = 1;
+		}
+		return module;
+	}
 
 
 /***/ }

@@ -51,22 +51,6 @@
 /* 1 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = function(module) {
-		if(!module.webpackPolyfill) {
-			module.deprecate = function() {};
-			module.paths = [];
-			// module.parent = undefined by default
-			module.children = [];
-			module.webpackPolyfill = 1;
-		}
-		return module;
-	}
-
-
-/***/ },
-/* 2 */
-/***/ function(module, exports, __webpack_require__) {
-
 	/* WEBPACK VAR INJECTION */(function(Buffer) {/*!
 	 * The buffer module from node.js, for the browser.
 	 *
@@ -1505,7 +1489,23 @@
 	  }
 	}
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2).Buffer))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1).Buffer))
+
+/***/ },
+/* 2 */
+/***/ function(module, exports) {
+
+	module.exports = function(module) {
+		if(!module.webpackPolyfill) {
+			module.deprecate = function() {};
+			module.paths = [];
+			// module.parent = undefined by default
+			module.children = [];
+			module.webpackPolyfill = 1;
+		}
+		return module;
+	}
+
 
 /***/ },
 /* 3 */
@@ -2796,11 +2796,11 @@
 	  , true ? module : {exports: {}}
 	);
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)(module), __webpack_require__(2).Buffer))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)(module), __webpack_require__(1).Buffer))
 
 /***/ },
 /* 4 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
 	module.exports = {
 	"èr":"二贰",
@@ -4351,7 +4351,7 @@
 
 /***/ },
 /* 5 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
 	// 带音标字符。
 	module.exports = {
@@ -4637,7 +4637,7 @@
 	
 	module.exports = pinyin;
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11), __webpack_require__(1)(module)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11), __webpack_require__(2)(module)))
 
 /***/ },
 /* 7 */
@@ -4961,7 +4961,7 @@
 
 /***/ },
 /* 9 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
 	exports.read = function (buffer, offset, isLE, mLen, nBytes) {
 	  var e, m
@@ -5051,7 +5051,7 @@
 
 /***/ },
 /* 10 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
 	
 	/**
@@ -5090,39 +5090,71 @@
 
 /***/ },
 /* 11 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
 	// shim for using process in browser
 	
 	var process = module.exports = {};
 	var queue = [];
 	var draining = false;
+	var currentQueue;
+	var queueIndex = -1;
+	
+	function cleanUpNextTick() {
+	    draining = false;
+	    if (currentQueue.length) {
+	        queue = currentQueue.concat(queue);
+	    } else {
+	        queueIndex = -1;
+	    }
+	    if (queue.length) {
+	        drainQueue();
+	    }
+	}
 	
 	function drainQueue() {
 	    if (draining) {
 	        return;
 	    }
+	    var timeout = setTimeout(cleanUpNextTick);
 	    draining = true;
-	    var currentQueue;
+	
 	    var len = queue.length;
 	    while(len) {
 	        currentQueue = queue;
 	        queue = [];
-	        var i = -1;
-	        while (++i < len) {
-	            currentQueue[i]();
+	        while (++queueIndex < len) {
+	            currentQueue[queueIndex].run();
 	        }
+	        queueIndex = -1;
 	        len = queue.length;
 	    }
+	    currentQueue = null;
 	    draining = false;
+	    clearTimeout(timeout);
 	}
+	
 	process.nextTick = function (fun) {
-	    queue.push(fun);
-	    if (!draining) {
+	    var args = new Array(arguments.length - 1);
+	    if (arguments.length > 1) {
+	        for (var i = 1; i < arguments.length; i++) {
+	            args[i - 1] = arguments[i];
+	        }
+	    }
+	    queue.push(new Item(fun, args));
+	    if (queue.length === 1 && !draining) {
 	        setTimeout(drainQueue, 0);
 	    }
 	};
 	
+	// v8 likes predictible objects
+	function Item(fun, array) {
+	    this.fun = fun;
+	    this.array = array;
+	}
+	Item.prototype.run = function () {
+	    this.fun.apply(null, this.array);
+	};
 	process.title = 'browser';
 	process.browser = true;
 	process.env = {};
