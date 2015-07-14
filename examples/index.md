@@ -33,11 +33,11 @@ textarea{width:90%; height:100px;}
 
 <script type="text/spm">
 var pinyin = require('pinyin');
-var Url2 = require('url');
+var Url = require('url');
 
 var $ = function(id){return document.getElementById(id);}
 var styles = document.getElementsByName("style");
-var han = new Url2(location.href).getParam("han");
+var han = new Url(location.href).getParam("han");
 
 function build(){
   var han = $("input").value;
