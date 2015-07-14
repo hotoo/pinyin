@@ -31,32 +31,32 @@ textarea{width:90%; height:100px;}
 </div>
 
 
-<script>
-seajs.use(['../src/pinyin', 'url'], function(pinyin, Url){
+<script type="text/spm">
+var pinyin = require('pinyin');
+var Url2 = require('url');
 
-  var $ = function(id){return document.getElementById(id);}
-  var styles = document.getElementsByName("style");
-  var han = new Url(location.href).getParam("han");
+var $ = function(id){return document.getElementById(id);}
+var styles = document.getElementsByName("style");
+var han = new Url2(location.href).getParam("han");
 
-  function build(){
-    var han = $("input").value;
-    var style = "STYLE_TONE";
-    for(var i=0,l=styles.length; i<l; i++){
-      if(styles[i].checked){
-        style = styles[i].value;
-      }
-    }
-    $("output").value = pinyin(han, {
-      style: pinyin[style]
-    }).join(" ");
-  };
-
-  $("input").onkeyup = build;
+function build(){
+  var han = $("input").value;
+  var style = "STYLE_TONE";
   for(var i=0,l=styles.length; i<l; i++){
-    styles[i].onclick = build;
+    if(styles[i].checked){
+      style = styles[i].value;
+    }
   }
+  $("output").value = pinyin(han, {
+    style: pinyin[style]
+  }).join(" ");
+};
 
-  $("input").value = han;
-  build();
-});
+$("input").onkeyup = build;
+for(var i=0,l=styles.length; i<l; i++){
+  styles[i].onclick = build;
+}
+
+$("input").value = han;
+build();
 </script>
