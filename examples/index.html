@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>pinyin - 演示文档</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="generator" content="nico-spm 0.5.3" />
+    <meta name="generator" content="nico-spm 0.5.5" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link type="image/x-icon" href="/favicon.ico" rel="icon">
     <link rel="stylesheet" href="../static/css/normalize.css" />
@@ -77,7 +77,7 @@ if (!location.port) {
 <article class="hentry">
   <h1 class="entry-title">演示文档</h1>
   <div class="entry-content">
-    <style>
+    <!--filepath:examples/index.md --> <style>
 textarea{width:90%; height:100px;}
 </style>
 
@@ -157,7 +157,7 @@ seajs.use(['../src/pinyin', 'url'], function(pinyin, Url){
       seajs.use("../static/js/arale-qrcode.js?nowrap", function(QRCode) {
         var url = location.href;
         if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
-          url = url.replace(location.hostname, '10.15.102.125');
+          url = url.replace(location.hostname, '10.15.101.13');
         }
         var el = new QRCode({
           text: url,

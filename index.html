@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>pinyin - 汉字拼音转换工具。</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="generator" content="nico-spm 0.5.3" />
+    <meta name="generator" content="nico-spm 0.5.5" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link type="image/x-icon" href="/favicon.ico" rel="icon">
     <link rel="stylesheet" href="./static/css/normalize.css" />
@@ -77,7 +77,7 @@ if (!location.port) {
 <article class="hentry">
   <h1 class="entry-title">汉字拼音转换工具。</h1>
   <div class="entry-content">
-    <p><a href="https://www.npmjs.com/package/pinyin"><img src="https://img.shields.io/npm/v/pinyin.svg?style=flat" alt="NPM version"></a>
+    <!--filepath:README.md --> <p><a href="https://www.npmjs.com/package/pinyin"><img src="https://img.shields.io/npm/v/pinyin.svg?style=flat" alt="NPM version"></a>
 <a href="http://spmjs.io/package/pinyin"><img src="http://spmjs.io/badge/pinyin" alt="spm version"></a>
 <a href="https://travis-ci.org/hotoo/pinyin"><img src="https://travis-ci.org/hotoo/pinyin.svg" alt="Build Status"></a>
 <a href="https://coveralls.io/r/hotoo/pinyin"><img src="https://coveralls.io/repos/hotoo/pinyin/badge.svg?branch=master" alt="Coverage Status"></a></p>
@@ -104,6 +104,10 @@ console.log(pinyin(<span class="string">"中心"</span>, {
   heteronym: <span class="literal">true</span>               <span class="comment">// 启用多音字模式</span>
 }));                            <span class="comment">// [ [ 'zhōng', 'zhòng' ], [ 'xīn' ] ]</span>
 console.log(pinyin(<span class="string">"中心"</span>, {
+  heteronym: <span class="literal">true</span>,              <span class="comment">// 启用多音字模式</span>
+  segment: <span class="literal">true</span>                 <span class="comment">// 启用分词，以解决多音字问题。</span>
+}));                            <span class="comment">// [ [ 'zhōng' ], [ 'xīn' ] ]</span>
+console.log(pinyin(<span class="string">"中心"</span>, {
   style: pinyin.STYLE_INITIALS, <span class="comment">// 设置拼音风格</span>
   heteronym: <span class="literal">true</span>
 }));                            <span class="comment">// [ [ 'zh' ], [ 'x' ] ]</span></code></pre></div><p>命令行：</p>
@@ -113,6 +117,8 @@ $ pinyin -h</code></pre></div><h2 id="api">API<a href="#api" class="anchor">¶</
 <p>options 是可选的，可以设定拼音风格，或打开多音字选项。</p>
 <p>返回二维数组，第一维每个数组项位置对应每个中文字符串位置。
 第二维是各个汉字的读音列表，多音字会有多个拼音项。</p>
+<h3 id="参数-lt-boolean-gt-options-segment">参数 <code>&lt;Boolean&gt; options.segment</code><a href="#参数-lt-boolean-gt-options-segment" class="anchor">¶</a></h3><p>是否启用分词模式，中文分词有助于极大的降低多音字问题。
+但性能会极大的下降，内存也会使用更多。</p>
 <h3 id="参数-lt-boolean-gt-options-heteronym">参数 <code>&lt;Boolean&gt; options.heteronym</code><a href="#参数-lt-boolean-gt-options-heteronym" class="anchor">¶</a></h3><p>是否启用多音字模式，默认关闭。</p>
 <p>关闭多音字模式时，返回每个汉字第一个匹配的拼音。</p>
 <p>启用多音字模式时，返回多音字的所有拼音列表。</p>
@@ -207,7 +213,7 @@ API 和使用方式完成一致。</p>
       seajs.use("./static/js/arale-qrcode.js?nowrap", function(QRCode) {
         var url = location.href;
         if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
-          url = url.replace(location.hostname, '10.15.102.125');
+          url = url.replace(location.hostname, '10.15.101.13');
         }
         var el = new QRCode({
           text: url,

@@ -272,6 +272,7 @@ body.spmjs {
 .spmjs .content-wrapper .highlight {
   background-color: transparent;
   position: relative;
+  margin: 12px 0;
 }
 .spmjs .entry-content h1 a.anchor, .spmjs .entry-content h2 a.anchor, .spmjs .entry-content h3 a.anchor, .spmjs .entry-content h4 a.anchor, .spmjs .entry-content h5 a.anchor, .spmjs .entry-content h6 a.anchor {
   margin-left: 10px;
