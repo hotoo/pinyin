@@ -4,7 +4,6 @@ os:
 language: node_js
 
 node_js:
-  - "0.10"
   - "0.11.13"
   - "0.12"
   - "iojs-1"
