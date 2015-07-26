@@ -172,6 +172,19 @@ API 和使用方式完成一致。
 [cconv](https://code.google.com/p/cconv/) 这样的转换库，虽然转换结果更
 符合本地化语境，但是对于汉字变化后的拼音来说，已经不是繁体原字的拼音了。
 
+## 捐赠
+
+如果这个模块有帮助到您，请 Star 这个仓库。
+
+你也可以选择使用支付宝或微信给我捐赠：
+
+![Alipay:hotoo.cn@gmail.com, WeChat:hotoome](http://hotoo.me/images/donate-hotoo.png)
+
+或者直接捐赠给我妻子 [@lizzie](https://github.com/lizzie)：
+
+![Alipay:shenyan1985@gmail.com, WeChat:SunsetSunrising](http://hotoo.me/images/donate-lizzie.png)
+
+这两种捐赠的最终结果是一样的 :)
 
 ## 参考
 
