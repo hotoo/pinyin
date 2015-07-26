@@ -185,15 +185,3 @@ API 和使用方式完成一致。
 ![Alipay:shenyan1985@gmail.com, WeChat:SunsetSunrising](http://hotoo.me/images/donate-lizzie.png)
 
 这两种捐赠的最终结果是一样的 :)
-
-## 参考
-
-* [在线汉语字典](http://zi.artx.cn/zi/)
-* [汉典网](http://www.zdic.net/)
-* [現代漢語語音語料庫](http://mmc.sinica.edu.tw/intro_c_01.html)
-* [快典网](http://py.kdd.cc/)
-* [将汉字转换成拼音](https://code.google.com/p/chinese-character-2-pinyin/)
-* [字符转拼音 javascript pinyin](http://www.cnblogs.com/jinweijie/archive/2008/02/03/1063289.html)
-  ([pinyin.rar](http://cid-80b2ed83de3c7c17.skydrive.live.com/self.aspx/Code/pinyin.rar))
-* [Javascript Input Method Editors](http://jsime.sourceforge.net/) ([中文](http://leen.name/ime/pinyin.html), [En](http://leen.name/ime/english.html))
-* [现在汉语的词汇数量及分布](http://blog.cathayan.org/item/1593)
