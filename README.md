@@ -185,3 +185,7 @@ API 和使用方式完成一致。
 ![Alipay:shenyan1985@gmail.com, WeChat:SunsetSunrising](http://hotoo.me/images/donate-lizzie.png)
 
 这两种捐赠的最终结果是一样的 :)
+
+## 许可证
+
+[MIT](http://hotoo.mit-license.org/)
