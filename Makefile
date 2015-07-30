@@ -34,7 +34,7 @@ benchmark:
 	@node tests/benchmark.test.js
 
 test-cli:
-	@mocha -R spec tests/cli.test.js
+	@mocha -R spec --timeout 5000 tests/cli.test.js
 
 test-npm:
 	@./node_modules/.bin/istanbul cover \
@@ -42,7 +42,7 @@ test-npm:
 		-- \
 		--harmony \
 		--reporter spec \
-		--timeout 5000 \
+		--timeout 2000 \
 		--inline-diffs \
 		./tests/test.js
 
