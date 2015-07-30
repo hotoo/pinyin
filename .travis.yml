@@ -17,8 +17,7 @@ before_script:
   - npm install
 
 script:
-  - node_modules/spm/bin/spm-test
-  - node_modules/.bin/mocha -R spec tests/test.js
+  - make test
 
 after_success:
   - node_modules/spm/bin/spm-test --coveralls | node_modules/.bin/coveralls
