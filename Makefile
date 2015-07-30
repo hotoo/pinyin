@@ -42,7 +42,7 @@ test-npm:
 		-- \
 		--harmony \
 		--reporter spec \
-		--timeout 2000 \
+		--timeout 5000 \
 		--inline-diffs \
 		./tests/test.js
 
