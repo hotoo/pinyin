@@ -31,7 +31,7 @@
   },
   "dependencies": {
     "commander": "~1.1.1",
-    "nodejieba": "~1.0.1"
+    "nodejieba": "~1.2.2"
   },
   "devDependencies": {
     "benchmark": "~1.0.0",
