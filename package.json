@@ -1,6 +1,6 @@
 {
   "name": "pinyin",
-  "version": "2.5.0",
+  "version": "2.5.1",
   "description": "汉语拼音转换工具。",
   "keywords": [
     "拼音",
@@ -31,14 +31,15 @@
   },
   "dependencies": {
     "commander": "~1.1.1",
-    "nodejieba": "~1.0.1"
+    "nodejieba": "~1.2.2"
   },
   "devDependencies": {
     "benchmark": "~1.0.0",
     "expect.js": "0.3.1",
+    "istanbul": "~0.3.17",
     "mocha": "1.17.1",
     "request": "2.33.0",
-    "should": "^6.0.3"
+    "should": "~7.0.2"
   },
   "spm": {
     "main": "index.js",

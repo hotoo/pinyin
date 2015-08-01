@@ -2793,7 +2793,7 @@
 	
 	})(
 	    this
-	  , true ? module : {exports: {}}
+	  ,  true ? module : {exports: {}}
 	);
 	
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)(module), __webpack_require__(1).Buffer))
@@ -4956,7 +4956,7 @@
 	
 		exports.toByteArray = b64ToByteArray
 		exports.fromByteArray = uint8ToBase64
-	}(false ? (this.base64js = {}) : exports))
+	}( false ? (this.base64js = {}) : exports))
 
 
 /***/ },

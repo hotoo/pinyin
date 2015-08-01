@@ -41,7 +41,7 @@ if (!location.port) {
       <h1>
           <a href="./">Pinyin</a>
       </h1>
-      <p class="sidebar-version">Version: <a href="http://spmjs.io/package/pinyin" title="">2.5.0</a></p>
+      <p class="sidebar-version">Version: <a href="http://spmjs.io/package/pinyin" title="">2.5.1</a></p>
         <p class="sidebar-description" data-keyword="拼音">汉语拼音转换工具。</p>
         <a class="sidebar-source" href="https://github.com/hotoo/pinyin" target="_blank">View the Project</a>
         <ul class="sidebar-navigation" role="navigation">
@@ -172,21 +172,13 @@ API 和使用方式完成一致。</p>
 </tbody>
 </table>
 <p>由于这些区别，测试不同运行环境的用例也不尽相同。</p>
-<h3 id="为什么不使用更好的繁简转换？">为什么不使用更好的繁简转换？<a href="#为什么不使用更好的繁简转换？" class="anchor">¶</a></h3><p>对于拼音来说，把繁简汉字做简单的映射并转换成拼音是合理的。
-而使用类似 <a href="https://github.com/BYVoid/OpenCC">OpenCC</a>
-<a href="https://code.google.com/p/cconv/">cconv</a> 这样的转换库，虽然转换结果更
-符合本地化语境，但是对于汉字变化后的拼音来说，已经不是繁体原字的拼音了。</p>
-<h2 id="参考">参考<a href="#参考" class="anchor">¶</a></h2><ul>
-<li><a href="http://zi.artx.cn/zi/">在线汉语字典</a></li>
-<li><a href="http://www.zdic.net/">汉典网</a></li>
-<li><a href="http://mmc.sinica.edu.tw/intro_c_01.html">現代漢語語音語料庫</a></li>
-<li><a href="http://py.kdd.cc/">快典网</a></li>
-<li><a href="https://code.google.com/p/chinese-character-2-pinyin/">将汉字转换成拼音</a></li>
-<li><a href="http://www.cnblogs.com/jinweijie/archive/2008/02/03/1063289.html">字符转拼音 javascript pinyin</a>
-(<a href="http://cid-80b2ed83de3c7c17.skydrive.live.com/self.aspx/Code/pinyin.rar">pinyin.rar</a>)</li>
-<li><a href="http://jsime.sourceforge.net/">Javascript Input Method Editors</a> (<a href="http://leen.name/ime/pinyin.html">中文</a>, <a href="http://leen.name/ime/english.html">En</a>)</li>
-<li><a href="http://blog.cathayan.org/item/1593">现在汉语的词汇数量及分布</a></li>
-</ul>
+<h2 id="捐赠">捐赠<a href="#捐赠" class="anchor">¶</a></h2><p>如果这个模块有帮助到您，请 Star 这个仓库。</p>
+<p>你也可以选择使用支付宝或微信给我捐赠：</p>
+<p><img src="http://hotoo.me/images/donate-hotoo.png" alt="Alipay:hotoo.cn@gmail.com, WeChat:hotoome"></p>
+<p>或者直接捐赠给我妻子 <a href="https://github.com/lizzie">@lizzie</a>：</p>
+<p><img src="http://hotoo.me/images/donate-lizzie.png" alt="Alipay:shenyan1985@gmail.com, WeChat:SunsetSunrising"></p>
+<p>这两种捐赠的最终结果是一样的 :)</p>
+<h2 id="许可证">许可证<a href="#许可证" class="anchor">¶</a></h2><p><a href="http://hotoo.mit-license.org/">MIT</a></p>
 
   </div>
 </article>
@@ -213,7 +205,7 @@ API 和使用方式完成一致。</p>
       seajs.use("./static/js/arale-qrcode.js?nowrap", function(QRCode) {
         var url = location.href;
         if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
-          url = url.replace(location.hostname, '10.15.101.13');
+          url = url.replace(location.hostname, '10.22.28.91');
         }
         var el = new QRCode({
           text: url,

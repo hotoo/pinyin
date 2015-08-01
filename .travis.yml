@@ -4,7 +4,6 @@ os:
 language: node_js
 
 node_js:
-  - "0.10"
   - "0.11.13"
   - "0.12"
   - "iojs-1"
@@ -18,8 +17,8 @@ before_script:
   - npm install
 
 script:
-  - node_modules/spm/bin/spm-test
-  - node_modules/.bin/mocha -R spec tests/test.js
+  - make test
 
 after_success:
   - node_modules/spm/bin/spm-test --coveralls | node_modules/.bin/coveralls
+  - cat coverage/lcov.info | node_modules/.bin/coveralls
