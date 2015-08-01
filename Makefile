@@ -48,9 +48,9 @@ test-npm:
 
 
 test-spm:
-	@spm test
+	@spm test --coveralls
 
-test: test-npm test-spm test-cli benchmark
+test: test-spm test-npm test-cli benchmark
 
 output = _site/coverage.html
 coverage: build-doc

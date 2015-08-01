@@ -21,4 +21,3 @@ script:
 
 after_success:
   - cat coverage/lcov.info | node_modules/.bin/coveralls
-  - node_modules/spm/bin/spm-test --coveralls | node_modules/.bin/coveralls
