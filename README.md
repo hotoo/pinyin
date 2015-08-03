@@ -16,6 +16,8 @@
 [coveralls-badge]: https://coveralls.io/repos/hotoo/pinyin/badge.svg?branch=master
 [coveralls-url]: https://coveralls.io/r/hotoo/pinyin
 
+[English Documention](README-us_EN.md)
+
 转换中文字符为拼音。可以用于汉字注音、排序、检索。
 
 > 注：这个版本同时支持在 Node 和 Web 浏览器环境运行，
@@ -40,7 +42,7 @@ via npm:
 npm install pinyin
 ```
 
-via spm3:
+via spm:
 
 ```bash
 spm install pinyin
@@ -86,12 +88,14 @@ options 是可选的，可以设定拼音风格，或打开多音字选项。
 返回二维数组，第一维每个数组项位置对应每个中文字符串位置。
 第二维是各个汉字的读音列表，多音字会有多个拼音项。
 
-### 参数 `<Boolean> options.segment`
+## 参数
+
+### `<Boolean> options.segment`
 
 是否启用分词模式，中文分词有助于极大的降低多音字问题。
 但性能会极大的下降，内存也会使用更多。
 
-### 参数 `<Boolean> options.heteronym`
+### `<Boolean> options.heteronym`
 
 是否启用多音字模式，默认关闭。
 
@@ -99,17 +103,19 @@ options 是可选的，可以设定拼音风格，或打开多音字选项。
 
 启用多音字模式时，返回多音字的所有拼音列表。
 
-### 参数 `<Object> options.style`
+### `<Object> options.style`
 
 指定拼音 风格。可以通过以下几种 `STYLE_` 开头的静态属性进行指定。
 
-### 静态属性 `.STYLE_NORMAL`
+## 静态属性
+
+### `.STYLE_NORMAL`
 
 普通风格，即不带音标。
 
 如：`pin yin`
 
-### 静态属性 `.STYLE_TONE`
+### `.STYLE_TONE`
 
 声调风格，拼音声调在韵母第一个字母上。
 
@@ -117,21 +123,19 @@ options 是可选的，可以设定拼音风格，或打开多音字选项。
 
 如：`pīn yīn`
 
-### 静态属性 `.STYLE_TONE2`
+### `.STYLE_TONE2`
 
 声调风格 2，即拼音声调在各个拼音之后，用数字 [0-4] 进行表示。
 
 如：`pin1 yin1`
 
-### 静态属性 `.STYLE_INITIALS`
+### `.STYLE_INITIALS`
 
 声母风格，只返回各个拼音的声母部分。
 
 如：`中国` 的拼音 `zh g`
 
-例外，对于只有韵母的汉字（如『爱、啊』等），会先转成不带音标的普通风格。
-
-### 静态属性 `.STYLE_FIRST_LETTER`
+### `.STYLE_FIRST_LETTER`
 
 首字母风格，只返回拼音的首字母部分。
 
