@@ -1,5 +1,5 @@
 
-# PinYin for Han （汉字）
+# pinyin for Han （汉字）
 
 ---
 
@@ -177,7 +177,7 @@ or donate my dear wife [@lizzie](https://github.com/lizzie) direct:
 
 ![Alipay:shenyan1985@gmail.com, WeChat:SunsetSunrising](http://hotoo.me/images/donate-lizzie.png)
 
-The two donate way wile have the same result.
+The two donate way will have the same result.
 
 ## License
 
