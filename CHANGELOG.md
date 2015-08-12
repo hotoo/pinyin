@@ -1,6 +1,15 @@
 
 # CHANGELOG
 
+## 2.6.0 (2015-08-12)
+
+* deps(nodejieba): nodejieba is optional dependency now. fixed #45.
+* test(eslint): update code style and test by eslint.
+
+## 2.5.1 (2015-08-01)
+
+* deps(nodejieba): upgrade nodejieba@1.2.2
+
 ## 2.5.0 (2015-06-18)
 
 * featute（分词）: 增加分词选项，默认不开启分词（不兼容选项） #45

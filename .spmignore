@@ -7,5 +7,7 @@ tests
 examples
 test
 src/phrases-dict.js
+src/pinyin-dict.js
+src/dict-zi.js
 tools/
 .travis.yml
