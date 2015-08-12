@@ -2802,6 +2802,7 @@
 /* 4 */
 /***/ function(module, exports) {
 
+	/* global module */
 	module.exports = {
 	"èr":"二贰",
 	"shí":"十时实蚀",
@@ -2816,8 +2817,8 @@
 	"jiǔ":"九久酒玖灸韭",
 	"ér":"儿而",
 	"bā":"八巴疤叭芭捌笆",
-	"jī,jǐ":"几",
-	"liǎo,le":"了",
+	"jǐ,jī":"几",
+	"le,liǎo":"了",
 	"lì":"力历厉立励利例栗粒吏沥荔俐莉砾雳痢",
 	"dāo":"刀",
 	"nǎi":"乃奶",
@@ -2851,7 +2852,7 @@
 	"fán":"凡烦矾樊",
 	"xī":"夕西吸希析牺息悉惜稀锡溪熄膝昔晰犀熙嬉蟋",
 	"wán":"丸完玩顽",
-	"yāo,mó,ma,me":"么",
+	"me,mó,ma,yāo":"么",
 	"guǎng,ān":"广",
 	"wáng,wú":"亡",
 	"mén":"门们",
@@ -2878,7 +2879,7 @@
 	"zhuān":"专砖",
 	"yuán":"元园原圆援缘源袁猿辕",
 	"yún":"云匀耘",
-	"zā,zhā,zhá":"扎",
+	"zhā,zā,zhá":"扎",
 	"mù":"木目牧墓幕暮慕沐募睦穆",
 	"wǔ":"五午伍武侮舞捂鹉",
 	"tīng":"厅听",
@@ -2895,7 +2896,7 @@
 	"bǐ":"比彼笔鄙匕秕",
 	"jiē":"皆阶接街秸",
 	"hù":"互户护沪",
-	"qiē,qiè":"切",
+	"qiè,qiē":"切",
 	"wǎ,wà":"瓦",
 	"zhǐ":"止旨址纸指趾",
 	"tún,zhūn":"屯",
@@ -2913,13 +2914,13 @@
 	"qì":"气弃汽器迄泣",
 	"shēng":"升生声牲笙甥",
 	"cháng,zhǎng":"长",
-	"shí,shén":"什",
+	"shén,shí":"什",
 	"piàn,piān":"片",
-	"pū,pú":"仆",
+	"pú,pū":"仆",
 	"huà,huā":"化",
 	"bì":"币必毕闭毙碧蔽弊避壁庇蓖痹璧",
 	"chóu,qiú":"仇",
-	"zhǎo,zhuǎ":"爪",
+	"zhuǎ,zhǎo":"爪",
 	"jǐn,jìn":"仅",
 	"réng":"仍",
 	"fù,fǔ":"父",
@@ -2944,7 +2945,7 @@
 	"huǒ":"火伙",
 	"fāng":"方芳",
 	"dǒu,dòu":"斗",
-	"wéi,wèi":"为",
+	"wèi,wéi":"为",
 	"dìng":"订定锭",
 	"jì":"计记技忌际季剂迹既继寄绩妓荠寂鲫冀",
 	"xīn":"心辛欣新薪锌",
@@ -2954,7 +2955,7 @@
 	"kǒng":"孔恐",
 	"duì":"队对",
 	"bàn":"办半扮伴瓣绊",
-	"yú,yǔ":"予",
+	"yǔ,yú":"予",
 	"yǔn":"允陨",
 	"quàn":"劝",
 	"shū":"书叔殊梳舒疏输蔬抒枢淑",
@@ -2966,7 +2967,7 @@
 	"jī":"击饥圾机肌鸡积基激讥叽唧畸箕",
 	"dǎ,dá":"打",
 	"qiǎo":"巧",
-	"zhèng,zhēng":"正挣症",
+	"zhèng,zhēng":"正症挣",
 	"pū":"扑",
 	"bā,pá":"扒",
 	"gān":"甘肝竿柑",
@@ -2986,13 +2987,13 @@
 	"miè":"灭蔑",
 	"píng":"平评凭瓶萍坪",
 	"dōng":"东冬",
-	"qiǎ,kǎ":"卡",
+	"kǎ,qiǎ":"卡",
 	"běi,bèi":"北",
 	"yè":"业页夜液谒腋",
 	"jiù":"旧救就舅臼疚",
 	"shuài":"帅蟀",
 	"guī":"归规闺硅瑰",
-	"zhān,zhàn":"占",
+	"zhàn,zhān":"占",
 	"dàn":"旦但诞淡蛋氮",
 	"qiě,jū":"且",
 	"yè,xié":"叶",
@@ -3008,7 +3009,7 @@
 	"diāo":"叼雕刁碉",
 	"jiào":"叫轿较窖酵",
 	"lìng":"另",
-	"tāo,dāo":"叨",
+	"dāo,tāo":"叨",
 	"sì":"四寺饲肆",
 	"tàn":"叹炭探碳",
 	"qiū":"丘秋蚯",
@@ -3018,13 +3019,13 @@
 	"xiān":"仙先掀锨",
 	"yí":"仪宜姨移遗夷胰",
 	"bái":"白",
-	"zī,zǐ,zǎi":"仔",
+	"zǎi,zǐ,zī":"仔",
 	"chì":"斥赤翅",
 	"tā":"他它塌",
 	"guā":"瓜刮",
 	"hū":"乎呼忽",
 	"cóng":"丛",
-	"líng,lǐng,lìng":"令",
+	"lìng,líng,lǐng":"令",
 	"yòng":"用",
 	"shuǎi":"甩",
 	"yìn":"印",
@@ -3034,7 +3035,7 @@
 	"fàn":"犯饭泛范贩",
 	"cè":"册厕测策",
 	"wài":"外",
-	"chǔ,chù":"处",
+	"chù,chǔ":"处",
 	"niǎo":"鸟",
 	"bāo":"包胞苞褒",
 	"zhǔ":"主煮嘱拄",
@@ -3080,9 +3081,8 @@
 	"yáng":"扬阳杨洋",
 	"dì,de":"地",
 	"sǎo,sào":"扫",
-	"cháng,chǎng":"场",
+	"chǎng,cháng":"场",
 	"ěr":"耳尔饵",
-	"gòng,gōng":"共",
 	"máng":"芒忙盲茫",
 	"xiǔ":"朽",
 	"pǔ,pò,pō,piáo":"朴",
@@ -3105,10 +3105,10 @@
 	"liè":"列劣烈猎",
 	"guǐ":"轨鬼诡",
 	"xié,yá,yé,yú,xú":"邪",
-	"jiā,jiá,gā,xiá":"夹",
+	"jiá,jiā,gā,xiá":"夹",
 	"chéng":"成呈诚承城程惩橙",
 	"mài":"迈麦卖",
-	"huá,huà":"划",
+	"huà,huá":"划",
 	"zhì":"至志帜制质治致秩智置挚掷窒滞稚",
 	"cǐ":"此",
 	"zhēn":"贞针侦珍真斟榛",
@@ -3116,7 +3116,7 @@
 	"guāng":"光",
 	"dāng,dàng":"当",
 	"zǎo":"早枣澡蚤藻",
-	"tǔ,tù":"吐",
+	"tù,tǔ":"吐",
 	"xià,hè":"吓",
 	"chóng":"虫崇",
 	"tuán":"团",
@@ -3125,7 +3125,7 @@
 	"diào":"吊钓掉",
 	"yīn":"因阴音姻茵",
 	"chī":"吃嗤痴",
-	"má,mǎ,ma":"吗",
+	"ma,má,mǎ":"吗",
 	"yǔ":"屿宇羽",
 	"fān":"帆翻",
 	"huí":"回茴蛔",
@@ -3249,8 +3249,8 @@
 	"chāo":"抄钞超",
 	"bà":"坝爸霸",
 	"gòng":"贡",
-	"zhē,zhé,shé":"折",
-	"qiāng,qiǎng,chēng":"抢",
+	"zhé,shé,zhē":"折",
+	"qiǎng,qiāng,chēng":"抢",
 	"zhuā":"抓",
 	"xiào":"孝笑效哮啸",
 	"pāo":"抛",
@@ -3280,12 +3280,12 @@
 	"cūn":"村",
 	"qiú":"求球囚",
 	"xìng":"杏幸性姓",
-	"gēng,gèng":"更",
+	"gèng,gēng":"更",
 	"liǎng":"两",
 	"lì,lí":"丽",
 	"shù":"束述树竖恕庶墅漱",
 	"dòu":"豆逗痘",
-	"huán,hái":"还",
+	"hái,huán":"还",
 	"fǒu,pǐ":"否",
 	"lái":"来莱",
 	"lián":"连怜帘莲联廉镰",
@@ -3293,7 +3293,7 @@
 	"zhù,chú":"助",
 	"dāi":"呆",
 	"kuàng":"旷况矿框眶",
-	"yā,ya":"呀",
+	"ya,yā":"呀",
 	"zú":"足族",
 	"dūn":"吨蹲墩",
 	"kùn":"困",
@@ -3302,7 +3302,7 @@
 	"yuán,yún,yùn":"员",
 	"chuàn":"串",
 	"chuī":"吹炊",
-	"bā,ba":"吧",
+	"ba,bā":"吧",
 	"hǒu":"吼",
 	"gǎng":"岗",
 	"bié,biè":"别",
@@ -3320,7 +3320,7 @@
 	"zuò":"作坐座做",
 	"líng":"伶灵铃陵零龄玲凌菱蛉翎",
 	"dī":"低堤滴",
-	"yōng,yòng":"佣",
+	"yòng,yōng":"佣",
 	"nǐ":"你拟",
 	"zhù":"住注驻柱祝铸贮蛀",
 	"zào":"皂灶造燥躁噪",
@@ -3342,17 +3342,18 @@
 	"xì,jì":"系",
 	"chuáng":"床",
 	"kù":"库裤酷",
-	"yīng,yìng":"应",
+	"yìng,yīng":"应",
 	"lěng":"冷",
 	"zhè,zhèi":"这",
 	"xù":"序叙绪续絮蓄旭恤酗婿",
 	"xián":"闲贤弦咸衔嫌涎舷",
 	"jiān,jiàn":"间监",
 	"pàn":"判盼叛畔",
-	"mèn,mēn":"闷",
+	"mēn,mèn":"闷",
 	"wāng":"汪",
 	"dì,tì,tuí":"弟",
-	"shā,shà":"沙煞",
+	"shā,shà":"沙",
+	"shà,shā":"煞",
 	"càn":"灿",
 	"wò":"沃卧握",
 	"méi,mò":"没",
@@ -3377,7 +3378,7 @@
 	"zhāng":"张章彰樟",
 	"gǎi":"改",
 	"lù":"陆录鹿路赂",
-	"ā,ē":"阿",
+	"ē,ā":"阿",
 	"zǔ":"阻组祖诅",
 	"miào":"妙庙",
 	"yāo":"妖腰邀夭吆",
@@ -3436,7 +3437,7 @@
 	"sōng":"松",
 	"qiāng":"枪腔",
 	"gòu":"构购够垢",
-	"sāng,sàng":"丧",
+	"sàng,sāng":"丧",
 	"huà":"画话桦",
 	"huò":"或货获祸惑霍",
 	"cì,cī":"刺",
@@ -3468,9 +3469,9 @@
 	"gù":"固故顾雇",
 	"áng":"昂",
 	"zhōng":"忠终钟盅衷",
-	"ní,ne":"呢",
+	"ne,ní":"呢",
 	"àn":"岸按案暗",
-	"tiè,tiě,tiē":"帖",
+	"tiě,tiē,tiè,":"帖",
 	"luó":"罗萝锣箩骡螺逻",
 	"kǎi":"凯慨",
 	"lǐng,líng":"岭",
@@ -3481,12 +3482,12 @@
 	"guāi":"乖",
 	"gǎn":"秆赶敢感橄",
 	"hé,hè,huó,huò,hú":"和",
-	"gōng,gòng":"供",
+	"gòng,gōng":"供共",
 	"wěi,wēi":"委",
 	"cè,zè,zhāi":"侧",
 	"pèi":"佩配沛",
 	"pò,pǎi":"迫",
-	"dí,dì,de":"的",
+	"de,dì,dí":"的",
 	"pá":"爬",
 	"suǒ":"所索锁琐",
 	"jìng":"径竞竟敬静境镜靖",
@@ -3523,7 +3524,7 @@
 	"xiè,yì":"泄",
 	"lèi":"泪类",
 	"zhān":"沾粘毡瞻",
-	"bó,pō":"泊",
+	"pō,bó":"泊",
 	"pào,pāo":"泡",
 	"xiè":"泻卸屑械谢懈蟹",
 	"ní,nì":"泥",
@@ -3603,7 +3604,7 @@
 	"shěng,xǐng":"省",
 	"xiāo,xuē":"削",
 	"zhǎ":"眨",
-	"hōng,hǒng,hòng":"哄",
+	"hǒng,hōng,hòng":"哄",
 	"xiǎn":"显险",
 	"mào,mò":"冒",
 	"yǎ,yā":"哑",
@@ -3619,22 +3620,22 @@
 	"pǐn":"品",
 	"mà":"骂",
 	"huá,huā":"哗",
-	"yān,yàn,yè":"咽",
+	"yè,yàn,yān":"咽",
 	"zán,zǎ":"咱",
 	"hā,hǎ,hà":"哈",
 	"yǎo":"咬舀",
 	"nǎ,něi,na,né":"哪",
-	"ké,hāi":"咳",
+	"hāi,ké":"咳",
 	"xiá":"峡狭霞匣侠暇辖",
 	"gǔ,gū":"骨",
 	"gāng,gàng":"钢",
 	"tiē":"贴",
-	"yuè,yào":"钥",
+	"yào,yuè":"钥",
 	"kàn,kān":"看",
 	"jǔ":"矩举",
 	"zěn":"怎",
 	"xuǎn":"选癣",
-	"zhǒng,zhòng,chóng":"种",
+	"zhòng,zhǒng,chóng":"种",
 	"miǎo":"秒渺藐",
 	"kē":"科棵颗磕蝌",
 	"biàn,pián":"便",
@@ -3683,7 +3684,7 @@
 	"zhà,zhá":"炸",
 	"zǒng":"总",
 	"làn":"烂滥",
-	"páo,bāo,pào":"炮",
+	"pào,páo,bāo":"炮",
 	"tì":"剃惕替屉涕",
 	"sǎ,xǐ":"洒",
 	"zhuó":"浊啄灼茁卓酌",
@@ -3708,7 +3709,7 @@
 	"méi":"眉梅煤霉玫枚媒楣",
 	"hái":"孩",
 	"wá":"娃",
-	"mǔ,lǎo":"姥",
+	"lǎo,mǔ":"姥",
 	"nù":"怒",
 	"hè":"贺赫褐鹤",
 	"róu":"柔揉蹂",
@@ -3737,7 +3738,7 @@
 	"zhé":"哲辙",
 	"rè":"热",
 	"wǎn":"挽晚碗惋婉",
-	"āi,ái":"挨",
+	"ái,āi":"挨",
 	"mò,mù":"莫",
 	"è,wù,ě,wū":"恶",
 	"tóng":"桐铜童彤瞳",
@@ -3754,16 +3755,16 @@
 	"mián":"眠绵棉",
 	"shài":"晒",
 	"jǐn":"紧锦谨",
-	"yùn,yūn":"晕",
-	"huǎng,huàng":"晃",
+	"yūn,yùn":"晕",
+	"huàng,huǎng":"晃",
 	"shǎng":"晌赏",
 	"ēn":"恩",
-	"āi,ài":"唉",
+	"ài,āi":"唉",
 	"ā,á,ǎ,à,a":"啊",
 	"bà,ba,pí":"罢",
 	"zéi":"贼",
 	"tiě":"铁",
-	"zuān,zuàn":"钻",
+	"zuàn,zuān":"钻",
 	"qiān,yán":"铅",
 	"quē":"缺",
 	"tè":"特",
@@ -3775,7 +3776,7 @@
 	"chēng,chèn,chèng":"称",
 	"tòu":"透",
 	"zhài":"债寨",
-	"dǎo,dào":"倒",
+	"dào,dǎo":"倒",
 	"tǎng,cháng":"倘",
 	"chàng,chāng":"倡",
 	"juàn":"倦绢眷",
@@ -3801,8 +3802,8 @@
 	"liáng,liàng":"凉量",
 	"táng":"唐堂塘膛糖棠搪",
 	"pōu":"剖",
-	"xù,chù":"畜",
-	"páng,bàng":"旁",
+	"chù,xù":"畜",
+	"páng,bàng":"旁磅",
 	"lǚ":"旅屡吕侣铝缕履",
 	"fěn":"粉",
 	"liào":"料镣",
@@ -3819,7 +3820,7 @@
 	"tàng":"烫",
 	"yǒng,chōng":"涌",
 	"huǐ":"悔毁",
-	"qiǎo,qiāo":"悄",
+	"qiāo,qiǎo":"悄",
 	"hài":"害亥骇",
 	"jiā,jia,jie":"家",
 	"kuān":"宽",
@@ -3829,6 +3830,7 @@
 	"dú,dòu":"读",
 	"zǎi":"宰",
 	"shàn,shān":"扇",
+	"shān,shàn":"苫",
 	"wà":"袜",
 	"xiáng":"祥翔",
 	"shuí":"谁",
@@ -3836,7 +3838,7 @@
 	"bèi,pī":"被",
 	"tiáo,diào,zhōu":"调",
 	"yuān":"冤鸳渊",
-	"bāo,bō":"剥",
+	"bō,bāo":"剥",
 	"ruò":"弱",
 	"péi":"陪培赔",
 	"niáng":"娘",
@@ -3870,9 +3872,9 @@
 	"chí,shi":"匙",
 	"xuán":"悬玄漩",
 	"mī,mí":"眯",
-	"lā,la":"啦",
+	"la,lā":"啦",
 	"shé,yí":"蛇",
-	"léi,lěi,lèi":"累",
+	"lèi,léi,lěi":"累",
 	"zhǎn,chán":"崭",
 	"quān,juàn,juān":"圈",
 	"yín":"银吟淫",
@@ -3900,8 +3902,8 @@
 	"hén":"痕",
 	"kāng":"康糠慷",
 	"xuán,xuàn":"旋",
-	"zhuó,zháo,zhāo,zhe":"着",
-	"shuài,lǜ":"率",
+	"zhe,zhuó,zháo,zhāo":"着",
+	"lǜ,shuài":"率",
 	"gài,gě,hé":"盖",
 	"cū":"粗",
 	"lín,lìn":"淋",
@@ -3916,7 +3918,7 @@
 	"móu":"谋",
 	"mì":"密蜜觅",
 	"huǎng":"谎恍幌",
-	"dàn,tán":"弹",
+	"tán,dàn":"弹",
 	"suí":"随",
 	"yǐn,yìn":"隐",
 	"jǐng,gěng":"颈",
@@ -3938,10 +3940,10 @@
 	"rě":"惹",
 	"sàn,sǎn":"散",
 	"dǒng":"董懂",
-	"gé,gě":"葛",
+	"gě,gé":"葛",
 	"pú":"葡菩蒲",
 	"zhāo,cháo":"朝",
-	"là,luò,lào":"落",
+	"luò,là,lào":"落",
 	"kuí":"葵魁",
 	"bàng":"棒傍谤",
 	"yǐ,yī":"椅",
@@ -3949,7 +3951,7 @@
 	"gùn,hùn":"棍",
 	"bī":"逼",
 	"zhí,shi":"殖",
-	"shà,xià":"厦",
+	"xià,shà":"厦",
 	"liè,liě":"裂",
 	"xióng":"雄熊",
 	"zàn":"暂赞",
@@ -3966,7 +3968,7 @@
 	"chuǎn":"喘",
 	"hē,hè,yè":"喝",
 	"hóu":"喉猴",
-	"pū,pù":"铺",
+	"pù,pū":"铺",
 	"hēi":"黑",
 	"guō":"锅郭",
 	"ruì":"锐瑞",
@@ -3993,7 +3995,7 @@
 	"zūn":"尊遵",
 	"pǔ":"普谱圃浦",
 	"gǎng,jiǎng":"港",
-	"zēng,céng":"曾",
+	"céng,zēng":"曾",
 	"wēn":"温瘟",
 	"kě":"渴",
 	"zhā":"渣",
@@ -4015,8 +4017,8 @@
 	"tián,zhèn":"填",
 	"gǎo":"搞稿镐",
 	"suàn":"蒜算",
-	"mēng,méng,měng":"蒙",
-	"jīn,jìn":"禁",
+	"méng,mēng,měng":"蒙",
+	"jìn,jīn":"禁",
 	"lóu":"楼娄",
 	"lài":"赖癞",
 	"lù,liù":"碌",
@@ -4043,11 +4045,11 @@
 	"liū,liù":"溜",
 	"gǔn":"滚",
 	"sāi,sài,sè":"塞",
-	"bì,pì":"辟",
+	"pì,bì":"辟",
 	"dié":"叠蝶谍碟",
-	"féng,fèng":"缝",
+	"fèng,féng":"缝",
 	"qiáng":"墙",
-	"piē,piě":"撇",
+	"piě,piē":"撇",
 	"zhāi":"摘斋",
 	"shuāi":"摔",
 	"mó,mú":"模",
@@ -4056,7 +4058,7 @@
 	"niàng":"酿",
 	"zāo":"遭糟",
 	"suān":"酸",
-	"cháng,shang":"裳",
+	"shang,cháng":"裳",
 	"sòu":"嗽",
 	"là":"蜡辣",
 	"qiāo":"锹敲跷",
@@ -4070,7 +4072,7 @@
 	"zhē":"遮",
 	"duān":"端",
 	"màn":"漫慢曼幔",
-	"piāo,piǎo,piào":"漂",
+	"piāo,piào,piǎo":"漂",
 	"lòu":"漏陋",
 	"sài":"赛",
 	"nèn":"嫩",
@@ -4095,7 +4097,7 @@
 	"dé":"德",
 	"mó,mā":"摩",
 	"shú":"熟秫赎",
-	"hū,hú,hù":"糊",
+	"hú,hū,hù":"糊",
 	"pī,pǐ":"劈",
 	"cháo":"潮巢",
 	"cāo":"操糙",
@@ -4122,7 +4124,7 @@
 	"jiáo,jué,jiào":"嚼",
 	"rǎng,rāng":"嚷",
 	"chǔn":"蠢",
-	"lòu,lù":"露",
+	"lù,lòu":"露",
 	"náng,nāng":"囊",
 	"dǎi":"歹",
 	"rǒng":"冗",
@@ -4141,9 +4143,9 @@
 	"zhī,zī":"吱",
 	"ǒu,ōu,òu":"呕",
 	"nà,nè":"呐",
-	"qiāng,qiàng":"呛",
-	"dùn,tún":"囤",
-	"háng,kēng":"吭",
+	"qiàng,qiāng":"呛",
+	"tún,dùn":"囤",
+	"kēng,háng":"吭",
 	"shǔn":"吮",
 	"diàn,tián":"佃",
 	"sì,cì":"伺",
@@ -4156,13 +4158,12 @@
 	"kē,kě":"坷",
 	"tuò,tà,zhí":"拓",
 	"fú,bì":"拂",
-	"níng,nǐng,nìng":"拧",
-	"ǎo,ào,niù":"拗",
+	"nǐng,níng,nìng":"拧",
+	"ào,ǎo,niù":"拗",
 	"kē,hē":"苛",
-	"shān,shàn":"苫",
-	"yǎn,yān":"奄",
+	"yān,yǎn":"奄",
 	"hē,a,kē":"呵",
-	"kā,gā":"咖",
+	"gā,kā":"咖",
 	"biǎn":"贬匾",
 	"jiǎo,yáo":"侥",
 	"chà,shā":"刹",
@@ -4170,7 +4171,7 @@
 	"wèng":"瓮",
 	"nüè,yào":"疟",
 	"páng":"庞螃",
-	"méng,máng":"氓",
+	"máng,méng":"氓",
 	"gē,yì":"疙",
 	"jǔ,jù":"沮",
 	"zú,cù":"卒",
@@ -4180,16 +4181,16 @@
 	"mí,mǐ":"弥",
 	"qì,qiè,xiè":"契",
 	"xié,jiā":"挟",
-	"duǒ,duò":"垛",
+	"duò,duǒ":"垛",
 	"jiá":"荚颊",
 	"zhà,shān,shi,cè":"栅",
 	"bó,bèi":"勃",
 	"zhóu,zhòu":"轴",
 	"nüè":"虐",
-	"liě,liē,lié,lie":"咧",
+	"liē,liě,lié,lie":"咧",
 	"dǔn":"盹",
 	"xūn":"勋",
-	"yō,yo":"哟",
+	"yo,yō":"哟",
 	"mī":"咪",
 	"qiào,xiào":"俏",
 	"hóu,hòu":"侯",
@@ -4201,15 +4202,15 @@
 	"xuàn":"炫",
 	"píng,bǐng":"屏",
 	"nà,nuó":"娜",
-	"bà,pá":"耙",
+	"pá,bà":"耙",
 	"gěng":"埂耿梗",
 	"niè":"聂镊孽",
 	"mǎng":"莽",
 	"qī,xī":"栖",
-	"gǔ,jiǎ":"贾",
+	"jiǎ,gǔ":"贾",
 	"chěng":"逞",
 	"pēng":"砰烹",
-	"lào,láo":"唠",
+	"láo,lào":"唠",
 	"bàng,bèng":"蚌",
 	"gōng,zhōng":"蚣",
 	"li,lǐ,lī":"哩",
@@ -4220,7 +4221,7 @@
 	"mǎo":"铆",
 	"ǎn":"俺",
 	"sǒng":"耸",
-	"jué,juè":"倔",
+	"juè,jué":"倔",
 	"yīn,yān,yǐn":"殷",
 	"guàng":"逛",
 	"něi":"馁",
@@ -4272,13 +4273,13 @@
 	"hān":"酣憨",
 	"sū":"酥",
 	"záo":"凿",
-	"qiáo,qiào":"翘",
+	"qiào,qiáo":"翘",
 	"zhā,chā":"喳",
 	"bǒ":"跛",
-	"gé,há":"蛤",
+	"há,gé":"蛤",
 	"qiàn,kàn":"嵌",
 	"bāi":"掰",
-	"ā,yān":"腌",
+	"yān,ā":"腌",
 	"wàn":"腕",
 	"dūn,duì":"敦",
 	"kuì,huì":"溃",
@@ -4294,55 +4295,54 @@
 	"zhuī":"锥",
 	"tuí":"颓",
 	"sāi":"腮",
-	"liù,liú":"馏",
+	"liú,liù":"馏",
 	"nì,niào":"溺",
 	"qǐn":"寝",
 	"luǒ":"裸",
 	"miù":"谬",
 	"jiǎo,chāo":"剿",
-	"āo,áo":"熬",
+	"áo,āo":"熬",
 	"niān":"蔫",
 	"màn,wàn":"蔓",
 	"chá,chā":"碴",
 	"xūn,xùn":"熏",
 	"tiǎn":"舔",
 	"sēng":"僧",
-	"dá,da":"瘩",
+	"da,dá":"瘩",
 	"guǎ":"寡",
 	"tuì,tùn":"褪",
 	"niǎn":"撵碾",
-	"liāo,liáo":"撩",
+	"liáo,liāo":"撩",
 	"cuō,zuǒ":"撮",
 	"ruǐ":"蕊",
-	"bàng,páng":"磅",
 	"cháo,zhāo":"嘲",
 	"biē":"憋鳖",
 	"hēi,mò":"嘿",
-	"chuáng,zhuàng":"幢",
+	"zhuàng,chuáng":"幢",
 	"jī,qǐ":"稽",
 	"lǒu":"篓",
 	"lǐn":"凛檩",
-	"biē,biě":"瘪",
-	"lǎo,lào,liáo":"潦",
+	"biě,biē":"瘪",
+	"liáo,lào,lǎo":"潦",
 	"chéng,dèng":"澄",
-	"léi,lèi":"擂",
+	"lèi,léi":"擂",
 	"piáo":"瓢",
 	"shà":"霎",
-	"má,mò":"蟆",
+	"mò,má":"蟆",
 	"qué":"瘸",
 	"liáo,liǎo":"燎",
-	"liǎo,liào":"瞭",
-	"sāo,sào":"臊",
+	"liào,liǎo":"瞭",
+	"sào,sāo":"臊",
 	"mí,méi":"糜",
 	"ái":"癌",
 	"tún":"臀",
-	"huō,huò,huá":"豁",
+	"huò,huō,huá":"豁",
 	"pù,bào":"瀑",
 	"chuō":"戳",
 	"zǎn,cuán":"攒",
 	"cèng":"蹭",
 	"bò,bǒ":"簸",
-	"bù,bó":"簿",
+	"bó,bù":"簿",
 	"bìn":"鬓",
 	"suǐ":"髓",
 	"ráng":"瓤"
@@ -4389,7 +4389,8 @@
 /* 6 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(process, module) {
+	/* WEBPACK VAR INJECTION */(function(process, module) {"use strict";
+	
 	var isNode = typeof process === "object" &&
 	  process.toString() === "[object process]";
 	
@@ -4408,12 +4409,12 @@
 	
 	  for(var py in dict_combo){
 	    hans = dict_combo[py];
-	    for(var i=0,han,l=hans.length; i<l; i++){
+	    for(var i = 0, han, l = hans.length; i < l; i++){
 	      han = hans.charCodeAt(i);
 	      if(!uncomboed.hasOwnProperty(han)){
 	        uncomboed[han] = py;
 	      }else{
-	        uncomboed[han] += ","+py;
+	        uncomboed[han] += "," + py;
 	      }
 	    }
 	  }
@@ -4422,10 +4423,18 @@
 	}
 	
 	function segment(hans) {
-	    jieba = jieba || module['require']('nodejieba');
-	    // 词语拼音库。
-	    PHRASES_DICT = PHRASES_DICT || module["require"]("./phrases-dict");
-	    return jieba.cut(hans)
+	  try {
+	    jieba = jieba || module["require"]("nodejieba");
+	  } catch (ex) {
+	    console.error();
+	    console.error("    Segment need nodejieba, please run '$ npm install nodejieba'.");
+	    console.error("    分词需要使用 nodejieba 模块，请运行 '$ npm install nodejieba' 并确保安装完成。");
+	    console.error();
+	    throw ex;
+	  }
+	  // 词语拼音库。
+	  PHRASES_DICT = PHRASES_DICT || module["require"]("./phrases-dict");
+	  return jieba.cut(hans);
 	}
 	if(isNode){
 	  // 拼音词库，node 版无需使用压缩合并的拼音库。
@@ -4438,8 +4447,8 @@
 	// 声母表。
 	var INITIALS = "zh,ch,sh,b,p,m,f,d,t,n,l,g,k,h,j,q,x,r,z,c,s,yu,y,w".split(",");
 	// 韵母表。
-	var FINALS = "ang,eng,ing,ong,an,en,in,un,er,ai,ei,ui,ao,ou,iu,ie,ve,a,o,e,i,u,v".split(",");
-	var PINYIN_STYLE =  {
+	//var FINALS = "ang,eng,ing,ong,an,en,in,un,er,ai,ei,ui,ao,ou,iu,ie,ve,a,o,e,i,u,v".split(",");
+	var PINYIN_STYLE = {
 	  NORMAL: 0,  // 普通风格，不带音标。
 	  TONE: 1,    // 标准风格，音标在韵母的第一个字母上。
 	  TONE2: 2,   // 声调中拼音之后，使用数字 1~4 标识。
@@ -4452,7 +4461,7 @@
 	for(var k in PHONETIC_SYMBOL){
 	    re_phonetic_symbol_source += k;
 	}
-	var RE_PHONETIC_SYMBOL = new RegExp('(['+re_phonetic_symbol_source+'])', 'g');
+	var RE_PHONETIC_SYMBOL = new RegExp("([" + re_phonetic_symbol_source + "])", "g");
 	var RE_TONE2 = /([aeoiuvnm])([0-4])$/;
 	var DEFAULT_OPTIONS = {
 	  style: PINYIN_STYLE.TONE, // 风格
@@ -4469,9 +4478,9 @@
 	  var obj = {};
 	  for(var k in origin){
 	    if(more.hasOwnProperty(k)){
-	      obj[k] = more[k]
+	      obj[k] = more[k];
 	    }else{
-	      obj[k] = origin[k]
+	      obj[k] = origin[k];
 	    }
 	  }
 	  return obj;
@@ -4519,14 +4528,18 @@
 	// @return {Array} 返回拼音列表，多音字会有多个拼音项。
 	function single_pinyin(han, options){
 	
-	  if("string" !== typeof han){return [];}
+	  if(typeof han !== "string"){
+	    return [];
+	  }
 	  if(han.length !== 1){
 	    return single_pinyin(han.charAt(0), options);
 	  }
 	
 	  var hanCode = han.charCodeAt(0);
 	
-	  if(!PINYIN_DICT[hanCode]){return [han];}
+	  if(!PINYIN_DICT[hanCode]){
+	    return [han];
+	  }
 	
 	  var pys = PINYIN_DICT[hanCode].split(",");
 	  if(!options.heteronym){
@@ -4536,9 +4549,11 @@
 	  // 临时存储已存在的拼音，避免多音字拼音转换为非注音风格出现重复。
 	  var py_cached = {};
 	  var pinyins = [];
-	  for(var i=0,py,l=pys.length; i<l; i++){
+	  for(var i = 0, py, l = pys.length; i < l; i++){
 	    py = toFixed(pys[i], options.style);
-	    if(py_cached.hasOwnProperty(py)){continue;}
+	    if(py_cached.hasOwnProperty(py)){
+	      continue;
+	    }
 	    py_cached[py] = py;
 	
 	    pinyins.push(py);
@@ -4565,7 +4580,7 @@
 	      }
 	    });
 	  }else{
-	    for(var i=0,l=phrases.length; i<l; i++){
+	    for(var i = 0, l = phrases.length; i < l; i++){
 	      py.push(single_pinyin(phrases[i], options));
 	    }
 	  }
@@ -4577,14 +4592,16 @@
 	// @return {Array} 返回的拼音列表。
 	function pinyin(hans, options){
 	
-	  if("string" !== typeof hans){return [];}
+	  if(typeof hans !== "string"){
+	    return [];
+	  }
 	
 	  options = extend(DEFAULT_OPTIONS, options || {});
 	
 	  var phrases = isNode && options.segment ? segment(hans) : hans;
 	  var pys = [];
 	
-	  for(var i=0,nohans="",firstCharCode,words,l=phrases.length; i<l; i++){
+	  for(var i = 0, nohans = "", firstCharCode, words, l = phrases.length; i < l; i++){
 	
 	    words = phrases[i];
 	    firstCharCode = words.charCodeAt(0);
@@ -4597,7 +4614,7 @@
 	        nohans = ""; // reset non-chinese words.
 	      }
 	
-	      if(words.length===1){
+	      if(words.length === 1){
 	          pys.push(single_pinyin(words, options));
 	      }else{
 	        pys = pys.concat(phrases_pinyin(words, options));
@@ -4621,7 +4638,7 @@
 	// @param {String}
 	// @return {String}
 	function initials(pinyin){
-	  for(var i=0,l=INITIALS.length; i<l; i++){
+	  for(var i = 0, l = INITIALS.length; i < l; i++){
 	    if(pinyin.indexOf(INITIALS[i]) === 0){
 	      return INITIALS[i];
 	    }

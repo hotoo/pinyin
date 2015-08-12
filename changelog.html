@@ -41,7 +41,7 @@ if (!location.port) {
       <h1>
           <a href="./">Pinyin</a>
       </h1>
-      <p class="sidebar-version">Version: <a href="http://spmjs.io/package/pinyin" title="">2.5.1</a></p>
+      <p class="sidebar-version">Version: <a href="http://spmjs.io/package/pinyin" title="">2.6.0</a></p>
         <p class="sidebar-description" data-keyword="拼音">汉语拼音转换工具。</p>
         <a class="sidebar-source" href="https://github.com/hotoo/pinyin" target="_blank">View the Project</a>
         <ul class="sidebar-navigation" role="navigation">
@@ -51,6 +51,10 @@ if (!location.port) {
           <li><a class="issue-link" href="https://github.com/hotoo/pinyin/issues" target="_blank">Issues</a></li>
         </ul>
         
+<ol class="sidenav">
+  <li><a href="CHANGELOG.html">CHANGELOG</a></li>
+  <li><a href="README-us_EN.html">pinyin for Han （汉字）</a></li>
+</ol>
 
         <div class="qrcode-wrapper">
           <i class="icon">
@@ -103,7 +107,7 @@ if (!location.port) {
       seajs.use("./static/js/arale-qrcode.js?nowrap", function(QRCode) {
         var url = location.href;
         if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
-          url = url.replace(location.hostname, '10.22.28.91');
+          url = url.replace(location.hostname, '10.15.103.75');
         }
         var el = new QRCode({
           text: url,

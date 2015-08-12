@@ -4,7 +4,6 @@ os:
 language: node_js
 
 node_js:
-  - "0.11.13"
   - "0.12"
   - "iojs-1"
   - "iojs-2"
@@ -20,5 +19,4 @@ script:
   - make test
 
 after_success:
-  - node_modules/spm/bin/spm-test --coveralls | node_modules/.bin/coveralls
   - cat coverage/lcov.info | node_modules/.bin/coveralls

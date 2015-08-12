@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <title>pinyin - 汉字拼音转换工具。</title>
+    <title>pinyin - pinyin for Han （汉字）</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="nico-spm 0.5.5" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -51,6 +51,10 @@ if (!location.port) {
           <li><a class="issue-link" href="https://github.com/hotoo/pinyin/issues" target="_blank">Issues</a></li>
         </ul>
         
+<ol class="sidenav">
+  <li><a href="CHANGELOG.html">CHANGELOG</a></li>
+  <li><a href="README-us_EN.html">pinyin for Han （汉字）</a></li>
+</ol>
 
         <div class="qrcode-wrapper">
           <i class="icon">
@@ -75,110 +79,102 @@ if (!location.port) {
       <div class="content-wrapper">
         
 <article class="hentry">
-  <h1 class="entry-title">汉字拼音转换工具。</h1>
+  <h1 class="entry-title">pinyin for Han （汉字）</h1>
   <div class="entry-content">
-    <!--filepath:README.md --> <p><a href="https://www.npmjs.com/package/pinyin"><img src="https://img.shields.io/npm/v/pinyin.svg?style=flat" alt="NPM version"></a>
+    <!--filepath:README-us_EN.md --> <p><a href="https://www.npmjs.com/package/pinyin"><img src="https://img.shields.io/npm/v/pinyin.svg?style=flat" alt="NPM version"></a>
 <a href="http://spmjs.io/package/pinyin"><img src="http://spmjs.io/badge/pinyin" alt="spm version"></a>
 <a href="https://travis-ci.org/hotoo/pinyin"><img src="https://travis-ci.org/hotoo/pinyin.svg" alt="Build Status"></a>
 <a href="https://coveralls.io/r/hotoo/pinyin"><img src="https://coveralls.io/repos/hotoo/pinyin/badge.svg?branch=master" alt="Coverage Status"></a></p>
-<p><a href="README-us_EN.html">English Documention</a></p>
-<p>转换中文字符为拼音。可以用于汉字注音、排序、检索。</p>
+<p><a href="README.html">中文文档</a></p>
+<p>Convert Han to pinyin. useful for phonetic notation, sorting, and searching.</p>
 <blockquote>
-<p>注：这个版本同时支持在 Node 和 Web 浏览器环境运行，
-之前的 <a href="https://github.com/hotoo/node-pinyin">hotoo/node-pinyin</a> 仓库即将下线。</p>
-<p>Python 版请关注 <a href="https://github.com/mozillazg/python-pinyin">mozillazg/python-pinyin</a></p>
+<p>Note: This module both support Node and Web browser.</p>
+<p>Python version see <a href="https://github.com/mozillazg/python-pinyin">mozillazg/python-pinyin</a></p>
 </blockquote>
 <hr>
-<h2 id="特性">特性<a href="#特性" class="anchor">¶</a></h2><ul>
-<li>根据词组智能匹配最正确的拼音。</li>
-<li>支持多音字。</li>
-<li>简单的繁体支持。</li>
-<li>支持多种不同拼音风格。</li>
+<h2 id="feature">Feature<a href="#feature" class="anchor">¶</a></h2><ul>
+<li>Segmentation for heteronym words.</li>
+<li>Support Traditional and Simplified Chinese.</li>
+<li>Support multiple pinyin style.</li>
 </ul>
-<h2 id="安装">安装<a href="#安装" class="anchor">¶</a></h2><p>via npm:</p>
+<h2 id="install">Install<a href="#install" class="anchor">¶</a></h2><p>via npm:</p>
 <div class="highlight"><pre><code class="bash">npm install pinyin</code></pre></div><p>via spm:</p>
-<div class="highlight"><pre><code class="bash">spm install pinyin</code></pre></div><h2 id="用法">用法<a href="#用法" class="anchor">¶</a></h2><p>开发者：</p>
+<div class="highlight"><pre><code class="bash">spm install pinyin</code></pre></div><h2 id="usage">Usage<a href="#usage" class="anchor">¶</a></h2><p>for developer:</p>
 <div class="highlight"><pre><code class="javascript"><span class="keyword">var</span> pinyin = require(<span class="string">"pinyin"</span>);
 
 console.log(pinyin(<span class="string">"中心"</span>));    <span class="comment">// [ [ 'zhōng' ], [ 'xīn' ] ]</span>
 console.log(pinyin(<span class="string">"中心"</span>, {
-  heteronym: <span class="literal">true</span>               <span class="comment">// 启用多音字模式</span>
+  heteronym: <span class="literal">true</span>                <span class="comment">// Enable heteronym mode.</span>
 }));                            <span class="comment">// [ [ 'zhōng', 'zhòng' ], [ 'xīn' ] ]</span>
 console.log(pinyin(<span class="string">"中心"</span>, {
-  heteronym: <span class="literal">true</span>,              <span class="comment">// 启用多音字模式</span>
-  segment: <span class="literal">true</span>                 <span class="comment">// 启用分词，以解决多音字问题。</span>
+  heteronym: <span class="literal">true</span>,              <span class="comment">// Enable heteronym mode.</span>
+  segment: <span class="literal">true</span>                 <span class="comment">// Enable Chinese words eegmentation, fix most heteronym problem.</span>
 }));                            <span class="comment">// [ [ 'zhōng' ], [ 'xīn' ] ]</span>
 console.log(pinyin(<span class="string">"中心"</span>, {
-  style: pinyin.STYLE_INITIALS, <span class="comment">// 设置拼音风格</span>
+  style: pinyin.STYLE_INITIALS, <span class="comment">// Setting pinyin style.</span>
   heteronym: <span class="literal">true</span>
-}));                            <span class="comment">// [ [ 'zh' ], [ 'x' ] ]</span></code></pre></div><p>命令行：</p>
+}));                            <span class="comment">// [ [ 'zh' ], [ 'x' ] ]</span></code></pre></div><p>for cli:</p>
 <div class="highlight"><pre><code class="bash">$ pinyin 中心
 zhōng xīn
-$ pinyin -h</code></pre></div><h2 id="api">API<a href="#api" class="anchor">¶</a></h2><h3 id="方法-lt-array-gt-pinyin-words-options">方法 <code>&lt;Array&gt; pinyin(words[, options])</code><a href="#方法-lt-array-gt-pinyin-words-options" class="anchor">¶</a></h3><p>将传入的中文字符串 (words) 转换成拼音符号串。</p>
-<p>options 是可选的，可以设定拼音风格，或打开多音字选项。</p>
-<p>返回二维数组，第一维每个数组项位置对应每个中文字符串位置。
-第二维是各个汉字的读音列表，多音字会有多个拼音项。</p>
-<h2 id="参数">参数<a href="#参数" class="anchor">¶</a></h2><h3 id="lt-boolean-gt-options-segment"><code>&lt;Boolean&gt; options.segment</code><a href="#lt-boolean-gt-options-segment" class="anchor">¶</a></h3><p>是否启用分词模式，中文分词有助于极大的降低多音字问题。
-但性能会极大的下降，内存也会使用更多。</p>
-<h3 id="lt-boolean-gt-options-heteronym"><code>&lt;Boolean&gt; options.heteronym</code><a href="#lt-boolean-gt-options-heteronym" class="anchor">¶</a></h3><p>是否启用多音字模式，默认关闭。</p>
-<p>关闭多音字模式时，返回每个汉字第一个匹配的拼音。</p>
-<p>启用多音字模式时，返回多音字的所有拼音列表。</p>
-<h3 id="lt-object-gt-options-style"><code>&lt;Object&gt; options.style</code><a href="#lt-object-gt-options-style" class="anchor">¶</a></h3><p>指定拼音 风格。可以通过以下几种 <code>STYLE_</code> 开头的静态属性进行指定。</p>
-<h2 id="静态属性">静态属性<a href="#静态属性" class="anchor">¶</a></h2><h3 id="style-normal"><code>.STYLE_NORMAL</code><a href="#style-normal" class="anchor">¶</a></h3><p>普通风格，即不带音标。</p>
-<p>如：<code>pin yin</code></p>
-<h3 id="style-tone"><code>.STYLE_TONE</code><a href="#style-tone" class="anchor">¶</a></h3><p>声调风格，拼音声调在韵母第一个字母上。</p>
-<p>注：这是默认的风格。</p>
-<p>如：<code>pīn yīn</code></p>
-<h3 id="style-tone2"><code>.STYLE_TONE2</code><a href="#style-tone2" class="anchor">¶</a></h3><p>声调风格 2，即拼音声调在各个拼音之后，用数字 [0-4] 进行表示。</p>
-<p>如：<code>pin1 yin1</code></p>
-<h3 id="style-initials"><code>.STYLE_INITIALS</code><a href="#style-initials" class="anchor">¶</a></h3><p>声母风格，只返回各个拼音的声母部分。</p>
-<p>如：<code>中国</code> 的拼音 <code>zh g</code></p>
-<h3 id="style-first-letter"><code>.STYLE_FIRST_LETTER</code><a href="#style-first-letter" class="anchor">¶</a></h3><p>首字母风格，只返回拼音的首字母部分。</p>
-<p>如：<code>p y</code></p>
-<h2 id="test">Test<a href="#test" class="anchor">¶</a></h2><pre>npm test</pre><h2 id="q-amp-a">Q&amp;A<a href="#q-amp-a" class="anchor">¶</a></h2><h3 id="node-版和-web-版有什么异同？">node 版和 web 版有什么异同？<a href="#node-版和-web-版有什么异同？" class="anchor">¶</a></h3><p><code>pinyin</code> 目前可以同时运行在 Node 服务器端和 Web 浏览器端。
-API 和使用方式完成一致。</p>
-<p>但 Web 版较 Node 版稍简单，拼音库只有常用字部分，没有使用分词算法，
-并且考虑了网络传输对词库进行了压缩处理。</p>
-<p>由于分词和繁体中文的特性，部分情况下的结果也不尽相同。</p>
+$ pinyin -h</code></pre></div><h2 id="api">API<a href="#api" class="anchor">¶</a></h2><h3 id="lt-array-gt-pinyin-words-options"><code>&lt;Array&gt; pinyin(words[, options])</code><a href="#lt-array-gt-pinyin-words-options" class="anchor">¶</a></h3><p>Convert Han （汉字） to pinyin.</p>
+<p><code>options</code> argument is optional, for sepcify heteronym mode and pinyin styles.</p>
+<p>Return a <code>Array&lt;Array&lt;String&gt;&gt;</code>. If one of Han is heteronym word, it would be
+have multiple pinyin.</p>
+<h2 id="options">Options<a href="#options" class="anchor">¶</a></h2><h4 id="lt-boolean-gt-options-segment"><code>&lt;Boolean&gt; options.segment</code><a href="#lt-boolean-gt-options-segment" class="anchor">¶</a></h4><p>Enable Chinese word segmentation. Segmentation is helpful for fix heteronym
+problem, but performance will be more slow, and need more CPU and memory.</p>
+<p>Default is <code>false</code>.</p>
+<h3 id="lt-boolean-gt-options-heteronym"><code>&lt;Boolean&gt; options.heteronym</code><a href="#lt-boolean-gt-options-heteronym" class="anchor">¶</a></h3><p>Enable or disable heteronym mode. default is disabled, <code>false</code>.</p>
+<h3 id="lt-object-gt-options-style"><code>&lt;Object&gt; options.style</code><a href="#lt-object-gt-options-style" class="anchor">¶</a></h3><p>Specify pinyin style. please use static properties like <code>STYLE_*</code>.
+default is <code>.STYLE_TONE</code>. see Static Property for more.</p>
+<h2 id="static-property">Static Property<a href="#static-property" class="anchor">¶</a></h2><h3 id="style-normal"><code>.STYLE_NORMAL</code><a href="#style-normal" class="anchor">¶</a></h3><p>Normal mode.</p>
+<p>Example: <code>pin yin</code></p>
+<h3 id="style-tone"><code>.STYLE_TONE</code><a href="#style-tone" class="anchor">¶</a></h3><p>Tone style, this is default.</p>
+<p>Example: <code>pīn yīn</code></p>
+<h3 id="style-tone2"><code>.STYLE_TONE2</code><a href="#style-tone2" class="anchor">¶</a></h3><p>Another tone style, use postfix number [0-4].</p>
+<p>Example: <code>pin1 yin1</code></p>
+<h3 id="style-initials"><code>.STYLE_INITIALS</code><a href="#style-initials" class="anchor">¶</a></h3><p>Initial consonant (of a Chinese syllable).</p>
+<p>Example: pinyin of <code>中国</code> is <code>zh g</code></p>
+<p>Note: when a Han （汉字） without initial consonant, will convert to empty string.</p>
+<h3 id="style-first-letter"><code>.STYLE_FIRST_LETTER</code><a href="#style-first-letter" class="anchor">¶</a></h3><p>First letter style.</p>
+<p>Example: <code>p y</code></p>
+<h2 id="test">Test<a href="#test" class="anchor">¶</a></h2><pre>npm test</pre><h2 id="q-amp-a">Q&amp;A<a href="#q-amp-a" class="anchor">¶</a></h2><h3 id="what-39-s-the-different-node-version-and-web-version">What&#39;s the different Node version and Web version?<a href="#what-39-s-the-different-node-version-and-web-version" class="anchor">¶</a></h3><p><code>pinyin</code> support Node and Web browser now, the API and usage is complete same.</p>
+<p>But the Web version is simple than Node version. Just frequently-used dict,
+without segmentation, and the dict is compress for web.</p>
+<p>Because of Traditional and Segmentation, the convert result will be not complete same.
+and the test case have some different too.</p>
 <table>
 <thead>
 <tr>
-<th>特性</th>
-<th>Web 版</th>
-<th>Node 版</th>
+<th>Feature</th>
+<th>Web version</th>
+<th>Node version</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>拼音库</td>
-<td>常用字库。压缩、合并</td>
-<td>完整字库。不压缩、合并</td>
+<td>Dict</td>
+<td>Frequently-used Dict, Compress.</td>
+<td>Complete Dict, without Compress.</td>
 </tr>
 <tr>
-<td>分词</td>
-<td>没有分词</td>
-<td>使用分词算法，多音字拼音更准确。</td>
+<td>Segmentation</td>
+<td>NO</td>
+<td>Segmentation options.</td>
 </tr>
 <tr>
-<td>拼音频度排序</td>
-<td>有根据拼音使用频度优先级排序。</td>
-<td>同 Web 版。</td>
-</tr>
-<tr>
-<td>繁体中文</td>
-<td>没有繁体中文支持。</td>
-<td>有简单的繁简汉字转换。</td>
+<td>Traditional</td>
+<td>NO</td>
+<td>Full Traditional support.</td>
 </tr>
 </tbody>
 </table>
-<p>由于这些区别，测试不同运行环境的用例也不尽相同。</p>
-<h2 id="捐赠">捐赠<a href="#捐赠" class="anchor">¶</a></h2><p>如果这个模块有帮助到您，请 Star 这个仓库。</p>
-<p>你也可以选择使用支付宝或微信给我捐赠：</p>
+<h2 id="donate">Donate<a href="#donate" class="anchor">¶</a></h2><p>If this module is helpful for you, please Star this repository.</p>
+<p>And you have chioce donate to me via Aliapy or WeChat:</p>
 <p><img src="http://hotoo.me/images/donate-hotoo.png" alt="Alipay:hotoo.cn@gmail.com, WeChat:hotoome"></p>
-<p>或者直接捐赠给我妻子 <a href="https://github.com/lizzie">@lizzie</a>：</p>
+<p>or donate my dear wife <a href="https://github.com/lizzie">@lizzie</a> direct:</p>
 <p><img src="http://hotoo.me/images/donate-lizzie.png" alt="Alipay:shenyan1985@gmail.com, WeChat:SunsetSunrising"></p>
-<p>这两种捐赠的最终结果是一样的 :)</p>
-<h2 id="许可证">许可证<a href="#许可证" class="anchor">¶</a></h2><p><a href="http://hotoo.mit-license.org/">MIT</a></p>
+<p>The two donate way will have the same result.</p>
+<h2 id="license">License<a href="#license" class="anchor">¶</a></h2><p><a href="http://hotoo.mit-license.org/">MIT</a></p>
 
   </div>
 </article>
