@@ -41,19 +41,16 @@
     "expect.js": "0.3.1",
     "istanbul": "~0.3.17",
     "mocha": "1.17.1",
-    "request": "2.33.0",
-    "should": "~7.0.2"
+    "request": "2.33.0"
   },
   "spm": {
-    "main": "index.js",
+    "main": "./web-pinyin.js",
     "devDependencies": {
       "expect.js": "0.3.1",
       "url": "1.2.0"
     },
-    "engines": {
-      "seajs": "2.3.0"
-    },
     "tests": "tests/*-spec.js"
   },
+  "browser": "./web-pinyin.js",
   "license": "MIT"
 }

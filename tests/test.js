@@ -1,6 +1,5 @@
 
-var pinyin = require("../src/pinyin");
-
+var pinyin = require("../");
 
 var cases = [
 
