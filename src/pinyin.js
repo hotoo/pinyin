@@ -1,8 +1,8 @@
 "use strict";
 
-let PINYIN_DICT = {};
-const utils = require("./utils");
-const PINYIN_STYLE = utils.PINYIN_STYLE;
+var PINYIN_DICT = {};
+var utils = require("./utils");
+var PINYIN_STYLE = utils.PINYIN_STYLE;
 
 // 声母表。
 var INITIALS = "b,p,m,f,d,t,n,l,g,k,h,j,q,x,r,zh,ch,sh,z,c,s".split(",");

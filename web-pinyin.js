@@ -21,8 +21,8 @@ function buildPinyinCache(dict_combo){
   return uncomboed;
 }
 
-const PINYIN_DICT = buildPinyinCache(require("./data/dict-zi-web"));
-const pinyin = require("./src/pinyin");
+var PINYIN_DICT = buildPinyinCache(require("./data/dict-zi-web"));
+var pinyin = require("./src/pinyin");
 pinyin.setDict(PINYIN_DICT);
 
 module.exports = pinyin;

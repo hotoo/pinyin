@@ -86,4 +86,4 @@ dict-node:
 infrequent:
 	@node ./tools/infrequent.js > ./tools/zi/infrequent.js
 
-.PHONY: build-doc publish-doc server clean test coverage test-spm test-npm test-cli lint
+.PHONY: build-doc publish-doc server clean test coverage test-spm test-npm test-cli lint benchmark
