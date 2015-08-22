@@ -62,7 +62,7 @@ var PINYIN_STYLE = {
   TONE: 1,    // 标准风格，音标在韵母的第一个字母上。
   TONE2: 2,   // 声调中拼音之后，使用数字 1~4 标识。
   INITIALS: 3,// 仅需要声母部分。
-  FIRST_LETTER: 4 // 仅保留首字母。
+  FIRST_LETTER: 4, // 仅保留首字母。
 };
 // 带音标字符。
 var PHONETIC_SYMBOL = require("./phonetic-symbol.js");
@@ -75,7 +75,7 @@ var RE_TONE2 = /([aeoiuvnm])([0-4])$/;
 var DEFAULT_OPTIONS = {
   style: PINYIN_STYLE.TONE, // 风格
   segment: false, // 分词。
-  heteronym: false // 多音字
+  heteronym: false, // 多音字
 };
 
 

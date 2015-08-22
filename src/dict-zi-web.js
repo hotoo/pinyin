@@ -1,4 +1,3 @@
-/* global module */
 module.exports = {
 "èr":"二贰",
 "shí":"十时实蚀",
@@ -1541,5 +1540,5 @@ module.exports = {
 "bó,bù":"簿",
 "bìn":"鬓",
 "suǐ":"髓",
-"ráng":"瓤"
+"ráng":"瓤",
 };
