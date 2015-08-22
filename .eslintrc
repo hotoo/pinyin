@@ -124,7 +124,7 @@
     "block-scoped-var": 0,
     "brace-style": [0, "1tbs"],
     "camelcase": 0,
-    "comma-dangle": 0,
+    "comma-dangle": [2, "always-multiline"],
     "comma-spacing": 2,
     "comma-style": 0,
     "complexity": [0, 11],
@@ -146,7 +146,7 @@
     "guard-for-in": 0,
     "handle-callback-err": 0,
     "indent": 0,
-    "key-spacing": [2, {
+    "key-spacing": [0, {
       "beforeColon": false,
       "afterColon": true
     }],

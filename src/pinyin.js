@@ -54,7 +54,7 @@ if(isNode){
 
 
 // 声母表。
-var INITIALS = "zh,ch,sh,b,p,m,f,d,t,n,l,g,k,h,j,q,x,r,z,c,s,y,w".split(",");
+var INITIALS = "b,p,m,f,d,t,n,l,g,k,h,j,q,x,r,zh,ch,sh,z,c,s".split(",");
 // 韵母表。
 //var FINALS = "ang,eng,ing,ong,an,en,in,un,er,ai,ei,ui,ao,ou,iu,ie,ve,a,o,e,i,u,v".split(",");
 var PINYIN_STYLE = {
@@ -62,7 +62,7 @@ var PINYIN_STYLE = {
   TONE: 1,    // 标准风格，音标在韵母的第一个字母上。
   TONE2: 2,   // 声调中拼音之后，使用数字 1~4 标识。
   INITIALS: 3,// 仅需要声母部分。
-  FIRST_LETTER: 4 // 仅保留首字母。
+  FIRST_LETTER: 4, // 仅保留首字母。
 };
 // 带音标字符。
 var PHONETIC_SYMBOL = require("./phonetic-symbol.js");
@@ -75,7 +75,7 @@ var RE_TONE2 = /([aeoiuvnm])([0-4])$/;
 var DEFAULT_OPTIONS = {
   style: PINYIN_STYLE.TONE, // 风格
   segment: false, // 分词。
-  heteronym: false // 多音字
+  heteronym: false, // 多音字
 };
 
 
@@ -246,9 +246,9 @@ function pinyin(hans, options){
 // 格式化为声母(Initials)、韵母(Finals)。
 // @param {String}
 // @return {String}
-function initials(pinyin){
-  for(var i = 0, l = INITIALS.length; i < l; i++){
-    if(pinyin.indexOf(INITIALS[i]) === 0){
+function initials(pinyin) {
+  for (var i = 0, l = INITIALS.length; i < l; i++){
+    if (pinyin.indexOf(INITIALS[i]) === 0) {
       return INITIALS[i];
     }
   }
