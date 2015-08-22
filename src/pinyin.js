@@ -54,7 +54,7 @@ if(isNode){
 
 
 // 声母表。
-var INITIALS = "zh,ch,sh,b,p,m,f,d,t,n,l,g,k,h,j,q,x,r,z,c,s,y,w".split(",");
+var INITIALS = "b,p,m,f,d,t,n,l,g,k,h,j,q,x,r,zh,ch,sh,z,c,s".split(",");
 // 韵母表。
 //var FINALS = "ang,eng,ing,ong,an,en,in,un,er,ai,ei,ui,ao,ou,iu,ie,ve,a,o,e,i,u,v".split(",");
 var PINYIN_STYLE = {
@@ -246,9 +246,9 @@ function pinyin(hans, options){
 // 格式化为声母(Initials)、韵母(Finals)。
 // @param {String}
 // @return {String}
-function initials(pinyin){
-  for(var i = 0, l = INITIALS.length; i < l; i++){
-    if(pinyin.indexOf(INITIALS[i]) === 0){
+function initials(pinyin) {
+  for (var i = 0, l = INITIALS.length; i < l; i++){
+    if (pinyin.indexOf(INITIALS[i]) === 0) {
       return INITIALS[i];
     }
   }

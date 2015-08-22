@@ -54,7 +54,7 @@ var cases = [
     STYLE_NORMAL:       [["wo"]],
     STYLE_TONE:         [["wǒ"]],
     STYLE_TONE2:        [["wo3"]],
-    STYLE_INITIALS:     [["w"]],
+    STYLE_INITIALS:     [[""]],
     STYLE_FIRST_LETTER: [["w"]]
   } ],
 
@@ -88,7 +88,7 @@ var cases = [
     STYLE_NORMAL:       [["wo"],["shi"],["shui"]],
     STYLE_TONE:         [["wǒ"],["shì"],["shuí"]],
     STYLE_TONE2:        [["wo3"],["shi4"],["shui2"]],
-    STYLE_INITIALS:     [["w"],["sh"],["sh"]],
+    STYLE_INITIALS:     [[""],["sh"],["sh"]],
     STYLE_FIRST_LETTER: [["w"],["s"],["s"]]
   } ],
 
@@ -136,7 +136,7 @@ var cases = [
     STYLE_NORMAL:       [["pin"],["yin"],["(pinyin)"]],
     STYLE_TONE:         [["pīn"],["yīn"],["(pinyin)"]],
     STYLE_TONE2:        [["pin1"],["yin1"],["(pinyin)"]],
-    STYLE_INITIALS:     [["p"],["y"],["(pinyin)"]],
+    STYLE_INITIALS:     [["p"],[""],["(pinyin)"]],
     STYLE_FIRST_LETTER: [["p"],["y"],["(pinyin)"]]
   } ],
 
