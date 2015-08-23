@@ -1,6 +1,11 @@
 
 # CHANGELOG
 
+## 2.6.1 (2015-08-23)
+
+* #57, #58 根据《汉语拼音方案，`y`, `w`, 不是声母。
+* #56 `ü` (yu) 不是声母。
+
 ## 2.6.0 (2015-08-12)
 
 * deps(nodejieba): nodejieba is optional dependency now. fixed #45.
