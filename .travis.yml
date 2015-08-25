@@ -7,6 +7,7 @@ node_js:
   - "0.12"
   - "iojs-1"
   - "iojs-2"
+  - "iojs-3"
 
 install:
   - npm install spm coveralls mocha
@@ -20,3 +21,15 @@ script:
 
 after_success:
   - cat coverage/lcov.info | node_modules/.bin/coveralls
+
+# nodejieba only support g++ 4.8
+
+env:
+  - CXX=g++-4.8
+
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - g++-4.8
