@@ -11,7 +11,7 @@
 [npm-url]: https://www.npmjs.com/package/pinyin
 [spm-badge]: http://spmjs.io/badge/pinyin
 [spm-url]: http://spmjs.io/package/pinyin
-[travis-badge]: https://travis-ci.org/hotoo/pinyin.svg
+[travis-badge]: https://travis-ci.org/hotoo/pinyin.svg?branch=master
 [travis-url]: https://travis-ci.org/hotoo/pinyin
 [coveralls-badge]: https://coveralls.io/repos/hotoo/pinyin/badge.svg?branch=master
 [coveralls-url]: https://coveralls.io/r/hotoo/pinyin
