@@ -17,8 +17,6 @@ for(var k in PHONETIC_SYMBOL){
 var RE_PHONETIC_SYMBOL = new RegExp("([" + re_phonetic_symbol_source + "])", "g");
 var RE_TONE2 = /([aeoiuvnm])([0-4])$/;
 
-
-
 // 修改拼音词库表中的格式。
 // @param {String} pinyin, 单个拼音。
 // @param {PINYIN_STYLE} style, 拼音风格。
