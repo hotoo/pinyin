@@ -21,7 +21,6 @@
 转换中文字符为拼音。可以用于汉字注音、排序、检索。
 
 > 注：这个版本同时支持在 Node 和 Web 浏览器环境运行，
-> 之前的 [hotoo/node-pinyin](https://github.com/hotoo/node-pinyin) 仓库即将下线。
 >
 > Python 版请关注 [mozillazg/python-pinyin](https://github.com/mozillazg/python-pinyin)
 
