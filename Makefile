@@ -53,7 +53,7 @@ test-spm:
 lint:
 	@./node_modules/eslint/bin/eslint.js ./lib/ ./bin/ ./tests/
 
-test: lint test-npm test-cli benchmark test-spm
+test: lint test-spm test-npm test-cli benchmark
 
 output = _site/coverage.html
 coverage: build-doc
