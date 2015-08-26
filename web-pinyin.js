@@ -3,12 +3,12 @@
 // @param {Object} dict_combo, 压缩的拼音库。
 // @param {Object} 解压的拼音库。
 function buildPinyinCache(dict_combo){
-  var hans;
-  var uncomboed = {};
+  let hans;
+  let uncomboed = {};
 
-  for(var py in dict_combo){
+  for(let py in dict_combo){
     hans = dict_combo[py];
-    for(var i = 0, han, l = hans.length; i < l; i++){
+    for(let i = 0, han, l = hans.length; i < l; i++){
       han = hans.charCodeAt(i);
       if(!uncomboed.hasOwnProperty(han)){
         uncomboed[han] = py;
@@ -21,8 +21,13 @@ function buildPinyinCache(dict_combo){
   return uncomboed;
 }
 
-var PINYIN_DICT = buildPinyinCache(require("./data/dict-zi-web"));
-var pinyin = require("./src/pinyin");
-pinyin.setDict(PINYIN_DICT);
+const PINYIN_DICT = buildPinyinCache(require("./data/dict-zi-web"));
+const Pinyin = require("./src/pinyin");
+const pinyin = new Pinyin(PINYIN_DICT);
 
-module.exports = pinyin;
+module.exports = pinyin.convert.bind(pinyin);
+module.exports.STYLE_NORMAL = Pinyin.STYLE_NORMAL;
+module.exports.STYLE_TONE = Pinyin.STYLE_TONE;
+module.exports.STYLE_TONE2 = Pinyin.STYLE_TONE2;
+module.exports.STYLE_INITIALS = Pinyin.STYLE_INITIALS;
+module.exports.STYLE_FIRST_LETTER = Pinyin.STYLE_FIRST_LETTER;
