@@ -41,7 +41,6 @@ test-npm:
 	./node_modules/.bin/_mocha \
 		-- \
 		--harmony \
-		--require should \
 		--reporter spec \
 		--timeout 2000 \
 		--inline-diffs \
@@ -52,7 +51,7 @@ test-spm:
 	@spm test
 
 lint:
-	@./node_modules/eslint/bin/eslint.js ./src/pinyin.js ./tests/
+	@./node_modules/eslint/bin/eslint.js ./lib/ ./bin/ ./tests/
 
 test: lint test-spm test-npm test-cli benchmark
 
@@ -86,4 +85,4 @@ dict-node:
 infrequent:
 	@node ./tools/infrequent.js > ./tools/zi/infrequent.js
 
-.PHONY: build-doc publish-doc server clean test coverage test-spm test-npm test-cli lint
+.PHONY: build-doc publish-doc server clean test coverage test-spm test-npm test-cli lint benchmark

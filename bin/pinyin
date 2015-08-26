@@ -20,7 +20,7 @@ if (commander.args.length === 0) {
   commander.help();
 }
 
-var pinyin = require("../src/pinyin");
+var pinyin = require("../");
 var options = {
   style: pinyin["STYLE_" + (commander.style || "TONE").toUpperCase()],
   heteronym: commander.heteronym || false,

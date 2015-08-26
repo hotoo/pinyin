@@ -6,7 +6,7 @@
 textarea{width:90%; height:100px;}
 </style>
 
-### 输入[汉字](?han=简体中文汉字)
+### 输入[汉字](?han= 简体中文汉字)
 
 <div>
   <textarea id="input"></textarea>
@@ -33,11 +33,12 @@ textarea{width:90%; height:100px;}
 
 <script type="text/spm">
 var pinyin = require('pinyin');
-var Url = require('url');
+//var Url = require('url');
 
 var $ = function(id){return document.getElementById(id);}
 var styles = document.getElementsByName("style");
-var han = new Url(location.href).getParam("han");
+//var han = new Url(location.href).getParam("han");
+var han = "中文"
 
 function build(){
   var han = $("input").value;

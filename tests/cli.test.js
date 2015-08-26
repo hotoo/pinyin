@@ -1,5 +1,5 @@
 
-var should = require("should");
+var expect = require("expect.js");
 var child_process = require("child_process");
 
 var testcases = [
@@ -51,8 +51,8 @@ describe("cli: command line interface.", function() {
 
     it("$ " + testcase.command, function(done) {
       child_process.exec("bin/" + testcase.command, function(err, stdout) {
-        should.not.exist(err);
-        stdout.should.eql(testcase.stdout + "\n");
+        expect(err).to.eql(null);
+        expect(stdout).to.eql(testcase.stdout + "\n");
         done();
       });
     });
