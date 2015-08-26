@@ -1,4 +1,5 @@
 
+var expect = require("expect.js");
 var pinyin = require("../");
 
 var cases = [
@@ -165,7 +166,7 @@ function makeTest(han, opt, style){
   it("pinyin(\"" + han + "\", " + style + ") : " +
     JSON.stringify(_py) + " === " + JSON.stringify(single_pinyin), function() {
 
-    _py.should.eql(single_pinyin);
+    expect(_py).to.eql(single_pinyin);
   });
 
   // 普通多音字模式。
@@ -173,7 +174,7 @@ function makeTest(han, opt, style){
   it("pinyin(\"" + han + "\", " + style + ",heteronym) : " +
     JSON.stringify(_py2) + " === " + JSON.stringify(py), function() {
 
-    _py2.should.eql(py);
+    expect(_py2).to.eql(py);
   });
 
   // 分词多音字模式。
@@ -185,7 +186,7 @@ function makeTest(han, opt, style){
   it("pinyin(\"" + han + "\", " + style + ",heteronym,segment) : " +
     JSON.stringify(_py2s) + " === " + JSON.stringify(pys), function() {
 
-    _py2s.should.eql(pys);
+    expect(_py2s).to.eql(pys);
   });
 }
 

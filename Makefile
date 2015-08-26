@@ -41,7 +41,6 @@ test-npm:
 	./node_modules/.bin/_mocha \
 		-- \
 		--harmony \
-		--require should \
 		--reporter spec \
 		--timeout 2000 \
 		--inline-diffs \
