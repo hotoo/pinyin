@@ -1,5 +1,5 @@
 
-var pinyin = require("../src/pinyin");
+var pinyin = require("../lib/pinyin");
 
 var hans = [
   "中国(china)",

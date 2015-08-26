@@ -11,7 +11,7 @@
   ],
   "homepage": "http://pinyin.hotoo.me/",
   "author": "闲耘 <hotoo.cn@gmail.com>",
-  "main": "index.js",
+  "main": "lib/index.js",
   "bin": {
     "pinyin": "./bin/pinyin"
   },
@@ -45,7 +45,7 @@
     "request": "2.33.0"
   },
   "spm": {
-    "main": "./web-pinyin.js",
+    "main": "lib/web-pinyin.js",
     "devDependencies": {
       "expect.js": "0.3.1",
       "url": "1.2.0"
@@ -58,6 +58,6 @@
       "object-assign": "~4.0.1"
     }
   },
-  "browser": "./web-pinyin.js",
+  "browser": "lib/web-pinyin.js",
   "license": "MIT"
 }

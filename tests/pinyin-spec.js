@@ -1,6 +1,6 @@
 
 var expect = require("expect.js");
-var pinyin = require("../web-pinyin");
+var pinyin = require("../lib/web-pinyin");
 
 var cases = [
 

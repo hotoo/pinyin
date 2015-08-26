@@ -51,7 +51,7 @@ test-spm:
 	@spm test
 
 lint:
-	@./node_modules/eslint/bin/eslint.js ./src/pinyin.js ./tests/
+	@./node_modules/eslint/bin/eslint.js ./lib/ ./bin/ ./tests/
 
 test: lint test-npm test-cli benchmark test-spm
 
