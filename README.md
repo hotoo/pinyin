@@ -6,6 +6,7 @@
 [![spm version][spm-badge]][spm-url]
 [![Build Status][travis-badge]][travis-url]
 [![Coverage Status][coveralls-badge]][coveralls-url]
+[![Gittip][gittip-image]][gittip-url]
 [![NPM downloads][npm-downloads]][npm-url]
 
 
@@ -18,6 +19,8 @@
 [travis-url]: https://travis-ci.org/hotoo/pinyin
 [coveralls-badge]: https://coveralls.io/repos/hotoo/pinyin/badge.svg?branch=master
 [coveralls-url]: https://coveralls.io/r/hotoo/pinyin
+[gittip-image]: https://img.shields.io/gittip/hotoo.svg?style=flat-square
+[gittip-url]: https://www.gittip.com/hotoo/
 
 [English Documention](README-us_EN.md)
 
