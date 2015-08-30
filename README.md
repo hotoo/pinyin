@@ -6,9 +6,12 @@
 [![spm version][spm-badge]][spm-url]
 [![Build Status][travis-badge]][travis-url]
 [![Coverage Status][coveralls-badge]][coveralls-url]
+[![NPM downloads][npm-downloads]][npm-url]
+
 
 [npm-badge]: https://img.shields.io/npm/v/pinyin.svg?style=flat
 [npm-url]: https://www.npmjs.com/package/pinyin
+[npm-downloads]: http://img.shields.io/npm/dm/pinyin.svg?style=flat
 [spm-badge]: http://spmjs.io/badge/pinyin
 [spm-url]: http://spmjs.io/package/pinyin
 [travis-badge]: https://travis-ci.org/hotoo/pinyin.svg?branch=master
