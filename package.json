@@ -2,6 +2,13 @@
   "name": "pinyin",
   "version": "2.6.2",
   "description": "汉语拼音转换工具。",
+  "files": [
+    "bin",
+    "data",
+    "lib",
+    "index.js",
+    "src"
+  ],
   "keywords": [
     "拼音",
     "汉语",
