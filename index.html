@@ -41,7 +41,7 @@ if (!location.port) {
       <h1>
           <a href="./">Pinyin</a>
       </h1>
-      <p class="sidebar-version">Version: <a href="http://spmjs.io/package/pinyin" title="">2.6.2</a></p>
+      <p class="sidebar-version">Version: <a href="http://spmjs.io/package/pinyin" title="">2.7.0</a></p>
         <p class="sidebar-description" data-keyword="拼音">汉语拼音转换工具。</p>
         <a class="sidebar-source" href="https://github.com/hotoo/pinyin" target="_blank">View the Project</a>
         <ul class="sidebar-navigation" role="navigation">
@@ -79,13 +79,14 @@ if (!location.port) {
   <div class="entry-content">
     <!--filepath:README.md --> <p><a href="https://www.npmjs.com/package/pinyin"><img src="https://img.shields.io/npm/v/pinyin.svg?style=flat" alt="NPM version"></a>
 <a href="http://spmjs.io/package/pinyin"><img src="http://spmjs.io/badge/pinyin" alt="spm version"></a>
-<a href="https://travis-ci.org/hotoo/pinyin"><img src="https://travis-ci.org/hotoo/pinyin.svg" alt="Build Status"></a>
-<a href="https://coveralls.io/r/hotoo/pinyin"><img src="https://coveralls.io/repos/hotoo/pinyin/badge.svg?branch=master" alt="Coverage Status"></a></p>
+<a href="https://travis-ci.org/hotoo/pinyin"><img src="https://travis-ci.org/hotoo/pinyin.svg?branch=master" alt="Build Status"></a>
+<a href="https://coveralls.io/r/hotoo/pinyin"><img src="https://coveralls.io/repos/hotoo/pinyin/badge.svg?branch=master" alt="Coverage Status"></a>
+<a href="https://www.gittip.com/hotoo/"><img src="https://img.shields.io/gittip/hotoo.svg?style=flat-square" alt="Gittip"></a>
+<a href="https://www.npmjs.com/package/pinyin"><img src="http://img.shields.io/npm/dm/pinyin.svg?style=flat" alt="NPM downloads"></a></p>
 <p><a href="README-us_EN.html">English Documention</a></p>
 <p>转换中文字符为拼音。可以用于汉字注音、排序、检索。</p>
 <blockquote>
-<p>注：这个版本同时支持在 Node 和 Web 浏览器环境运行，
-之前的 <a href="https://github.com/hotoo/node-pinyin">hotoo/node-pinyin</a> 仓库即将下线。</p>
+<p>注：这个版本同时支持在 Node 和 Web 浏览器环境运行，</p>
 <p>Python 版请关注 <a href="https://github.com/mozillazg/python-pinyin">mozillazg/python-pinyin</a></p>
 </blockquote>
 <hr>
@@ -129,9 +130,11 @@ $ pinyin -h</code></pre></div><h2 id="api">API<a href="#api" class="anchor">¶</
 <h3 id="style-tone"><code>.STYLE_TONE</code><a href="#style-tone" class="anchor">¶</a></h3><p>声调风格，拼音声调在韵母第一个字母上。</p>
 <p>注：这是默认的风格。</p>
 <p>如：<code>pīn yīn</code></p>
-<h3 id="style-tone2"><code>.STYLE_TONE2</code><a href="#style-tone2" class="anchor">¶</a></h3><p>声调风格 2，即拼音声调在各个拼音之后，用数字 [0-4] 进行表示。</p>
+<h3 id="style-tone2"><code>.STYLE_TONE2</code><a href="#style-tone2" class="anchor">¶</a></h3><p>声调风格 2，即拼音声调以数字形式在各个拼音之后，用数字 [0-4] 进行表示。</p>
 <p>如：<code>pin1 yin1</code></p>
-<h3 id="style-initials"><code>.STYLE_INITIALS</code><a href="#style-initials" class="anchor">¶</a></h3><p>声母风格，只返回各个拼音的声母部分。</p>
+<h3 id="style-to3ne"><code>.STYLE_TO3NE</code><a href="#style-to3ne" class="anchor">¶</a></h3><p>声调风格 3，即拼音声调以数字形式在注音字符之后，用数字 [0-4] 进行表示。</p>
+<p>如：<code>pi1n yi1n</code></p>
+<h3 id="style-initials"><code>.STYLE_INITIALS</code><a href="#style-initials" class="anchor">¶</a></h3><p>声母风格，只返回各个拼音的声母部分。对于没有声母的汉字，返回空白字符串。</p>
 <p>如：<code>中国</code> 的拼音 <code>zh g</code></p>
 <h3 id="style-first-letter"><code>.STYLE_FIRST_LETTER</code><a href="#style-first-letter" class="anchor">¶</a></h3><p>首字母风格，只返回拼音的首字母部分。</p>
 <p>如：<code>p y</code></p>
@@ -205,7 +208,7 @@ API 和使用方式完成一致。</p>
       seajs.use("./static/js/arale-qrcode.js?nowrap", function(QRCode) {
         var url = location.href;
         if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
-          url = url.replace(location.hostname, '10.15.103.75');
+          url = url.replace(location.hostname, '10.15.230.110');
         }
         var el = new QRCode({
           text: url,

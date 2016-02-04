@@ -1,7 +1,14 @@
 {
   "name": "pinyin",
-  "version": "2.6.2",
+  "version": "2.7.0",
   "description": "汉语拼音转换工具。",
+  "files": [
+    "bin",
+    "data",
+    "lib",
+    "index.js",
+    "src"
+  ],
   "keywords": [
     "拼音",
     "汉语",
@@ -11,7 +18,7 @@
   ],
   "homepage": "http://pinyin.hotoo.me/",
   "author": "闲耘 <hotoo.cn@gmail.com>",
-  "main": "index.js",
+  "main": "lib/index.js",
   "bin": {
     "pinyin": "./bin/pinyin"
   },
@@ -30,7 +37,8 @@
     "test": "make test"
   },
   "dependencies": {
-    "commander": "~1.1.1"
+    "commander": "~1.1.1",
+    "object-assign": "^4.0.1"
   },
   "optionalDependencies": {
     "nodejieba": "^1.3.0"
@@ -41,19 +49,22 @@
     "expect.js": "0.3.1",
     "istanbul": "~0.3.17",
     "mocha": "1.17.1",
-    "request": "2.33.0",
-    "should": "~7.0.2"
+    "request": "2.33.0"
   },
   "spm": {
-    "main": "index.js",
+    "main": "lib/web-pinyin.js",
     "devDependencies": {
       "expect.js": "0.3.1",
       "url": "1.2.0"
     },
-    "engines": {
-      "seajs": "2.3.0"
+    "build": {
+      "babel": {}
     },
-    "tests": "tests/*-spec.js"
+    "tests": "tests/*-spec.js",
+    "dependencies": {
+      "object-assign": "~4.0.1"
+    }
   },
+  "browser": "lib/web-pinyin.js",
   "license": "MIT"
 }

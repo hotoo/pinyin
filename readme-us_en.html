@@ -41,7 +41,7 @@ if (!location.port) {
       <h1>
           <a href="./">Pinyin</a>
       </h1>
-      <p class="sidebar-version">Version: <a href="http://spmjs.io/package/pinyin" title="">2.6.2</a></p>
+      <p class="sidebar-version">Version: <a href="http://spmjs.io/package/pinyin" title="">2.7.0</a></p>
         <p class="sidebar-description" data-keyword="拼音">汉语拼音转换工具。</p>
         <a class="sidebar-source" href="https://github.com/hotoo/pinyin" target="_blank">View the Project</a>
         <ul class="sidebar-navigation" role="navigation">
@@ -83,7 +83,7 @@ if (!location.port) {
   <div class="entry-content">
     <!--filepath:README-us_EN.md --> <p><a href="https://www.npmjs.com/package/pinyin"><img src="https://img.shields.io/npm/v/pinyin.svg?style=flat" alt="NPM version"></a>
 <a href="http://spmjs.io/package/pinyin"><img src="http://spmjs.io/badge/pinyin" alt="spm version"></a>
-<a href="https://travis-ci.org/hotoo/pinyin"><img src="https://travis-ci.org/hotoo/pinyin.svg" alt="Build Status"></a>
+<a href="https://travis-ci.org/hotoo/pinyin"><img src="https://travis-ci.org/hotoo/pinyin.svg?branch=master" alt="Build Status"></a>
 <a href="https://coveralls.io/r/hotoo/pinyin"><img src="https://coveralls.io/repos/hotoo/pinyin/badge.svg?branch=master" alt="Coverage Status"></a></p>
 <p><a href="README.html">中文文档</a></p>
 <p>Convert Han to pinyin. useful for phonetic notation, sorting, and searching.</p>
@@ -130,7 +130,9 @@ default is <code>.STYLE_TONE</code>. see Static Property for more.</p>
 <p>Example: <code>pin yin</code></p>
 <h3 id="style-tone"><code>.STYLE_TONE</code><a href="#style-tone" class="anchor">¶</a></h3><p>Tone style, this is default.</p>
 <p>Example: <code>pīn yīn</code></p>
-<h3 id="style-tone2"><code>.STYLE_TONE2</code><a href="#style-tone2" class="anchor">¶</a></h3><p>Another tone style, use postfix number [0-4].</p>
+<h3 id="style-tone2"><code>.STYLE_TONE2</code><a href="#style-tone2" class="anchor">¶</a></h3><p>tone style by postfix number [0-4].</p>
+<p>Example: <code>pin1 yin1</code></p>
+<h3 id="style-to3ne"><code>.STYLE_TO3NE</code><a href="#style-to3ne" class="anchor">¶</a></h3><p>tone style by number [0-4] after phonetic notation character.</p>
 <p>Example: <code>pin1 yin1</code></p>
 <h3 id="style-initials"><code>.STYLE_INITIALS</code><a href="#style-initials" class="anchor">¶</a></h3><p>Initial consonant (of a Chinese syllable).</p>
 <p>Example: pinyin of <code>中国</code> is <code>zh g</code></p>
@@ -201,7 +203,7 @@ and the test case have some different too.</p>
       seajs.use("./static/js/arale-qrcode.js?nowrap", function(QRCode) {
         var url = location.href;
         if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
-          url = url.replace(location.hostname, '10.15.103.75');
+          url = url.replace(location.hostname, '10.15.230.110');
         }
         var el = new QRCode({
           text: url,

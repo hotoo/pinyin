@@ -1,2 +1,1 @@
-module.exports = require('../index.js')
-window['url'] = require('url');
+module.exports = require('../lib/web-pinyin.js')

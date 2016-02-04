@@ -41,7 +41,7 @@ if (!location.port) {
       <h1>
           <a href="../">Pinyin</a>
       </h1>
-      <p class="sidebar-version">Version: <a href="http://spmjs.io/package/pinyin" title="">2.6.2</a></p>
+      <p class="sidebar-version">Version: <a href="http://spmjs.io/package/pinyin" title="">2.7.0</a></p>
         <p class="sidebar-description" data-keyword="拼音">汉语拼音转换工具。</p>
         <a class="sidebar-source" href="https://github.com/hotoo/pinyin" target="_blank">View the Project</a>
         <ul class="sidebar-navigation" role="navigation">
@@ -81,7 +81,7 @@ if (!location.port) {
 textarea{width:90%; height:100px;}
 </style>
 
-<h3 id="输入汉字">输入<a href="?han=简体中文汉字">汉字</a><a href="#输入汉字" class="anchor">¶</a></h3><div>
+<h3 id="输入汉字">输入<a href="?han= 简体中文汉字">汉字</a><a href="#输入汉字" class="anchor">¶</a></h3><div>
   <textarea id="input"></textarea>
 </div>
 
@@ -104,11 +104,12 @@ textarea{width:90%; height:100px;}
 
 <script >
 var pinyin = window['pinyin'];
-var Url = window['url'];
+//var Url = require('url');
 
 var $ = function(id){return document.getElementById(id);}
 var styles = document.getElementsByName("style");
-var han = new Url(location.href).getParam("han");
+//var han = new Url(location.href).getParam("han");
+var han = "中文"
 
 function build(){
   var han = $("input").value;
@@ -157,7 +158,7 @@ build();
       seajs.use("../static/js/arale-qrcode.js?nowrap", function(QRCode) {
         var url = location.href;
         if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
-          url = url.replace(location.hostname, '10.15.103.75');
+          url = url.replace(location.hostname, '10.15.230.110');
         }
         var el = new QRCode({
           text: url,
