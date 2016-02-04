@@ -1,6 +1,10 @@
 
 # CHANGELOG
 
+## 2.7.0 (2016-02-04)
+
+* feat(TO3NE): TONE style by number [0-4] after phonetic notation character. #79
+
 ## 2.6.2 (2015-08-25)
 
 * Add iojs-3 support. #60, #61, #62.

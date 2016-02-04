@@ -121,7 +121,13 @@ Example: `pīn yīn`
 
 ### `.STYLE_TONE2`
 
-Another tone style, use postfix number [0-4].
+tone style by postfix number [0-4].
+
+Example: `pin1 yin1`
+
+### `.STYLE_TO3NE`
+
+tone style by number [0-4] after phonetic notation character.
 
 Example: `pin1 yin1`
 
