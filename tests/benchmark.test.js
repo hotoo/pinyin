@@ -1,16 +1,16 @@
 
-var memory = process.memoryUsage().rss;
-var Benchmark = require("benchmark");
-var pinyin = require("../");
+const memory = process.memoryUsage().rss;
+const Benchmark = require("benchmark");
+const pinyin = require("../");
 
-var pkg = require("../package.json");
+const pkg = require("../package.json");
 console.log(pkg.name + "@" + pkg.version);
 
 function formatNunber(num){
   return String(num).replace(/(\d)(?=(\d{3})+$)/g, "$1,");
 }
 
-var suite = new Benchmark.Suite();
+const suite = new Benchmark.Suite();
 
 suite.add("pinyin 中文", function(){
   return pinyin("中文");
@@ -45,7 +45,7 @@ suite.add("pinyin 中文", function(){
   });
 })
 .on("cycle", function(event) {
-  var mem = process.memoryUsage().rss;
+  const mem = process.memoryUsage().rss;
   console.log(String(event.target) + " memory usage: %s bytes.", formatNunber(mem - memory));
   memory = mem;
 })
