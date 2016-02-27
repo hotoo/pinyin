@@ -4716,11 +4716,11 @@
 /* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
+	"use strict";
+	
 	// 解压拼音库。
 	// @param {Object} dict_combo, 压缩的拼音库。
 	// @param {Object} 解压的拼音库。
-	"use strict";
-	
 	function buildPinyinCache(dict_combo) {
 	  var hans = undefined;
 	  var uncomboed = {};
