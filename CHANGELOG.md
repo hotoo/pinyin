@@ -1,6 +1,10 @@
 
 # CHANGELOG
 
+## 2.7.1 (2016-02-22)
+
+* fix(web): use strict. #82
+
 ## 2.7.0 (2016-02-04)
 
 * feat(TO3NE): TONE style by number [0-4] after phonetic notation character. #79
