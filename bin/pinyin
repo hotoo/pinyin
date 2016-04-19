@@ -52,4 +52,3 @@ var py = pinyin(words, options).join(separator);
 console.log(py);
 
 // vim:ft=javascript
-
