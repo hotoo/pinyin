@@ -9,6 +9,7 @@ commander.
   option('-s, --style <style>', 'pinyin styles: [NORMAL,TONE,TONE2,INITIALS,FIRST_LETTER]').
   option('-S, --segment', 'segmentation word to phrases').
   option('-h, --heteronym', 'output heteronym pinyins').
+  option('-p, --separator [separator]', 'separator between words').
   parse(process.argv);
 
 if (commander.list) {
@@ -26,8 +27,29 @@ var options = {
   heteronym: commander.heteronym || false,
   segment: commander.segment || false,
 };
+
+var separator;
+var default_separator=" ";
+switch (typeof commander.separator){
+  //User did not provide -p option
+  case "undefined":
+    separator = default_separator;
+	break;
+  //User provided -p option without parameter
+  case "boolean":
+	separator = "";
+	break;
+  //User provided -p option with parameter
+  case "string":
+	separator = commander.separator;
+	break;
+  default:
+	console.log("separator error.");
+}
+
 var words = commander.args.join(" ");
-var py = pinyin(words, options).join(" ");
+var py = pinyin(words, options).join(separator);
 console.log(py);
 
 // vim:ft=javascript
+
