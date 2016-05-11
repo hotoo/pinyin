@@ -43,6 +43,19 @@ var testcases = [
     command: "pinyin -s INITIALS 重复",
     stdout: "zh f",
   },
+  {
+    command: "pinyin -p _ 重心",
+    stdout: "zhòng_xīn",
+  },
+  {
+    command: "pinyin -p '*' -s INITIALS 重复",
+    stdout: "zh*f",
+  },
+  {
+    command: "pinyin -p '' -s normal 重复",
+    stdout: "zhongfu",
+  },
+
 ];
 
 describe("cli: command line interface.", function() {

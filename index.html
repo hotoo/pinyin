@@ -41,7 +41,7 @@ if (!location.port) {
       <h1>
           <a href="./">Pinyin</a>
       </h1>
-      <p class="sidebar-version">Version: <a href="http://spmjs.io/package/pinyin" title="">2.7.1</a></p>
+      <p class="sidebar-version">Version: <a href="http://spmjs.io/package/pinyin" title="">2.7.2</a></p>
         <p class="sidebar-description" data-keyword="拼音">汉语拼音转换工具。</p>
         <a class="sidebar-source" href="https://github.com/hotoo/pinyin" target="_blank">View the Project</a>
         <ul class="sidebar-navigation" role="navigation">
@@ -78,7 +78,6 @@ if (!location.port) {
   <h1 class="entry-title">汉字拼音转换工具。</h1>
   <div class="entry-content">
     <!--filepath:README.md --> <p><a href="https://www.npmjs.com/package/pinyin"><img src="https://img.shields.io/npm/v/pinyin.svg?style=flat" alt="NPM version"></a>
-<a href="http://spmjs.io/package/pinyin"><img src="http://spmjs.io/badge/pinyin" alt="spm version"></a>
 <a href="https://travis-ci.org/hotoo/pinyin"><img src="https://travis-ci.org/hotoo/pinyin.svg?branch=master" alt="Build Status"></a>
 <a href="https://coveralls.io/r/hotoo/pinyin"><img src="https://coveralls.io/repos/hotoo/pinyin/badge.svg?branch=master" alt="Coverage Status"></a>
 <a href="https://www.gittip.com/hotoo/"><img src="https://img.shields.io/gittip/hotoo.svg?style=flat-square" alt="Gittip"></a>
@@ -97,8 +96,7 @@ if (!location.port) {
 <li>支持多种不同拼音风格。</li>
 </ul>
 <h2 id="安装">安装<a href="#安装" class="anchor">¶</a></h2><p>via npm:</p>
-<div class="highlight"><pre><code class="bash">npm install pinyin</code></pre></div><p>via spm:</p>
-<div class="highlight"><pre><code class="bash">spm install pinyin</code></pre></div><h2 id="用法">用法<a href="#用法" class="anchor">¶</a></h2><p>开发者：</p>
+<div class="highlight"><pre><code class="bash">npm install pinyin</code></pre></div><h2 id="用法">用法<a href="#用法" class="anchor">¶</a></h2><p>开发者：</p>
 <div class="highlight"><pre><code class="javascript"><span class="keyword">var</span> pinyin = require(<span class="string">"pinyin"</span>);
 
 console.log(pinyin(<span class="string">"中心"</span>));    <span class="comment">// [ [ 'zhōng' ], [ 'xīn' ] ]</span>
@@ -175,6 +173,10 @@ API 和使用方式完成一致。</p>
 </tbody>
 </table>
 <p>由于这些区别，测试不同运行环境的用例也不尽相同。</p>
+<h3 id="为什么没有-y-w-yu-几个声母？">为什么没有 <code>y</code>, <code>w</code>, <code>yu</code> 几个声母？<a href="#为什么没有-y-w-yu-几个声母？" class="anchor">¶</a></h3><p>声母风格（INITIALS）下，“雨”、“我”、“圆”等汉字返回空字符串，因为根据《汉语拼音方案》，
+<code>y</code>，<code>w</code>，<code>ü (yu)</code> 都不是声母，在某些特定韵母无声母时，才加上 <code>y</code> 或 <code>w</code>，而 <code>ü</code> 也有其特定规则。</p>
+<p>如果你觉得这个给你带来了麻烦，那么也请小心一些无声母的汉字（如“啊”、“饿”、“按”、“昂”等）。
+这时候你也许需要的是首字母风格（FIRST_LETTER）。</p>
 <h2 id="捐赠">捐赠<a href="#捐赠" class="anchor">¶</a></h2><p>如果这个模块有帮助到您，请 Star 这个仓库。</p>
 <p>你也可以选择使用支付宝或微信给我捐赠：</p>
 <p><img src="http://hotoo.me/images/donate-hotoo.png" alt="Alipay:hotoo.cn@gmail.com, WeChat:hotoome"></p>
@@ -208,7 +210,7 @@ API 和使用方式完成一致。</p>
       seajs.use("./static/js/arale-qrcode.js?nowrap", function(QRCode) {
         var url = location.href;
         if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
-          url = url.replace(location.hostname, '10.0.0.4');
+          url = url.replace(location.hostname, '10.15.78.123');
         }
         var el = new QRCode({
           text: url,
