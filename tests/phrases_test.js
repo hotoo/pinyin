@@ -1,10 +1,11 @@
 
-var pinyin = require("../lib/pinyin");
+const pinyin = require("../lib/");
 
-var hans = [
+const hans = [
   "中国(china)",
+  "彷徨",
 ];
 
-for(var i = 0, l = hans.length; i < l; i++){
-  console.log(hans[i], pinyin(hans[i], { heteronym: true }));
-}
+hans.forEach((han) => {
+  console.log(han, pinyin(han, { heteronym: true, segment: true }));
+});
