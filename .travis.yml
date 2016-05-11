@@ -7,10 +7,9 @@ node_js:
   - "iojs-3"
 
 install:
-  - npm install spm coveralls mocha
+  - npm install coveralls
 
 before_script:
-  - node_modules/spm/bin/spm-install
   - npm install
 
 script:
