@@ -4,14 +4,11 @@
 ---
 
 [![NPM version][npm-badge]][npm-url]
-[![spm version][spm-badge]][spm-url]
 [![Build Status][travis-badge]][travis-url]
 [![Coverage Status][coveralls-badge]][coveralls-url]
 
 [npm-badge]: https://img.shields.io/npm/v/pinyin.svg?style=flat
 [npm-url]: https://www.npmjs.com/package/pinyin
-[spm-badge]: http://spmjs.io/badge/pinyin
-[spm-url]: http://spmjs.io/package/pinyin
 [travis-badge]: https://travis-ci.org/hotoo/pinyin.svg?branch=master
 [travis-url]: https://travis-ci.org/hotoo/pinyin
 [coveralls-badge]: https://coveralls.io/repos/hotoo/pinyin/badge.svg?branch=master
@@ -39,12 +36,6 @@ via npm:
 
 ```bash
 npm install pinyin
-```
-
-via spm:
-
-```bash
-spm install pinyin
 ```
 
 ## Usage

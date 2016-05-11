@@ -8,7 +8,6 @@ build:
 	@spm build
 
 publish: publish-doc
-	@spm publish
 	@npm publish
 	@git tag $(version)
 	@git push origin $(version)
@@ -22,7 +21,6 @@ watch:
 publish-doc: clean build-doc
 	@ghp-import _site
 	@git push origin gh-pages
-	@spm doc publish
 
 clean:
 	@rm -fr _site
