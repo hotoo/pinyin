@@ -160,6 +160,33 @@ var cases = [
     STYLE_FIRST_LETTER: [["z"], ["g"], ["(china)"]],
   } ],
 
+  [ "彷徨", {
+    STYLE_NORMAL:       {
+      normal: [["pang", "fang"], ["huang"]],
+      segment: [["pang"], ["huang"]],
+    },
+    STYLE_TONE:         {
+      normal: [["páng", "fǎng"], ["huáng"]],
+      segment: [["páng"], ["huáng"]],
+    },
+    STYLE_TONE2:        {
+      normal: [["pang2", "fang3"], ["huang2"]],
+      segment: [["pang2"], ["huang2"]],
+    },
+    STYLE_TO3NE:        {
+      normal: [["pa2ng", "fa3ng"], ["hua2ng"]],
+      segment: [["pa2ng"], ["hua2ng"]],
+    },
+    STYLE_INITIALS:     {
+      normal: [["p", "f"], ["h"]],
+      segment: [["p"], ["h"]],
+    },
+    STYLE_FIRST_LETTER: {
+      normal: [["p", "f"], ["h"]],
+      segment: [["p"], ["h"]],
+    },
+  } ],
+
   // 中英混合，多音字，单音词。
   [ "0套价", {
     STYLE_NORMAL:       [["0"], ["tao"], ["jia", "jie"]],
