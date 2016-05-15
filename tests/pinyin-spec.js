@@ -23,6 +23,14 @@ const cases = [
     STYLE_INITIALS:     [["zh"]],
     STYLE_FIRST_LETTER: [["z"]],
   } ],
+  [ "的", {
+    STYLE_NORMAL:       [["de"]],
+    STYLE_TONE:         [["de", "dì", "dí"]],
+    STYLE_TONE2:        [["de", "di4", "di2"]],
+    STYLE_TO3NE:        [["de", "di4", "di2"]],
+    STYLE_INITIALS:     [["d"]],
+    STYLE_FIRST_LETTER: [["d"]],
+  } ],
 
   // 元音字
   ["爱", {
