@@ -1,5 +1,6 @@
+"use strict";
 
-const memory = process.memoryUsage().rss;
+let memory = process.memoryUsage().rss;
 const Benchmark = require("benchmark");
 const pinyin = require("../");
 
