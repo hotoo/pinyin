@@ -73,6 +73,15 @@ zhōng xīn
 $ pinyin -h
 ```
 
+### 关于 Web 版如何使用
+
+首先，我建议大家应该优先考虑在服务端一次性转换拼音并将结果持久化，避免中客户端每次转换损耗性能和体验。
+
+如果你坚持中客户端使用，你可以考虑使用 [Webpack](http://webpack.github.io/) + [Babel](http://babeljs.io/) 来转换成低端浏览器的可执行代码。
+
+实在不想折腾，可以试试 https://github.com/hotoo/pinyin/tree/gh-pages/dist
+
+
 ## API
 
 ### 方法 `<Array> pinyin(words[, options])`
