@@ -1,6 +1,6 @@
 {
   "name": "pinyin",
-  "version": "2.7.3",
+  "version": "2.7.4",
   "description": "汉语拼音转换工具。",
   "files": [
     "bin",

@@ -1,6 +1,10 @@
 
 # CHANGELOG
 
+## 2.7.4 (2016-07-01)
+
+- fixed phrases dict. #102, #103.
+
 ## 2.7.3 (2016-05-15)
 
 - fixed 的's pinyin. #94, #95
