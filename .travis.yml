@@ -3,6 +3,9 @@ os:
 language: node_js
 
 node_js:
+  - "4"
+  - "5"
+  - "6"
   - "iojs-2"
   - "iojs-3"
 

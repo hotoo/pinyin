@@ -41,7 +41,7 @@ if (!location.port) {
       <h1>
           <a href="./">Pinyin</a>
       </h1>
-      <p class="sidebar-version">Version: <a href="http://spmjs.io/package/pinyin" title="">2.7.3</a></p>
+      <p class="sidebar-version">Version: <a href="http://spmjs.io/package/pinyin" title="">2.7.4</a></p>
         <p class="sidebar-description" data-keyword="拼音">汉语拼音转换工具。</p>
         <a class="sidebar-source" href="https://github.com/hotoo/pinyin" target="_blank">View the Project</a>
         <ul class="sidebar-navigation" role="navigation">
@@ -113,7 +113,10 @@ console.log(pinyin(<span class="string">"中心"</span>, {
 }));                            <span class="comment">// [ [ 'zh' ], [ 'x' ] ]</span></code></pre></div><p>命令行：</p>
 <div class="highlight"><pre><code class="bash">$ pinyin 中心
 zhōng xīn
-$ pinyin -h</code></pre></div><h2 id="api">API<a href="#api" class="anchor">¶</a></h2><h3 id="方法-lt-array-gt-pinyin-words-options">方法 <code>&lt;Array&gt; pinyin(words[, options])</code><a href="#方法-lt-array-gt-pinyin-words-options" class="anchor">¶</a></h3><p>将传入的中文字符串 (words) 转换成拼音符号串。</p>
+$ pinyin -h</code></pre></div><h3 id="关于-web-版如何使用">关于 Web 版如何使用<a href="#关于-web-版如何使用" class="anchor">¶</a></h3><p>首先，我建议大家应该优先考虑在服务端一次性转换拼音并将结果持久化，避免中客户端每次转换损耗性能和体验。</p>
+<p>如果你坚持中客户端使用，你可以考虑使用 <a href="http://webpack.github.io/">Webpack</a> + <a href="http://babeljs.io/">Babel</a> 来转换成低端浏览器的可执行代码。</p>
+<p>实在不想折腾，可以试试 <a href="https://github.com/hotoo/pinyin/tree/gh-pages/dist">https://github.com/hotoo/pinyin/tree/gh-pages/dist</a></p>
+<h2 id="api">API<a href="#api" class="anchor">¶</a></h2><h3 id="方法-lt-array-gt-pinyin-words-options">方法 <code>&lt;Array&gt; pinyin(words[, options])</code><a href="#方法-lt-array-gt-pinyin-words-options" class="anchor">¶</a></h3><p>将传入的中文字符串 (words) 转换成拼音符号串。</p>
 <p>options 是可选的，可以设定拼音风格，或打开多音字选项。</p>
 <p>返回二维数组，第一维每个数组项位置对应每个中文字符串位置。
 第二维是各个汉字的读音列表，多音字会有多个拼音项。</p>
@@ -210,7 +213,7 @@ API 和使用方式完成一致。</p>
       seajs.use("./static/js/arale-qrcode.js?nowrap", function(QRCode) {
         var url = location.href;
         if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
-          url = url.replace(location.hostname, '30.39.0.39');
+          url = url.replace(location.hostname, '10.15.231.11');
         }
         var el = new QRCode({
           text: url,
