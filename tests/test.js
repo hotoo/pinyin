@@ -1,6 +1,6 @@
 
 var expect = require("expect.js");
-var pinyin = require("../");
+var pinyin = require("..");
 
 var cases = [
 
@@ -114,14 +114,14 @@ var cases = [
     STYLE_INITIALS:     [["aa"]],
     STYLE_FIRST_LETTER: [["aa"]],
   } ],
-  //[ "a a", {
-    //STYLE_NORMAL:       [["a a"]],
-    //STYLE_TONE:         [["a a"]],
-    //STYLE_TONE2:        [["a a"]],
-    //STYLE_TO3NE:        [["a a"]],
-    //STYLE_INITIALS:     [["a a"]],
-    //STYLE_FIRST_LETTER: [["a a"]],
-  //} ],
+  [ "a a", {
+    STYLE_NORMAL:       [["a a"]],
+    STYLE_TONE:         [["a a"]],
+    STYLE_TONE2:        [["a a"]],
+    STYLE_TO3NE:        [["a a"]],
+    STYLE_INITIALS:     [["a a"]],
+    STYLE_FIRST_LETTER: [["a a"]],
+  } ],
   [ "一 一", {
     STYLE_NORMAL:       [["yi"], [" "], ["yi"]],
     STYLE_TONE:         [["yī"], [" "], ["yī"]],
@@ -242,11 +242,19 @@ function makeTest(han, opt, style){
 
 describe("pinyin", function() {
 
-  for(var i = 0, han, opt, l = cases.length; i < l; i++){
+  for (var i = 0, han, opt, l = cases.length; i < l; i++) {
     han = cases[i][0];
     opt = cases[i][1];
     for(var style in opt){
       makeTest(han, opt, style);
     }
   }
+});
+
+describe("pinyin.compare", function() {
+  it("我,要,排,序 => 序,我,排,要", function() {
+    const data = "我要排序".split("");
+    const sortedData = data.sort(pinyin.compare);
+    expect(sortedData).to.eql("排我序要".split(""));
+  });
 });
