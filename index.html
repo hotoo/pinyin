@@ -41,7 +41,7 @@ if (!location.port) {
       <h1>
           <a href="./">Pinyin</a>
       </h1>
-      <p class="sidebar-version">Version: <a href="http://spmjs.io/package/pinyin" title="">2.7.4</a></p>
+      <p class="sidebar-version">Version: <a href="http://spmjs.io/package/pinyin" title="">2.8.0</a></p>
         <p class="sidebar-description" data-keyword="拼音">汉语拼音转换工具。</p>
         <a class="sidebar-source" href="https://github.com/hotoo/pinyin" target="_blank">View the Project</a>
         <ul class="sidebar-navigation" role="navigation">
@@ -113,13 +113,11 @@ console.log(pinyin(<span class="string">"中心"</span>, {
 }));                            <span class="comment">// [ [ 'zh' ], [ 'x' ] ]</span></code></pre></div><p>命令行：</p>
 <div class="highlight"><pre><code class="bash">$ pinyin 中心
 zhōng xīn
-$ pinyin -h</code></pre></div><h3 id="关于-web-版如何使用">关于 Web 版如何使用<a href="#关于-web-版如何使用" class="anchor">¶</a></h3><p>首先，我建议大家应该优先考虑在服务端一次性转换拼音并将结果持久化，避免中客户端每次转换损耗性能和体验。</p>
-<p>如果你坚持中客户端使用，你可以考虑使用 <a href="http://webpack.github.io/">Webpack</a> + <a href="http://babeljs.io/">Babel</a> 来转换成低端浏览器的可执行代码。</p>
-<p>实在不想折腾，可以试试 <a href="https://github.com/hotoo/pinyin/tree/gh-pages/dist">https://github.com/hotoo/pinyin/tree/gh-pages/dist</a></p>
-<h2 id="api">API<a href="#api" class="anchor">¶</a></h2><h3 id="方法-lt-array-gt-pinyin-words-options">方法 <code>&lt;Array&gt; pinyin(words[, options])</code><a href="#方法-lt-array-gt-pinyin-words-options" class="anchor">¶</a></h3><p>将传入的中文字符串 (words) 转换成拼音符号串。</p>
+$ pinyin -h</code></pre></div><h2 id="api">API<a href="#api" class="anchor">¶</a></h2><h3 id="方法-lt-array-gt-pinyin-words-options">方法 <code>&lt;Array&gt; pinyin(words[, options])</code><a href="#方法-lt-array-gt-pinyin-words-options" class="anchor">¶</a></h3><p>将传入的中文字符串 (words) 转换成拼音符号串。</p>
 <p>options 是可选的，可以设定拼音风格，或打开多音字选项。</p>
 <p>返回二维数组，第一维每个数组项位置对应每个中文字符串位置。
 第二维是各个汉字的读音列表，多音字会有多个拼音项。</p>
+<h3 id="方法-number-pinyin-compare-a-b">方法 <code>Number pinyin.compare(a, b)</code><a href="#方法-number-pinyin-compare-a-b" class="anchor">¶</a></h3><p>按拼音排序的默认算法。</p>
 <h2 id="参数">参数<a href="#参数" class="anchor">¶</a></h2><h3 id="lt-boolean-gt-options-segment"><code>&lt;Boolean&gt; options.segment</code><a href="#lt-boolean-gt-options-segment" class="anchor">¶</a></h3><p>是否启用分词模式，中文分词有助于极大的降低多音字问题。
 但性能会极大的下降，内存也会使用更多。</p>
 <h3 id="lt-boolean-gt-options-heteronym"><code>&lt;Boolean&gt; options.heteronym</code><a href="#lt-boolean-gt-options-heteronym" class="anchor">¶</a></h3><p>是否启用多音字模式，默认关闭。</p>
@@ -137,9 +135,36 @@ $ pinyin -h</code></pre></div><h3 id="关于-web-版如何使用">关于 Web 版
 <p>如：<code>pi1n yi1n</code></p>
 <h3 id="style-initials"><code>.STYLE_INITIALS</code><a href="#style-initials" class="anchor">¶</a></h3><p>声母风格，只返回各个拼音的声母部分。对于没有声母的汉字，返回空白字符串。</p>
 <p>如：<code>中国</code> 的拼音 <code>zh g</code></p>
+<p>注：声明风格会区分 <code>zh</code> 和 <code>z</code>，<code>ch</code> 和 <code>c</code>，<code>sh</code> 和 <code>s</code>。</p>
+<p>注意：部分汉字没有声母，如 <code>啊</code>，<code>饿</code> 等，另外 <code>y</code>, <code>w</code>, <code>yu</code> 都不是声母，
+这些汉字的拼音声母风格会返回 <code>&quot;&quot;</code>。请仔细考虑你的需求是否应该使用首字母风格。
+详情请参考 <a href="#为什么没有-y-w-yu-几个声母">为什么没有 y, w, yu 几个声母</a></p>
 <h3 id="style-first-letter"><code>.STYLE_FIRST_LETTER</code><a href="#style-first-letter" class="anchor">¶</a></h3><p>首字母风格，只返回拼音的首字母部分。</p>
 <p>如：<code>p y</code></p>
-<h2 id="test">Test<a href="#test" class="anchor">¶</a></h2><pre>npm test</pre><h2 id="q-amp-a">Q&amp;A<a href="#q-amp-a" class="anchor">¶</a></h2><h3 id="node-版和-web-版有什么异同？">node 版和 web 版有什么异同？<a href="#node-版和-web-版有什么异同？" class="anchor">¶</a></h3><p><code>pinyin</code> 目前可以同时运行在 Node 服务器端和 Web 浏览器端。
+<h2 id="test">Test<a href="#test" class="anchor">¶</a></h2><pre>npm test</pre><h2 id="q-amp-a">Q&amp;A<a href="#q-amp-a" class="anchor">¶</a></h2><h3 id="关于-web-版如何使用">关于 Web 版如何使用<a href="#关于-web-版如何使用" class="anchor">¶</a></h3><p>首先，我建议大家应该优先考虑在服务端一次性转换拼音并将结果持久化，避免中客户端每次转换损耗性能和体验。</p>
+<p>如果你坚持中客户端使用，你可以考虑使用 <a href="http://webpack.github.io/">Webpack</a> + <a href="http://babeljs.io/">Babel</a> 来转换成低端浏览器的可执行代码。</p>
+<p>实在不想折腾，可以试试 <a href="https://github.com/hotoo/pinyin/tree/gh-pages/dist">https://github.com/hotoo/pinyin/tree/gh-pages/dist</a></p>
+<h3 id="为什么没有-y-w-yu-几个声母？">为什么没有 <code>y</code>, <code>w</code>, <code>yu</code> 几个声母？<a href="#为什么没有-y-w-yu-几个声母？" class="anchor">¶</a></h3><p>声母风格（INITIALS）下，“雨”、“我”、“圆”等汉字返回空字符串，因为根据《汉语拼音方案》，
+<code>y</code>，<code>w</code>，<code>ü (yu)</code> 都不是声母，在某些特定韵母无声母时，才加上 <code>y</code> 或 <code>w</code>，而 <code>ü</code> 也有其特定规则。</p>
+<p>如果你觉得这个给你带来了麻烦，那么也请小心一些无声母的汉字（如“啊”、“饿”、“按”、“昂”等）。
+这时候你也许需要的是首字母风格（FIRST_LETTER）。</p>
+<h3 id="如何实现按拼音排序？">如何实现按拼音排序？<a href="#如何实现按拼音排序？" class="anchor">¶</a></h3><p>pinyin 模块提供了默认的排序方案：</p>
+<div class="highlight"><pre><code class="javascript"><span class="keyword">const</span> pinyin = require(<span class="string">'pinyin'</span>);
+
+<span class="keyword">const</span> data = <span class="string">'我要排序'</span>.split(<span class="string">''</span>);
+<span class="keyword">const</span> sortedData = data.sort(pinyin.compare);</code></pre></div><p>如果默认的比较方法不能满足你的需求，你可以自定义 pinyinCompare 方法：</p>
+<pre>const pinyin = require(&#39;pinyin&#39;);
+
+const data = &#39;我要排序&#39;.split(&#39;&#39;);
+
+// 建议将汉字的拼音持久化存储起来。
+const pinyinData = data.map(han =&gt; ({
+  han: han,
+  pinyin: pinyin(han)[0][0], // 可以自行选择不同的生成拼音方案和风格。
+}));
+const sortedData = pinyinData.sort((a, b) =&gt; {
+  return a.pinyin.localeCompare(b.pinyin);
+}).map(d =&gt; d.han);</pre><h3 id="node-版和-web-版有什么异同？">node 版和 web 版有什么异同？<a href="#node-版和-web-版有什么异同？" class="anchor">¶</a></h3><p><code>pinyin</code> 目前可以同时运行在 Node 服务器端和 Web 浏览器端。
 API 和使用方式完成一致。</p>
 <p>但 Web 版较 Node 版稍简单，拼音库只有常用字部分，没有使用分词算法，
 并且考虑了网络传输对词库进行了压缩处理。</p>
@@ -176,10 +201,6 @@ API 和使用方式完成一致。</p>
 </tbody>
 </table>
 <p>由于这些区别，测试不同运行环境的用例也不尽相同。</p>
-<h3 id="为什么没有-y-w-yu-几个声母？">为什么没有 <code>y</code>, <code>w</code>, <code>yu</code> 几个声母？<a href="#为什么没有-y-w-yu-几个声母？" class="anchor">¶</a></h3><p>声母风格（INITIALS）下，“雨”、“我”、“圆”等汉字返回空字符串，因为根据《汉语拼音方案》，
-<code>y</code>，<code>w</code>，<code>ü (yu)</code> 都不是声母，在某些特定韵母无声母时，才加上 <code>y</code> 或 <code>w</code>，而 <code>ü</code> 也有其特定规则。</p>
-<p>如果你觉得这个给你带来了麻烦，那么也请小心一些无声母的汉字（如“啊”、“饿”、“按”、“昂”等）。
-这时候你也许需要的是首字母风格（FIRST_LETTER）。</p>
 <h2 id="捐赠">捐赠<a href="#捐赠" class="anchor">¶</a></h2><p>如果这个模块有帮助到您，请 Star 这个仓库。</p>
 <p>你也可以选择使用支付宝或微信给我捐赠：</p>
 <p><img src="http://hotoo.me/images/donate-hotoo.png" alt="Alipay:hotoo.cn@gmail.com, WeChat:hotoome"></p>
@@ -213,7 +234,7 @@ API 和使用方式完成一致。</p>
       seajs.use("./static/js/arale-qrcode.js?nowrap", function(QRCode) {
         var url = location.href;
         if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
-          url = url.replace(location.hostname, '10.15.231.11');
+          url = url.replace(location.hostname, '30.39.9.169');
         }
         var el = new QRCode({
           text: url,

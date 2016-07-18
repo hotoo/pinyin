@@ -4501,7 +4501,7 @@
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
 	var assign = __webpack_require__(3);
-	// XXX: Symbol when spm test support.
+	// XXX: Symbol when web support.
 	var PINYIN_STYLE = {
 	  NORMAL: 0, // 普通风格，不带音标。
 	  TONE: 1, // 标准风格，音标在韵母的第一个字母上。
@@ -4627,8 +4627,31 @@
 	      }
 	      return pinyins;
 	    }
+	  }, {
+	    key: "compare",
+	
+	    /**
+	     * 比较两个汉字转成拼音后的排序顺序，可以用作默认的拼音排序算法。
+	     *
+	     * @param {String} hanA 汉字字符串 A。
+	     * @return {String} hanB 汉字字符串 B。
+	     * @return {Number} 返回 -1，0，或 1。
+	     */
+	    value: function compare(hanA, hanB) {
+	      var pinyinA = this.convert(hanA, DEFAULT_OPTIONS);
+	      var pinyinB = this.convert(hanB, DEFAULT_OPTIONS);
+	      return String(pinyinA).localeCompare(pinyinB);
+	    }
 	  }], [{
 	    key: "toFixed",
+	
+	    /**
+	     * 格式化拼音风格。
+	     *
+	     * @param {String} pinyin TONE 风格的拼音。
+	     * @param {ENUM} style 目标转换的拼音风格。
+	     * @return {String} 转换后的拼音。
+	     */
 	    value: function toFixed(pinyin, style) {
 	      var tone = ""; // 声调。
 	      var first_letter = undefined;
@@ -4745,6 +4768,7 @@
 	var pinyin = new Pinyin(PINYIN_DICT);
 	
 	module.exports = pinyin.convert.bind(pinyin);
+	module.exports.compare = pinyin.compare.bind(pinyin);
 	module.exports.STYLE_NORMAL = Pinyin.STYLE_NORMAL;
 	module.exports.STYLE_TONE = Pinyin.STYLE_TONE;
 	module.exports.STYLE_TONE2 = Pinyin.STYLE_TONE2;
@@ -4780,7 +4804,7 @@
 	  STYLE_TO3NE: [["zho1ng", "zho4ng"]],
 	  STYLE_INITIALS: [["zh"]],
 	  STYLE_FIRST_LETTER: [["z"]] }], ["的", {
-	  STYLE_NORMAL: [["de"]],
+	  STYLE_NORMAL: [["de", "di"]],
 	  STYLE_TONE: [["de", "dì", "dí"]],
 	  STYLE_TONE2: [["de", "di4", "di2"]],
 	  STYLE_TO3NE: [["de", "di4", "di2"]],
@@ -4892,6 +4916,14 @@
 	      makeTest(han, opt, style);
 	    }
 	  }
+	});
+	
+	describe("pinyin.compare", function () {
+	  it("我,要,排,序 => 排,我,序,要", function () {
+	    var data = "我要排序".split("");
+	    var sortedData = data.sort(pinyin.compare);
+	    expect(sortedData).to.eql("排我序要".split(""));
+	  });
 	});
 
 /***/ },
