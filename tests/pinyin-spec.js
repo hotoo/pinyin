@@ -24,7 +24,7 @@ const cases = [
     STYLE_FIRST_LETTER: [["z"]],
   } ],
   [ "的", {
-    STYLE_NORMAL:       [["de"]],
+    STYLE_NORMAL:       [["de", "di"]],
     STYLE_TONE:         [["de", "dì", "dí"]],
     STYLE_TONE2:        [["de", "di4", "di2"]],
     STYLE_TO3NE:        [["de", "di4", "di2"]],
@@ -154,4 +154,12 @@ describe("pinyin", function() {
       makeTest(han, opt, style);
     }
   }
+});
+
+describe("pinyin.compare", function() {
+  it("我,要,排,序 => 排,我,序,要", function() {
+    const data = "我要排序".split("");
+    const sortedData = data.sort(pinyin.compare);
+    expect(sortedData).to.eql("排我序要".split(""));
+  });
 });

@@ -73,14 +73,6 @@ zhōng xīn
 $ pinyin -h
 ```
 
-### 关于 Web 版如何使用
-
-首先，我建议大家应该优先考虑在服务端一次性转换拼音并将结果持久化，避免中客户端每次转换损耗性能和体验。
-
-如果你坚持中客户端使用，你可以考虑使用 [Webpack](http://webpack.github.io/) + [Babel](http://babeljs.io/) 来转换成低端浏览器的可执行代码。
-
-实在不想折腾，可以试试 https://github.com/hotoo/pinyin/tree/gh-pages/dist
-
 
 ## API
 
@@ -92,6 +84,10 @@ options 是可选的，可以设定拼音风格，或打开多音字选项。
 
 返回二维数组，第一维每个数组项位置对应每个中文字符串位置。
 第二维是各个汉字的读音列表，多音字会有多个拼音项。
+
+### 方法 `Number pinyin.compare(a, b)`
+
+按拼音排序的默认算法。
 
 ## 参数
 
@@ -146,6 +142,12 @@ options 是可选的，可以设定拼音风格，或打开多音字选项。
 
 如：`中国` 的拼音 `zh g`
 
+注：声明风格会区分 `zh` 和 `z`，`ch` 和 `c`，`sh` 和 `s`。
+
+注意：部分汉字没有声母，如 `啊`，`饿` 等，另外 `y`, `w`, `yu` 都不是声母，
+这些汉字的拼音声母风格会返回 `""`。请仔细考虑你的需求是否应该使用首字母风格。
+详情请参考 [为什么没有 y, w, yu 几个声母](#为什么没有-y-w-yu-几个声母)
+
 ### `.STYLE_FIRST_LETTER`
 
 首字母风格，只返回拼音的首字母部分。
@@ -160,6 +162,50 @@ npm test
 ```
 
 ## Q&A
+
+### 关于 Web 版如何使用
+
+首先，我建议大家应该优先考虑在服务端一次性转换拼音并将结果持久化，避免中客户端每次转换损耗性能和体验。
+
+如果你坚持中客户端使用，你可以考虑使用 [Webpack](http://webpack.github.io/) + [Babel](http://babeljs.io/) 来转换成低端浏览器的可执行代码。
+
+实在不想折腾，可以试试 https://github.com/hotoo/pinyin/tree/gh-pages/dist
+
+### 为什么没有 `y`, `w`, `yu` 几个声母？
+
+声母风格（INITIALS）下，“雨”、“我”、“圆”等汉字返回空字符串，因为根据《汉语拼音方案》，
+`y`，`w`，`ü (yu)` 都不是声母，在某些特定韵母无声母时，才加上 `y` 或 `w`，而 `ü` 也有其特定规则。
+
+如果你觉得这个给你带来了麻烦，那么也请小心一些无声母的汉字（如“啊”、“饿”、“按”、“昂”等）。
+这时候你也许需要的是首字母风格（FIRST_LETTER）。
+
+### 如何实现按拼音排序？
+
+pinyin 模块提供了默认的排序方案：
+
+```js
+const pinyin = require('pinyin');
+
+const data = '我要排序'.split('');
+const sortedData = data.sort(pinyin.compare);
+```
+
+如果默认的比较方法不能满足你的需求，你可以自定义 pinyinCompare 方法：
+
+```
+const pinyin = require('pinyin');
+
+const data = '我要排序'.split('');
+
+// 建议将汉字的拼音持久化存储起来。
+const pinyinData = data.map(han => ({
+  han: han,
+  pinyin: pinyin(han)[0][0], // 可以自行选择不同的生成拼音方案和风格。
+}));
+const sortedData = pinyinData.sort((a, b) => {
+  return a.pinyin.localeCompare(b.pinyin);
+}).map(d => d.han);
+```
 
 ### node 版和 web 版有什么异同？
 
@@ -179,14 +225,6 @@ API 和使用方式完成一致。
 | 繁体中文     | 没有繁体中文支持。             | 有简单的繁简汉字转换。           |
 
 由于这些区别，测试不同运行环境的用例也不尽相同。
-
-### 为什么没有 `y`, `w`, `yu` 几个声母？
-
-声母风格（INITIALS）下，“雨”、“我”、“圆”等汉字返回空字符串，因为根据《汉语拼音方案》，
-`y`，`w`，`ü (yu)` 都不是声母，在某些特定韵母无声母时，才加上 `y` 或 `w`，而 `ü` 也有其特定规则。
-
-如果你觉得这个给你带来了麻烦，那么也请小心一些无声母的汉字（如“啊”、“饿”、“按”、“昂”等）。
-这时候你也许需要的是首字母风格（FIRST_LETTER）。
 
 ## 捐赠
 

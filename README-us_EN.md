@@ -78,6 +78,11 @@ Convert Han （汉字） to pinyin.
 Return a `Array<Array<String>>`. If one of Han is heteronym word, it would be
 have multiple pinyin.
 
+### `Number pinyin.compare(a, b)`
+
+Default compare implementation for pinyin.
+
+
 ## Options
 
 #### `<Boolean> options.segment`
@@ -161,6 +166,34 @@ and the test case have some different too.
 | Segmentation | NO                              | Segmentation options.            |
 | Traditional  | NO                              | Full Traditional support.        |
 
+
+### How to sort by pinyin?
+
+This module provide default compare implementation:
+
+```js
+const pinyin = require('pinyin');
+
+const data = '我要排序'.split('');
+const sortedData = data.sort(pinyin.compare);
+```
+
+But if you need different implementation, do it like:
+
+```
+const pinyin = require('pinyin');
+
+const data = '我要排序'.split('');
+
+// Suggest you to store pinyin result by data persistence.
+const pinyinData = data.map(han => ({
+  han: han,
+  pinyin: pinyin(han)[0][0], // Choose you options and styles.
+}));
+const sortedData = pinyinData.sort((a, b) => {
+  return a.pinyin.localeCompare(b.pinyin);
+}).map(d => d.han);
+```
 
 ## Donate
 
