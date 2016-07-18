@@ -1,6 +1,10 @@
 
 # CHANGELOG
 
+## 2.8.0 (2016-07-18)
+
+- feat(compare): Add pinyin.compare for sort by pinyin. #104, #106.
+
 ## 2.7.4 (2016-07-01)
 
 - fixed phrases dict. #102, #103.
