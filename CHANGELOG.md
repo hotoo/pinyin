@@ -1,6 +1,10 @@
 
 # CHANGELOG
 
+## 2.8.1 (2017-03-13)
+
+- dict: 厦门。fixed #122
+
 ## 2.8.0 (2016-07-18)
 
 - feat(compare): Add pinyin.compare for sort by pinyin. #104, #106.
