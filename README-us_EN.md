@@ -201,11 +201,11 @@ If this module is helpful for you, please Star this repository.
 
 And you have chioce donate to me via Aliapy or WeChat:
 
-![Alipay:hotoo.cn@gmail.com, WeChat:hotoome](http://hotoo.me/images/donate-hotoo.png)
+![Alipay:hotoo.cn@gmail.com, WeChat:hotoome](https://hotoo.github.io/images/donate-hotoo.png)
 
 or donate my dear wife [@lizzie](https://github.com/lizzie) direct:
 
-![Alipay:shenyan1985@gmail.com, WeChat:SunsetSunrising](http://hotoo.me/images/donate-lizzie.png)
+![Alipay:shenyan1985@gmail.com, WeChat:SunsetSunrising](https://hotoo.github.io/images/donate-lizzie.png)
 
 The two donate way will have the same result.
 

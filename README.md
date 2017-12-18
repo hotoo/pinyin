@@ -146,7 +146,7 @@ options 是可选的，可以设定拼音风格，或打开多音字选项。
 
 注意：部分汉字没有声母，如 `啊`，`饿` 等，另外 `y`, `w`, `yu` 都不是声母，
 这些汉字的拼音声母风格会返回 `""`。请仔细考虑你的需求是否应该使用首字母风格。
-详情请参考 [为什么没有 y, w, yu 几个声母](#为什么没有-y-w-yu-几个声母)
+详情请参考 [为什么没有 y, w, yu 几个声母](#为什么没有 -y-w-yu- 几个声母)
 
 ### `.STYLE_FIRST_LETTER`
 
@@ -232,11 +232,11 @@ API 和使用方式完成一致。
 
 你也可以选择使用支付宝或微信给我捐赠：
 
-![Alipay:hotoo.cn@gmail.com, WeChat:hotoome](http://hotoo.me/images/donate-hotoo.png)
+![Alipay:hotoo.cn@gmail.com, WeChat:hotoome](https://hotoo.github.io/images/donate-hotoo.png)
 
 或者直接捐赠给我妻子 [@lizzie](https://github.com/lizzie)：
 
-![Alipay:shenyan1985@gmail.com, WeChat:SunsetSunrising](http://hotoo.me/images/donate-lizzie.png)
+![Alipay:shenyan1985@gmail.com, WeChat:SunsetSunrising](https://hotoo.github.io/images/donate-lizzie.png)
 
 这两种捐赠的最终结果是一样的 :)
 
