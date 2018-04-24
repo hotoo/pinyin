@@ -1408,7 +1408,7 @@ module.exports = {
 "láo,lào":"唠",
 "bàng,bèng":"蚌",
 "gōng,zhōng":"蚣",
-"li,lǐ,lī":"哩",
+"li,lǐ,lī":"哩喱",
 "suō":"唆梭嗦",
 "hēng":"哼",
 "zāng":"赃",
