@@ -3,11 +3,10 @@ os:
 language: node_js
 
 node_js:
-  - "4"
   - "5"
-  - "6"
-  - "iojs-2"
-  - "iojs-3"
+  - "9"
+  - "10"
+  - "11"
 
 install:
   - npm install coveralls
