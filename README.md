@@ -63,6 +63,10 @@ console.log(pinyin("中心", {
   style: pinyin.STYLE_INITIALS, // 设置拼音风格
   heteronym: true
 }));                            // [ [ 'zh' ], [ 'x' ] ]
+console.log(pinyin("中心", {
+  style: pinyin.STYLE_NORMAL,   // 最简拼音风格
+  heteronym: true
+}));                            // [ [ 'zhong' ], [ 'xin' ] ]
 ```
 
 命令行：
