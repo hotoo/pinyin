@@ -1,0 +1,33 @@
+os:
+  - linux
+language: node_js
+
+node_js:
+  - "5"
+  - "9"
+  - "10"
+  - "11"
+
+install:
+  - npm install coveralls
+
+before_script:
+  - npm install
+
+script:
+  - make test
+
+after_success:
+  - cat coverage/lcov.info | node_modules/.bin/coveralls
+
+# nodejieba only support g++ 4.8
+
+env:
+  - CXX=g++-4.8
+
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - g++-4.8

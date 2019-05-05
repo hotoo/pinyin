@@ -1,0 +1,6 @@
+tools/
+spm_modules/
+CNAME
+.travis.yml
+.spmignore
+tests/
