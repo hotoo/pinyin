@@ -1,5 +1,8 @@
-
 # CHANGELOG
+
+## 2.9.0 (2019-05-09)
+
+- dict: upgrade web pinyin dict. #243
 
 ## 2.8.3 (2017-03-31)
 
