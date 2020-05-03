@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 2.9.1 (2020-05-03)
+
+- dict: fixed 氓's pinyin dict. #272
+
 ## 2.9.0 (2019-05-09)
 
 - dict: upgrade web pinyin dict. #243
