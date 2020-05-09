@@ -51,8 +51,12 @@ console.log(pinyin("中心", {
 }));                            // [ [ 'zhōng', 'zhòng' ], [ 'xīn' ] ]
 console.log(pinyin("中心", {
   heteronym: true,              // Enable heteronym mode.
-  segment: true                 // Enable Chinese words eegmentation, fix most heteronym problem.
+  segment: true                 // Enable Chinese words segmentation, fix most heteronym problem.
 }));                            // [ [ 'zhōng' ], [ 'xīn' ] ]
+console.log(pinyin("我喜欢你", {
+  segment: true,                // Enable segmentation. Needed for grouping.
+  group: true                   // Group pinyin segments
+}));                            // [ [ [ 'wǒ' ] ], [ [ 'xǐ' ], [ 'huān' ] ], [ [ 'nǐ' ] ] ]
 console.log(pinyin("中心", {
   style: pinyin.STYLE_INITIALS, // Setting pinyin style.
   heteronym: true
