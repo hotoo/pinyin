@@ -62,7 +62,7 @@ console.log(pinyin("中心", {
 console.log(pinyin("我喜欢你", {
   segment: true,                // 启用分词
   group: true                   // 启用词组
-}));                            // [ [ [ 'wǒ' ] ], [ [ 'xǐ' ], [ 'huān' ] ], [ [ 'nǐ' ] ] ]
+}));                            // [ [ 'wǒ' ], [ 'xǐhuān' ], [ 'nǐ' ] ]
 console.log(pinyin("中心", {
   style: pinyin.STYLE_INITIALS, // 设置拼音风格
   heteronym: true

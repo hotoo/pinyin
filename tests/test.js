@@ -273,12 +273,12 @@ describe("pinyin group", function() {
   it("groups segments", function () {
     const han = "我喜欢你";
     const py = pinyin(han, {segment: true, group: true, heteronym: true});
-    expect(py).to.eql([[["wǒ"]], [["xǐ"], ["huān"]], [["nǐ"]]]);
+    expect(py).to.eql([["wǒ"], ["xǐhuān"], ["nǐ"]]);
   });
 
   it("groups segments with heteronyms", function() {
     const han = "我都喜欢";
     const py = pinyin(han, {segment: true, group: true, heteronym: true});
-    expect(py).to.eql([[["wǒ"]], [["dū", "dōu"]], [["xǐ"], ["huān"]]]);
+    expect(py).to.eql([["wǒ"], ["dū", "dōu"], ["xǐhuān"]]);
   });
 });

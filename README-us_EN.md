@@ -56,7 +56,7 @@ console.log(pinyin("中心", {
 console.log(pinyin("我喜欢你", {
   segment: true,                // Enable segmentation. Needed for grouping.
   group: true                   // Group pinyin segments
-}));                            // [ [ [ 'wǒ' ] ], [ [ 'xǐ' ], [ 'huān' ] ], [ [ 'nǐ' ] ] ]
+}));                            // [ [ 'wǒ' ], [ 'xǐhuān' ], [ 'nǐ' ] ]
 console.log(pinyin("中心", {
   style: pinyin.STYLE_INITIALS, // Setting pinyin style.
   heteronym: true
