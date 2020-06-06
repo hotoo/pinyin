@@ -196,6 +196,16 @@ var cases = [
     STYLE_INITIALS:     [["0"], ["t"], ["j"]],
     STYLE_FIRST_LETTER: [["0"], ["t"], ["j"]],
   } ],
+
+  // 其他
+  [ "女流氓", {
+    STYLE_NORMAL:       [["nv", "ru"], ["liu"], ["mang", "meng"]],
+    STYLE_TONE:         [["nǚ", "rǔ"], ["liú"], ["máng", "méng"]],
+    STYLE_TONE2:        [["nv3", "ru3"], ["liu2"], ["mang2", "meng2"]],
+    STYLE_TO3NE:        [["nv3", "ru3"], ["liu2"], ["ma2ng", "me2ng"]],
+    STYLE_INITIALS:     [["n", "r"], ["l"], ["m"]],
+    STYLE_FIRST_LETTER: [["n", "r"], ["l"], ["m"]],
+  } ],
 ];
 
 function makeTest(han, opt, style){
