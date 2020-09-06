@@ -3,10 +3,10 @@ os:
 language: node_js
 
 node_js:
-  - "5"
-  - "9"
+  - "8"
   - "10"
-  - "11"
+  - "12"
+  - "14"
 
 install:
   - npm install coveralls
