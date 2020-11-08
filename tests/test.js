@@ -277,8 +277,8 @@ describe("pinyin group", function() {
   });
 
   it("groups segments with heteronyms", function() {
-    const han = "我都喜欢";
+    const han = "我都喜欢朝阳";
     const py = pinyin(han, {segment: true, group: true, heteronym: true});
-    expect(py).to.eql([["wǒ"], ["dū", "dōu"], ["xǐhuān"]]);
+    expect(py).to.eql([["wǒ"], ["dū", "dōu"], ["xǐhuān"], ["zhāoyáng", "cháoyáng"]]);
   });
 });
