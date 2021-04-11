@@ -27,7 +27,9 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: npm install
     - run: npm run lint
-    - run: npm run test-npm
+    - run: |
+      npm run test-npm
+      cat coverage/lcov.info | ./node_modules/.bin/coveralls
     - run: npm run test-cli
     - run: npm run benchmark
-    - run: cat coverage/lcov.info | ./node_modules/.bin/coveralls
+    - run:
