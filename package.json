@@ -40,7 +40,7 @@
     "commander": "~1.1.1",
     "object-assign": "^4.0.1"
   },
-  "peerDependencies": {
+  "optionalDependencies": {
     "nodejieba": "^2.2.1"
   },
   "devDependencies": {
