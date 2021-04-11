@@ -1,5 +1,6 @@
 var dict = [];
 
+dict[0x3007] = "líng,xīng"; /* 〇: https://zh.m.wiktionary.org/wiki/%E3%80%87 */
 dict[0x3400] = "qiū"; /* 㐀 */
 dict[0x3401] = "tiǎn,tiàn"; /* 㐁 */
 dict[0x3402] = "xǐ"; /* 㐂 */
@@ -32484,7 +32485,7 @@ dict[0x24e4a] = "xī"; /* 乊 */
 dict[0x24e4b] = "jué"; /* 之 */
 dict[0x24e4c] = "shī"; /* 乌 */
 dict[0x24e4e] = "yǎ"; /* 乎 */
-dict[0x24e50] = "liè"; /* 乐 */
+dict[0x24e50] = "liè"; /* 𤹐 */
 dict[0x24e5b] = "chén"; /* 乛 */
 dict[0x24e5c] = "yíng"; /* 乜 */
 dict[0x24e5d] = "bì"; /* 九 */

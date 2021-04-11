@@ -14,6 +14,15 @@ var cases = [
     STYLE_FIRST_LETTER: [["w"]],
   } ],
 
+  [ "〇", {
+    STYLE_NORMAL:       [["ling", "xing"]],
+    STYLE_TONE:         [["líng", "xīng"]],
+    STYLE_TONE2:        [["ling2", "xing1"]],
+    STYLE_TO3NE:        [["li2ng", "xi1ng"]],
+    STYLE_INITIALS:     [["l", "x"]],
+    STYLE_FIRST_LETTER: [["l", "x"]],
+  } ],
+
   // 多音字
   [ "中", {
     STYLE_NORMAL:       [["zhong"]],
