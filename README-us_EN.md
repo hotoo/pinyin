@@ -106,6 +106,15 @@ Default is `false`.
 
 Enable or disable heteronym mode. default is disabled, `false`.
 
+### `<Boolean> options.group`
+
+Group pinyin by phrases. for example:
+
+```
+我喜欢你
+wǒ xǐhuān nǐ
+```
+
 ### `<Object> options.style`
 
 Specify pinyin style. please use static properties like `STYLE_*`.

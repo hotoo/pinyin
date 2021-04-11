@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 2.10.0 (2021-04-11)
+
+- feat(group): Support group
+- dict: fixed "别鹤离鸾脏䄜" pinyin dict.
+
 ## 2.9.1 (2020-05-03)
 
 - dict: fixed 氓's pinyin dict. #272
