@@ -9,6 +9,7 @@ commander.
   option('-s, --style <style>', 'pinyin styles: [NORMAL,TONE,TONE2,INITIALS,FIRST_LETTER]').
   option('-S, --segment', 'segmentation word to phrases').
   option('-h, --heteronym', 'output heteronym pinyins').
+  option('-g, --group', 'output group by phrases').
   option('-p, --separator <separator>', 'separator between words').
   parse(process.argv);
 
@@ -25,6 +26,7 @@ var pinyin = require("../");
 var options = {
   style: pinyin["STYLE_" + (commander.style || "TONE").toUpperCase()],
   heteronym: commander.heteronym || false,
+  group: commander.group || false,
   segment: commander.segment || false,
 };
 
