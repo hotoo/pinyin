@@ -12,7 +12,7 @@
 [npm-badge]: https://img.shields.io/npm/v/pinyin.svg?style=flat
 [npm-url]: https://www.npmjs.com/package/pinyin
 [npm-downloads]: http://img.shields.io/npm/dm/pinyin.svg?style=flat
-[build-badge]: https://github.com/hotoo/pinyin/actions/workflows/node.js/badge.svg
+[build-badge]: https://github.com/hotoo/pinyin/actions/workflows/node.js.yml/badge.svg
 [build-url]: https://github.com/hotoo/pinyin/actions
 [coveralls-badge]: https://coveralls.io/repos/hotoo/pinyin/badge.svg?branch=master
 [coveralls-url]: https://coveralls.io/r/hotoo/pinyin
