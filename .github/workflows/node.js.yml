@@ -28,6 +28,10 @@ jobs:
     - run: npm install
     - run: npm run lint
     - run: npm run test-npm
-    - run: cat coverage/lcov.info | ./node_modules/.bin/coveralls
     - run: npm run test-cli
     - run: npm run benchmark
+
+    - name: Coveralls
+      uses: coverallsapp/github-action@master
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
