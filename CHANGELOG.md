@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 2.10.1 (2021-04-11)
+
+- dict: fixed "〇桔吗" pinyin dict.
+
 ## 2.10.0 (2021-04-11)
 
 - feat(group): Support group
