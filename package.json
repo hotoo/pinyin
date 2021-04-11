@@ -34,7 +34,11 @@
     "url": "https://github.com/hotoo/pinyin/issues"
   },
   "scripts": {
-    "test": "make test"
+    "lint": "eslint ./lib/ ./bin/ ./tests/",
+    "test-cli": "mocha -R spec --timeout 5000 tests/cli.test.js",
+    "test-npm": "istanbul cover mocha -- --harmony --reporter spec --timeout 2000 --inline-diffs ./tests/test.js",
+    "benchmark": "node tests/benchmark.test.js",
+    "test": "npm run lint && npm run test-cli && npm run test-npm && npm run benchmark"
   },
   "dependencies": {
     "commander": "~1.1.1",
