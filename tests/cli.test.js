@@ -55,6 +55,10 @@ var testcases = [
     command: "pinyin -p '' -s normal 重复",
     stdout: "zhongfu",
   },
+  {
+    command: "pinyin -Sg 我喜欢你",
+    stdout: "wǒ xǐhuān nǐ",
+  },
 
 ];
 
