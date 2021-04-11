@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 2.10.2 (2021-04-11)
+
+- feat(cli): pinyin cli support group by phrases.
+
 ## 2.10.1 (2021-04-11)
 
 - dict: fixed "〇桔吗" pinyin dict.
