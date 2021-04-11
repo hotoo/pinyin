@@ -3,7 +3,7 @@
 ---
 
 [![NPM version][npm-badge]][npm-url]
-[![Build Status][travis-badge]][travis-url]
+[![Build Status][build-badge]][build-url]
 [![Coverage Status][coveralls-badge]][coveralls-url]
 [![Gittip][gittip-image]][gittip-url]
 [![NPM downloads][npm-downloads]][npm-url]
@@ -12,8 +12,8 @@
 [npm-badge]: https://img.shields.io/npm/v/pinyin.svg?style=flat
 [npm-url]: https://www.npmjs.com/package/pinyin
 [npm-downloads]: http://img.shields.io/npm/dm/pinyin.svg?style=flat
-[travis-badge]: https://travis-ci.org/hotoo/pinyin.svg?branch=master
-[travis-url]: https://travis-ci.org/hotoo/pinyin
+[build-badge]: https://github.com/hotoo/pinyin/actions/workflows/node.js/badge.svg
+[build-url]: https://github.com/hotoo/pinyin/actions
 [coveralls-badge]: https://coveralls.io/repos/hotoo/pinyin/badge.svg?branch=master
 [coveralls-url]: https://coveralls.io/r/hotoo/pinyin
 [gittip-image]: https://img.shields.io/gittip/hotoo.svg?style=flat-square
