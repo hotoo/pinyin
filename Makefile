@@ -1,26 +1,12 @@
 version = $(shell cat package.json | grep version | awk -F'"' '{print $$4}')
 
 install:
-	@spm install
 	@npm install
-
-build:
-	@spm build
 
 publish:
 	@npm publish
 	@git tag $(version)
 	@git push origin $(version)
-
-build-doc: clean build
-	@spm doc build
-
-watch:
-	@spm doc watch
-
-publish-doc: clean build-doc
-	@ghp-import _site
-	@git push origin gh-pages
 
 clean:
 	@rm -fr _site
@@ -32,7 +18,7 @@ benchmark:
 	@node tests/benchmark.test.js
 
 test-cli:
-	@mocha -R spec --timeout 5000 tests/cli.test.js
+	@./node_modules/.bin/mocha -R spec --timeout 5000 tests/cli.test.js
 
 test-npm:
 	@./node_modules/.bin/istanbul cover \
@@ -45,16 +31,13 @@ test-npm:
 		./tests/test.js
 
 
-test-spm:
-	@spm test
-
 lint:
 	@./node_modules/eslint/bin/eslint.js ./lib/ ./bin/ ./tests/
 
 test: lint test-npm test-cli benchmark
 
 output = _site/coverage.html
-coverage: build-doc
+coverage:
 	@rm -fr _site/src-cov
 	@jscoverage --encoding=utf8 src _site/src-cov
 	@mocha-browser ${runner}?cov -S -R html-cov > ${output}
@@ -83,4 +66,4 @@ dict-node:
 infrequent:
 	@node ./tools/infrequent.js > ./tools/zi/infrequent.js
 
-.PHONY: build-doc publish-doc server clean test coverage test-spm test-npm test-cli lint benchmark
+.PHONY: server clean test coverage test-npm test-cli lint benchmark

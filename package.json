@@ -19,6 +19,7 @@
   "homepage": "http://pinyin.hotoo.me/",
   "author": "闲耘 <hotoo.cn@gmail.com>",
   "main": "lib/index.js",
+  "browser": "lib/web-pinyin.js",
   "bin": {
     "pinyin": "./bin/pinyin"
   },
@@ -34,13 +35,17 @@
     "url": "https://github.com/hotoo/pinyin/issues"
   },
   "scripts": {
-    "test": "make test"
+    "lint": "eslint ./lib/ ./bin/ ./tests/",
+    "test-cli": "mocha -R spec --timeout 5000 tests/cli.test.js",
+    "test-npm": "istanbul cover _mocha -- --harmony --reporter spec --timeout 2000 --inline-diffs ./tests/test.js",
+    "benchmark": "node tests/benchmark.test.js",
+    "test": "npm run lint && npm run test-cli && npm run test-npm && npm run benchmark"
   },
   "dependencies": {
     "commander": "~1.1.1",
     "object-assign": "^4.0.1"
   },
-  "peerDependencies": {
+  "optionalDependencies": {
     "nodejieba": "^2.2.1"
   },
   "devDependencies": {
@@ -48,23 +53,8 @@
     "eslint": "~0.24.0",
     "expect.js": "~0.3.1",
     "istanbul": "~0.3.17",
-    "mocha": "1.17.1",
+    "mocha": "^8.3.2",
     "request": "~2.68.0"
   },
-  "spm": {
-    "main": "lib/web-pinyin.js",
-    "devDependencies": {
-      "expect.js": "0.3.1",
-      "url": "1.2.0"
-    },
-    "build": {
-      "babel": {}
-    },
-    "tests": "tests/*-spec.js",
-    "dependencies": {
-      "object-assign": "~4.0.1"
-    }
-  },
-  "browser": "lib/web-pinyin.js",
   "license": "MIT"
 }

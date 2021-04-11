@@ -25,7 +25,13 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: ${{ matrix.node-version }}
+    - run: npm install
     - run: npm run lint
-    - run: npm run test-npm && cat coverage/lcov.info | coveralls
+    - run: npm run test-npm
     - run: npm run test-cli
     - run: npm run benchmark
+
+    - name: Coveralls
+      uses: coverallsapp/github-action@master
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
