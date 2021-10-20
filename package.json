@@ -37,7 +37,7 @@
   "scripts": {
     "start": "dumi dev",
     "doc:build": "dumi build",
-    "doc:deploy": "npm run doc:build && node ./scripts/publish-doc.sh",
+    "doc:deploy": "npm run doc:build && cp CNAME docs-dist/dist && gh-pages -d docs-dist/dist",
     "lint": "eslint ./lib/ ./bin/ ./tests/",
     "test-cli": "mocha -R spec --timeout 5000 tests/cli.test.js",
     "test-npm": "istanbul cover _mocha -- --harmony --reporter spec --timeout 2000 --inline-diffs ./tests/test.js",
@@ -58,6 +58,7 @@
     "dumi": "^1.1.30",
     "eslint": "~0.24.0",
     "expect.js": "~0.3.1",
+    "gh-pages": "^3.2.3",
     "istanbul": "~0.3.17",
     "mocha": "^8.3.2",
     "mock-aws-s3": "^4.0.2",
