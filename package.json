@@ -35,6 +35,9 @@
     "url": "https://github.com/hotoo/pinyin/issues"
   },
   "scripts": {
+    "start": "dumi dev",
+    "doc:build": "dumi build",
+    "doc:deploy": "npm run doc:build && cp CNAME docs-dist/dist && gh-pages -d docs-dist/dist",
     "lint": "eslint ./lib/ ./bin/ ./tests/",
     "test-cli": "mocha -R spec --timeout 5000 tests/cli.test.js",
     "test-npm": "istanbul cover _mocha -- --harmony --reporter spec --timeout 2000 --inline-diffs ./tests/test.js",
@@ -49,11 +52,17 @@
     "nodejieba": "^2.2.1"
   },
   "devDependencies": {
+    "aurl": "^1.2.0",
+    "aws-sdk": "^2.1011.0",
     "benchmark": "~1.0.0",
+    "dumi": "^1.1.30",
     "eslint": "~0.24.0",
     "expect.js": "~0.3.1",
+    "gh-pages": "^3.2.3",
     "istanbul": "~0.3.17",
     "mocha": "^8.3.2",
+    "mock-aws-s3": "^4.0.2",
+    "nock": "^13.1.4",
     "request": "~2.68.0"
   },
   "license": "MIT"

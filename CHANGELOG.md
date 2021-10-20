@@ -1,5 +1,7 @@
 # CHANGELOG
 
+----
+
 ## 2.10.2 (2021-04-11)
 
 - feat(cli): pinyin cli support group by phrases.

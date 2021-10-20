@@ -1,6 +1,8 @@
-# 汉字拼音转换工具。
+# README
 
----
+pinyin, 汉字拼音转换工具。
+
+----
 
 [![NPM version][npm-badge]][npm-url]
 [![Build Status][build-badge]][build-url]
@@ -27,7 +29,7 @@
 >
 > Python 版请关注 [mozillazg/python-pinyin](https://github.com/mozillazg/python-pinyin)
 
----
+----
 
 ## 特性
 
@@ -41,7 +43,7 @@
 via npm:
 
 ```bash
-npm install pinyin
+npm install pinyin --save
 ```
 
 ## 用法
@@ -170,7 +172,7 @@ wǒ xǐhuān nǐ
 
 ## Test
 
-```
+```bash
 npm test
 ```
 
@@ -205,7 +207,7 @@ const sortedData = data.sort(pinyin.compare);
 
 如果默认的比较方法不能满足你的需求，你可以自定义 pinyinCompare 方法：
 
-```
+```js
 const pinyin = require('pinyin');
 
 const data = '我要排序'.split('');
