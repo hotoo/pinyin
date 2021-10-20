@@ -32,3 +32,4 @@ tools/dict/error.log
 coverage/
 package-lock.json
 yarn.lock
+.umi/

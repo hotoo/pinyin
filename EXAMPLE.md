@@ -1,12 +1,12 @@
 # 演示文档
 
----
+----
 
 <style>
 textarea{width:90%; height:100px;}
 </style>
 
-### 输入[汉字](?han= 简体中文汉字)
+### 输入[汉字](?han=%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%E6%B1%89%E5%AD%97)
 
 <div>
   <textarea id="input"></textarea>
@@ -31,33 +31,34 @@ textarea{width:90%; height:100px;}
 </div>
 
 
-<script type="text/spm">
-var pinyin = require('pinyin');
-//var Url = require('url');
+```jsx
+import pinyin from 'pinyin';
+import Url from 'aurl';
 
-var $ = function(id){return document.getElementById(id);}
-var styles = document.getElementsByName("style");
-//var han = new Url(location.href).getParam("han");
-var han = "中文"
+setTimeout(function() {
+  var $$ = function(id){return document.getElementById(id);}
+  var styles = document.getElementsByName("style");
+  var han = new Url(location.href).getParam("han") || '中文';
 
-function build(){
-  var han = $("input").value;
-  var style = "STYLE_TONE";
-  for(var i=0,l=styles.length; i<l; i++){
-    if(styles[i].checked){
-      style = styles[i].value;
+  function build(){
+    var han = $$("input").value;
+    var style = "STYLE_TONE";
+    for(var i=0,l=styles.length; i<l; i++){
+      if(styles[i].checked){
+        style = styles[i].value;
+      }
     }
+    $$("output").value = pinyin(han, {
+      style: pinyin[style]
+    }).join(" ");
+  };
+
+  $$("input").onkeyup = build;
+  for(var i=0,l=styles.length; i<l; i++){
+    styles[i].onclick = build;
   }
-  $("output").value = pinyin(han, {
-    style: pinyin[style]
-  }).join(" ");
-};
 
-$("input").onkeyup = build;
-for(var i=0,l=styles.length; i<l; i++){
-  styles[i].onclick = build;
-}
-
-$("input").value = han;
-build();
-</script>
+  $$("input").value = han;
+  build();
+}, 100);
+```
