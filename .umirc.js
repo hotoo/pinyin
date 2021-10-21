@@ -22,11 +22,31 @@ export default defineConfig({
   logo:
     'https://gw.alipayobjects.com/mdn/rms_f6322a/afts/img/A*bGz9QbNudekAAAAAAAAAAAAAARQnAQ',
   outputPath: 'docs-dist/dist',
-  mode: 'site',
+  mode: 'doc',
   exportStatic: {},
   hash: true,
   resolve: {
     includes: ['.'],
+  },
+  menus: {
+    '/': [
+      {
+        title: '拼音',
+        children: [
+          'EXAMPLE.md',
+          'CHANGELOG.md',
+        ],
+      },
+    ],
+    '/en-US/': [
+      {
+        title: 'pinyin',
+        children: [
+          'EXAMPLE.md',
+          'CHANGELOG.md',
+        ],
+      },
+    ],
   },
   locales: [
     ['zh-CN', '中文'],

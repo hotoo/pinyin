@@ -1,6 +1,6 @@
 # README
 
-pinyin, 汉字拼音转换工具。
+pīnyīn, 汉字拼音转换工具。
 
 ----
 
@@ -21,7 +21,7 @@ pinyin, 汉字拼音转换工具。
 [gittip-image]: https://img.shields.io/gittip/hotoo.svg?style=flat-square
 [gittip-url]: https://www.gittip.com/hotoo/
 
-[English Documention](README-us_EN.md)
+[English Documention](README.en-US.md)
 
 转换中文字符为拼音。可以用于汉字注音、排序、检索。
 
@@ -247,11 +247,11 @@ API 和使用方式完成一致。
 
 你也可以选择使用支付宝或微信给我捐赠：
 
-![Alipay:hotoo.cn@gmail.com, WeChat:hotoome](https://hotoo.github.io/images/donate-hotoo.png)
+<img src="https://hotoo.github.io/images/donate-hotoo.png" alt="Alipay:hotoo.cn@gmail.com, WeChat:hotoome" width="400" />
 
 或者直接捐赠给我妻子 [@lizzie](https://github.com/lizzie)：
 
-![Alipay:shenyan1985@gmail.com, WeChat:SunsetSunrising](https://hotoo.github.io/images/donate-lizzie.png)
+<img src="https://hotoo.github.io/images/donate-lizzie.png" alt="Alipay:shenyan1985@gmail.com, WeChat:SunsetSunrising" width="400" />
 
 这两种捐赠的最终结果是一样的 :)
 

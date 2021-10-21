@@ -63,6 +63,7 @@
     "mocha": "^8.3.2",
     "mock-aws-s3": "^4.0.2",
     "nock": "^13.1.4",
+    "react-json-view": "^1.21.3",
     "request": "~2.68.0"
   },
   "license": "MIT"

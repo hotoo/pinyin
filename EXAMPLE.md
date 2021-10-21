@@ -2,63 +2,63 @@
 
 ----
 
-<style>
-textarea{width:90%; height:100px;}
-</style>
-
-### 输入[汉字](?han=%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%E6%B1%89%E5%AD%97)
-
-<div>
-  <textarea id="input"></textarea>
-</div>
-
-### 输出
-
-<div>
-  <input type="radio" name="style" id="style-normal" value="STYLE_NORMAL" />
-  <label for="style-normal">普通风格</label>
-  <input type="radio" name="style" id="style-tone" value="STYLE_TONE" checked />
-  <label for="style-tone">声调风格</label>
-  <input type="radio" name="style" id="style-tone2" value="STYLE_TONE2" />
-  <label for="style-tone2">音标风格</label>
-  <input type="radio" name="style" id="style-initials" value="STYLE_INITIALS" />
-  <label for="style-initials">声母风格</label>
-  <input type="radio" name="style" id="style-first-letter" value="STYLE_FIRST_LETTER" />
-  <label for="style-first-letter">首字母风格</label>
-</div>
-<div>
-  <textarea readonly id="output"></textarea>
-</div>
-
-
 ```jsx
+import React, { useState, useEffect } from 'react';
 import pinyin from 'pinyin';
-import Url from 'aurl';
+import JSONViewer from 'react-json-view';
 
-setTimeout(function() {
-  var $$ = function(id){return document.getElementById(id);}
-  var styles = document.getElementsByName("style");
-  var han = new Url(location.href).getParam("han") || '中文';
+export default function() {
+  const han = '中文汉字';
+  const [text, setText] = useState(han);
+  const [style, setStyle] = useState('STYLE_TONE');
 
-  function build(){
-    var han = $$("input").value;
-    var style = "STYLE_TONE";
-    for(var i=0,l=styles.length; i<l; i++){
-      if(styles[i].checked){
-        style = styles[i].value;
-      }
-    }
-    $$("output").value = pinyin(han, {
-      style: pinyin[style]
-    }).join(" ");
-  };
-
-  $$("input").onkeyup = build;
-  for(var i=0,l=styles.length; i<l; i++){
-    styles[i].onclick = build;
+  function onChangeInput(evt) {
+    setText(evt.target.value);
+  }
+  function onChangeStyle(evt) {
+    setStyle(evt.target.value)
   }
 
-  $$("input").value = han;
-  build();
-}, 100);
+  const json = pinyin(text, {
+    style: pinyin[style],
+  });
+  const textPinyin = json.join(' ');
+
+  return (
+    <>
+      <h3>输入汉字</h3>
+      <div>
+        <textarea onChange={onChangeInput}>{text}</textarea>
+      </div>
+      <h3>输出</h3>
+      <div>
+        <input type="radio" name="style" id="style-normal" value="STYLE_NORMAL" checked={style==='NORMAL'} onChange={onChangeStyle} />
+        <label for="style-normal">普通风格</label>
+        <input type="radio" name="style" id="style-tone" value="STYLE_TONE" checked={style==='STYLE_TONE'} onChange={onChangeStyle} />
+        <label for="style-tone">声调风格</label>
+        <input type="radio" name="style" id="style-tone2" value="STYLE_TONE2" checked={style==='STYLE_TONE2'} onChange={onChangeStyle} />
+        <label for="style-tone2">音标风格</label>
+        <input type="radio" name="style" id="style-initials" value="STYLE_INITIALS" checked={style==='STYLE_INITIALS'} onChange={onChangeStyle} />
+        <label for="style-initials">声母风格</label>
+        <input type="radio" name="style" id="style-first-letter" value="STYLE_FIRST_LETTER" checked={style==='STYLE_FIRST_LETTER'} onChange={onChangeStyle} />
+        <label for="style-first-letter">首字母风格</label>
+      </div>
+      <div>
+        <pre>{textPinyin}</pre>
+        <JSONViewer src={json} name={false} enableClipboard={false} />
+      </div>
+    </>
+  );
+}
 ```
+
+<style>
+textarea, pre{
+  width:90%; height:100px;
+  border: 1px solid #eee;
+  padding: 10px;
+}
+pre {
+  background-color: #f8f8f8;
+}
+</style>
