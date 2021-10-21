@@ -1,5 +1,5 @@
 
-# pinyin for Han （汉字）
+# pīnyīn for Han （汉字）
 
 ---
 
@@ -20,7 +20,9 @@
 [gittip-image]: https://img.shields.io/gittip/hotoo.svg?style=flat-square
 [gittip-url]: https://www.gittip.com/hotoo/
 
-[中文文档](README.md)
+[中文文档](/)
+
+[中文 README](README.md)
 
 Convert Han to pinyin. useful for phonetic notation, sorting, and searching.
 
@@ -220,11 +222,11 @@ If this module is helpful for you, please Star this repository.
 
 And you have chioce donate to me via Aliapy or WeChat:
 
-![Alipay:hotoo.cn@gmail.com, WeChat:hotoome](https://hotoo.github.io/images/donate-hotoo.png)
+<img src="https://hotoo.github.io/images/donate-hotoo.png" alt="Alipay:hotoo.cn@gmail.com, WeChat:hotoome" width="400" />
 
 or donate my dear wife [@lizzie](https://github.com/lizzie) direct:
 
-![Alipay:shenyan1985@gmail.com, WeChat:SunsetSunrising](https://hotoo.github.io/images/donate-lizzie.png)
+<img src="https://hotoo.github.io/images/donate-lizzie.png" alt="Alipay:shenyan1985@gmail.com, WeChat:SunsetSunrising" width="400" />
 
 The two donate way will have the same result.
 

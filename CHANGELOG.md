@@ -1,10 +1,3 @@
----
-nav:
-  order: 9
-group:
-  order: 9
----
-
 # CHANGELOG
 
 ----

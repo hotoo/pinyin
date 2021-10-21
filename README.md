@@ -21,7 +21,9 @@ pīnyīn, 汉字拼音转换工具。
 [gittip-image]: https://img.shields.io/gittip/hotoo.svg?style=flat-square
 [gittip-url]: https://www.gittip.com/hotoo/
 
-[English Documention](README.en-US.md)
+[English Documention](/en-US/)
+
+[English README](README.en-US.md)
 
 转换中文字符为拼音。可以用于汉字注音、排序、检索。
 
