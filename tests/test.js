@@ -298,6 +298,12 @@ describe("pinyin group", function() {
 describe("pinyin compact", function() {
   it("compact with heternonyms, normal style", function() {
     const han = "还钱";
+    const py = pinyin(han, { style: pinyin.STYLE_NORMAL, segment: true, group: true, heteronym: true }).compact();
+    expect(py).to.eql([["huan", "qian"], ["hai", "qian"]]);
+  });
+
+  it("compact with heternonyms, normal style", function() {
+    const han = "还钱";
     const py = pinyin(han, { style: pinyin.STYLE_NORMAL, segment: true, group: true, heteronym: true });
     expect(pinyin.compact(py)).to.eql([["huan", "qian"], ["hai", "qian"]]);
   });
