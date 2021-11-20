@@ -39,6 +39,7 @@
     "doc:build": "dumi build",
     "doc:deploy": "npm run doc:build && cp CNAME docs-dist/dist && gh-pages -d docs-dist/dist",
     "lint": "eslint ./lib/ ./bin/ ./tests/",
+    "test-util": "mocha -R spec --timeout 5000 tests/util.test.js",
     "test-cli": "mocha -R spec --timeout 5000 tests/cli.test.js",
     "test-npm": "istanbul cover _mocha -- --harmony --reporter spec --timeout 2000 --inline-diffs ./tests/test.js",
     "benchmark": "node tests/benchmark.test.js",
