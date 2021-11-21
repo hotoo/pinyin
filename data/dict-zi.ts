@@ -1,4 +1,4 @@
-var dict = [];
+const dict: string[] = [];
 
 dict[0x3007] = "líng,xīng"; /* 〇: https://zh.m.wiktionary.org/wiki/%E3%80%87 */
 dict[0x3400] = "qiū"; /* 㐀 */
@@ -41246,4 +41246,4 @@ dict[0x2a590] = "yào,yà"; /* ꖐ */
 dict[0x2a595] = "huī"; /* ꖕ */
 dict[0x2a599] = "hōu"; /* ꖙ */
 
-module.exports = dict;
+export default dict;

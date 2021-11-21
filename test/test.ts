@@ -1,8 +1,6 @@
+import pinyin from "../src/index";
 
-var expect = require("expect.js");
-var pinyin = require("..");
-
-var cases = [
+const cases = [
 
   // 单音字
   [ "我", {
@@ -250,7 +248,7 @@ function makeTest(han, opt, style){
   it("pinyin(\"" + han + "\", " + style + ") : " +
     JSON.stringify(_py) + " === " + JSON.stringify(single_pinyin), function() {
 
-    expect(_py).to.eql(single_pinyin);
+    expect(_py).toEqual(single_pinyin);
   });
 
   // 普通多音字模式。
@@ -258,7 +256,7 @@ function makeTest(han, opt, style){
   it("pinyin(\"" + han + "\", " + style + ",heteronym) : " +
     JSON.stringify(_py2) + " === " + JSON.stringify(py), function() {
 
-    expect(_py2).to.eql(py);
+    expect(_py2).toEqual(py);
   });
 
   // 分词多音字模式。
@@ -270,7 +268,7 @@ function makeTest(han, opt, style){
   it("pinyin(\"" + han + "\", " + style + ",heteronym,segment) : " +
     JSON.stringify(_py2s) + " === " + JSON.stringify(pys), function() {
 
-    expect(_py2s).to.eql(pys);
+    expect(_py2s).toEqual(pys);
   });
 }
 
@@ -289,7 +287,7 @@ describe("pinyin.compare", function() {
   it("我,要,排,序 => 序,我,排,要", function() {
     const data = "我要排序".split("");
     const sortedData = data.sort(pinyin.compare);
-    expect(sortedData).to.eql("排我序要".split(""));
+    expect(sortedData).toEqual("排我序要".split(""));
   });
 });
 
@@ -297,13 +295,13 @@ describe("pinyin group", function() {
   it("groups segments", function () {
     const han = "我喜欢你";
     const py = pinyin(han, {segment: true, group: true, heteronym: true});
-    expect(py).to.eql([["wǒ"], ["xǐhuān"], ["nǐ"]]);
+    expect(py).toEqual([["wǒ"], ["xǐhuān"], ["nǐ"]]);
   });
 
   it("groups segments with heteronyms", function() {
     const han = "我都喜欢朝阳";
     const py = pinyin(han, {segment: true, group: true, heteronym: true});
-    expect(py).to.eql([["wǒ"], ["dū", "dōu"], ["xǐhuān"], ["zhāoyáng", "cháoyáng"]]);
+    expect(py).toEqual([["wǒ"], ["dū", "dōu"], ["xǐhuān"], ["zhāoyáng", "cháoyáng"]]);
   });
 });
 

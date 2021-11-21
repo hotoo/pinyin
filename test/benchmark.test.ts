@@ -1,10 +1,10 @@
-"use strict";
+import Benchmark from "benchmark";
+import pinyin from "../";
+
+import pkg from "../package.json";
 
 let memory = process.memoryUsage().rss;
-const Benchmark = require("benchmark");
-const pinyin = require("../");
 
-const pkg = require("../package.json");
 console.log(pkg.name + "@" + pkg.version);
 
 function formatNunber(num){

@@ -1,4 +1,4 @@
-module.exports = {
+export default {
 "a":"",
 "ā":"吖锕錒",
 "á":"嗄",
