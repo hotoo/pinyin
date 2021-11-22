@@ -70,23 +70,23 @@ describe("test/util.test.js", function() {
 
   describe("compact2array", function() {
     it("compact2array([], [])", function() {
-      expect(util.compact2array([], [])).to.eql([]);
+      expect(util.compact2array([], [])).to.eql([[undefined, undefined]]);
     });
 
     it("compact2array([a], [])", function() {
-      expect(util.compact2array(["a"], [])).to.eql([["a"]]);
+      expect(util.compact2array(["a"], [])).to.eql([["a", undefined]]);
     });
 
     it("compact2array([], [1])", function() {
-      expect(util.compact2array([], ["1"])).to.eql([["1"]]);
+      expect(util.compact2array([], ["1"])).to.eql([[undefined, "1"]]);
     });
 
     it("compact2array([a, b, c], [])", function() {
-      expect(util.compact2array(["a", "b", "c"], [])).to.eql([["a", "b", "c"]]);
+      expect(util.compact2array(["a", "b", "c"], [])).to.eql([["a", undefined], ["b", undefined], ["c", undefined]]);
     });
 
     it("compact2array([], [a, b, c])", function() {
-      expect(util.compact2array([], ["a", "b", "c"])).to.eql([["a", "b", "c"]]);
+      expect(util.compact2array([], ["a", "b", "c"])).to.eql([[undefined, "a"], [undefined, "b"], [undefined, "c"]]);
     });
 
     it("compact2array([a], [1])", function() {
@@ -141,6 +141,10 @@ describe("test/util.test.js", function() {
 
     it("compact([[a,b],[1,2],[A,B]])", function() {
       expect(util.compact([["a", "b"], ["1", "2"], ["A", "B"]])).to.eql([["a", "1", "A"], ["a", "1", "B"], ["a", "2", "A"], ["a", "2", "B"], ["b", "1", "A"], ["b", "1", "B"], ["b", "2", "A"], ["b", "2", "B"]]);
+    });
+
+    it("compact([[ni],[],[hao, hai]])", function() {
+      expect(util.compact([["ni"], [], ["hao", "hai"]])).to.eql([["ni", undefined, "hao"], ["ni", undefined, "hai"]]);
     });
   });
 });
