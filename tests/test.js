@@ -265,9 +265,6 @@ describe("pinyin", function() {
     han = cases[i][0];
     opt = cases[i][1];
     for(var style in opt) {
-      if (opt.hasOwnProperty(style)) {
-        return;
-      }
       makeTest(han, opt, style);
     }
   }
