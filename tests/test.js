@@ -264,7 +264,7 @@ describe("pinyin", function() {
   for (var i = 0, han, opt, l = cases.length; i < l; i++) {
     han = cases[i][0];
     opt = cases[i][1];
-    for(var style in opt){
+    for(var style in opt) {
       makeTest(han, opt, style);
     }
   }
@@ -289,5 +289,37 @@ describe("pinyin group", function() {
     const han = "我都喜欢朝阳";
     const py = pinyin(han, {segment: true, group: true, heteronym: true});
     expect(py).to.eql([["wǒ"], ["dū", "dōu"], ["xǐhuān"], ["zhāoyáng", "cháoyáng"]]);
+  });
+});
+
+describe("pinyin compact", function() {
+  it("compact with heternonyms, normal style", function() {
+    const han = "还钱";
+    const py = pinyin(han, { style: pinyin.STYLE_NORMAL, segment: true, group: true, heteronym: true }).compact();
+    expect(py).to.eql([["huan", "qian"], ["hai", "qian"]]);
+  });
+
+  it("compact with heternonyms, normal style", function() {
+    const han = "还钱";
+    const py = pinyin(han, { style: pinyin.STYLE_NORMAL, segment: true, group: true, heteronym: true });
+    expect(pinyin.compact(py)).to.eql([["huan", "qian"], ["hai", "qian"]]);
+  });
+
+  it("compact with heternonyms, first letter, group false", function() {
+    const han = "还钱";
+    const py = pinyin(han, { style: pinyin.STYLE_FIRST_LETTER, segment: true, group: false, heteronym: true });
+    expect(pinyin.compact(py)).to.eql([["h", "q"]]);
+  });
+
+  it("compact with heternonyms, group true", function() {
+    const han = "还钱";
+    const py = pinyin(han, {segment: true, group: true, heteronym: true});
+    expect(pinyin.compact(py)).to.eql([["huán", "qián"], ["hái", "qián"]]);
+  });
+
+  it("compact with heternonyms, many words", function() {
+    const han = "我们都爱朝阳";
+    const py = pinyin(han, { style: pinyin.STYLE_FIRST_LETTER, heteronym: true}).compact();
+    expect(py).to.eql([["w", "m", "d", "a", "z", "y"], ["w", "m", "d", "a", "c", "y"]]);
   });
 });
