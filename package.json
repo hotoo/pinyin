@@ -38,7 +38,7 @@
     "start": "dumi dev",
     "doc:build": "dumi build",
     "doc:deploy": "npm run doc:build && cp CNAME docs-dist/dist && gh-pages -d docs-dist/dist",
-    "lint": "eslint ./lib/ ./bin/ ./tests/",
+    "lint": "eslint --fix ./lib/ ./bin/pinyin ./tests/",
     "test": "nyc --reporter=lcov mocha --timeout=5000 --inline-diffs ./tests/"
   },
   "dependencies": {
@@ -54,12 +54,17 @@
     "benchmark": "^2.0.0",
     "dumi": "^1.1.30",
     "eslint": "^8.5.0",
+    "eslint-config-airbnb": "^19.0.2",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-react": "^7.27.1",
     "expect.js": "~0.3.1",
     "gh-pages": "^3.2.3",
     "mocha": "^9.0.0",
     "mock-aws-s3": "^4.0.2",
     "nock": "^13.1.4",
     "nyc": "^15.1.0",
+    "react": "^17.0.2",
     "react-json-view": "^1.21.3",
     "request": "~2.68.0"
   },
