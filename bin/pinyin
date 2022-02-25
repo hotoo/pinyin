@@ -14,7 +14,7 @@ commander.
   parse(process.argv);
 
 if (commander.list) {
-  process.exit()
+  process.exit();
 }
 
 // output help and exit if no args found
