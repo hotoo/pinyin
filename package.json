@@ -42,7 +42,6 @@
     "test": "nyc --reporter=lcov mocha --timeout=5000 --inline-diffs ./tests/"
   },
   "dependencies": {
-    "@node-rs/jieba": "^1.6.0",
     "commander": "~1.1.1",
     "object-assign": "^4.0.1"
   },
