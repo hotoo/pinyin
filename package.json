@@ -46,7 +46,7 @@
     "object-assign": "^4.0.1"
   },
   "optionalDependencies": {
-    "nodejieba": "^2.2.1"
+    "nodejieba": "^2.5.2"
   },
   "devDependencies": {
     "aurl": "^1.2.0",
@@ -64,5 +64,6 @@
     "react-json-view": "^1.21.3",
     "request": "~2.68.0"
   },
+  "registry": "https://registry.npmmirror.com",
   "license": "MIT"
 }

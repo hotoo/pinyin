@@ -126,6 +126,11 @@ wǒ xǐhuān nǐ
 
 指定拼音 风格。可以通过以下几种 `STYLE_` 开头的静态属性进行指定。
 
+### options.mode
+
+拼音模式，默认 `pinyin.MODE_NORMAL` 普通模式。
+如果你明确的在姓名场景下，可以使用 `pinyin.MODE_SURNAME` 让姓氏使用更准确的拼音。
+
 ## 静态属性
 
 ### `.STYLE_NORMAL`
@@ -172,6 +177,13 @@ wǒ xǐhuān nǐ
 
 如：`p y`
 
+### `.MODE_NORMAL`
+
+普通模式，自动识别读音。
+
+### `.MODE_SURNAME`
+
+姓名模式，对于明确的姓名场景，可以更准确的识别姓氏的读音。
 
 ## Test
 
