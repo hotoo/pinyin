@@ -2,6 +2,10 @@
 
 ----
 
+## 2.11.0 (2022-02-25)
+
+- feat(surname): 支持姓氏拼音模式，优先处理姓氏读音。 fixed #288
+
 ## 2.10.2 (2021-04-11)
 
 - feat(cli): pinyin cli support group by phrases.

@@ -122,6 +122,11 @@ wǒ xǐhuān nǐ
 Specify pinyin style. please use static properties like `STYLE_*`.
 default is `.STYLE_TONE`. see Static Property for more.
 
+### `options.mode`
+
+pinyin mode, default is `pinyin.MODE_NORMAL`. If you cleared in surname scene,
+use `pinyin.MODE_SURNAME` maybe better.
+
 ## Static Property
 
 ### `.STYLE_NORMAL`
@@ -162,6 +167,13 @@ First letter style.
 
 Example: `p y`
 
+### `pinyin.MODE_NORMAL`
+
+Normal mode. This is the default mode.
+
+### `pinyin.MODE_SURNAME`
+
+Surname mode. If chinese word is surname, The pinyin of surname is prioritized.
 
 ## Test
 
