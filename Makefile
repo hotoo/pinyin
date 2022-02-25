@@ -35,6 +35,7 @@ lint:
 	@./node_modules/eslint/bin/eslint.js ./lib/ ./bin/ ./tests/
 
 test: lint test-npm test-cli benchmark
+test-local: test-npm
 
 output = _site/coverage.html
 coverage:
@@ -66,4 +67,4 @@ dict-node:
 infrequent:
 	@node ./tools/infrequent.js > ./tools/zi/infrequent.js
 
-.PHONY: server clean test coverage test-npm test-cli lint benchmark
+.PHONY: server clean test test-local coverage test-npm test-cli lint benchmark

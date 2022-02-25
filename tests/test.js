@@ -217,6 +217,21 @@ var cases = [
   } ],
 ];
 
+describe("姓名模式", function() {
+  it("复姓", function() {
+    expect(pinyin("南宫世家")).to.eql([["nán"], ["gōng"], ["shì"], ["jiā"]]);
+    expect(pinyin("南宫世家", { mode: pinyin.MODE_SURNAME})).to.eql([["nán"], ["gōng"], ["shì"], ["jiā"]]);
+
+    expect(pinyin("查某说：您是万俟先生？", { mode: pinyin.MODE_NORMAL})).to.eql([["chá"], ["mǒu"], ["shuō"], ["："], ["nín"], ["shì"], ["wàn"], ["sì"], ["xiān"], ["shēng"], ["？"]]);
+    expect(pinyin("查某说：您是万俟先生？", { mode: pinyin.MODE_SURNAME})).to.eql([["zhā"], ["mǒu"], ["shuō"], ["："], ["nín"], ["shì"], ["mò"], ["qí"], ["xiān"], ["shēng"], ["？"]]);
+  });
+  it("单姓", function() {
+    expect(pinyin("华夫人", { mode: pinyin.MODE_NORMAL})).to.eql([["huá"], ["fū"], ["rén"]]);
+    expect(pinyin("华夫人", { mode: pinyin.MODE_SURNAME})).to.eql([["huà"], ["fū"], ["rén"]]);
+  });
+});
+
+
 function makeTest(han, opt, style){
   var py = opt[style];
   var pys = py;
