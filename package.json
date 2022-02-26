@@ -19,7 +19,7 @@
     "中文",
     "Pinyin"
   ],
-  "homepage": "http://pinyin.hotoo.me/",
+  "homepage": "https://pinyin.js.org/",
   "author": "闲耘 <hotoo.cn@gmail.com>",
   "browser": "lib/web-pinyin.js",
   "bin": {

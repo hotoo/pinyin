@@ -1,5 +1,5 @@
 // 复姓
-module.exports = {
+export default {
   "万俟": [["mò"], ["qí"]],
   "上官": [["shàng"], ["guān"]],
   "东方": [["dōng"], ["fāng"]],

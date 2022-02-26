@@ -1,5 +1,5 @@
 // @see [百家姓](https://zh.wikipedia.org/wiki/%E7%99%BE%E5%AE%B6%E5%A7%93)
-module.exports = {
+export default {
   "赵": [["zhào"]],
   "钱": [["qián"]],
   "孙": [["sūn"]],
