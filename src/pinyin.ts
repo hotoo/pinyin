@@ -3,26 +3,71 @@ import DICT_PHRASES from "../data/phrases-dict"; // 词组拼音数据。
 import { segment } from "./segment";
 import { toFixed } from "./format";
 import { combo } from "./util";
-import type { IPinyinOptions, IPinyinOptionsUser } from "./declare";
-import { PINYIN_STYLE } from "./constant";
+import type {
+  IPinyinAllOptions,
+  IPinyinOptions,
+  IPinyinStyle,
+} from "./declare";
+import { ENUM_PINYIN_STYLE } from "./constant";
 
-const DEFAULT_OPTIONS: IPinyinOptions = {
-  style: PINYIN_STYLE.TONE, // 风格
-  segment: false,           // 分词。
-  heteronym: false,         // 多音字
-  group: false,             // 词组拼音分组
+const DEFAULT_OPTIONS: IPinyinAllOptions = {
+  style: ENUM_PINYIN_STYLE.TONE, // 风格
+  segment: false,   // 分词。
+  heteronym: false, // 多音字
+  group: false,     // 词组拼音分组
 };
 
-// export default function(hans: string): string {
-//   return hans;
-// }
-export default function pinyin(hans: string, options?: IPinyinOptionsUser): string[][] {
-  if(typeof hans !== "string"){
+const pinyinStyleMap: Map<string, ENUM_PINYIN_STYLE> = new Map([
+  [ "tone", ENUM_PINYIN_STYLE.TONE ],
+  [ "TONE", ENUM_PINYIN_STYLE.TONE ],
+  [ "1", ENUM_PINYIN_STYLE.TONE ],
+
+  [ "tone2", ENUM_PINYIN_STYLE.TONE2 ],
+  [ "TONE2", ENUM_PINYIN_STYLE.TONE2 ],
+  [ "2", ENUM_PINYIN_STYLE.TONE2 ],
+
+  [ "to3ne", ENUM_PINYIN_STYLE.TO3NE ],
+  [ "TO3NE", ENUM_PINYIN_STYLE.TO3NE ],
+  [ "5", ENUM_PINYIN_STYLE.TO3NE ],
+
+  [ "first_letter", ENUM_PINYIN_STYLE.FIRST_LETTER ],
+  [ "FIRST_LETTER", ENUM_PINYIN_STYLE.FIRST_LETTER ],
+  [ "4", ENUM_PINYIN_STYLE.FIRST_LETTER ],
+
+  [ "initials", ENUM_PINYIN_STYLE.INITIALS ],
+  [ "INITIALS", ENUM_PINYIN_STYLE.INITIALS ],
+  [ "3", ENUM_PINYIN_STYLE.INITIALS ],
+
+  [ "normal", ENUM_PINYIN_STYLE.NORMAL ],
+  [ "NORMAL", ENUM_PINYIN_STYLE.NORMAL ],
+  [ "0", ENUM_PINYIN_STYLE.NORMAL ],
+]);
+// 将用户输入的拼音形式参数转换成唯一指定的强类型。
+function convertPinyinStyle(style?: IPinyinStyle): ENUM_PINYIN_STYLE {
+  const s = String(style);
+  if (pinyinStyleMap.has(s)) {
+    return pinyinStyleMap.get(s) as ENUM_PINYIN_STYLE;
+  }
+  return ENUM_PINYIN_STYLE.NORMAL;
+}
+
+function convertUserOptions(options?: IPinyinOptions): IPinyinAllOptions {
+  const opt: IPinyinAllOptions = {
+    ...DEFAULT_OPTIONS,
+    style: convertPinyinStyle(options?.style),
+    segment: options?.segment || false,
+    heteronym: options?.heteronym || false,
+    group: options?.group || false,
+  };
+  return opt;
+}
+export function pinyin(hans: string, options?: IPinyinOptions): string[][] {
+  if(typeof hans !== "string") {
     return [];
   }
-  const opt: IPinyinOptions = {
+  const opt: IPinyinAllOptions = {
     ...DEFAULT_OPTIONS,
-    ...options,
+    ...convertUserOptions(options),
   };
 
   // 因为分词结果有词性信息，结构不同，处理也不相同，所以需要分别处理。
@@ -34,8 +79,9 @@ export default function pinyin(hans: string, options?: IPinyinOptionsUser): stri
     return normal_pinyin(hans, opt)
   }
 }
+export default pinyin;
 
-function normal_pinyin(hans: string, options: IPinyinOptions): string[][] {
+function normal_pinyin(hans: string, options: IPinyinAllOptions): string[][] {
   let pys: string[][] = [];
   let nohans = "";
 
@@ -66,7 +112,7 @@ function normal_pinyin(hans: string, options: IPinyinOptions): string[][] {
 // 单字拼音转换。
 // @param {String} han, 单个汉字
 // @return {Array} 返回拼音列表，多音字会有多个拼音项。
-function single_pinyin(han: string, options: IPinyinOptions): string[] {
+function single_pinyin(han: string, options: IPinyinAllOptions): string[] {
   if (typeof han !== "string") {
     return [];
   }
@@ -103,7 +149,7 @@ function single_pinyin(han: string, options: IPinyinOptions): string[] {
 /**
  * 将文本分词，并转换成拼音。
  */
-function segment_pinyin(hans: string, options: IPinyinOptions): string[][] {
+function segment_pinyin(hans: string, options: IPinyinAllOptions): string[][] {
   const phrases =  segment(hans, "nodejieba");
   let pys: string[][] = [];
   let nohans = "";
@@ -147,7 +193,7 @@ function segment_pinyin(hans: string, options: IPinyinOptions): string[][] {
  * @param {Object} options, 选项。
  * @return {Array}
  */
-function phrases_pinyin(phrases: string, options: IPinyinOptions) {
+function phrases_pinyin(phrases: string, options: IPinyinAllOptions) {
   let py: string[][] = [];
   if (DICT_PHRASES.hasOwnProperty(phrases)){
     //! copy pinyin result.

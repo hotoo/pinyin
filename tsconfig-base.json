@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "incremental": true,
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "declaration": true,

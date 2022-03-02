@@ -44,7 +44,7 @@
     "doc:deploy": "npm run doc:build && cp CNAME docs-dist/dist && gh-pages -d docs-dist/dist",
     "lint": "eslint ./lib/ ./bin/ ./tests/",
     "test": "nyc --reporter=lcov mocha --timeout=5000 --inline-diffs ./tests/",
-    "test-local": "jest && npx ts-node test/index.benchmark.ts",
+    "test-local": "jest",
     "debug": "npx ts-node tools/debug.ts"
   },
   "dependencies": {

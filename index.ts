@@ -1,7 +1,8 @@
-// export type { IPinyinOptions, IPinyinSegment, PINYIN_STYLE } from "./src/declare";
+export * from "./src/pinyin";
+export { pinyin as default } from "./src/pinyin";
 
-// export default from "./src/pinyin";
-
-export default function pinyin(hans: string) {
-  return hans;
-}
+export type {
+  IPinyinOptions,
+  IPinyinSegment,
+  IPinyinStyle,
+} from "./src/declare";
