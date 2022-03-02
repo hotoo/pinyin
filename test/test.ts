@@ -1,4 +1,4 @@
-import pinyin from "../src/index";
+import pinyin from "../index";
 
 const cases = [
 
@@ -215,7 +215,7 @@ const cases = [
   } ],
 ];
 
-describe("姓名模式", function() {
+describe.skip("姓名模式", function() {
   it("复姓", function() {
     expect(pinyin("南宫世家")).to.eql([["nán"], ["gōng"], ["shì"], ["jiā"]]);
     expect(pinyin("南宫世家", { mode: pinyin.MODE_SURNAME})).to.eql([["nán"], ["gōng"], ["shì"], ["jiā"]]);

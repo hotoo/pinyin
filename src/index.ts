@@ -1,6 +1,7 @@
-import PINYIN_DICT from '../data/dict-zi';
-import { combo } from './util';
-import Pinyin from './pinyin';
+import PINYIN_DICT from "../data/dict-zi";
+import segmentit from "segmentit";
+import { combo } from "./util";
+import Pinyin from "./pinyin";
 
 let jieba;
 let PHRASES_DICT;

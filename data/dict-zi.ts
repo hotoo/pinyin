@@ -1,4 +1,4 @@
-const dict: string[] = [];
+const dict: Record<number, string> = {};
 
 dict[0x3007] = "líng,xīng"; /* 〇: https://zh.m.wiktionary.org/wiki/%E3%80%87 */
 dict[0x3400] = "qiū"; /* 㐀 */

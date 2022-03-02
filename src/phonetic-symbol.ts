@@ -1,5 +1,5 @@
 // 带声调字符。
-export default {
+const phonetic_symbol: Record<string,string> = {
   "ā": "a1",
   "á": "a2",
   "ǎ": "a3",
@@ -27,4 +27,6 @@ export default {
   "ń": "n2",
   "ň": "n3",
   "": "m2",
-};
+}
+
+export default phonetic_symbol;

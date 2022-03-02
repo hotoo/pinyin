@@ -2,8 +2,8 @@
   "name": "pinyin",
   "version": "3.0.0-alpha-0",
   "description": "汉语拼音转换工具。",
-  "main": "index.ts",
-  "module": "build/es/index.js",
+  "main": "build/dist/src/pinyin.js",
+  "module": "build/es/src/pinyin.js",
   "files": [
     "package.json",
     "build/",
@@ -43,35 +43,38 @@
     "doc:build": "dumi build",
     "doc:deploy": "npm run doc:build && cp CNAME docs-dist/dist && gh-pages -d docs-dist/dist",
     "lint": "eslint ./lib/ ./bin/ ./tests/",
-    "test": "nyc --reporter=lcov mocha --timeout=5000 --inline-diffs ./tests/"
+    "test": "nyc --reporter=lcov mocha --timeout=5000 --inline-diffs ./tests/",
+    "test-local": "jest && npx ts-node test/index.benchmark.ts",
+    "debug": "npx ts-node tools/debug.ts"
   },
   "dependencies": {
-    "@babel/preset-env": "^7.15.6",
-    "@babel/preset-typescript": "^7.15.0",
     "commander": "~1.1.1",
-    "object-assign": "^4.0.1"
+    "npx": "^10.2.2",
+    "object-assign": "^4.0.1",
+    "segmentit": "^2.0.3"
   },
   "optionalDependencies": {
     "nodejieba": "^2.5.2"
   },
   "devDependencies": {
-    "aurl": "^1.2.0",
     "@babel/preset-env": "^7.15.6",
     "@babel/preset-typescript": "^7.15.0",
-    "jest": "^27.2.3",
     "@types/jest": "^27.0.2",
+    "aurl": "^1.2.0",
     "aws-sdk": "^2.1011.0",
     "benchmark": "~1.0.0",
     "dumi": "^1.1.30",
     "eslint": "~0.24.0",
     "gh-pages": "^3.2.3",
     "istanbul": "~0.3.17",
+    "jest": "^27.2.3",
     "mocha": "^9.0.0",
     "mock-aws-s3": "^4.0.2",
     "nock": "^13.1.4",
     "nyc": "^15.1.0",
     "react-json-view": "^1.21.3",
     "request": "~2.68.0",
+    "ts-node": "^10.5.0",
     "typescript": "^4.4.4"
   },
   "registry": "https://registry.npmmirror.com",
