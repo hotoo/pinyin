@@ -46,9 +46,9 @@ const pinyinStyleMap: Map<string, ENUM_PINYIN_STYLE> = new Map([
 function convertPinyinStyle(style?: IPinyinStyle): ENUM_PINYIN_STYLE {
   const s = String(style);
   if (pinyinStyleMap.has(s)) {
-    return pinyinStyleMap.get(s) as ENUM_PINYIN_STYLE;
+    return pinyinStyleMap.get(s);
   }
-  return ENUM_PINYIN_STYLE.NORMAL;
+  return ENUM_PINYIN_STYLE.TONE;
 }
 
 function convertUserOptions(options?: IPinyinOptions): IPinyinAllOptions {
@@ -215,7 +215,7 @@ function phrases_pinyin(phrases: string, options: IPinyinAllOptions) {
   return py;
 }
 
-function groupPhrases(phrases: string[][]) {
+function groupPhrases(phrases: string[][]): string[] {
   if (phrases.length === 1) {
     return phrases[0];
   }

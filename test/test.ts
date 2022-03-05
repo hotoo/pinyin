@@ -255,7 +255,7 @@ function makeTest(han: string, opt: any, style: string){
   });
 
   // 普通多音字模式。
-  var _py2 = pinyin(han, {style: pinyin[style], heteronym:true});
+  var _py2 = pinyin(han, {style: getPinyinStyle(style), heteronym:true});
   it("pinyin(\"" + han + "\", " + style + ",heteronym) : " +
     JSON.stringify(_py2) + " === " + JSON.stringify(py), function() {
 
@@ -264,7 +264,7 @@ function makeTest(han: string, opt: any, style: string){
 
   // 分词多音字模式。
   var _py2s = pinyin(han, {
-    style: pinyin[style],
+    style: getPinyinStyle(style),
     heteronym: true,
     segment: true,
   });

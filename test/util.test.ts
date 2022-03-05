@@ -46,27 +46,33 @@ describe("test/util.test.js", function() {
     });
 
     it("combo([[a]])", function() {
-      expect(combo([["a"]])).toEqual([["a"]]);
+      expect(combo([["a"]])).toEqual(["a"]);
+      // expect(combo([["a"]])).toEqual([["a"]]);
     });
 
     it("combo([[a,b]])", function() {
-      expect(combo([["a", "b"]])).toEqual([["a", "b"]]);
+      expect(combo([["a", "b"]])).toEqual(["a", "b"]);
+      // expect(combo([["a", "b"]])).toEqual([["a", "b"]]);
     });
 
     it("combo([[a,b],[1]])", function() {
-      expect(combo([["a", "b"], ["1"]])).toEqual([["a1", "b1"]]);
+      expect(combo([["a", "b"], ["1"]])).toEqual(["a1", "b1"]);
+      // expect(combo([["a", "b"], ["1"]])).toEqual([["a1", "b1"]]);
     });
 
     it("combo([[a,b],[1,2]])", function() {
-      expect(combo([["a", "b"], ["1", "2"]])).toEqual([["a1", "a2", "b1", "b2"]]);
+      expect(combo([["a", "b"], ["1", "2"]])).toEqual(["a1", "a2", "b1", "b2"]);
+      // expect(combo([["a", "b"], ["1", "2"]])).toEqual([["a1", "a2", "b1", "b2"]]);
     });
 
     it("combo([[a,b],[1,2],[A]])", function() {
-      expect(combo([["a", "b"], ["1", "2"], ["A"]])).toEqual([["a1A", "a2A", "b1A", "b2A"]]);
+      expect(combo([["a", "b"], ["1", "2"], ["A"]])).toEqual(["a1A", "a2A", "b1A", "b2A"]);
+      // expect(combo([["a", "b"], ["1", "2"], ["A"]])).toEqual([["a1A", "a2A", "b1A", "b2A"]]);
     });
 
     it("combo([[a,b],[1,2],[A,B]])", function() {
-      expect(combo([["a", "b"], ["1", "2"], ["A", "B"]])).toEqual([["a1A", "a1B", "a2A", "a2B", "b1A", "b1B", "b2A", "b2B"]]);
+      expect(combo([["a", "b"], ["1", "2"], ["A", "B"]])).toEqual(["a1A", "a1B", "a2A", "a2B", "b1A", "b1B", "b2A", "b2B"]);
+      // expect(combo([["a", "b"], ["1", "2"], ["A", "B"]])).toEqual([["a1A", "a1B", "a2A", "a2B", "b1A", "b1B", "b2A", "b2B"]]);
     });
   });
 
