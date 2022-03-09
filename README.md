@@ -45,7 +45,7 @@ pīnyīn, 汉字拼音转换工具。
 
 via npm:
 
-```bash
+```shell
 npm install pinyin --save
 ```
 
@@ -53,24 +53,32 @@ npm install pinyin --save
 
 开发者：
 
-```js
-var pinyin = require("pinyin");
+```typescript
+import pinyin from "pinyin";
 
 console.log(pinyin("中心"));    // [ [ 'zhōng' ], [ 'xīn' ] ]
-console.log(pinyin("中心", {
-  heteronym: true               // 启用多音字模式
-}));                            // [ [ 'zhōng', 'zhòng' ], [ 'xīn' ] ]
+
 console.log(pinyin("中心", {
   heteronym: true,              // 启用多音字模式
-  segment: true                 // 启用分词，以解决多音字问题。
-}));                            // [ [ 'zhōng' ], [ 'xīn' ] ]
-console.log(pinyin("我喜欢你", {
-  segment: true,                // 启用分词
-  group: true                   // 启用词组
-}));                            // [ [ 'wǒ' ], [ 'xǐhuān' ], [ 'nǐ' ] ]
+}));                            // [ [ 'zhōng', 'zhòng' ], [ 'xīn' ] ]
+
 console.log(pinyin("中心", {
-  style: pinyin.STYLE_INITIALS, // 设置拼音风格
-  heteronym: true
+  heteronym: true,              // 启用多音字模式
+  segment: true,                // 启用分词，以解决多音字问题。默认不开启，使用 true 开启使用 nodejieba 分词库。
+}));                            // [ [ 'zhōng' ], [ 'xīn' ] ]
+
+console.log(pinyin("中心", {
+  segment: "@node-rs/jieba",    // 指定分词库，可以是 "nodejieba"、"segmentit"、"@node-rs/jieba"。
+}));                            // [ [ 'zhōng' ], [ 'xīn' ] ]
+
+console.log(pinyin("我喜欢你", {
+  segment: "segmentit",         // 启用分词
+  group: true,                  // 启用词组
+}));                            // [ [ 'wǒ' ], [ 'xǐhuān' ], [ 'nǐ' ] ]
+
+console.log(pinyin("中心", {
+  style: "initials",            // 设置拼音风格。
+  heteronym: true,              // 即使有多音字，因为拼音风格选择，重复的也会合并。
 }));                            // [ [ 'zh' ], [ 'x' ] ]
 ```
 
@@ -82,10 +90,13 @@ zhōng xīn
 $ pinyin -h
 ```
 
+## 类型
+
+### IPinyinOptions
 
 ## API
 
-### 方法 `<Array> pinyin(words[, options])`
+### 方法 `<Array> pinyin(words: string[, options: IPinyinOptions])`
 
 将传入的中文字符串 (words) 转换成拼音符号串。
 

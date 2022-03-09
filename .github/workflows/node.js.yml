@@ -5,9 +5,9 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ master ]
+    branches: [ master, v3.x, v2.x ]
   pull_request:
-    branches: [ master ]
+    branches: [ master, v3.x, v2.x ]
 
 jobs:
   build:
@@ -27,7 +27,8 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: npm install
     - run: npm run lint
-    - run: make test
+    - run: npm run build
+    - run: npm test
 
     - name: Coveralls
       uses: coverallsapp/github-action@master

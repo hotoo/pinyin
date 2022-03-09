@@ -1,13 +1,13 @@
-"use strict";
-
-let memory = process.memoryUsage().rss;
 const Benchmark = require("benchmark");
 const pinyin = require("../");
 
 const pkg = require("../package.json");
+
+let memory = process.memoryUsage().rss;
+
 console.log(pkg.name + "@" + pkg.version);
 
-function formatNunber(num){
+function formatNunber(num) {
   return String(num).replace(/(\d)(?=(\d{3})+$)/g, "$1,");
 }
 

@@ -22,9 +22,9 @@ if (commander.args.length === 0) {
   commander.help();
 }
 
-var pinyin = require("../");
+var pinyin = require("../").default;
 var options = {
-  style: pinyin["STYLE_" + (commander.style || "TONE").toUpperCase()],
+  style: commander.style || "TONE",
   heteronym: commander.heteronym || false,
   group: commander.group || false,
   segment: commander.segment || false,
