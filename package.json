@@ -53,7 +53,7 @@
     "segmentit": "^2.0.3"
   },
   "optionalDependencies": {
-    "nodejieba": "^2.5.2"
+    "nodejieba": "2.5.2"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.15.6",
