@@ -46,7 +46,7 @@
     "object-assign": "^4.0.1"
   },
   "optionalDependencies": {
-    "nodejieba": "^2.5.2"
+    "nodejieba": "2.5.2"
   },
   "devDependencies": {
     "aurl": "^1.2.0",
