@@ -47,13 +47,12 @@
     "debug": "npx ts-node tools/debug.ts"
   },
   "dependencies": {
-    "commander": "~1.1.1",
-    "npx": "^10.2.2",
-    "object-assign": "^4.0.1",
-    "segmentit": "^2.0.3"
+    "commander": "~1.1.1"
   },
   "optionalDependencies": {
-    "nodejieba": "2.5.2"
+    "@node-rs/jieba": "^1.6.0",
+    "nodejieba": "2.5.2",
+    "segmentit": "^2.0.3"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.15.6",
@@ -69,6 +68,7 @@
     "jest": "^27.2.3",
     "mock-aws-s3": "^4.0.2",
     "nock": "^13.1.4",
+    "npx": "^10.2.2",
     "react-json-view": "^1.21.3",
     "request": "~2.68.0",
     "ts-node": "^10.5.0",
