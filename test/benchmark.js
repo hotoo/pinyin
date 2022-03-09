@@ -1,7 +1,7 @@
 const Benchmark = require("benchmark");
-import pinyin from "../index";
+const pinyin = require("../");
 
-import pkg from "../package.json";
+const pkg = require("../package.json");
 
 let memory = process.memoryUsage().rss;
 

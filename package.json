@@ -42,7 +42,7 @@
     "build": "tsc --downlevelIteration -p tsconfig-es5.json & tsc --downlevelIteration -p tsconfig-es6.json",
     "doc:build": "dumi build",
     "doc:deploy": "npm run doc:build && cp CNAME docs-dist/dist && gh-pages -d docs-dist/dist",
-    "lint": "eslint ./lib/ ./bin/ ./tests/",
+    "lint": "eslint ./lib/ ./bin/ ./test/",
     "test": "jest",
     "debug": "npx ts-node tools/debug.ts"
   },
