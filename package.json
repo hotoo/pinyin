@@ -43,8 +43,7 @@
     "doc:build": "dumi build",
     "doc:deploy": "npm run doc:build && cp CNAME docs-dist/dist && gh-pages -d docs-dist/dist",
     "lint": "eslint ./lib/ ./bin/ ./tests/",
-    "test": "nyc --reporter=lcov mocha --timeout=5000 --inline-diffs ./test/",
-    "test-local": "jest",
+    "test": "jest",
     "debug": "npx ts-node tools/debug.ts"
   },
   "dependencies": {
@@ -68,10 +67,8 @@
     "gh-pages": "^3.2.3",
     "istanbul": "~0.3.17",
     "jest": "^27.2.3",
-    "mocha": "^9.0.0",
     "mock-aws-s3": "^4.0.2",
     "nock": "^13.1.4",
-    "nyc": "^15.1.0",
     "react-json-view": "^1.21.3",
     "request": "~2.68.0",
     "ts-node": "^10.5.0",

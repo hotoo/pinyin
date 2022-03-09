@@ -7,7 +7,7 @@ let memory = process.memoryUsage().rss;
 
 console.log(pkg.name + "@" + pkg.version);
 
-function formatNunber(num: string|number): string {
+function formatNunber(num) {
   return String(num).replace(/(\d)(?=(\d{3})+$)/g, "$1,");
 }
 
@@ -45,7 +45,7 @@ suite.add("pinyin 中文", function(){
     style: "NORMAL",
   });
 })
-.on("cycle", function(event: any) {
+.on("cycle", function(event) {
   const mem = process.memoryUsage().rss;
   console.log(String(event.target) + " memory usage: %s bytes.", formatNunber(mem - memory));
   memory = mem;

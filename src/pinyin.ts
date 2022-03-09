@@ -46,7 +46,7 @@ const pinyinStyleMap: Map<string, ENUM_PINYIN_STYLE> = new Map([
 function convertPinyinStyle(style?: IPinyinStyle): ENUM_PINYIN_STYLE {
   const s = String(style);
   if (pinyinStyleMap.has(s)) {
-    return pinyinStyleMap.get(s);
+    return pinyinStyleMap.get(s) as ENUM_PINYIN_STYLE;
   }
   return ENUM_PINYIN_STYLE.TONE;
 }
@@ -61,6 +61,9 @@ function convertUserOptions(options?: IPinyinOptions): IPinyinAllOptions {
   };
   return opt;
 }
+/**
+ * 拼音转换入口。
+ */
 export function pinyin(hans: string, options?: IPinyinOptions): string[][] {
   if(typeof hans !== "string") {
     return [];
@@ -81,6 +84,9 @@ export function pinyin(hans: string, options?: IPinyinOptions): string[][] {
 }
 export default pinyin;
 
+/**
+ * 不使用分词算法的拼音转换。
+ */
 function normal_pinyin(hans: string, options: IPinyinAllOptions): string[][] {
   let pys: string[][] = [];
   let nohans = "";
@@ -193,9 +199,9 @@ function segment_pinyin(hans: string, options: IPinyinAllOptions): string[][] {
  * @param {Object} options, 选项。
  * @return {Array}
  */
-function phrases_pinyin(phrases: string, options: IPinyinAllOptions) {
+function phrases_pinyin(phrases: string, options: IPinyinAllOptions): string[][] {
   let py: string[][] = [];
-  if (DICT_PHRASES.hasOwnProperty(phrases)){
+  if (DICT_PHRASES.hasOwnProperty(phrases)) {
     //! copy pinyin result.
     DICT_PHRASES[phrases].forEach(function(item: string[], idx: number) {
       py[idx] = [];
@@ -208,8 +214,8 @@ function phrases_pinyin(phrases: string, options: IPinyinAllOptions) {
       }
     });
   } else {
-    for(let i = 0, l = phrases.length; i < l; i++){
-      py = py.concat(single_pinyin(phrases[i], options));
+    for(let i = 0, l = phrases.length; i < l; i++) {
+      py.push(single_pinyin(phrases[i], options));
     }
   }
   return py;
