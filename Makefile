@@ -17,24 +17,14 @@ runner = _site/tests/runner.html
 benchmark:
 	@node test/benchmark.js
 
-test-cli:
-	@./node_modules/.bin/mocha -R spec --timeout 5000 test/cli.test.js
-
 test-npm:
-	@./node_modules/.bin/istanbul cover \
-	./node_modules/.bin/_mocha \
-		-- \
-		--harmony \
-		--reporter spec \
-		--timeout 2000 \
-		--inline-diffs \
-		./test/test.js
+	@npm test
 
 
 lint:
-	@./node_modules/eslint/bin/eslint.js ./lib/ ./bin/ ./test/
+	@npm run lint
 
-test: lint test-npm test-cli benchmark
+test: lint test-npm benchmark
 test-local: test-npm
 
 output = _site/coverage.html
