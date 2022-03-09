@@ -15,10 +15,10 @@ clean:
 runner = _site/tests/runner.html
 
 benchmark:
-	@node tests/benchmark.test.js
+	@node test/benchmark.js
 
 test-cli:
-	@./node_modules/.bin/mocha -R spec --timeout 5000 tests/cli.test.js
+	@./node_modules/.bin/mocha -R spec --timeout 5000 test/cli.test.js
 
 test-npm:
 	@./node_modules/.bin/istanbul cover \
@@ -28,11 +28,11 @@ test-npm:
 		--reporter spec \
 		--timeout 2000 \
 		--inline-diffs \
-		./tests/test.js
+		./test/test.js
 
 
 lint:
-	@./node_modules/eslint/bin/eslint.js ./lib/ ./bin/ ./tests/
+	@./node_modules/eslint/bin/eslint.js ./lib/ ./bin/ ./test/
 
 test: lint test-npm test-cli benchmark
 test-local: test-npm
