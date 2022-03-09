@@ -27,7 +27,7 @@
   },
   "directories": {
     "example": "examples",
-    "test": "tests"
+    "test": "test"
   },
   "repository": {
     "type": "git",
@@ -43,7 +43,7 @@
     "doc:build": "dumi build",
     "doc:deploy": "npm run doc:build && cp CNAME docs-dist/dist && gh-pages -d docs-dist/dist",
     "lint": "eslint ./lib/ ./bin/ ./test/",
-    "test": "jest",
+    "test": "jest --coverage",
     "debug": "npx ts-node tools/debug.ts"
   },
   "dependencies": {
