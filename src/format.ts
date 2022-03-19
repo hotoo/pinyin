@@ -1,12 +1,4 @@
-import { ENUM_PINYIN_STYLE } from "./constant";
-import PHONETIC_SYMBOL from "./phonetic-symbol"; // 带声调字符。
-
-// 声母表。
-const INITIALS: string[] = "b,p,m,f,d,t,n,l,g,k,h,j,q,x,r,zh,ch,sh,z,c,s".split(",");
-// 韵母表。
-//const FINALS = "ang,eng,ing,ong,an,en,in,un,er,ai,ei,ui,ao,ou,iu,ie,ve,a,o,e,i,u,v".split(",");
-const RE_PHONETIC_SYMBOL: RegExp = new RegExp("([" + Object.keys(PHONETIC_SYMBOL).join("") + "])", "g");
-const RE_TONE2: RegExp = /([aeoiuvnm])([0-4])$/;
+import { ENUM_PINYIN_STYLE, PHONETIC_SYMBOL, INITIALS } from "./constant";
 
 /*
  * 格式化拼音为声母（Initials）形式。
@@ -21,6 +13,9 @@ function initials(py: string): string {
   }
   return "";
 }
+
+const RE_PHONETIC_SYMBOL: RegExp = new RegExp("([" + Object.keys(PHONETIC_SYMBOL).join("") + "])", "g");
+const RE_TONE2: RegExp = /([aeoiuvnm])([0-4])$/;
 
 /**
  * 格式化拼音风格。

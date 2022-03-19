@@ -1,20 +1,21 @@
-import DICT_ZI from "../data/dict-zi"; // 单个汉字拼音数据。
-import DICT_PHRASES from "../data/phrases-dict"; // 词组拼音数据。
+import DICT_ZI from "./data/dict-zi"; // 单个汉字拼音数据。
+import DICT_PHRASES from "./data/phrases-dict"; // 词组拼音数据。
 import { segment } from "./segment";
 import { toFixed } from "./format";
-import { combo } from "./util";
+import { combo, compact } from "./util";
+import { ENUM_PINYIN_STYLE } from "./constant";
 import type {
   IPinyinAllOptions,
   IPinyinOptions,
   IPinyinStyle,
+  IPinyinSegment,
 } from "./declare";
-import { ENUM_PINYIN_STYLE } from "./constant";
 
 const DEFAULT_OPTIONS: IPinyinAllOptions = {
   style: ENUM_PINYIN_STYLE.TONE, // 风格
-  segment: false,   // 分词。
   heteronym: false, // 多音字
   group: false,     // 词组拼音分组
+  compact: false,
 };
 
 const pinyinStyleMap: Map<string, ENUM_PINYIN_STYLE> = new Map([
@@ -42,6 +43,7 @@ const pinyinStyleMap: Map<string, ENUM_PINYIN_STYLE> = new Map([
   [ "NORMAL", ENUM_PINYIN_STYLE.NORMAL ],
   [ "0", ENUM_PINYIN_STYLE.NORMAL ],
 ]);
+
 // 将用户输入的拼音形式参数转换成唯一指定的强类型。
 function convertPinyinStyle(style?: IPinyinStyle): ENUM_PINYIN_STYLE {
   const s = String(style);
@@ -52,15 +54,24 @@ function convertPinyinStyle(style?: IPinyinStyle): ENUM_PINYIN_STYLE {
 }
 
 function convertUserOptions(options?: IPinyinOptions): IPinyinAllOptions {
+  let segment: IPinyinSegment | undefined = undefined;
+  if (options?.segment) {
+    if (options?.segment === true) {
+      segment = "nodejieba";
+    } else {
+      segment = options.segment;
+    }
+  }
   const opt: IPinyinAllOptions = {
     ...DEFAULT_OPTIONS,
     style: convertPinyinStyle(options?.style),
-    segment: options?.segment || false,
+    segment,
     heteronym: options?.heteronym || false,
     group: options?.group || false,
   };
   return opt;
 }
+
 /**
  * 拼音转换入口。
  */
@@ -73,15 +84,21 @@ export function pinyin(hans: string, options?: IPinyinOptions): string[][] {
     ...convertUserOptions(options),
   };
 
+  let pys;
   // 因为分词结果有词性信息，结构不同，处理也不相同，所以需要分别处理。
   if (opt.segment) {
     // 分词加词性标注转换。
-    return segment_pinyin(hans, opt);
+    pys = segment_pinyin(hans, opt);
   } else {
     // 单字拆分转换。连续的非中文字符作为一个词（原样输出，不转换成拼音）。
-    return normal_pinyin(hans, opt)
+    pys = normal_pinyin(hans, opt);
   }
+  if (options?.compact) {
+    pys = compact(pys);
+  }
+  return pys;
 }
+
 export default pinyin;
 
 /**
@@ -115,9 +132,11 @@ function normal_pinyin(hans: string, options: IPinyinAllOptions): string[][] {
   return pys;
 }
 
-// 单字拼音转换。
-// @param {String} han, 单个汉字
-// @return {Array} 返回拼音列表，多音字会有多个拼音项。
+/**
+ * 单字拼音转换。
+ * @param {String} han, 单个汉字
+ * @return {Array} 返回拼音列表，多音字会有多个拼音项。
+ */
 function single_pinyin(han: string, options: IPinyinAllOptions): string[] {
   if (typeof han !== "string") {
     return [];
@@ -156,7 +175,7 @@ function single_pinyin(han: string, options: IPinyinAllOptions): string[] {
  * 将文本分词，并转换成拼音。
  */
 function segment_pinyin(hans: string, options: IPinyinAllOptions): string[][] {
-  const phrases =  segment(hans, "nodejieba");
+  const phrases =  segment(hans, options.segment);
   let pys: string[][] = [];
   let nohans = "";
   for (let i = 0, l = phrases.length; i < l; i++) {
@@ -193,7 +212,7 @@ function segment_pinyin(hans: string, options: IPinyinAllOptions): string[][] {
   return pys;
 }
 
-/*
+/**
  * 词语注音
  * @param {String} phrases, 指定的词组。
  * @param {Object} options, 选项。
@@ -243,3 +262,5 @@ export function compare(hanA: string, hanB: string): number {
   const pinyinB = pinyin(hanB, DEFAULT_OPTIONS);
   return String(pinyinA).localeCompare(String(pinyinB));
 }
+
+export { compact } from './util';
