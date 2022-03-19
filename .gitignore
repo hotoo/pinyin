@@ -38,3 +38,4 @@ yarn.lock
 .umi/
 .nyc_output
 .pnpm-debug.log
+.umi-production

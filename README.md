@@ -114,6 +114,10 @@ options 是可选的，可以设定拼音风格，或打开多音字选项。
 
 按拼音排序的默认算法。
 
+### 方法 `string[][] compact(pinyinResult array[][])`
+
+将拼音多音字以各种可能的组合排列变换成紧凑形式。参考 options.compact
+
 ## 参数
 
 ### `<Boolean|IPinyinSegment> options.segment`
