@@ -2,75 +2,14 @@ import DICT_ZI from "./data/dict-zi"; // 单个汉字拼音数据。
 import DICT_PHRASES from "./data/phrases-dict"; // 词组拼音数据。
 import { segment } from "./segment";
 import { toFixed } from "./format";
-import { combo, compact } from "./util";
-import { ENUM_PINYIN_STYLE } from "./constant";
+import SurnamePinyinData from "./data/surname";
+import CompoundSurnamePinyinData from "./data/compound_surname";
+import { convertUserOptions, combo, compact } from "./util";
+import { ENUM_PINYIN_MODE } from "./constant";
 import type {
   IPinyinAllOptions,
   IPinyinOptions,
-  IPinyinStyle,
-  IPinyinSegment,
 } from "./declare";
-
-const DEFAULT_OPTIONS: IPinyinAllOptions = {
-  style: ENUM_PINYIN_STYLE.TONE, // 风格
-  heteronym: false, // 多音字
-  group: false,     // 词组拼音分组
-  compact: false,
-};
-
-const pinyinStyleMap: Map<string, ENUM_PINYIN_STYLE> = new Map([
-  [ "tone", ENUM_PINYIN_STYLE.TONE ],
-  [ "TONE", ENUM_PINYIN_STYLE.TONE ],
-  [ "1", ENUM_PINYIN_STYLE.TONE ],
-
-  [ "tone2", ENUM_PINYIN_STYLE.TONE2 ],
-  [ "TONE2", ENUM_PINYIN_STYLE.TONE2 ],
-  [ "2", ENUM_PINYIN_STYLE.TONE2 ],
-
-  [ "to3ne", ENUM_PINYIN_STYLE.TO3NE ],
-  [ "TO3NE", ENUM_PINYIN_STYLE.TO3NE ],
-  [ "5", ENUM_PINYIN_STYLE.TO3NE ],
-
-  [ "first_letter", ENUM_PINYIN_STYLE.FIRST_LETTER ],
-  [ "FIRST_LETTER", ENUM_PINYIN_STYLE.FIRST_LETTER ],
-  [ "4", ENUM_PINYIN_STYLE.FIRST_LETTER ],
-
-  [ "initials", ENUM_PINYIN_STYLE.INITIALS ],
-  [ "INITIALS", ENUM_PINYIN_STYLE.INITIALS ],
-  [ "3", ENUM_PINYIN_STYLE.INITIALS ],
-
-  [ "normal", ENUM_PINYIN_STYLE.NORMAL ],
-  [ "NORMAL", ENUM_PINYIN_STYLE.NORMAL ],
-  [ "0", ENUM_PINYIN_STYLE.NORMAL ],
-]);
-
-// 将用户输入的拼音形式参数转换成唯一指定的强类型。
-function convertPinyinStyle(style?: IPinyinStyle): ENUM_PINYIN_STYLE {
-  const s = String(style);
-  if (pinyinStyleMap.has(s)) {
-    return pinyinStyleMap.get(s) as ENUM_PINYIN_STYLE;
-  }
-  return ENUM_PINYIN_STYLE.TONE;
-}
-
-function convertUserOptions(options?: IPinyinOptions): IPinyinAllOptions {
-  let segment: IPinyinSegment | undefined = undefined;
-  if (options?.segment) {
-    if (options?.segment === true) {
-      segment = "nodejieba";
-    } else {
-      segment = options.segment;
-    }
-  }
-  const opt: IPinyinAllOptions = {
-    ...DEFAULT_OPTIONS,
-    style: convertPinyinStyle(options?.style),
-    segment,
-    heteronym: options?.heteronym || false,
-    group: options?.group || false,
-  };
-  return opt;
-}
 
 /**
  * 拼音转换入口。
@@ -79,19 +18,20 @@ export function pinyin(hans: string, options?: IPinyinOptions): string[][] {
   if(typeof hans !== "string") {
     return [];
   }
-  const opt: IPinyinAllOptions = {
-    ...DEFAULT_OPTIONS,
-    ...convertUserOptions(options),
-  };
+  const opt: IPinyinAllOptions = convertUserOptions(options);
 
   let pys;
-  // 因为分词结果有词性信息，结构不同，处理也不相同，所以需要分别处理。
-  if (opt.segment) {
-    // 分词加词性标注转换。
-    pys = segment_pinyin(hans, opt);
+  if (opt.mode === ENUM_PINYIN_MODE.SURNAME) {
+    pys = surname_pinyin(hans, opt);
   } else {
-    // 单字拆分转换。连续的非中文字符作为一个词（原样输出，不转换成拼音）。
-    pys = normal_pinyin(hans, opt);
+    // 因为分词结果有词性信息，结构不同，处理也不相同，所以需要分别处理。
+    if (opt.segment) {
+      // 分词加词性标注转换。
+      pys = segment_pinyin(hans, opt);
+    } else {
+      // 单字拆分转换。连续的非中文字符作为一个词（原样输出，不转换成拼音）。
+      pys = normal_pinyin(hans, opt);
+    }
   }
   if (options?.compact) {
     pys = compact(pys);
@@ -250,6 +190,57 @@ function groupPhrases(phrases: string[][]): string[] {
   return grouped;
 }
 
+// 姓名转成拼音
+function surname_pinyin(hans: string, options: IPinyinAllOptions): string[][] {
+  return compound_surname(hans, options);
+}
+
+// 复姓处理
+function compound_surname(hans: string, options: IPinyinAllOptions): string[][] {
+  let len = hans.length;
+  let prefixIndex = 0;
+  let result: string[][] = [];
+  for (let i = 0; i < len; i++) {
+    const twowords = hans.substring(i, i + 2);
+    if (CompoundSurnamePinyinData.hasOwnProperty(twowords)) {
+      if (prefixIndex <= i - 1) {
+        result = result.concat(
+          single_surname(
+            hans.substring(prefixIndex, i),
+            options
+          )
+        );
+      }
+      result = result.concat(CompoundSurnamePinyinData[twowords]);
+
+      i = i + 2;
+      prefixIndex = i;
+    }
+  }
+  // 处理复姓后面剩余的部分。
+  result = result.concat(
+    single_surname(
+      hans.substring(prefixIndex, len),
+      options
+    )
+  );
+  return result;
+}
+
+// 单姓处理
+function single_surname(hans: string, options: IPinyinAllOptions) {
+  let result: string[][] = [];
+  for (let i = 0, l = hans.length; i < l; i++) {
+    const word = hans.charAt(i);
+    if (SurnamePinyinData.hasOwnProperty(word)) {
+      result = result.concat(SurnamePinyinData[word]);
+    } else {
+      result.push(single_pinyin(word, options));
+    }
+  }
+  return result;
+}
+
 /**
  * 比较两个汉字转成拼音后的排序顺序，可以用作默认的拼音排序算法。
  *
@@ -258,8 +249,8 @@ function groupPhrases(phrases: string[][]): string[] {
  * @return {Number} 返回 -1，0，或 1。
  */
 export function compare(hanA: string, hanB: string): number {
-  const pinyinA = pinyin(hanA, DEFAULT_OPTIONS);
-  const pinyinB = pinyin(hanB, DEFAULT_OPTIONS);
+  const pinyinA = pinyin(hanA);
+  const pinyinB = pinyin(hanB);
   return String(pinyinA).localeCompare(String(pinyinB));
 }
 

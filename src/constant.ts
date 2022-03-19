@@ -1,3 +1,5 @@
+import type { IPinyinAllOptions } from "./declare";
+
 // 拼音风格枚举
 export enum ENUM_PINYIN_STYLE {
   NORMAL = 0,       // 普通风格，不带声调。
@@ -6,6 +8,21 @@ export enum ENUM_PINYIN_STYLE {
   TO3NE = 5,        // 声调以数字形式在声母之后，使用数字 0~4 标识。
   INITIALS = 3,     // 仅需要声母部分。
   FIRST_LETTER = 4, // 仅保留首字母。
+};
+
+// 拼音模式。
+export enum ENUM_PINYIN_MODE {
+  NORMAL = 0, // 普通模式
+  SURNAME = 1, // 姓氏模式，优先使用姓氏的拼音。
+  // PLACENAME = 2, // TODO: 地名模式，优先使用地名拼音。
+};
+
+export const DEFAULT_OPTIONS: IPinyinAllOptions = {
+  style: ENUM_PINYIN_STYLE.TONE, // 风格
+  mode: ENUM_PINYIN_MODE.NORMAL, // 模式
+  heteronym: false, // 多音字
+  group: false,     // 词组拼音分组
+  compact: false,
 };
 
 // 带声调字符。

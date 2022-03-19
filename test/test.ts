@@ -222,19 +222,19 @@ const cases: any = [
   } ],
 ];
 
-// describe.skip("姓名模式", function() {
-//   it("复姓", function() {
-//     expect(pinyin("南宫世家")).toEqual([["nán"], ["gōng"], ["shì"], ["jiā"]]);
-//     expect(pinyin("南宫世家", { mode: pinyin.MODE_SURNAME})).toEqual([["nán"], ["gōng"], ["shì"], ["jiā"]]);
-//
-//     expect(pinyin("查某说：您是万俟先生？", { mode: pinyin.MODE_NORMAL})).toEqual([["chá"], ["mǒu"], ["shuō"], ["："], ["nín"], ["shì"], ["wàn"], ["sì"], ["xiān"], ["shēng"], ["？"]]);
-//     expect(pinyin("查某说：您是万俟先生？", { mode: pinyin.MODE_SURNAME})).toEqual([["zhā"], ["mǒu"], ["shuō"], ["："], ["nín"], ["shì"], ["mò"], ["qí"], ["xiān"], ["shēng"], ["？"]]);
-//   });
-//   it("单姓", function() {
-//     expect(pinyin("华夫人", { mode: pinyin.MODE_NORMAL})).toEqual([["huá"], ["fū"], ["rén"]]);
-//     expect(pinyin("华夫人", { mode: pinyin.MODE_SURNAME})).toEqual([["huà"], ["fū"], ["rén"]]);
-//   });
-// });
+describe("姓名模式", function() {
+  it("复姓", function() {
+    expect(pinyin("南宫世家")).toEqual([["nán"], ["gōng"], ["shì"], ["jiā"]]);
+    expect(pinyin("南宫世家", { mode: "SURNAME"})).toEqual([["nán"], ["gōng"], ["shì"], ["jiā"]]);
+
+    expect(pinyin("查某说：您是万俟先生？", { mode: "NORMAL"})).toEqual([["chá"], ["mǒu"], ["shuō"], ["："], ["nín"], ["shì"], ["wàn"], ["sì"], ["xiān"], ["shēng"], ["？"]]);
+    expect(pinyin("查某说：您是万俟先生？", { mode: "SURNAME"})).toEqual([["zhā"], ["mǒu"], ["shuō"], ["："], ["nín"], ["shì"], ["mò"], ["qí"], ["xiān"], ["shēng"], ["？"]]);
+  });
+  it("单姓", function() {
+    expect(pinyin("华夫人", { mode: "NORMAL"})).toEqual([["huá"], ["fū"], ["rén"]]);
+    expect(pinyin("华夫人", { mode: "SURNAME"})).toEqual([["huà"], ["fū"], ["rén"]]);
+  });
+});
 
 
 function getPinyinStyle(styleName: string): IPinyinStyle {
