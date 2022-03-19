@@ -7,7 +7,7 @@ describe("pinyin() without param", function() {
   });
 });
 
-const cases: any = [
+const cases: any[] = [
 
   // 单音字
   [ "我", {
@@ -241,20 +241,20 @@ function getPinyinStyle(styleName: string): IPinyinStyle {
   return styleName.replace(/^STYLE_/, "") as IPinyinStyle;
 }
 function makeTest(han: string, opt: any, style: string){
-  var py = opt[style];
-  var pys = py;
+  let py = opt[style];
+  let pys = py;
   // 有多音字的词组。
   if (py.normal && py.segment) {
     pys = py.segment;
     py = py.normal;
   }
-  var single_pinyin = [];
-  for(var i = 0, l = py.length; i < l; i++){
+  const single_pinyin = [];
+  for(let i = 0, l = py.length; i < l; i++){
     single_pinyin[i] = [py[i][0]];
   }
 
   // 非多音字模式。
-  var _py = pinyin(han, {style: getPinyinStyle(style)});
+  const _py = pinyin(han, {style: getPinyinStyle(style)});
   it("pinyin(\"" + han + "\", " + style + ") : " +
     JSON.stringify(_py) + " === " + JSON.stringify(single_pinyin), function() {
 
@@ -262,7 +262,7 @@ function makeTest(han: string, opt: any, style: string){
   });
 
   // 普通多音字模式。
-  var _py2 = pinyin(han, {style: getPinyinStyle(style), heteronym:true});
+  const _py2 = pinyin(han, {style: getPinyinStyle(style), heteronym:true});
   it("pinyin(\"" + han + "\", " + style + ",heteronym) : " +
     JSON.stringify(_py2) + " === " + JSON.stringify(py), function() {
 
@@ -270,7 +270,7 @@ function makeTest(han: string, opt: any, style: string){
   });
 
   // 分词多音字模式。
-  var _py2s = pinyin(han, {
+  const _py2s = pinyin(han, {
     style: getPinyinStyle(style),
     heteronym: true,
     segment: true,
@@ -284,10 +284,10 @@ function makeTest(han: string, opt: any, style: string){
 
 describe("pinyin", function() {
 
-  for (var i = 0, l = cases.length; i < l; i++) {
+  for (let i = 0, l = cases.length; i < l; i++) {
     const han = cases[i][0];
     const opt: Record<string, string[][]> = cases[i][1];
-    for(var style in opt) {
+    for(const style in opt) {
       makeTest(han, opt, style);
     }
   }

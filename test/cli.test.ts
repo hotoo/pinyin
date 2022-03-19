@@ -1,6 +1,6 @@
 import { exec } from "child_process";
 
-var testcases = [
+const testcases = [
   {
     command: "pinyin 中国",
     stdout: "zhōng guó",

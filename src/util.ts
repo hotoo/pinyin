@@ -7,6 +7,10 @@ import type {
 } from "./declare";
 import { ENUM_PINYIN_STYLE, ENUM_PINYIN_MODE, DEFAULT_OPTIONS } from "./constant";
 
+export function hasKey(obj: any, key: string) {
+    return Object.prototype.hasOwnProperty.call(obj, key);
+}
+
 const pinyinStyleMap: Map<string, ENUM_PINYIN_STYLE> = new Map([
   [ "tone", ENUM_PINYIN_STYLE.TONE ],
   [ "TONE", ENUM_PINYIN_STYLE.TONE ],

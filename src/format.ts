@@ -1,4 +1,5 @@
 import { ENUM_PINYIN_STYLE, PHONETIC_SYMBOL, INITIALS } from "./constant";
+import { hasKey } from "./util";
 
 /*
  * 格式化拼音为声母（Initials）形式。
@@ -14,8 +15,8 @@ function initials(py: string): string {
   return "";
 }
 
-const RE_PHONETIC_SYMBOL: RegExp = new RegExp("([" + Object.keys(PHONETIC_SYMBOL).join("") + "])", "g");
-const RE_TONE2: RegExp = /([aeoiuvnm])([0-4])$/;
+const RE_PHONETIC_SYMBOL = new RegExp("([" + Object.keys(PHONETIC_SYMBOL).join("") + "])", "g");
+const RE_TONE2 = /([aeoiuvnm])([0-4])$/;
 
 /**
  * 格式化拼音风格。
@@ -34,7 +35,7 @@ export function toFixed(pinyin: string, style: ENUM_PINYIN_STYLE): string {
 
   case ENUM_PINYIN_STYLE.FIRST_LETTER:
     first_letter = pinyin.charAt(0);
-    if (PHONETIC_SYMBOL.hasOwnProperty(first_letter)) {
+    if (hasKey(PHONETIC_SYMBOL, first_letter)) {
       first_letter = PHONETIC_SYMBOL[first_letter].charAt(0);
     }
     return first_letter;

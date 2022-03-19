@@ -4,7 +4,7 @@ import { segment } from "./segment";
 import { toFixed } from "./format";
 import SurnamePinyinData from "./data/surname";
 import CompoundSurnamePinyinData from "./data/compound_surname";
-import { convertUserOptions, combo, compact } from "./util";
+import { hasKey, convertUserOptions, combo, compact } from "./util";
 import { ENUM_PINYIN_MODE } from "./constant";
 import type {
   IPinyinAllOptions,
@@ -45,7 +45,7 @@ export default pinyin;
  * 不使用分词算法的拼音转换。
  */
 function normal_pinyin(hans: string, options: IPinyinAllOptions): string[][] {
-  let pys: string[][] = [];
+  const pys: string[][] = [];
   let nohans = "";
 
   for(let i = 0, l = hans.length; i < l; i++) {
@@ -85,23 +85,23 @@ function single_pinyin(han: string, options: IPinyinAllOptions): string[] {
     return single_pinyin(han.charAt(0), options);
   }
 
-  let hanCode = han.charCodeAt(0);
+  const hanCode = han.charCodeAt(0);
 
   if (!DICT_ZI[hanCode]) {
     return [han];
   }
 
-  let pys = DICT_ZI[hanCode].split(",");
+  const pys = DICT_ZI[hanCode].split(",");
   if(!options.heteronym){
     return [toFixed(pys[0], options.style)];
   }
 
   // 临时存储已存在的拼音，避免多音字拼音转换为非注音风格出现重复。
-  let py_cached: Record<string,string> = {};
-  let pinyins = [];
+  const py_cached: Record<string,string> = {};
+  const pinyins = [];
   for(let i = 0, l = pys.length; i < l; i++){
     const py = toFixed(pys[i], options.style);
-    if(py_cached.hasOwnProperty(py)){
+    if(hasKey(py_cached, py)){
       continue;
     }
     py_cached[py] = py;
@@ -159,8 +159,8 @@ function segment_pinyin(hans: string, options: IPinyinAllOptions): string[][] {
  * @return {Array}
  */
 function phrases_pinyin(phrases: string, options: IPinyinAllOptions): string[][] {
-  let py: string[][] = [];
-  if (DICT_PHRASES.hasOwnProperty(phrases)) {
+  const py: string[][] = [];
+  if (hasKey(DICT_PHRASES, phrases)) {
     //! copy pinyin result.
     DICT_PHRASES[phrases].forEach(function(item: string[], idx: number) {
       py[idx] = [];
@@ -197,12 +197,12 @@ function surname_pinyin(hans: string, options: IPinyinAllOptions): string[][] {
 
 // 复姓处理
 function compound_surname(hans: string, options: IPinyinAllOptions): string[][] {
-  let len = hans.length;
+  const len = hans.length;
   let prefixIndex = 0;
   let result: string[][] = [];
   for (let i = 0; i < len; i++) {
     const twowords = hans.substring(i, i + 2);
-    if (CompoundSurnamePinyinData.hasOwnProperty(twowords)) {
+    if (hasKey(CompoundSurnamePinyinData, twowords)) {
       if (prefixIndex <= i - 1) {
         result = result.concat(
           single_surname(
@@ -232,7 +232,7 @@ function single_surname(hans: string, options: IPinyinAllOptions) {
   let result: string[][] = [];
   for (let i = 0, l = hans.length; i < l; i++) {
     const word = hans.charAt(i);
-    if (SurnamePinyinData.hasOwnProperty(word)) {
+    if (hasKey(SurnamePinyinData, word)) {
       result = result.concat(SurnamePinyinData[word]);
     } else {
       result.push(single_pinyin(word, options));
@@ -254,4 +254,4 @@ export function compare(hanA: string, hanB: string): number {
   return String(pinyinA).localeCompare(String(pinyinB));
 }
 
-export { compact } from './util';
+export { compact } from "./util";
