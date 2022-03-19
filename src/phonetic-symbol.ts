@@ -27,6 +27,6 @@ const phonetic_symbol: Record<string,string> = {
   "ń": "n2",
   "ň": "n3",
   "": "m2",
-}
+};
 
 export default phonetic_symbol;

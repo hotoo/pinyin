@@ -1,10 +1,10 @@
 import nodejieba from "nodejieba";
-import { load, cut /*, tag */ } from '@node-rs/jieba';
+import { load, cut /*, tag */ } from "@node-rs/jieba";
 // @ts-ignore
-import { Segment, useDefault } from 'segmentit';
+import { Segment, useDefault } from "segmentit";
 import type { IPinyinSegment } from "./declare";
 
-let nodeRsJiebaLoaded = false; // @node-rs/jieba 加载词典。
+const nodeRsJiebaLoaded = false; // @node-rs/jieba 加载词典。
 let segmentit: any; // segmentit 加载词典。
 
 /**

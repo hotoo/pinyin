@@ -1,34 +1,15 @@
 {
   "name": "pinyin",
-  "version": "3.0.0-alpha-0",
+  "version": "3.0.0-alpha.0",
   "description": "汉语拼音转换工具。",
-  "main": "build/dist/src/pinyin.js",
-  "module": "build/es/src/pinyin.js",
-  "files": [
-    "package.json",
-    "build/",
-    "bin",
-    "data",
-    "lib",
-    "index.js"
-  ],
-  "keywords": [
-    "拼音",
-    "汉语",
-    "汉字",
-    "中文",
-    "Pinyin"
-  ],
-  "homepage": "https://pinyin.js.org/",
-  "author": "闲耘 <hotoo.cn@gmail.com>",
-  "browser": "lib/web-pinyin.js",
+  "main": "lib/pinyin.js",
+  "module": "esm/pinyin.js",
+  "browser": "lib/pinyin.js",
   "bin": {
     "pinyin": "./bin/pinyin"
   },
-  "directories": {
-    "example": "examples",
-    "test": "test"
-  },
+  "homepage": "https://pinyin.js.org/",
+  "author": "闲耘 <hotoo.cn@gmail.com>",
   "repository": {
     "type": "git",
     "url": "https://github.com/hotoo/pinyin.git"
@@ -39,10 +20,10 @@
   "scripts": {
     "start": "dumi dev",
     "prepublishOnly": "npm run build",
-    "build": "tsc --downlevelIteration -p tsconfig-es5.json & tsc --downlevelIteration -p tsconfig-es6.json",
+    "build": "tsc --downlevelIteration -p tsconfig-es5.json & tsc --downlevelIteration -p tsconfig.json",
     "doc:build": "dumi build",
     "doc:deploy": "npm run doc:build && cp CNAME docs-dist/dist && gh-pages -d docs-dist/dist",
-    "lint": "eslint ./lib/ ./bin/ ./test/",
+    "lint": "eslint ./src/ ./test/",
     "test": "jest --coverage",
     "debug": "npx ts-node tools/debug.ts"
   },
@@ -58,22 +39,46 @@
     "@babel/preset-env": "^7.15.6",
     "@babel/preset-typescript": "^7.15.0",
     "@types/jest": "^27.0.2",
+    "@typescript-eslint/eslint-plugin": "^5.14.0",
+    "@typescript-eslint/parser": "^5.14.0",
     "aurl": "^1.2.0",
     "aws-sdk": "^2.1011.0",
     "benchmark": "~1.0.0",
     "dumi": "^1.1.30",
-    "eslint": "~0.24.0",
+    "eslint": "^8.11.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-import-resolver-typescript": "^2.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
     "gh-pages": "^3.2.3",
-    "istanbul": "~0.3.17",
     "jest": "^27.2.3",
     "mock-aws-s3": "^4.0.2",
     "nock": "^13.1.4",
     "npx": "^10.2.2",
+    "prettier": "^2.6.0",
     "react-json-view": "^1.21.3",
     "request": "~2.68.0",
     "ts-node": "^10.5.0",
     "typescript": "^4.4.4"
   },
   "registry": "https://registry.npmmirror.com",
+  "files": [
+    "package.json",
+    "build/",
+    "bin",
+    "data",
+    "lib",
+    "index.js"
+  ],
+  "keywords": [
+    "拼音",
+    "汉语",
+    "汉字",
+    "中文",
+    "Pinyin"
+  ],
+  "directories": {
+    "example": "examples",
+    "test": "test"
+  },
   "license": "MIT"
 }

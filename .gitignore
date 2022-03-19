@@ -17,6 +17,9 @@ Thumbs.db
 *.pyc
 *.pyo
 build
+esm
+lib
+lib2
 node_modules
 _site
 sea-modules

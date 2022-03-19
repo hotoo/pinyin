@@ -1,3 +1,87 @@
+import type {
+  IPinyinAllOptions,
+  IPinyinOptions,
+  IPinyinStyle,
+  IPinyinMode,
+  IPinyinSegment,
+} from "./declare";
+import { ENUM_PINYIN_STYLE, ENUM_PINYIN_MODE, DEFAULT_OPTIONS } from "./constant";
+
+export function hasKey(obj: any, key: string) {
+    return Object.prototype.hasOwnProperty.call(obj, key);
+}
+
+const pinyinStyleMap: Map<string, ENUM_PINYIN_STYLE> = new Map([
+  [ "tone", ENUM_PINYIN_STYLE.TONE ],
+  [ "TONE", ENUM_PINYIN_STYLE.TONE ],
+  [ "1", ENUM_PINYIN_STYLE.TONE ],
+
+  [ "tone2", ENUM_PINYIN_STYLE.TONE2 ],
+  [ "TONE2", ENUM_PINYIN_STYLE.TONE2 ],
+  [ "2", ENUM_PINYIN_STYLE.TONE2 ],
+
+  [ "to3ne", ENUM_PINYIN_STYLE.TO3NE ],
+  [ "TO3NE", ENUM_PINYIN_STYLE.TO3NE ],
+  [ "5", ENUM_PINYIN_STYLE.TO3NE ],
+
+  [ "first_letter", ENUM_PINYIN_STYLE.FIRST_LETTER ],
+  [ "FIRST_LETTER", ENUM_PINYIN_STYLE.FIRST_LETTER ],
+  [ "4", ENUM_PINYIN_STYLE.FIRST_LETTER ],
+
+  [ "initials", ENUM_PINYIN_STYLE.INITIALS ],
+  [ "INITIALS", ENUM_PINYIN_STYLE.INITIALS ],
+  [ "3", ENUM_PINYIN_STYLE.INITIALS ],
+
+  [ "normal", ENUM_PINYIN_STYLE.NORMAL ],
+  [ "NORMAL", ENUM_PINYIN_STYLE.NORMAL ],
+  [ "0", ENUM_PINYIN_STYLE.NORMAL ],
+]);
+
+// 将用户输入的拼音形式参数转换成唯一指定的强类型。
+export function convertPinyinStyle(style?: IPinyinStyle): ENUM_PINYIN_STYLE {
+  const s = String(style);
+  if (pinyinStyleMap.has(s)) {
+    return pinyinStyleMap.get(s) as ENUM_PINYIN_STYLE;
+  }
+  return ENUM_PINYIN_STYLE.TONE;
+}
+
+const pinyinModeMap: Map<string, ENUM_PINYIN_MODE> = new Map([
+  [ "normal", ENUM_PINYIN_MODE.NORMAL ],
+  [ "NORMAL", ENUM_PINYIN_MODE.NORMAL ],
+  [ "surname", ENUM_PINYIN_MODE.SURNAME ],
+  [ "SURNAME", ENUM_PINYIN_MODE.SURNAME ],
+]);
+
+// 将用户输入的拼音形式参数转换成唯一指定的强类型。
+export function convertPinyinMode(mode?: IPinyinMode): ENUM_PINYIN_MODE {
+  const s = String(mode);
+  if (pinyinModeMap.has(s)) {
+    return pinyinModeMap.get(s) as ENUM_PINYIN_MODE;
+  }
+  return ENUM_PINYIN_MODE.NORMAL;
+}
+
+export function convertUserOptions(options?: IPinyinOptions): IPinyinAllOptions {
+  let segment: IPinyinSegment | undefined = undefined;
+  if (options?.segment) {
+    if (options?.segment === true) {
+      segment = "nodejieba";
+    } else {
+      segment = options.segment;
+    }
+  }
+  const opt: IPinyinAllOptions = {
+    ...DEFAULT_OPTIONS,
+    style: convertPinyinStyle(options?.style),
+    mode: convertPinyinMode(options?.mode),
+    segment,
+    heteronym: options?.heteronym || false,
+    group: options?.group || false,
+  };
+  return opt;
+}
+
 /**
  * 组合 2 个拼音数组。
  * @param {string[]} a1 第一个数组，形如 ["zhāo", "cháo"]

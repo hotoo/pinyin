@@ -1,6 +1,13 @@
-import pinyin, { compare, IPinyinStyle } from "../index";
+import pinyin, { compare, compact, IPinyinStyle } from "../index";
 
-const cases: any = [
+describe("pinyin() without param", function() {
+  it("我,要,排,序 => 序,我,排,要", function() {
+    // @ts-ignore
+    expect(pinyin()).toEqual([]);
+  });
+});
+
+const cases: any[] = [
 
   // 单音字
   [ "我", {
@@ -215,39 +222,39 @@ const cases: any = [
   } ],
 ];
 
-// describe.skip("姓名模式", function() {
-//   it("复姓", function() {
-//     expect(pinyin("南宫世家")).toEqual([["nán"], ["gōng"], ["shì"], ["jiā"]]);
-//     expect(pinyin("南宫世家", { mode: pinyin.MODE_SURNAME})).toEqual([["nán"], ["gōng"], ["shì"], ["jiā"]]);
-//
-//     expect(pinyin("查某说：您是万俟先生？", { mode: pinyin.MODE_NORMAL})).toEqual([["chá"], ["mǒu"], ["shuō"], ["："], ["nín"], ["shì"], ["wàn"], ["sì"], ["xiān"], ["shēng"], ["？"]]);
-//     expect(pinyin("查某说：您是万俟先生？", { mode: pinyin.MODE_SURNAME})).toEqual([["zhā"], ["mǒu"], ["shuō"], ["："], ["nín"], ["shì"], ["mò"], ["qí"], ["xiān"], ["shēng"], ["？"]]);
-//   });
-//   it("单姓", function() {
-//     expect(pinyin("华夫人", { mode: pinyin.MODE_NORMAL})).toEqual([["huá"], ["fū"], ["rén"]]);
-//     expect(pinyin("华夫人", { mode: pinyin.MODE_SURNAME})).toEqual([["huà"], ["fū"], ["rén"]]);
-//   });
-// });
+describe("姓名模式", function() {
+  it("复姓", function() {
+    expect(pinyin("南宫世家")).toEqual([["nán"], ["gōng"], ["shì"], ["jiā"]]);
+    expect(pinyin("南宫世家", { mode: "SURNAME"})).toEqual([["nán"], ["gōng"], ["shì"], ["jiā"]]);
+
+    expect(pinyin("查某说：您是万俟先生？", { mode: "NORMAL"})).toEqual([["chá"], ["mǒu"], ["shuō"], ["："], ["nín"], ["shì"], ["wàn"], ["sì"], ["xiān"], ["shēng"], ["？"]]);
+    expect(pinyin("查某说：您是万俟先生？", { mode: "SURNAME"})).toEqual([["zhā"], ["mǒu"], ["shuō"], ["："], ["nín"], ["shì"], ["mò"], ["qí"], ["xiān"], ["shēng"], ["？"]]);
+  });
+  it("单姓", function() {
+    expect(pinyin("华夫人", { mode: "NORMAL"})).toEqual([["huá"], ["fū"], ["rén"]]);
+    expect(pinyin("华夫人", { mode: "SURNAME"})).toEqual([["huà"], ["fū"], ["rén"]]);
+  });
+});
 
 
 function getPinyinStyle(styleName: string): IPinyinStyle {
   return styleName.replace(/^STYLE_/, "") as IPinyinStyle;
 }
 function makeTest(han: string, opt: any, style: string){
-  var py = opt[style];
-  var pys = py;
+  let py = opt[style];
+  let pys = py;
   // 有多音字的词组。
   if (py.normal && py.segment) {
     pys = py.segment;
     py = py.normal;
   }
-  var single_pinyin = [];
-  for(var i = 0, l = py.length; i < l; i++){
+  const single_pinyin = [];
+  for(let i = 0, l = py.length; i < l; i++){
     single_pinyin[i] = [py[i][0]];
   }
 
   // 非多音字模式。
-  var _py = pinyin(han, {style: getPinyinStyle(style)});
+  const _py = pinyin(han, {style: getPinyinStyle(style)});
   it("pinyin(\"" + han + "\", " + style + ") : " +
     JSON.stringify(_py) + " === " + JSON.stringify(single_pinyin), function() {
 
@@ -255,7 +262,7 @@ function makeTest(han: string, opt: any, style: string){
   });
 
   // 普通多音字模式。
-  var _py2 = pinyin(han, {style: getPinyinStyle(style), heteronym:true});
+  const _py2 = pinyin(han, {style: getPinyinStyle(style), heteronym:true});
   it("pinyin(\"" + han + "\", " + style + ",heteronym) : " +
     JSON.stringify(_py2) + " === " + JSON.stringify(py), function() {
 
@@ -263,7 +270,7 @@ function makeTest(han: string, opt: any, style: string){
   });
 
   // 分词多音字模式。
-  var _py2s = pinyin(han, {
+  const _py2s = pinyin(han, {
     style: getPinyinStyle(style),
     heteronym: true,
     segment: true,
@@ -277,10 +284,10 @@ function makeTest(han: string, opt: any, style: string){
 
 describe("pinyin", function() {
 
-  for (var i = 0, l = cases.length; i < l; i++) {
+  for (let i = 0, l = cases.length; i < l; i++) {
     const han = cases[i][0];
     const opt: Record<string, string[][]> = cases[i][1];
-    for(var style in opt) {
+    for(const style in opt) {
       makeTest(han, opt, style);
     }
   }
@@ -308,34 +315,34 @@ describe("pinyin group", function() {
   });
 });
 
-// describe("pinyin compact", function() {
-//   it("compact with heternonyms, normal style", function() {
-//     const han = "还钱";
-//     const py = pinyin(han, { style: pinyin.STYLE_NORMAL, segment: true, group: true, heteronym: true }).compact();
-//     expect(py).toEqual([["huan", "qian"], ["hai", "qian"]]);
-//   });
-//
-//   it("compact with heternonyms, normal style", function() {
-//     const han = "还钱";
-//     const py = pinyin(han, { style: pinyin.STYLE_NORMAL, segment: true, group: true, heteronym: true });
-//     expect(pinyin.compact(py)).toEqual([["huan", "qian"], ["hai", "qian"]]);
-//   });
-//
-//   it("compact with heternonyms, first letter, group false", function() {
-//     const han = "还钱";
-//     const py = pinyin(han, { style: pinyin.STYLE_FIRST_LETTER, segment: true, group: false, heteronym: true });
-//     expect(pinyin.compact(py)).toEqual([["h", "q"]]);
-//   });
-//
-//   it("compact with heternonyms, group true", function() {
-//     const han = "还钱";
-//     const py = pinyin(han, {segment: true, group: true, heteronym: true});
-//     expect(pinyin.compact(py)).toEqual([["huán", "qián"], ["hái", "qián"]]);
-//   });
-//
-//   it("compact with heternonyms, many words", function() {
-//     const han = "我们都爱朝阳";
-//     const py = pinyin(han, { style: pinyin.STYLE_FIRST_LETTER, heteronym: true}).compact();
-//     expect(py).toEqual([["w", "m", "d", "a", "z", "y"], ["w", "m", "d", "a", "c", "y"]]);
-//   });
-// });
+describe("pinyin compact", function() {
+  it("compact with heternonyms, normal style", function() {
+    const han = "还钱";
+    const py = pinyin(han, { style: "NORMAL", segment: "@node-rs/jieba", group: true, heteronym: true, compact: true });
+    expect(py).toEqual([["huan", "qian"], ["hai", "qian"]]);
+  });
+
+  it("compact with heternonyms, normal style", function() {
+    const han = "还钱";
+    const py = pinyin(han, { style: "NORMAL", segment: "segmentit", group: true, heteronym: true });
+    expect(compact(py)).toEqual([["huan", "qian"], ["hai", "qian"]]);
+  });
+
+  it("compact with heternonyms, first letter, group false", function() {
+    const han = "还钱";
+    const py = pinyin(han, { style: "FIRST_LETTER", segment: "nodejieba", group: false, heteronym: true });
+    expect(compact(py)).toEqual([["h", "q"]]);
+  });
+
+  it("compact with heternonyms, group true", function() {
+    const han = "还钱";
+    const py = pinyin(han, {segment: true, group: true, heteronym: true});
+    expect(compact(py)).toEqual([["huán", "qián"], ["hái", "qián"]]);
+  });
+
+  it("compact with heternonyms, many words", function() {
+    const han = "我们都爱朝阳";
+    const py = pinyin(han, { style: "FIRST_LETTER", heteronym: true, compact: true });
+    expect(py).toEqual([["w", "m", "d", "a", "z", "y"], ["w", "m", "d", "a", "c", "y"]]);
+  });
+});
