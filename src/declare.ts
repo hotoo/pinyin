@@ -1,5 +1,11 @@
 import { ENUM_PINYIN_STYLE, ENUM_PINYIN_MODE } from "./constant";
 
+export interface IPinyin {
+  (han: string, options?: IPinyinOptions): any;
+  compare: (a: string, b: string) => number;
+  compact: (arr: string[][]) => string[][];
+}
+
 export type IPinyinStyle =
   "normal" | "tone" | "tone2" | "to3ne" | "initials" | "first_letter" | // 推荐使用小写，和输出的拼音一致
   "NORMAL" | "TONE" | "TONE2" | "TO3NE" | "INITIALS" | "FIRST_LETTER" | // 方便老版本迁移

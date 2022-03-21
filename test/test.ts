@@ -316,6 +316,11 @@ describe("pinyin group", function() {
 });
 
 describe("pinyin compact", function() {
+  it("compact without heternonyms, normal style", function() {
+    const han = "还钱";
+    const py = pinyin(han, { style: "NORMAL", segment: "@node-rs/jieba", group: true, heteronym: false, compact: true });
+    expect(py).toEqual([["huan", "qian"]]);
+  });
   it("compact with heternonyms, normal style", function() {
     const han = "还钱";
     const py = pinyin(han, { style: "NORMAL", segment: "@node-rs/jieba", group: true, heteronym: true, compact: true });
@@ -326,18 +331,21 @@ describe("pinyin compact", function() {
     const han = "还钱";
     const py = pinyin(han, { style: "NORMAL", segment: "segmentit", group: true, heteronym: true });
     expect(compact(py)).toEqual([["huan", "qian"], ["hai", "qian"]]);
+    expect(pinyin.compact(py)).toEqual([["huan", "qian"], ["hai", "qian"]]);
   });
 
   it("compact with heternonyms, first letter, group false", function() {
     const han = "还钱";
     const py = pinyin(han, { style: "FIRST_LETTER", segment: "nodejieba", group: false, heteronym: true });
     expect(compact(py)).toEqual([["h", "q"]]);
+    expect(pinyin.compact(py)).toEqual([["h", "q"]]);
   });
 
   it("compact with heternonyms, group true", function() {
     const han = "还钱";
     const py = pinyin(han, {segment: true, group: true, heteronym: true});
     expect(compact(py)).toEqual([["huán", "qián"], ["hái", "qián"]]);
+    expect(pinyin.compact(py)).toEqual([["huán", "qián"], ["hái", "qián"]]);
   });
 
   it("compact with heternonyms, many words", function() {
