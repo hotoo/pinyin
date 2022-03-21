@@ -10,6 +10,7 @@ import type {
   IPinyinAllOptions,
   IPinyinOptions,
   IPinyinSegment,
+  IPinyin,
 } from "./declare";
 
 export default class PinyinBase {
@@ -282,4 +283,25 @@ export default class PinyinBase {
   compact(pys: string[][]): string[][] {
     return compact(pys);
   }
+}
+
+export function getPinyinInstance(py: PinyinBase) {
+  const pinyin = <IPinyin>py.pinyin.bind(py);
+  pinyin.compare = py.compare.bind(py);
+  pinyin.compact = py.compact.bind(py);
+
+  // pinyin styles: 兼容 v2.x 中的属性透出
+  pinyin.STYLE_TONE = ENUM_PINYIN_STYLE.TONE;
+  pinyin.STYLE_TONE2 = ENUM_PINYIN_STYLE.TONE2;
+  pinyin.STYLE_TO3NE = ENUM_PINYIN_STYLE.TO3NE;
+  pinyin.STYLE_NORMAL = ENUM_PINYIN_STYLE.NORMAL;
+  pinyin.STYLE_INITIALS = ENUM_PINYIN_STYLE.INITIALS;
+  pinyin.STYLE_FIRST_LETTER = ENUM_PINYIN_STYLE.FIRST_LETTER;
+
+  // pinyin mode: 兼容 v2.x 中的属性透出
+  pinyin.MODE_NORMAL = ENUM_PINYIN_MODE.NORMAL;
+  pinyin.MODE_SURNAME = ENUM_PINYIN_MODE.SURNAME;
+  // pinyin.MODE_PLACENAME = ENUM_PINYIN_MODE.PLACENAME;
+
+  return pinyin;
 }

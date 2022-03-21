@@ -1,9 +1,23 @@
 import { ENUM_PINYIN_STYLE, ENUM_PINYIN_MODE } from "./constant";
 
 export interface IPinyin {
-  (han: string, options?: IPinyinOptions): any;
+  (han: string, options?: IPinyinOptions): string[][];
+
   compare: (a: string, b: string) => number;
   compact: (arr: string[][]) => string[][];
+
+  // pinyin styles: 兼容 v2.x 中的属性透出
+  STYLE_TONE: ENUM_PINYIN_STYLE;
+  STYLE_TONE2: ENUM_PINYIN_STYLE;
+  STYLE_TO3NE: ENUM_PINYIN_STYLE;
+  STYLE_NORMAL: ENUM_PINYIN_STYLE;
+  STYLE_INITIALS: ENUM_PINYIN_STYLE;
+  STYLE_FIRST_LETTER: ENUM_PINYIN_STYLE;
+
+  // pinyin mode: 兼容 v2.x 中的属性透出
+  MODE_NORMAL: ENUM_PINYIN_MODE;
+  MODE_SURNAME: ENUM_PINYIN_MODE;
+  // MODE_PLACENAME: ENUM_PINYIN_MODE;
 }
 
 export type IPinyinStyle =
