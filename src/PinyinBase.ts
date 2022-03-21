@@ -230,7 +230,10 @@ export default class PinyinBase {
             )
           );
         }
-        result = result.concat(CompoundSurnamePinyinData[twowords]);
+        const pys = CompoundSurnamePinyinData[twowords].map((item: string[]) => {
+          return item.map((ch: string) => toFixed(ch, options.style));
+        });
+        result = result.concat(pys);
 
         i = i + 2;
         prefixIndex = i;
@@ -252,7 +255,10 @@ export default class PinyinBase {
     for (let i = 0, l = hans.length; i < l; i++) {
       const word = hans.charAt(i);
       if (hasKey(SurnamePinyinData, word)) {
-        result = result.concat(SurnamePinyinData[word]);
+        const pys = SurnamePinyinData[word].map((item: string[]) => {
+          return item.map((ch: string) => toFixed(ch, options.style));
+        });
+        result = result.concat(pys);
       } else {
         result.push(this.single_pinyin(word, options));
       }
