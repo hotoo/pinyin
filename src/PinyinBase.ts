@@ -13,7 +13,7 @@ import type {
 } from "./declare";
 
 export default class PinyinBase {
-  // 兼容 v2.x 中的属性透出　
+  // 兼容 v2.x 中的属性透出
   // pinyin styles:
   STYLE_TONE = ENUM_PINYIN_STYLE.TONE;
   STYLE_TONE2 = ENUM_PINYIN_STYLE.TONE2;
@@ -22,7 +22,7 @@ export default class PinyinBase {
   STYLE_INITIALS = ENUM_PINYIN_STYLE.INITIALS;
   STYLE_FIRST_LETTER = ENUM_PINYIN_STYLE.FIRST_LETTER;
 
-  // 兼容 v2.x 中的属性透出　
+  // 兼容 v2.x 中的属性透出
   // pinyin mode:
   MODE_NORMAL = ENUM_PINYIN_MODE.NORMAL;
   MODE_SURNAME = ENUM_PINYIN_MODE.SURNAME;
@@ -280,6 +280,6 @@ export default class PinyinBase {
   }
 
   compact(pys: string[][]): string[][] {
-    return compact(pys)
+    return compact(pys);
   }
 }
