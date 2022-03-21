@@ -4,7 +4,7 @@
 
 ```jsx
 import React, { useState, useEffect } from 'react';
-import { pinyin } from 'pinyin';
+import pinyin from 'pinyin';
 import JSONViewer from 'react-json-view';
 
 export default function() {

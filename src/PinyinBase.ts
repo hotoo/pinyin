@@ -278,4 +278,8 @@ export default class PinyinBase {
     const pinyinB = this.pinyin(hanB);
     return String(pinyinA).localeCompare(String(pinyinB));
   }
+
+  compact(pys: string[][]): string[][] {
+    return compact(pys)
+  }
 }

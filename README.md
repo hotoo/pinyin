@@ -98,6 +98,57 @@ $ pinyin -h
 
 ### IPinyinOptions
 
+传入给 pinyin 方法的第二个参数的选项类型。
+
+```typescript
+export interface IPinyinOptions {
+  style?: IPinyinStyle; // 拼音输出形式
+  mode?: IPinyinMode, // 拼音模式
+  // 指定分词库。
+  // 为了兼容老版本，可以使用 boolean 类型指定是否开启分词，默认开启。
+  segment?: IPinyinSegment | boolean;
+  // 是否返回多音字
+  heteronym?: boolean;
+  // 是否分组词组拼音
+  group?: boolean;
+  compact?: boolean;
+}
+```
+
+### IPinyinStyle
+
+输出拼音格式。可以从直接使用以下字符串或数字，也兼容 v2 版本中 `pinyin.STYLE_TONE` 这样的形式。
+
+```
+export type IPinyinStyle =
+  "normal" | "tone" | "tone2" | "to3ne" | "initials" | "first_letter" | // 推荐使用小写，和输出的拼音一致
+  "NORMAL" | "TONE" | "TONE2" | "TO3NE" | "INITIALS" | "FIRST_LETTER" | // 方便老版本迁移
+  0        | 1      | 2       | 5       | 3          | 4;               // 兼容老版本
+```
+
+### IPinyinMode
+
+拼音模式，默认普通模式，可以指定人名模式。
+
+```
+// - NORMAL: 普通模式
+// - SURNAME: 姓氏模式，优先使用姓氏的拼音。
+export type IPinyinMode =
+  "normal" | "surname" |
+  "NORMAL" | "SURNAME";
+```
+
+### IPinyinSegment
+
+分词方式。
+
+- 默认关闭 `false`，
+- 也可以设置为 `true` 开启，Web 版中使用 "segmentit" 分词，Node 版中使用 "nodejieba" 分词。
+- 也可以声明以下字符串来指定分词算法。但目前 Web 版只支持 "segmentit" 分词。
+
+```
+export type IPinyinSegment = "nodejieba" | "segmentit" | "@node-rs/jieba";
+```
 
 ## API
 
