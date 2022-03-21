@@ -27,6 +27,7 @@ export default defineConfig({
   hash: true,
   resolve: {
     includes: ['.'],
+    excludes: ['pinyin.ts', 'segment.ts'],
   },
   locales: [
     ['zh-CN', '中文'],
@@ -36,6 +37,13 @@ export default defineConfig({
   base: '/',
   publicPath: '/',
   // alias,
-  mfsu: {},
+  mfsu: {
+    ignoreNodeBuiltInModules: true,
+  },
+  nodeModulesTransform: {
+    type: 'all',
+    exclude: ['nodejieba', '@node-rs/jieba'],
+  },
+  webpack5: {},
   // more config: https://d.umijs.org/config
 });

@@ -10,7 +10,7 @@ import JSONViewer from 'react-json-view';
 export default function() {
   const han = '中文汉字';
   const [text, setText] = useState(han);
-  const [style, setStyle] = useState('STYLE_TONE');
+  const [style, setStyle] = useState('TONE');
 
   function onChangeInput(evt) {
     setText(evt.target.value);
@@ -20,7 +20,7 @@ export default function() {
   }
 
   const json = pinyin(text, {
-    style: pinyin[style],
+    style: style,
   });
   const textPinyin = json.join(' ');
 
@@ -32,15 +32,15 @@ export default function() {
       </div>
       <h3>输出</h3>
       <div>
-        <input type="radio" name="style" id="style-normal" value="STYLE_NORMAL" checked={style==='NORMAL'} onChange={onChangeStyle} />
+        <input type="radio" name="style" id="style-normal" value="NORMAL" checked={style==='NORMAL'} onChange={onChangeStyle} />
         <label for="style-normal">普通风格</label>
-        <input type="radio" name="style" id="style-tone" value="STYLE_TONE" checked={style==='STYLE_TONE'} onChange={onChangeStyle} />
+        <input type="radio" name="style" id="style-tone" value="TONE" checked={style==='TONE'} onChange={onChangeStyle} />
         <label for="style-tone">声调风格</label>
-        <input type="radio" name="style" id="style-tone2" value="STYLE_TONE2" checked={style==='STYLE_TONE2'} onChange={onChangeStyle} />
+        <input type="radio" name="style" id="style-tone2" value="TONE2" checked={style==='TONE2'} onChange={onChangeStyle} />
         <label for="style-tone2">音标风格</label>
-        <input type="radio" name="style" id="style-initials" value="STYLE_INITIALS" checked={style==='STYLE_INITIALS'} onChange={onChangeStyle} />
+        <input type="radio" name="style" id="style-initials" value="INITIALS" checked={style==='INITIALS'} onChange={onChangeStyle} />
         <label for="style-initials">声母风格</label>
-        <input type="radio" name="style" id="style-first-letter" value="STYLE_FIRST_LETTER" checked={style==='STYLE_FIRST_LETTER'} onChange={onChangeStyle} />
+        <input type="radio" name="style" id="style-first-letter" value="FIRST_LETTER" checked={style==='FIRST_LETTER'} onChange={onChangeStyle} />
         <label for="style-first-letter">首字母风格</label>
       </div>
       <div>
