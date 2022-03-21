@@ -313,6 +313,12 @@ describe("pinyin group", function() {
     const py = pinyin(han, {segment: true, group: true, heteronym: true});
     expect(py).toEqual([["wǒ"], ["dū", "dōu"], ["xǐhuān"], ["zhāoyáng", "cháoyáng"]]);
   });
+
+  it("groups segments without heteronyms", function() {
+    const han = "我都喜欢朝阳";
+    const py = pinyin(han, {segment: true, group: true, heteronym: false});
+    expect(py).toEqual([["wǒ"], ["dū"], ["xǐhuān"], ["zhāoyáng"]]);
+  });
 });
 
 describe("pinyin compact", function() {
