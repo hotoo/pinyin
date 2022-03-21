@@ -4,7 +4,7 @@ import { load, cut /*, tag */ } from "@node-rs/jieba";
 import { Segment, useDefault } from "segmentit";
 import type { IPinyinSegment } from "./declare";
 
-const nodeRsJiebaLoaded = false; // @node-rs/jieba 加载词典。
+let nodeRsJiebaLoaded = false; // @node-rs/jieba 加载词典。
 let segmentit: any; // segmentit 加载词典。
 
 /**
@@ -15,6 +15,7 @@ export function segment(hans: string, segment?: IPinyinSegment): string[] {
   // @node-rs/jieba (Rust)
   if (segment === "@node-rs/jieba") {
     if (!nodeRsJiebaLoaded) {
+      nodeRsJiebaLoaded = true;
       load();
     }
     return cut(hans, false);
