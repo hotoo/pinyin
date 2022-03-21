@@ -1,4 +1,4 @@
-# README (v3)
+# README (v2)
 
 pīnyīn, 汉字拼音转换工具。
 
@@ -22,9 +22,9 @@ pīnyīn, 汉字拼音转换工具。
 [lgtm-url]: https://lgtm.com/projects/g/hotoo/pinyin/context:javascript
 
 
-[English Documention Site](/en-US/)
+[English Documention Site](/en-US/README-v2)
 
-[English README](README.en-US.md)
+[English README](README-v2.en-US.md)
 
 转换中文字符为拼音。可以用于汉字注音、排序、检索。
 
@@ -53,37 +53,25 @@ npm install pinyin --save
 
 开发者：
 
-```typescript
-import pinyin from "pinyin";
+```js
+var pinyin = require("pinyin");
 
 console.log(pinyin("中心"));    // [ [ 'zhōng' ], [ 'xīn' ] ]
-
 console.log(pinyin("中心", {
-  heteronym: true,              // 启用多音字模式
+  heteronym: true               // 启用多音字模式
 }));                            // [ [ 'zhōng', 'zhòng' ], [ 'xīn' ] ]
-
 console.log(pinyin("中心", {
   heteronym: true,              // 启用多音字模式
-  segment: true,                // 启用分词，以解决多音字问题。默认不开启，使用 true 开启使用 nodejieba 分词库。
+  segment: true                 // 启用分词，以解决多音字问题。
 }));                            // [ [ 'zhōng' ], [ 'xīn' ] ]
-
-console.log(pinyin("中心", {
-  segment: "@node-rs/jieba",    // 指定分词库，可以是 "nodejieba"、"segmentit"、"@node-rs/jieba"。
-}));                            // [ [ 'zhōng' ], [ 'xīn' ] ]
-
 console.log(pinyin("我喜欢你", {
-  segment: "segmentit",         // 启用分词
-  group: true,                  // 启用词组
+  segment: true,                // 启用分词
+  group: true                   // 启用词组
 }));                            // [ [ 'wǒ' ], [ 'xǐhuān' ], [ 'nǐ' ] ]
-
 console.log(pinyin("中心", {
-  style: "initials",            // 设置拼音风格。
-  heteronym: true,              // 即使有多音字，因为拼音风格选择，重复的也会合并。
+  style: pinyin.STYLE_INITIALS, // 设置拼音风格
+  heteronym: true
 }));                            // [ [ 'zh' ], [ 'x' ] ]
-
-console.log(pinyin("华夫人", {
-  mode: "surname",              // 姓名模式。
-}));                            // [ ['huà'], ['fū'], ['rén'] ]
 ```
 
 命令行：
@@ -94,14 +82,10 @@ zhōng xīn
 $ pinyin -h
 ```
 
-## 类型
-
-### IPinyinOptions
-
 
 ## API
 
-### 方法 `<Array> pinyin(words: string[, options: IPinyinOptions])`
+### 方法 `<Array> pinyin(words[, options])`
 
 将传入的中文字符串 (words) 转换成拼音符号串。
 
@@ -110,24 +94,16 @@ options 是可选的，可以设定拼音风格，或打开多音字选项。
 返回二维数组，第一维每个数组项位置对应每个中文字符串位置。
 第二维是各个汉字的读音列表，多音字会有多个拼音项。
 
-### 方法 `Number compare(a, b)`
+### 方法 `Number pinyin.compare(a, b)`
 
 按拼音排序的默认算法。
 
-### 方法 `string[][] compact(pinyinResult array[][])`
-
-将拼音多音字以各种可能的组合排列变换成紧凑形式。参考 options.compact
-
 ## 参数
 
-### `<Boolean|IPinyinSegment> options.segment`
+### `<Boolean> options.segment`
 
 是否启用分词模式，中文分词有助于极大的降低多音字问题。
 但性能会极大的下降，内存也会使用更多。
-
-- 默认不启用分词。
-- 如果 `segemnt = true`，默认使用 nodejieba 分词。
-- 可以指定 "nodejieba"、"segmentit"、"@node-rs/jieba" 进行分词。
 
 ### `<Boolean> options.heteronym`
 
@@ -146,25 +122,24 @@ options 是可选的，可以设定拼音风格，或打开多音字选项。
 wǒ xǐhuān nǐ
 ```
 
-### `<IPinyinStyle> options.style`
+### `<Object> options.style`
 
-指定拼音风格。可以使用以下特定字符串或数值指定：
+指定拼音 风格。可以通过以下几种 `STYLE_` 开头的静态属性进行指定。
 
-```typescript
-IPinyinStyle =
-  "normal" | "tone" | "tone2" | "to3ne" | "initials" | "first_letter" | // 推荐使用小写，和输出的拼音一致
-  "NORMAL" | "TONE" | "TONE2" | "TO3NE" | "INITIALS" | "FIRST_LETTER" | // 方便老版本迁移
-  0        | 1      | 2       | 5       | 3          | 4;               // 兼容老版本
-```
+### options.mode
 
+拼音模式，默认 `pinyin.MODE_NORMAL` 普通模式。
+如果你明确的在姓名场景下，可以使用 `pinyin.MODE_SURNAME` 让姓氏使用更准确的拼音。
 
-#### `NORMAL`, `normal`
+## 静态属性
+
+### `.STYLE_NORMAL`
 
 普通风格，即不带声调。
 
 如：`pin yin`
 
-#### `TONE`, `tone`
+### `.STYLE_TONE`
 
 声调风格，拼音声调在韵母第一个字母上。
 
@@ -172,19 +147,19 @@ IPinyinStyle =
 
 如：`pīn yīn`
 
-#### `TONE2`, `tone2`
+### `.STYLE_TONE2`
 
 声调风格 2，即拼音声调以数字形式在各个拼音之后，用数字 [0-4] 进行表示。
 
 如：`pin1 yin1`
 
-#### `TO3NE`, `to3ne`
+### `.STYLE_TO3NE`
 
 声调风格 3，即拼音声调以数字形式在注音字符之后，用数字 [0-4] 进行表示。
 
 如：`pi1n yi1n`
 
-#### `INITIALS`, `initials`
+### `.STYLE_INITIALS`
 
 声母风格，只返回各个拼音的声母部分。对于没有声母的汉字，返回空白字符串。
 
@@ -196,38 +171,19 @@ IPinyinStyle =
 这些汉字的拼音声母风格会返回 `""`。请仔细考虑你的需求是否应该使用首字母风格。
 详情请参考 [为什么没有 y, w, yu 几个声母](#为什么没有 -y-w-yu- 几个声母)
 
-#### `FIRST_LETTER`, `first_letter`
+### `.STYLE_FIRST_LETTER`
 
 首字母风格，只返回拼音的首字母部分。
 
 如：`p y`
 
-### <string> options.mode
+### `.MODE_NORMAL`
 
-拼音模式，默认 "NORMAL" 普通模式。
-如果你明确的在姓名场景下，可以使用 "SURNAME" 让姓氏使用更准确的拼音。
+普通模式，自动识别读音。
 
+### `.MODE_SURNAME`
 
-- `NORMAL`：普通模式，自动识别读音。
-- `SURNAME`：姓名模式，对于明确的姓名场景，可以更准确的识别姓氏的读音。
-
-### <boolean> options.compact
-
-是否返回紧凑模式，默认 false，按标准格式返回。
-如果设置为 true，则将多音字可能的各种组合排列后返回。例如：
-
-```
-pinyin("你好吗", { compact:false });
-> [[nǐ], [hǎo,hào], [ma,má,mǎ]]
-
-pinyin("你好吗", { compact:true });
-> [
->   [nǐ,hǎo,ma], [nǐ,hǎo,má], [nǐ,hǎo,mǎ],
->   [nǐ,hào,ma], [nǐ,hào,má], [nǐ,hào,mǎ],
-> ]
-```
-
-你也可以必要时使用 `compact()` 函数处理 `pinyin(han, {compact:false})` 返回的结果。
+姓名模式，对于明确的姓名场景，可以更准确的识别姓氏的读音。
 
 ## Test
 

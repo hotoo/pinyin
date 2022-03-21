@@ -19,9 +19,9 @@
 [gittip-image]: https://img.shields.io/gittip/hotoo.svg?style=flat-square
 [gittip-url]: https://www.gittip.com/hotoo/
 
-[中文文档网站](/)
+[中文文档网站](/README-v2)
 
-[中文 README](README.md)
+[中文 README](README-v2.md)
 
 Convert Han to pinyin. useful for phonetic notation, sorting, and searching.
 
