@@ -3,10 +3,13 @@ version = $(shell cat package.json | grep version | awk -F'"' '{print $$4}')
 install:
 	@npm install
 
-publish:
-	@npm publish
+publish: test
+	@npm publish --tag v3
 	@git tag $(version)
 	@git push origin $(version)
+
+publishDoc:
+	@npm run doc:deploy
 
 clean:
 	@rm -fr _site
@@ -15,7 +18,7 @@ clean:
 runner = _site/tests/runner.html
 
 benchmark:
-	@node test/benchmark.js
+	@node benchmark/benchmark.js
 
 test-npm:
 	@npm test
@@ -24,7 +27,8 @@ test-npm:
 lint:
 	@npm run lint
 
-test: lint test-npm benchmark
+test: lint test-npm
+
 test-local: test-npm
 
 output = _site/coverage.html
@@ -57,4 +61,4 @@ dict-node:
 infrequent:
 	@node ./tools/infrequent.js > ./tools/zi/infrequent.js
 
-.PHONY: server clean test test-local coverage test-npm test-cli lint benchmark
+.PHONY: server clean test test-local coverage test-npm test-cli lint benchmark publish publishDoc

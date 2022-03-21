@@ -1,10 +1,13 @@
 {
   "name": "pinyin",
-  "version": "3.0.0-alpha.0",
+  "version": "3.0.0-alpha.1",
   "description": "汉语拼音转换工具。",
-  "main": "lib/pinyin.js",
-  "module": "esm/pinyin.js",
-  "browser": "lib/pinyin.js",
+  "main": "./lib/pinyin.js",
+  "module": "./esm/pinyin.js",
+  "browser": {
+    "./lib/pinyin.js": "./lib/pinyin-web.js",
+    "./esm/pinyin.js": "./esm/pinyin-web.js"
+  },
   "bin": {
     "pinyin": "./bin/pinyin"
   },
@@ -21,7 +24,7 @@
     "start": "dumi dev",
     "prepublishOnly": "npm run build",
     "build": "tsc --downlevelIteration -p tsconfig-es5.json & tsc --downlevelIteration -p tsconfig.json",
-    "doc:build": "dumi build",
+    "doc:build": "rm -rf ./src/.umi && dumi build",
     "doc:deploy": "npm run doc:build && cp CNAME docs-dist/dist && gh-pages -d docs-dist/dist",
     "lint": "eslint ./src/ ./test/",
     "test": "jest --coverage",
