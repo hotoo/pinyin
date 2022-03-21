@@ -1,6 +1,6 @@
 import DICT_ZI from "./data/dict-zi"; // 单个汉字拼音数据。
 import DICT_PHRASES from "./data/phrases-dict"; // 词组拼音数据。
-import { segment } from "./segment";
+import { segment } from "./segment-web";
 import { toFixed } from "./format";
 import SurnamePinyinData from "./data/surname";
 import CompoundSurnamePinyinData from "./data/compound_surname";
@@ -115,7 +115,7 @@ function single_pinyin(han: string, options: IPinyinAllOptions): string[] {
  * 将文本分词，并转换成拼音。
  */
 function segment_pinyin(hans: string, options: IPinyinAllOptions): string[][] {
-  const phrases = segment(hans, options.segment);
+  const phrases =  segment(hans, options.segment);
   let pys: string[][] = [];
   let nohans = "";
   for (let i = 0, l = phrases.length; i < l; i++) {
