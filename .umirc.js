@@ -27,7 +27,6 @@ export default defineConfig({
   hash: true,
   resolve: {
     includes: ['.'],
-    excludes: ['pinyin.ts', 'segment.ts'],
   },
   locales: [
     ['zh-CN', '中文'],
