@@ -8,7 +8,7 @@ commander.
   option('-v, --version', 'output the version number').
   option('-s, --style <style>', 'pinyin styles: [NORMAL,TONE,TONE2,INITIALS,FIRST_LETTER]').
   option('-m, --mode <mode>', 'pinyin mode: [NORMAL,SURNAME]').
-  option('-S, --segment', 'segmentation word to phrases').
+  option('-S, --segment [segment]', 'segmentation word to phrases, support "nodejieba", "@node-rs/jieba", "segmentit"').
   option('-h, --heteronym', 'output heteronym pinyins').
   option('-g, --group', 'output group by phrases').
   option('-c, --compact', 'output the compact pinyin result').
