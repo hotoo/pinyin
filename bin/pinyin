@@ -19,6 +19,12 @@ if (commander.list) {
   process.exit();
 }
 
+// --segment <segment> 是可选项，当后面带的不合法的 segment 时，当作文本处理。
+const validSegmentList = ["nodejieba", "@node-rs/jieba", "segmentit", true, false, undefined];
+if (!validSegmentList.includes(commander.segment)) {
+  commander.args.splice(0, 0, commander.segment);
+  commander.segment = true;
+}
 // output help and exit if no args found
 if (commander.args.length === 0) {
   commander.help();
