@@ -46,7 +46,7 @@ pīnyīn, 汉字拼音转换工具。
 via npm:
 
 ```bash
-npm install pinyin@v3 --save
+npm install pinyin@alpha --save
 ```
 
 ## 用法

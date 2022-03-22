@@ -42,7 +42,7 @@ Convert Han to pinyin. useful for phonetic notation, sorting, and searching.
 via npm:
 
 ```bash
-npm install pinyin
+npm install pinyin@alpha --save
 ```
 
 ## Usage
@@ -50,7 +50,7 @@ npm install pinyin
 for developer:
 
 ```js
-var pinyin = require("pinyin");
+import pinyin from "pinyin";
 
 console.log(pinyin("中心"));    // [ [ 'zhōng' ], [ 'xīn' ] ]
 console.log(pinyin("中心", {
