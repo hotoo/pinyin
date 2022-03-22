@@ -2,6 +2,16 @@
 
 ----
 
+## 3.0.0-alpha.2 (2022-03-22)
+
+- feat: pinyin implemention by typescript language.
+- feat: full Hanzi support for Web browser and Node.js
+- feat: segment support in Web browser and Node.js
+- feat: ES module and CommonJS module.
+- feat: support surname mode.
+- feat: better compact method.
+- fix: support specific segment for cli #322
+
 ## 2.11.1 (2022-03-09)
 
 - deps(nodejieba): 锁定 nodejieba 依赖版本 #315, #316
