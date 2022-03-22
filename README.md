@@ -359,12 +359,6 @@ API 和使用方式完成一致。
 
 <img src="https://hotoo.github.io/images/donate-hotoo.png" alt="Alipay:hotoo.cn@gmail.com, WeChat:hotoome" width="400" />
 
-或者直接捐赠给我妻子 [@lizzie](https://github.com/lizzie)：
-
-<img src="https://hotoo.github.io/images/donate-lizzie.png" alt="Alipay:shenyan1985@gmail.com, WeChat:SunsetSunrising" width="400" />
-
-这两种捐赠的最终结果是一样的 :)
-
 ## 许可证
 
 [MIT](http://hotoo.mit-license.org/)

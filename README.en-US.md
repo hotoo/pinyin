@@ -235,11 +235,6 @@ And you have chioce donate to me via Aliapy or WeChat:
 
 <img src="https://hotoo.github.io/images/donate-hotoo.png" alt="Alipay:hotoo.cn@gmail.com, WeChat:hotoome" width="400" />
 
-or donate my dear wife [@lizzie](https://github.com/lizzie) direct:
-
-<img src="https://hotoo.github.io/images/donate-lizzie.png" alt="Alipay:shenyan1985@gmail.com, WeChat:SunsetSunrising" width="400" />
-
-The two donate way will have the same result.
 
 ## License
 
