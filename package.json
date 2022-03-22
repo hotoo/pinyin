@@ -1,32 +1,18 @@
 {
   "name": "pinyin",
-  "version": "2.11.1",
+  "version": "3.0.0-alpha.1",
   "description": "汉语拼音转换工具。",
-  "files": [
-    "bin",
-    "data",
-    "lib",
-    "index.js",
-    "src"
-  ],
-  "keywords": [
-    "拼音",
-    "汉语",
-    "汉字",
-    "中文",
-    "Pinyin"
-  ],
-  "homepage": "http://pinyin.hotoo.me/",
-  "author": "闲耘 <hotoo.cn@gmail.com>",
-  "main": "lib/index.js",
-  "browser": "lib/web-pinyin.js",
+  "main": "./lib/pinyin.js",
+  "module": "./esm/pinyin.js",
+  "browser": {
+    "./lib/pinyin.js": "./lib/pinyin-web.js",
+    "./esm/pinyin.js": "./esm/pinyin-web.js"
+  },
   "bin": {
     "pinyin": "./bin/pinyin"
   },
-  "directories": {
-    "example": "examples",
-    "test": "tests"
-  },
+  "homepage": "https://pinyin.js.org/",
+  "author": "闲耘 <hotoo.cn@gmail.com>",
   "repository": {
     "type": "git",
     "url": "https://github.com/hotoo/pinyin.git"
@@ -36,34 +22,66 @@
   },
   "scripts": {
     "start": "dumi dev",
-    "doc:build": "dumi build",
+    "prepublishOnly": "npm run build",
+    "build": "tsc --downlevelIteration -p tsconfig-es5.json & tsc --downlevelIteration -p tsconfig.json",
+    "doc:build": "rm -rf ./src/.umi && dumi build",
     "doc:deploy": "npm run doc:build && cp CNAME docs-dist/dist && gh-pages -d docs-dist/dist",
-    "lint": "eslint ./lib/ ./bin/ ./tests/",
-    "test": "nyc --reporter=lcov mocha --timeout=5000 --inline-diffs ./tests/"
+    "lint": "eslint ./src/ ./test/",
+    "test": "jest --coverage",
+    "debug": "npx ts-node tools/debug.ts"
   },
   "dependencies": {
-    "commander": "~1.1.1",
-    "object-assign": "^4.0.1"
+    "commander": "~1.1.1"
   },
   "optionalDependencies": {
-    "nodejieba": "2.5.2"
+    "@node-rs/jieba": "^1.6.0",
+    "nodejieba": "2.5.2",
+    "segmentit": "^2.0.3"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.15.6",
+    "@babel/preset-typescript": "^7.15.0",
+    "@types/jest": "^27.0.2",
+    "@typescript-eslint/eslint-plugin": "^5.14.0",
+    "@typescript-eslint/parser": "^5.14.0",
     "aurl": "^1.2.0",
     "aws-sdk": "^2.1011.0",
     "benchmark": "~1.0.0",
     "dumi": "^1.1.30",
-    "eslint": "~0.24.0",
-    "expect.js": "~0.3.1",
+    "eslint": "^8.11.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-import-resolver-typescript": "^2.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
     "gh-pages": "^3.2.3",
-    "istanbul": "~0.3.17",
-    "mocha": "^9.0.0",
+    "jest": "^27.2.3",
     "mock-aws-s3": "^4.0.2",
     "nock": "^13.1.4",
-    "nyc": "^15.1.0",
+    "npx": "^10.2.2",
+    "prettier": "^2.6.0",
     "react-json-view": "^1.21.3",
-    "request": "~2.68.0"
+    "request": "~2.68.0",
+    "ts-node": "^10.5.0",
+    "typescript": "^4.4.4"
   },
   "registry": "https://registry.npmmirror.com",
+  "files": [
+    "package.json",
+    "build/",
+    "bin",
+    "data",
+    "lib",
+    "index.js"
+  ],
+  "keywords": [
+    "拼音",
+    "汉语",
+    "汉字",
+    "中文",
+    "Pinyin"
+  ],
+  "directories": {
+    "example": "examples",
+    "test": "test"
+  },
   "license": "MIT"
 }

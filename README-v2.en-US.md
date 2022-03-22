@@ -19,9 +19,9 @@
 [gittip-image]: https://img.shields.io/gittip/hotoo.svg?style=flat-square
 [gittip-url]: https://www.gittip.com/hotoo/
 
-[中文文档网站](/)
+[中文文档网站](/README-v2)
 
-[中文 README](README.md)
+[中文 README](README-v2.md)
 
 Convert Han to pinyin. useful for phonetic notation, sorting, and searching.
 
@@ -42,7 +42,7 @@ Convert Han to pinyin. useful for phonetic notation, sorting, and searching.
 via npm:
 
 ```bash
-npm install pinyin@alpha --save
+npm install pinyin@2.0 --save
 ```
 
 ## Usage
@@ -50,7 +50,7 @@ npm install pinyin@alpha --save
 for developer:
 
 ```js
-import pinyin from "pinyin";
+var pinyin = require("pinyin");
 
 console.log(pinyin("中心"));    // [ [ 'zhōng' ], [ 'xīn' ] ]
 console.log(pinyin("中心", {

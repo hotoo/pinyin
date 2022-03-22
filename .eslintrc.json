@@ -1,0 +1,18 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint", "prettier"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
+  ],
+  "rules": {
+    "@typescript-eslint/ban-ts-comment": "warn",
+
+    "@typescript-eslint/no-unused-vars": "error",
+    "@typescript-eslint/no-explicit-any": "warn",
+    "quotes": ["error", "double"],
+    "comma-dangle": ["error", "always-multiline"],
+    "semi": ["error", "always"]
+  }
+}

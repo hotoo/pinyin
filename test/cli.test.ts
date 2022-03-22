@@ -1,8 +1,6 @@
+import { exec } from "child_process";
 
-var expect = require("expect.js");
-var child_process = require("child_process");
-
-var testcases = [
+const testcases = [
   {
     command: "pinyin 中国",
     stdout: "zhōng guó",
@@ -67,9 +65,9 @@ describe("cli: command line interface.", function() {
   testcases.forEach(function(testcase) {
 
     it("$ " + testcase.command, function(done) {
-      child_process.exec("bin/" + testcase.command, function(err, stdout) {
-        expect(err).to.eql(null);
-        expect(stdout).to.eql(testcase.stdout + "\n");
+      exec("bin/" + testcase.command, function(err, stdout) {
+        expect(err).toEqual(null);
+        expect(stdout).toEqual(testcase.stdout + "\n");
         done();
       });
     });

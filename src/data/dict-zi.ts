@@ -1,4 +1,4 @@
-var dict = [];
+const dict: Record<number, string> = {};
 
 dict[0x3007] = "líng,xīng"; /* 〇: https://zh.m.wiktionary.org/wiki/%E3%80%87 */
 dict[0x3400] = "qiū"; /* 㐀 */
@@ -26150,7 +26150,7 @@ dict[0x20007] = "qiě"; /*  */
 dict[0x20008] = "qiū"; /*  */
 dict[0x20009] = "qiū"; /* 	 */
 dict[0x2000a] = "cāo"; /* */
-dict[0x2000c] = "qiū"; /*  */
+dict[0x2000c] = "qiū"; /* */
 dict[0x2000d] = "shì"; /*  */
 dict[0x20013] = "sī"; /*  */
 dict[0x20014] = "jué"; /*  */
@@ -28767,10 +28767,10 @@ dict[0x21ffa] = "nǎo"; /* Ὼ */
 dict[0x21ffc] = "xùn"; /* ῼ */
 dict[0x21ffe] = "jú"; /* ῾ */
 dict[0x21fff] = "huò"; /* ῿ */
-dict[0x22001] = "yì"; /*   */
-dict[0x2200a] = "xī"; /*   */
-dict[0x2200b] = "sè"; /* ​ */
-dict[0x2200c] = "jiǎo"; /* ‌ */
+dict[0x22001] = "yì"; /* */
+dict[0x2200a] = "xī"; /* */
+dict[0x2200b] = "sè"; /* */
+dict[0x2200c] = "jiǎo"; /* */
 dict[0x2200d] = "yōng"; /* ‍ */
 dict[0x22013] = "jù"; /* – */
 dict[0x22015] = "shī"; /* ― */
@@ -30112,7 +30112,7 @@ dict[0x22ff1] = "sàn"; /* ⿱ */
 dict[0x22ff2] = "qiāo"; /* ⿲ */
 dict[0x22ff3] = "luàn"; /* ⿳ */
 dict[0x22ff8] = "cè"; /* ⿸ */
-dict[0x23000] = "léi"; /* 　 */
+dict[0x23000] = "léi"; /* */
 dict[0x23001] = "zhǎn"; /* 、 */
 dict[0x23002] = "lǐ"; /* 。 */
 dict[0x23003] = "lián"; /* 〃 */
@@ -41246,4 +41246,4 @@ dict[0x2a590] = "yào,yà"; /* ꖐ */
 dict[0x2a595] = "huī"; /* ꖕ */
 dict[0x2a599] = "hōu"; /* ꖙ */
 
-module.exports = dict;
+export default dict;

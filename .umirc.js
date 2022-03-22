@@ -36,6 +36,13 @@ export default defineConfig({
   base: '/',
   publicPath: '/',
   // alias,
-  mfsu: {},
+  mfsu: {
+    ignoreNodeBuiltInModules: true,
+  },
+  nodeModulesTransform: {
+    type: 'all',
+    exclude: ['nodejieba', '@node-rs/jieba'],
+  },
+  webpack5: {},
   // more config: https://d.umijs.org/config
 });
