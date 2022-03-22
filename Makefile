@@ -4,7 +4,7 @@ install:
 	@npm install
 
 publish: test
-	@npm publish --tag v3
+	@npm publish --tag alpha
 	@git tag $(version)
 	@git push origin $(version)
 
