@@ -324,12 +324,12 @@ describe("pinyin group", function() {
 describe("pinyin compact", function() {
   it("compact without heternonyms, normal style", function() {
     const han = "还钱";
-    const py = pinyin(han, { style: "NORMAL", segment: "@node-rs/jieba", group: true, heteronym: false, compact: true });
+    const py = pinyin(han, { style: pinyin.STYLE_NORMAL, segment: "@node-rs/jieba", group: true, heteronym: false, compact: true });
     expect(py).toEqual([["huan", "qian"]]);
   });
   it("compact with heternonyms, normal style", function() {
     const han = "还钱";
-    const py = pinyin(han, { style: "NORMAL", segment: "@node-rs/jieba", group: true, heteronym: true, compact: true });
+    const py = pinyin(han, { style: pinyin.STYLE_NORMAL, segment: "@node-rs/jieba", group: true, heteronym: true, compact: true });
     expect(py).toEqual([["huan", "qian"], ["hai", "qian"]]);
   });
 
