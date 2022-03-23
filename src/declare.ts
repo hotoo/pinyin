@@ -21,6 +21,7 @@ export interface IPinyin {
 }
 
 export type IPinyinStyle =
+  ENUM_PINYIN_STYLE |
   "normal" | "tone" | "tone2" | "to3ne" | "initials" | "first_letter" | // 推荐使用小写，和输出的拼音一致
   "NORMAL" | "TONE" | "TONE2" | "TO3NE" | "INITIALS" | "FIRST_LETTER" | // 方便老版本迁移
   0        | 1      | 2       | 5       | 3          | 4;               // 兼容老版本
@@ -31,12 +32,13 @@ export type IPinyinStyle =
 // - SURNAME: 姓氏模式，优先使用姓氏的拼音。
 // - TODO: PLACENAME: 地名模式，优先使用地名拼音。
 export type IPinyinMode =
+  ENUM_PINYIN_MODE |
   "normal" | "surname" |
   "NORMAL" | "SURNAME";
 
 export type IPinyinSegment = "nodejieba" | "segmentit" | "@node-rs/jieba";
 
-// 强类型，所有字段都有值。
+// 程序内部使用的强类型，所有字段都有合法值类型。
 export interface IPinyinAllOptions {
   style: ENUM_PINYIN_STYLE; // 拼音输出形式
   mode: ENUM_PINYIN_MODE, // 拼音模式
