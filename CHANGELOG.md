@@ -2,6 +2,10 @@
 
 ----
 
+## 3.0.0-alpha.3 (2022-03-27)
+
+- fix: phrases dict of "苹". #326
+
 ## 3.0.0-alpha.2 (2022-03-22)
 
 - feat: pinyin implemention by typescript language.
