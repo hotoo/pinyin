@@ -1,7 +1,7 @@
 import pinyin, { compare, compact, IPinyinStyle } from "../index";
 
 describe("pinyin() without param", function() {
-  it("我,要,排,序 => 序,我,排,要", function() {
+  it("pinyin() => []", function() {
     // @ts-ignore
     expect(pinyin()).toEqual([]);
   });
@@ -318,6 +318,12 @@ describe("pinyin group", function() {
     const han = "我都喜欢朝阳";
     const py = pinyin(han, {segment: true, group: true, heteronym: false});
     expect(py).toEqual([["wǒ"], ["dū"], ["xǐhuān"], ["zhāoyáng"]]);
+  });
+
+  it("落叶落下着落", function() {
+    const han = "落叶落下着落";
+    const py = pinyin(han, {segment: true, group: true, heteronym: false});
+    expect(py).toEqual([["luòyè"], ["làxià"], ["zháoluò"]]);
   });
 });
 
