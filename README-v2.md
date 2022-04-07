@@ -1,4 +1,4 @@
-# README (v2)
+# pīnyīn (v2)
 
 pīnyīn, 汉字拼音转换工具。
 
@@ -22,9 +22,10 @@ pīnyīn, 汉字拼音转换工具。
 [lgtm-url]: https://lgtm.com/projects/g/hotoo/pinyin/context:javascript
 
 
-[English Documention Site](/en-US/README-v2)
+Web Site: 简体中文 | [English](/en-US/README-v2)
 
-[English README](README-v2.en-US.md)
+README: 简体中文 | [English](README-v2.en-US.md)
+
 
 转换中文字符为拼音。可以用于汉字注音、排序、检索。
 

@@ -1,11 +1,13 @@
-# pīnyīn for Han （汉字） (v3)
+# pīnyīn (v2)
+
+pinyin, The convert tool of chinese pinyin.
 
 ---
 
 [![NPM version][npm-badge]][npm-url]
 [![Build Status][build-badge]][build-url]
 [![Coverage Status][coveralls-badge]][coveralls-url]
-[![Gittip][gittip-image]][gittip-url]
+[![Language Grade: JavaScript][lgtm-badge]][lgtm-url]
 [![NPM downloads][npm-downloads]][npm-url]
 
 
@@ -16,12 +18,14 @@
 [build-url]: https://github.com/hotoo/pinyin/actions
 [coveralls-badge]: https://coveralls.io/repos/hotoo/pinyin/badge.svg?branch=master
 [coveralls-url]: https://coveralls.io/r/hotoo/pinyin
-[gittip-image]: https://img.shields.io/gittip/hotoo.svg?style=flat-square
-[gittip-url]: https://www.gittip.com/hotoo/
+[lgtm-badge]: https://img.shields.io/lgtm/grade/javascript/g/hotoo/pinyin.svg?logo=lgtm&logoWidth=18
+[lgtm-url]: https://lgtm.com/projects/g/hotoo/pinyin/context:javascript
 
-[中文文档网站](/README-v2)
 
-[中文 README](README-v2.md)
+Web Site: [简体中文](/README-v2) | English
+
+README: [简体中文](README-v2.md) | English
+
 
 Convert Han to pinyin. useful for phonetic notation, sorting, and searching.
 
