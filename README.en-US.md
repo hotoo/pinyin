@@ -1,11 +1,13 @@
-# pīnyīn for Han （汉字） (v3)
+# pīnyīn (v3)
+
+pinyin, The convert tool of chinese pinyin.
 
 ---
 
 [![NPM version][npm-badge]][npm-url]
 [![Build Status][build-badge]][build-url]
 [![Coverage Status][coveralls-badge]][coveralls-url]
-[![Gittip][gittip-image]][gittip-url]
+[![Language Grade: JavaScript][lgtm-badge]][lgtm-url]
 [![NPM downloads][npm-downloads]][npm-url]
 
 
@@ -16,12 +18,14 @@
 [build-url]: https://github.com/hotoo/pinyin/actions
 [coveralls-badge]: https://coveralls.io/repos/hotoo/pinyin/badge.svg?branch=master
 [coveralls-url]: https://coveralls.io/r/hotoo/pinyin
-[gittip-image]: https://img.shields.io/gittip/hotoo.svg?style=flat-square
-[gittip-url]: https://www.gittip.com/hotoo/
+[lgtm-badge]: https://img.shields.io/lgtm/grade/javascript/g/hotoo/pinyin.svg?logo=lgtm&logoWidth=18
+[lgtm-url]: https://lgtm.com/projects/g/hotoo/pinyin/context:javascript
 
-[中文文档网站](/)
 
-[中文 README](README.md)
+Web Site: [简体中文](/) | English
+
+README: [简体中文](README.md) | English
+
 
 Convert Han to pinyin. useful for phonetic notation, sorting, and searching.
 
@@ -49,25 +53,33 @@ npm install pinyin@alpha --save
 
 for developer:
 
-```js
+```typescript
 import pinyin from "pinyin";
 
 console.log(pinyin("中心"));    // [ [ 'zhōng' ], [ 'xīn' ] ]
+
 console.log(pinyin("中心", {
   heteronym: true                // Enable heteronym mode.
 }));                            // [ [ 'zhōng', 'zhòng' ], [ 'xīn' ] ]
+
 console.log(pinyin("中心", {
   heteronym: true,              // Enable heteronym mode.
   segment: true                 // Enable Chinese words segmentation, fix most heteronym problem.
 }));                            // [ [ 'zhōng' ], [ 'xīn' ] ]
+
 console.log(pinyin("我喜欢你", {
   segment: true,                // Enable segmentation. Needed for grouping.
   group: true                   // Group pinyin segments
 }));                            // [ [ 'wǒ' ], [ 'xǐhuān' ], [ 'nǐ' ] ]
+
 console.log(pinyin("中心", {
   style: pinyin.STYLE_INITIALS, // Setting pinyin style.
   heteronym: true
 }));                            // [ [ 'zh' ], [ 'x' ] ]
+
+console.log(pinyin("华夫人", {
+  mode: "surname",              // 姓名模式。
+}));                            // [ ['huà'], ['fū'], ['rén'] ]
 ```
 
 for cli:
@@ -77,6 +89,59 @@ $ pinyin 中心
 zhōng xīn
 $ pinyin -h
 ```
+
+## Types
+
+### IPinyinOptions
+
+The types for the second argument of pinyin method.
+
+```typescript
+export interface IPinyinOptions {
+  style?: IPinyinStyle; // output style of pinyin.
+  mode?: IPinyinMode, // mode of pinyin.
+  segment?: IPinyinSegment | boolean;
+  heteronym?: boolean;
+  group?: boolean;
+  compact?: boolean;
+}
+```
+
+### IPinyinStyle
+
+The output style of pinyin.
+
+```typescript
+export type IPinyinStyle =
+  "normal" | "tone" | "tone2" | "to3ne" | "initials" | "first_letter" | // Suggest.
+  "NORMAL" | "TONE" | "TONE2" | "TO3NE" | "INITIALS" | "FIRST_LETTER" |
+  0        | 1      | 2       | 5       | 3          | 4;               // compatibility.
+```
+
+### IPinyinMode
+
+The mode of pinyin.
+
+```typescript
+// - NORMAL: Default mode is normal mode.
+// - SURNAME: surname mode, for chinese surname.
+export type IPinyinMode =
+  "normal" | "surname" |
+  "NORMAL" | "SURNAME";
+```
+
+### IPinyinSegment
+
+The segment method.
+
+- Default is disable segment: `false`，
+- If set `true`, use "segmentit" module for segment in Web, use "nodejieba" for segment in Node.
+- Also specify follow string for segment (bug just "segmentit" in web):
+
+```typescript
+export type IPinyinSegment = "nodejieba" | "segmentit" | "@node-rs/jieba";
+```
+
 
 ## API
 

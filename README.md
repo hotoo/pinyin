@@ -1,4 +1,4 @@
-# README (v3)
+# pīnyīn (v3)
 
 pīnyīn, 汉字拼音转换工具。
 
@@ -22,9 +22,10 @@ pīnyīn, 汉字拼音转换工具。
 [lgtm-url]: https://lgtm.com/projects/g/hotoo/pinyin/context:javascript
 
 
-[English Documention Site](/en-US/)
+Web Site: 简体中文 | [English](/en-US/)
 
-[English README](README.en-US.md)
+README: 简体中文 | [English](README.en-US.md)
+
 
 转换中文字符为拼音。可以用于汉字注音、排序、检索。
 
@@ -119,7 +120,7 @@ export interface IPinyinOptions {
 
 输出拼音格式。可以从直接使用以下字符串或数字，也兼容 v2 版本中 `pinyin.STYLE_TONE` 这样的形式。
 
-```
+```typescript
 export type IPinyinStyle =
   "normal" | "tone" | "tone2" | "to3ne" | "initials" | "first_letter" | // 推荐使用小写，和输出的拼音一致
   "NORMAL" | "TONE" | "TONE2" | "TO3NE" | "INITIALS" | "FIRST_LETTER" | // 方便老版本迁移
@@ -130,7 +131,7 @@ export type IPinyinStyle =
 
 拼音模式，默认普通模式，可以指定人名模式。
 
-```
+```typescript
 // - NORMAL: 普通模式
 // - SURNAME: 姓氏模式，优先使用姓氏的拼音。
 export type IPinyinMode =
@@ -146,7 +147,7 @@ export type IPinyinMode =
 - 也可以设置为 `true` 开启，Web 版中使用 "segmentit" 分词，Node 版中使用 "nodejieba" 分词。
 - 也可以声明以下字符串来指定分词算法。但目前 Web 版只支持 "segmentit" 分词。
 
-```
+```typescript
 export type IPinyinSegment = "nodejieba" | "segmentit" | "@node-rs/jieba";
 ```
 
