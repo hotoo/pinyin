@@ -2,6 +2,10 @@
 
 ----
 
+## 2.11.2 (2022-04-11)
+
+- fix: pinyin style for surname. fixed #330, #331
+
 ## 2.11.1 (2022-03-09)
 
 - deps(nodejieba): 锁定 nodejieba 依赖版本 #315, #316
