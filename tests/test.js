@@ -224,10 +224,12 @@ describe("姓名模式", function() {
 
     expect(pinyin("查某说：您是万俟先生？", { mode: pinyin.MODE_NORMAL})).to.eql([["chá"], ["mǒu"], ["shuō"], ["："], ["nín"], ["shì"], ["wàn"], ["sì"], ["xiān"], ["shēng"], ["？"]]);
     expect(pinyin("查某说：您是万俟先生？", { mode: pinyin.MODE_SURNAME})).to.eql([["zhā"], ["mǒu"], ["shuō"], ["："], ["nín"], ["shì"], ["mò"], ["qí"], ["xiān"], ["shēng"], ["？"]]);
+    expect(pinyin("查某说：您是万俟先生？", { mode: pinyin.MODE_SURNAME, style: pinyin.STYLE_FIRST_LETTER})).to.eql([["z"], ["m"], ["s"], ["："], ["n"], ["s"], ["m"], ["q"], ["x"], ["s"], ["？"]]);
   });
   it("单姓", function() {
     expect(pinyin("华夫人", { mode: pinyin.MODE_NORMAL})).to.eql([["huá"], ["fū"], ["rén"]]);
     expect(pinyin("华夫人", { mode: pinyin.MODE_SURNAME})).to.eql([["huà"], ["fū"], ["rén"]]);
+    expect(pinyin("华夫人", { mode: pinyin.MODE_SURNAME, style: pinyin.STYLE_FIRST_LETTER})).to.eql([["h"], ["f"], ["r"]]);
   });
 });
 
