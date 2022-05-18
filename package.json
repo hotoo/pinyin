@@ -64,6 +64,9 @@
     "typescript": "^4.4.4"
   },
   "registry": "https://registry.npmmirror.com",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
   "files": [
     "package.json",
     "build/",
