@@ -365,4 +365,10 @@ describe("pinyin compact", function() {
     const py = pinyin(han, { style: "FIRST_LETTER", heteronym: true, compact: true });
     expect(py).toEqual([["w", "m", "d", "a", "z", "y"], ["w", "m", "d", "a", "c", "y"]]);
   });
+  
+  it("行不行 compact without heternonyms, normal style", function() {
+    const han = "行不行";
+    const py = pinyin(han, { style: pinyin.STYLE_NORMAL, segment: true, heteronym: false, compact: true });
+    expect(py).toEqual([["xing", "bu", "xing"]]);
+  });
 });
