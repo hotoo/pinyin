@@ -1,6 +1,6 @@
 {
   "name": "pinyin",
-  "version": "3.0.0-alpha.4",
+  "version": "3.0.0-alpha.5",
   "description": "汉语拼音转换工具。",
   "main": "./lib/pinyin.js",
   "module": "./esm/pinyin.js",
@@ -73,6 +73,7 @@
     "bin",
     "data",
     "lib",
+    "esm",
     "index.js"
   ],
   "keywords": [
