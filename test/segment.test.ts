@@ -1,11 +1,11 @@
-import { segment } from "../src/segment-web";
+import { segment } from "../src/segment";
 
-describe("segment-web", function() {
+describe("segment", function() {
   it("segment()", function() {
-    expect(segment("我要排序")).toEqual(["我要排序"]);
-    expect(segment("中文汉字")).toEqual(["中文汉字"]);
-    expect(segment("我来到北京清华大学")).toEqual(["我来到北京清华大学"]);
-    expect(segment("每股24.67美元的确定性协议")).toEqual(["每股24.67美元的确定性协议"]);
+    expect(segment("我要排序")).toEqual(["我", "要", "排序"]);
+    expect(segment("中文汉字")).toEqual(["中文", "汉字"]);
+    expect(segment("我来到北京清华大学")).toEqual(["我", "来到", "北京", "清华大学"]);
+    expect(segment("每股24.67美元的确定性协议")).toEqual(["每股", "2", "4", ".", "6", "7", "美元", "的", "确定性", "协议"]);
   });
 
   it("segment(segmentit)", function() {
