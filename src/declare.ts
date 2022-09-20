@@ -36,7 +36,7 @@ export type IPinyinMode =
   "normal" | "surname" |
   "NORMAL" | "SURNAME";
 
-export type IPinyinSegment = "nodejieba" | "segmentit" | "@node-rs/jieba";
+export type IPinyinSegment = "nodejieba" | "segmentit" | "@node-rs/jieba" | "Intl.Segmenter";
 
 // 程序内部使用的强类型，所有字段都有合法值类型。
 export interface IPinyinAllOptions {
