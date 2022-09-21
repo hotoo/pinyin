@@ -65,11 +65,11 @@ console.log(pinyin("中心", {
 
 console.log(pinyin("中心", {
   heteronym: true,              // 启用多音字模式
-  segment: true,                // 启用分词，以解决多音字问题。默认不开启，使用 true 开启使用 nodejieba 分词库。
+  segment: true,                // 启用分词，以解决多音字问题。默认不开启，使用 true 开启使用 Intl.Segmenter 分词库。
 }));                            // [ [ 'zhōng' ], [ 'xīn' ] ]
 
 console.log(pinyin("中心", {
-  segment: "@node-rs/jieba",    // 指定分词库，可以是 "nodejieba"、"segmentit"、"@node-rs/jieba"。
+  segment: "@node-rs/jieba",    // 指定分词库，可以是 "Intl.Segmenter", "nodejieba"、"segmentit"、"@node-rs/jieba"。
 }));                            // [ [ 'zhōng' ], [ 'xīn' ] ]
 
 console.log(pinyin("我喜欢你", {
@@ -144,11 +144,11 @@ export type IPinyinMode =
 分词方式。
 
 - 默认关闭 `false`，
-- 也可以设置为 `true` 开启，Web 版中使用 "segmentit" 分词，Node 版中使用 "nodejieba" 分词。
-- 也可以声明以下字符串来指定分词算法。但目前 Web 版只支持 "segmentit" 分词。
+- 也可以设置为 `true` 开启，Web 和 Node 版中均使用 "Intl.Segmenter" 分词。
+- 也可以声明以下字符串来指定分词算法。但目前 Web 版只支持 "Intl.Segmenter" 和 "segmentit" 分词。
 
 ```typescript
-export type IPinyinSegment = "nodejieba" | "segmentit" | "@node-rs/jieba";
+export type IPinyinSegment = "Intl.Segmenter" | "nodejieba" | "segmentit" | "@node-rs/jieba";
 ```
 
 ## API
@@ -178,8 +178,8 @@ options 是可选的，可以设定拼音风格，或打开多音字选项。
 但性能会极大的下降，内存也会使用更多。
 
 - 默认不启用分词。
-- 如果 `segemnt = true`，默认使用 nodejieba 分词。
-- 可以指定 "nodejieba"、"segmentit"、"@node-rs/jieba" 进行分词。
+- 如果 `segemnt = true`，默认使用 Intl.Segmenter 分词。
+- 可以指定 "Intl.Segmenter"、"nodejieba"、"segmentit"、"@node-rs/jieba" 进行分词。
 
 ### `<Boolean> options.heteronym`
 
