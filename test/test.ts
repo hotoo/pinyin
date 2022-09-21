@@ -213,12 +213,30 @@ const cases: any[] = [
 
   // 其他
   [ "女流氓", {
-    STYLE_NORMAL:       [["nv", "ru"], ["liu"], ["mang", "meng"]],
-    STYLE_TONE:         [["nǚ", "rǔ"], ["liú"], ["máng", "méng"]],
-    STYLE_TONE2:        [["nv3", "ru3"], ["liu2"], ["mang2", "meng2"]],
-    STYLE_TO3NE:        [["nv3", "ru3"], ["liu2"], ["ma2ng", "me2ng"]],
-    STYLE_INITIALS:     [["n", "r"], ["l"], ["m"]],
-    STYLE_FIRST_LETTER: [["n", "r"], ["l"], ["m"]],
+    STYLE_NORMAL:       {
+      normal: [["nv", "ru"], ["liu"], ["mang", "meng"]],
+      segment: [["nv", "ru"], ["liu"], ["mang"]],
+    },
+    STYLE_TONE:         {
+      normal: [["nǚ", "rǔ"], ["liú"], ["máng", "méng"]],
+      segment: [["nǚ", "rǔ"], ["liú"], ["máng"]],
+    },
+    STYLE_TONE2:        {
+      normal: [["nv3", "ru3"], ["liu2"], ["mang2", "meng2"]],
+      segment: [["nv3", "ru3"], ["liu2"], ["mang2"]],
+    },
+    STYLE_TO3NE:        {
+      normal: [["nv3", "ru3"], ["liu2"], ["ma2ng", "me2ng"]],
+      segment: [["nv3", "ru3"], ["liu2"], ["ma2ng"]],
+    },
+    STYLE_INITIALS:     {
+      normal: [["n", "r"], ["l"], ["m"]],
+      segment: [["n", "r"], ["l"], ["m"]],
+    },
+    STYLE_FIRST_LETTER: {
+      normal: [["n", "r"], ["l"], ["m"]],
+      segment: [["n", "r"], ["l"], ["m"]],
+    },
   } ],
 ];
 
@@ -321,9 +339,9 @@ describe("pinyin group", function() {
   });
 
   it("落叶落下着落", function() {
-    const han = "落叶落下着落";
+    const han = "落叶落下";
     const py = pinyin(han, {segment: true, group: true, heteronym: false});
-    expect(py).toEqual([["luòyè"], ["làxià"], ["zháoluò"]]);
+    expect(py).toEqual([["luòyè"], ["làxià"]]);
   });
 });
 
@@ -365,7 +383,7 @@ describe("pinyin compact", function() {
     const py = pinyin(han, { style: "FIRST_LETTER", heteronym: true, compact: true });
     expect(py).toEqual([["w", "m", "d", "a", "z", "y"], ["w", "m", "d", "a", "c", "y"]]);
   });
-  
+
   it("行不行 compact without heternonyms, normal style", function() {
     const han = "行不行";
     const py = pinyin(han, { style: pinyin.STYLE_NORMAL, segment: true, heteronym: false, compact: true });
