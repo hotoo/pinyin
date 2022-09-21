@@ -22,7 +22,7 @@ export function segment(hans: string, segment?: IPinyinSegment): string[] {
 
   // Intl.Segmenter
   if (segment === "Intl.Segmenter") {
-    if (Intl.Segmenter) {
+    if (typeof Intl?.Segmenter === "function") {
       if (!hansIntlSegmenter) {
         hansIntlSegmenter = new Intl.Segmenter("zh-Hans-CN", {
           granularity: "word",

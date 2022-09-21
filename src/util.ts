@@ -66,7 +66,7 @@ export function convertUserOptions(options?: IPinyinOptions): IPinyinAllOptions 
   let segment: IPinyinSegment | undefined = undefined;
   if (options?.segment) {
     if (options?.segment === true) {
-      segment = "nodejieba";
+      segment = "Intl.Segmenter";
     } else {
       segment = options.segment;
     }
