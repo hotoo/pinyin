@@ -22,9 +22,9 @@ pinyin, The convert tool of chinese pinyin.
 [lgtm-url]: https://lgtm.com/projects/g/hotoo/pinyin/context:javascript
 
 
-Web Site: [简体中文](/) | English | [한국어](/ko-KR/README-v2)
+Web Site: [简体中文](/) | English | [한국어](/ko-KR/)
 
-README: [简体中文](README.md) | English | [한국어](README-v2.ko-KR.md)
+README: [简体中文](README.md) | English | [한국어](README.ko-KR.md)
 
 
 Convert Han to pinyin. useful for phonetic notation, sorting, and searching.
