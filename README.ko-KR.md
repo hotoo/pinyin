@@ -22,7 +22,7 @@ pīnyīn, 한자 병음 전환 툴。
 [lgtm-url]: https://lgtm.com/projects/g/hotoo/pinyin/context:javascript
 
 
-Web Site: 简体中文(/) | [English](/en-US/) | 한국어
+Web Site: [简体中文](/) | [English](/en-US/) | 한국어
 
 README: [简体中文](README.md) | [English](README.en-US.md) | 한국어
 
