@@ -22,9 +22,9 @@ pīnyīn, 汉字拼音转换工具。
 [lgtm-url]: https://lgtm.com/projects/g/hotoo/pinyin/context:javascript
 
 
-Web Site: 简体中文 | [English](/en-US/) | [한국어](/ko-KR/README-v2)
+Web Site: 简体中文 | [English](/en-US/) | [한국어](/ko-KR/)
 
-README: 简体中文 | [English](README.en-US.md) | [한국어](README-v2.ko-KR.md)
+README: 简体中文 | [English](README.en-US.md) | [한국어](README.ko-KR.md)
 
 
 转换中文字符为拼音。可以用于汉字注音、排序、检索。
