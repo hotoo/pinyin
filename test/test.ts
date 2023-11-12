@@ -12,6 +12,7 @@ const cases: any[] = [
   // 单音字
   [ "我", {
     STYLE_NORMAL:       [["wo"]],
+    STYLE_PASSPORT:     [["WO"]],
     STYLE_TONE:         [["wǒ"]],
     STYLE_TONE2:        [["wo3"]],
     STYLE_TO3NE:        [["wo3"]],
@@ -21,6 +22,7 @@ const cases: any[] = [
 
   [ "〇", {
     STYLE_NORMAL:       [["ling", "xing"]],
+    STYLE_PASSPORT:     [["LING", "XING"]],
     STYLE_TONE:         [["líng", "xīng"]],
     STYLE_TONE2:        [["ling2", "xing1"]],
     STYLE_TO3NE:        [["li2ng", "xi1ng"]],
@@ -31,6 +33,7 @@ const cases: any[] = [
   // 多音字
   [ "中", {
     STYLE_NORMAL:       [["zhong"]],
+    STYLE_PASSPORT:     [["ZHONG"]],
     STYLE_TONE:         [["zhōng", "zhòng"]],
     STYLE_TONE2:        [["zhong1", "zhong4"]],
     STYLE_TO3NE:        [["zho1ng", "zho4ng"]],
@@ -41,6 +44,7 @@ const cases: any[] = [
   // 元音字
   ["爱", {
     STYLE_NORMAL:       [["ai"]],
+    STYLE_PASSPORT:     [["AI"]],
     STYLE_TONE:         [["ài"]],
     STYLE_TONE2:        [["ai4"]],
     STYLE_TO3NE:        [["a4i"]],
@@ -49,6 +53,7 @@ const cases: any[] = [
   } ],
   ["啊", {
     STYLE_NORMAL:       [["a"]],
+    STYLE_PASSPORT:     [["A"]],
     STYLE_TONE:         [["ā", "á", "ǎ", "à", "a"]],
     STYLE_TONE2:        [["a1", "a2", "a3", "a4", "a"]],
     STYLE_TO3NE:        [["a1", "a2", "a3", "a4", "a"]],
@@ -56,9 +61,21 @@ const cases: any[] = [
     STYLE_FIRST_LETTER: [["a"]],
   } ],
 
+  // YU
+  ["吕", {
+    STYLE_NORMAL:       [["lv"]],
+    STYLE_PASSPORT:     [["LYU"]],
+    STYLE_TONE:         [["lǚ"]],
+    STYLE_TONE2:        [["lv3"]],
+    STYLE_TO3NE:        [["lv3"]],
+    STYLE_INITIALS:     [["l"]],
+    STYLE_FIRST_LETTER: [["l"]],
+  } ],
+
   // 单音词
   [ "我是谁", {
     STYLE_NORMAL:       [["wo"], ["shi"], ["shui"]],
+    STYLE_PASSPORT:     [["WO"], ["SHI"], ["SHUI"]],
     STYLE_TONE:         [["wǒ"], ["shì"], ["shuí"]],
     STYLE_TONE2:        [["wo3"], ["shi4"], ["shui2"]],
     STYLE_TO3NE:        [["wo3"], ["shi4"], ["shui2"]],
@@ -69,6 +86,7 @@ const cases: any[] = [
   // 多音字，单音词。分词后可以准确识别读音。
   [ "中国", {
     STYLE_NORMAL:       [["zhong"], ["guo"]],
+    STYLE_PASSPORT:     [["ZHONG"], ["GUO"]],
     STYLE_TONE:         {
       normal: [["zhōng", "zhòng"], ["guó"]],
       segment: [["zhōng"], ["guó"]],
@@ -88,6 +106,10 @@ const cases: any[] = [
     STYLE_NORMAL:       {
       normal: [["zhong", "chong"], ["xin"]],
       segment: [["zhong"], ["xin"]],
+    },
+    STYLE_PASSPORT:     {
+      normal: [["ZHONG", "CHONG"], ["XIN"]],
+      segment: [["ZHONG"], ["XIN"]],
     },
     STYLE_TONE:         {
       normal: [["zhòng", "chóng"], ["xīn"]],

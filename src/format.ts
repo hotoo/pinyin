@@ -45,6 +45,11 @@ export function toFixed(pinyin: string, style: ENUM_PINYIN_STYLE): string {
       return PHONETIC_SYMBOL[$1_phonetic].replace(RE_TONE2, "$1");
     });
 
+  case ENUM_PINYIN_STYLE.PASSPORT:
+    return pinyin.replace(RE_PHONETIC_SYMBOL, function($0: string, $1_phonetic: string) {
+      return PHONETIC_SYMBOL[$1_phonetic].replace(RE_TONE2, "$1").replace("v", "YU");
+    }).toUpperCase();
+
   case ENUM_PINYIN_STYLE.TO3NE:
     return pinyin.replace(RE_PHONETIC_SYMBOL, function($0: string, $1_phonetic: string) {
       return PHONETIC_SYMBOL[$1_phonetic];
