@@ -135,11 +135,11 @@ export type IPinyinMode =
 The segment method.
 
 - Default is disable segment: `false`，
-- If set `true`, use "segmentit" module for segment in Web, use "nodejieba" for segment in Node.
-- Also specify follow string for segment (bug just "segmentit" in web):
+- If set `true`, use "Intl.Segmenter" module default for segment on Web and Node.
+- Also specify follow string for segment (bug just "Intl.Segmenter", "segmentit" is support on web):
 
 ```typescript
-export type IPinyinSegment = "nodejieba" | "segmentit" | "@node-rs/jieba";
+export type IPinyinSegment = "Intl.Segmenter" | "nodejieba" | "segmentit" | "@node-rs/jieba";
 ```
 
 
@@ -246,23 +246,6 @@ npm test
 ```
 
 ## Q&A
-
-### What's the different Node version and Web version?
-
-`pinyin` support Node and Web browser now, the API and usage is complete same.
-
-But the Web version is simple than Node version. Just frequently-used dict,
-without segmentation, and the dict is compress for web.
-
-Because of Traditional and Segmentation, the convert result will be not complete same.
-and the test case have some different too.
-
-| Feature      | Web version                     | Node version                     |
-|--------------|---------------------------------|----------------------------------|
-| Dict         | Frequently-used Dict, Compress. | Complete Dict, without Compress. |
-| Segmentation | NO                              | Segmentation options.            |
-| Traditional  | NO                              | Full Traditional support.        |
-
 
 ### How to sort by pinyin?
 

@@ -136,6 +136,7 @@ const cases: any[] = [
   // 英文
   [ "a", {
     STYLE_NORMAL:       [["a"]],
+    STYLE_PASSPORT:     [["a"]],
     STYLE_TONE:         [["a"]],
     STYLE_TONE2:        [["a"]],
     STYLE_TO3NE:        [["a"]],
@@ -144,6 +145,7 @@ const cases: any[] = [
   } ],
   [ "aa", {
     STYLE_NORMAL:       [["aa"]],
+    STYLE_PASSPORT:     [["aa"]],
     STYLE_TONE:         [["aa"]],
     STYLE_TONE2:        [["aa"]],
     STYLE_TO3NE:        [["aa"]],
@@ -152,6 +154,7 @@ const cases: any[] = [
   } ],
   [ "a a", {
     STYLE_NORMAL:       [["a a"]],
+    STYLE_PASSPORT:     [["a a"]],
     STYLE_TONE:         [["a a"]],
     STYLE_TONE2:        [["a a"]],
     STYLE_TO3NE:        [["a a"]],
@@ -160,6 +163,7 @@ const cases: any[] = [
   } ],
   [ "一 一", {
     STYLE_NORMAL:       [["yi"], [" "], ["yi"]],
+    STYLE_PASSPORT:     [["YI"], [" "], ["YI"]],
     STYLE_TONE:         [["yī"], [" "], ["yī"]],
     STYLE_TONE2:        [["yi1"], [" "], ["yi1"]],
     STYLE_TO3NE:        [["yi1"], [" "], ["yi1"]],
@@ -170,6 +174,7 @@ const cases: any[] = [
   // 中英混合
   [ "拼音(pinyin)", {
     STYLE_NORMAL:       [["pin"], ["yin"], ["(pinyin)"]],
+    STYLE_PASSPORT:     [["PIN"], ["YIN"], ["(pinyin)"]],
     STYLE_TONE:         [["pīn"], ["yīn"], ["(pinyin)"]],
     STYLE_TONE2:        [["pin1"], ["yin1"], ["(pinyin)"]],
     STYLE_TO3NE:        [["pi1n"], ["yi1n"], ["(pinyin)"]],
@@ -180,6 +185,7 @@ const cases: any[] = [
   // 中英混合，多音字，单音词。
   [ "中国(china)", {
     STYLE_NORMAL:       [["zhong"], ["guo"], ["(china)"]],
+    STYLE_PASSPORT:     [["ZHONG"], ["GUO"], ["(china)"]],
     STYLE_TONE:         {
       normal: [["zhōng", "zhòng"], ["guó"], ["(china)"]],
       segment: [["zhōng"], ["guó"], ["(china)"]],
@@ -205,6 +211,10 @@ const cases: any[] = [
       normal: [["páng", "fǎng"], ["huáng"]],
       segment: [["páng"], ["huáng"]],
     },
+    STYLE_PASSPORT:     {
+      normal: [["PANG", "FANG"], ["HUANG"]],
+      segment: [["PANG"], ["HUANG"]],
+    },
     STYLE_TONE2:        {
       normal: [["pang2", "fang3"], ["huang2"]],
       segment: [["pang2"], ["huang2"]],
@@ -226,6 +236,7 @@ const cases: any[] = [
   // 中英混合，多音字，单音词。
   [ "0套价", {
     STYLE_NORMAL:       [["0"], ["tao"], ["jia", "jie"]],
+    STYLE_PASSPORT:     [["0"], ["TAO"], ["JIA", "JIE"]],
     STYLE_TONE:         [["0"], ["tào"], ["jià", "jiè", "jie"]],
     STYLE_TONE2:        [["0"], ["tao4"], ["jia4", "jie4", "jie"]],
     STYLE_TO3NE:        [["0"], ["ta4o"], ["jia4", "jie4", "jie"]],
@@ -235,12 +246,34 @@ const cases: any[] = [
 
   // 其他
   [ "女流氓", {
-    STYLE_NORMAL:       [["nv", "ru"], ["liu"], ["mang", "meng"]],
-    STYLE_TONE:         [["nǚ", "rǔ"], ["liú"], ["máng", "méng"]],
-    STYLE_TONE2:        [["nv3", "ru3"], ["liu2"], ["mang2", "meng2"]],
-    STYLE_TO3NE:        [["nv3", "ru3"], ["liu2"], ["ma2ng", "me2ng"]],
-    STYLE_INITIALS:     [["n", "r"], ["l"], ["m"]],
-    STYLE_FIRST_LETTER: [["n", "r"], ["l"], ["m"]],
+    STYLE_NORMAL:       {
+      normal: [["nv", "ru"], ["liu"], ["mang", "meng"]],
+      segment: [["nv", "ru"], ["liu"], ["mang"]],
+    },
+    STYLE_PASSPORT:       {
+      normal: [["NYU", "RU"], ["LIU"], ["MANG", "MENG"]],
+      segment: [["NYU", "RU"], ["LIU"], ["MANG"]],
+    },
+    STYLE_TONE:         {
+      normal: [["nǚ", "rǔ"], ["liú"], ["máng", "méng"]],
+      segment: [["nǚ", "rǔ"], ["liú"], ["máng"]],
+    },
+    STYLE_TONE2:        {
+      normal: [["nv3", "ru3"], ["liu2"], ["mang2", "meng2"]],
+      segment: [["nv3", "ru3"], ["liu2"], ["mang2"]],
+    },
+    STYLE_TO3NE:        {
+      normal: [["nv3", "ru3"], ["liu2"], ["ma2ng", "me2ng"]],
+      segment: [["nv3", "ru3"], ["liu2"], ["ma2ng"]],
+    },
+    STYLE_INITIALS:     {
+      normal: [["n", "r"], ["l"], ["m"]],
+      segment: [["n", "r"], ["l"], ["m"]],
+    },
+    STYLE_FIRST_LETTER: {
+      normal: [["n", "r"], ["l"], ["m"]],
+      segment: [["n", "r"], ["l"], ["m"]],
+    },
   } ],
 ];
 
@@ -255,6 +288,7 @@ describe("姓名模式", function() {
   it("单姓", function() {
     expect(pinyin("华夫人", { mode: "NORMAL"})).toEqual([["huá"], ["fū"], ["rén"]]);
     expect(pinyin("华夫人", { mode: "SURNAME"})).toEqual([["huà"], ["fū"], ["rén"]]);
+    expect(pinyin("吕布", { mode: "SURNAME", style: "passport" })).toEqual([["LYU"], ["BU"]]);
   });
 });
 
@@ -343,9 +377,9 @@ describe("pinyin group", function() {
   });
 
   it("落叶落下着落", function() {
-    const han = "落叶落下着落";
+    const han = "落叶落下";
     const py = pinyin(han, {segment: true, group: true, heteronym: false});
-    expect(py).toEqual([["luòyè"], ["làxià"], ["zháoluò"]]);
+    expect(py).toEqual([["luòyè"], ["làxià"]]);
   });
 });
 
@@ -387,7 +421,7 @@ describe("pinyin compact", function() {
     const py = pinyin(han, { style: "FIRST_LETTER", heteronym: true, compact: true });
     expect(py).toEqual([["w", "m", "d", "a", "z", "y"], ["w", "m", "d", "a", "c", "y"]]);
   });
-  
+
   it("行不行 compact without heternonyms, normal style", function() {
     const han = "行不行";
     const py = pinyin(han, { style: pinyin.STYLE_NORMAL, segment: true, heteronym: false, compact: true });

@@ -2,6 +2,11 @@
 
 ----
 
+## 3.0.0-alpha.6 (2022-09-21)
+
+- feat: support [Intl.Segmenter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Segmenter) for segment.
+- dict: 雪茄
+
 ## 3.0.0-alpha.5 (2022-07-12)
 
 - fix: npm publish 中没有保护 esm 目录。
