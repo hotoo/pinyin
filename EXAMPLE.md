@@ -81,7 +81,7 @@ export default function() {
         <label htmlFor="style-first-letter">首字母风格</label>
 
         <input type="radio" name="style" id="style-passport" value="PASSPORT" checked={style==='PASSPORT'} onChange={onChangeStyle} />
-        <label htmlFor="style-first-letter">护照风格</label>
+        <label htmlFor="style-passport">护照风格</label>
       </div>
       <div>
         <input type="checkbox" name="segment" id="segment" value="segmentit" checked={segment==='segmentit'} onChange={onChangeSegment} />
