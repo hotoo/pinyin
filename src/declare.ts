@@ -13,6 +13,7 @@ export interface IPinyin {
   STYLE_NORMAL: ENUM_PINYIN_STYLE;
   STYLE_INITIALS: ENUM_PINYIN_STYLE;
   STYLE_FIRST_LETTER: ENUM_PINYIN_STYLE;
+  STYLE_PASSPORT: ENUM_PINYIN_STYLE;
 
   // pinyin mode: 兼容 v2.x 中的属性透出
   MODE_NORMAL: ENUM_PINYIN_MODE;
@@ -22,8 +23,8 @@ export interface IPinyin {
 
 export type IPinyinStyle =
   ENUM_PINYIN_STYLE |
-  "normal" | "tone" | "tone2" | "to3ne" | "initials" | "first_letter" | // 推荐使用小写，和输出的拼音一致
-  "NORMAL" | "TONE" | "TONE2" | "TO3NE" | "INITIALS" | "FIRST_LETTER" | // 方便老版本迁移
+  "normal" | "tone" | "tone2" | "to3ne" | "initials" | "first_letter" | "passport" | // 推荐使用小写，和输出的拼音一致
+  "NORMAL" | "TONE" | "TONE2" | "TO3NE" | "INITIALS" | "FIRST_LETTER" | "PASSPORT" | // 方便老版本迁移
   0        | 1      | 2       | 5       | 3          | 4;               // 兼容老版本
 
 // 拼音模式。

@@ -122,8 +122,8 @@ export interface IPinyinOptions {
 
 ```typescript
 export type IPinyinStyle =
-  "normal" | "tone" | "tone2" | "to3ne" | "initials" | "first_letter" | // 推荐使用小写，和输出的拼音一致
-  "NORMAL" | "TONE" | "TONE2" | "TO3NE" | "INITIALS" | "FIRST_LETTER" | // 方便老版本迁移
+  "normal" | "tone" | "tone2" | "to3ne" | "initials" | "first_letter" | "passport" | // 推荐使用小写，和输出的拼音一致
+  "NORMAL" | "TONE" | "TONE2" | "TO3NE" | "INITIALS" | "FIRST_LETTER" | "PASSPORT" | // 方便老版本迁移
   0        | 1      | 2       | 5       | 3          | 4;               // 兼容老版本
 ```
 
@@ -204,8 +204,8 @@ wǒ xǐhuān nǐ
 
 ```typescript
 IPinyinStyle =
-  "normal" | "tone" | "tone2" | "to3ne" | "initials" | "first_letter" | // 推荐使用小写，和输出的拼音一致
-  "NORMAL" | "TONE" | "TONE2" | "TO3NE" | "INITIALS" | "FIRST_LETTER" | // 方便老版本迁移
+  "normal" | "tone" | "tone2" | "to3ne" | "initials" | "first_letter" | "passport" | // 推荐使用小写，和输出的拼音一致
+  "NORMAL" | "TONE" | "TONE2" | "TO3NE" | "INITIALS" | "FIRST_LETTER" | "PASSPORT" | // 方便老版本迁移
   0        | 1      | 2       | 5       | 3          | 4;               // 兼容老版本
 ```
 
@@ -253,6 +253,12 @@ IPinyinStyle =
 首字母风格，只返回拼音的首字母部分。
 
 如：`p y`
+
+#### `PASSPORT`, `passport`
+
+护照风格。转换成大写形式，并且 `ü` 会以 `YU` 形式输出。
+
+国家移民管理局门户网站于2021年9月29日发布了《关于内地居民拼音姓名中字母“ü”在出入境证件中打印规则的公告》（以下简称公告），根据《中国人名汉语拼音字母拼写规则》和《关于机读旅行证件的相关国际通用规范》， 内地居民申办出入境证件，出入境证件上打印的持证人拼音姓名中，Lü（吕等字）、Nü（女等字）中的字母“ü”应当转换为“YU”，LüE（略等字）、NüE（虐等字）中的字母“ü”应当转换为“U”。
 
 ### <string> options.mode
 

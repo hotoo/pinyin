@@ -35,6 +35,10 @@ const pinyinStyleMap: Map<string, ENUM_PINYIN_STYLE> = new Map([
   [ "normal", ENUM_PINYIN_STYLE.NORMAL ],
   [ "NORMAL", ENUM_PINYIN_STYLE.NORMAL ],
   [ "0", ENUM_PINYIN_STYLE.NORMAL ],
+
+  [ "passport", ENUM_PINYIN_STYLE.PASSPORT ],
+  [ "PASSPORT", ENUM_PINYIN_STYLE.PASSPORT ],
+  [ "6", ENUM_PINYIN_STYLE.PASSPORT ],
 ]);
 
 // 将用户输入的拼音形式参数转换成唯一指定的强类型。

@@ -8,6 +8,7 @@ export enum ENUM_PINYIN_STYLE {
   TO3NE = 5,        // 声调以数字形式在声母之后，使用数字 0~4 标识。
   INITIALS = 3,     // 仅需要声母部分。
   FIRST_LETTER = 4, // 仅保留首字母。
+  PASSPORT = 6,     // 护照风格，转换成大写，且 `ü` 会以 `YU` 形式输出。
 };
 
 // 拼音模式。
