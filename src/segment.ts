@@ -1,7 +1,3 @@
-// import nodejieba from "nodejieba";
-// import { load, cut /*, tag */ } from "@node-rs/jieba";
-// @ts-ignore
-// import { Segment, useDefault } from "segmentit";
 import type { IPinyinSegment } from "./declare";
 
 let nodeRsJiebaLoaded = false; // @node-rs/jieba 加载词典。
@@ -15,6 +11,7 @@ let hansIntlSegmenter: any; // Intl.Segmenter
 export function segment(hans: string, segment?: IPinyinSegment): string[] {
   // @node-rs/jieba (Rust)
   if (segment === "@node-rs/jieba") {
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
     const { load, cut /*, tag */ } = require("@node-rs/jieba");
     if (!nodeRsJiebaLoaded) {
       nodeRsJiebaLoaded = true;
@@ -26,6 +23,7 @@ export function segment(hans: string, segment?: IPinyinSegment): string[] {
 
   // segmentit (Node.js)
   if (segment === "segmentit") {
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
     const { Segment, useDefault } = require("segmentit");
     if (!segmentit) {
       segmentit = useDefault(new Segment());
@@ -47,6 +45,7 @@ export function segment(hans: string, segment?: IPinyinSegment): string[] {
     }
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
   const nodejieba = require("nodejieba");
   // 默认使用 nodejieba (C++)
   // return nodejieba.tag(hans);
