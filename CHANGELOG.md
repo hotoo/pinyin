@@ -2,7 +2,11 @@
 
 ----
 
-## 3.0.0-alpha.6 (2022-09-21)
+## 3.0.0-alpha.7 (2023-11-20)
+
+- feat: dynamic import optional dependencies.
+
+## 3.0.0-alpha.6 (2023-11-12)
 
 - feat: support [Intl.Segmenter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Segmenter) for segment.
 - dict: 雪茄
