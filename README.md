@@ -341,6 +341,8 @@ const sortedData = pinyinData.sort((a, b) => {
 
 ### node 版和 web 版有什么异同？
 
+v2 版有一下差异，v3 版不再区分 Node 和 Web 版。
+
 `pinyin` 目前可以同时运行在 Node 服务器端和 Web 浏览器端。
 API 和使用方式完成一致。
 
@@ -362,10 +364,6 @@ API 和使用方式完成一致。
 
 如果这个模块有帮助到您，请 Star 这个仓库。
 
-你也可以选择使用支付宝或微信给我捐赠：
-
-<img src="https://hotoo.github.io/images/donate-hotoo.png" alt="Alipay:hotoo.cn@gmail.com, WeChat:hotoome" width="400" />
-
 ## 许可证
 
-[MIT](http://hotoo.mit-license.org/)
+[MIT@hotoo](http://hotoo.mit-license.org/)
