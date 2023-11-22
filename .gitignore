@@ -18,6 +18,7 @@ Thumbs.db
 *.pyo
 build
 esm
+amd
 lib
 lib2
 node_modules

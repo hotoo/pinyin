@@ -1,6 +1,6 @@
 {
   "name": "pinyin",
-  "version": "3.0.0-alpha.7",
+  "version": "3.1.0",
   "description": "汉语拼音转换工具。",
   "main": "./lib/pinyin.js",
   "module": "./esm/pinyin.js",
@@ -23,7 +23,8 @@
   "scripts": {
     "start": "dumi dev",
     "prepublishOnly": "npm run build",
-    "build": "tsc --downlevelIteration -p tsconfig-es5.json & tsc --downlevelIteration -p tsconfig.json",
+    "build": "tsc --downlevelIteration -p tsconfig-es5.json & tsc --downlevelIteration -p tsconfig.json & npm run build:amd",
+    "build:amd": "tsc --downlevelIteration -p tsconfig-amd.json",
     "doc:build": "rm -rf ./src/.umi && dumi build",
     "doc:deploy": "npm run doc:build && cp CNAME docs-dist/dist && gh-pages -d docs-dist/dist",
     "lint": "eslint ./src/ ./test/",
@@ -46,6 +47,7 @@
     "@typescript-eslint/parser": "^5.14.0",
     "aurl": "^1.2.0",
     "aws-sdk": "^2.1011.0",
+    "beautify-benchmark": "^0.2.4",
     "benchmark": "~1.0.0",
     "dumi": "^1.1.30",
     "eslint": "^8.11.0",
@@ -74,6 +76,7 @@
     "data",
     "lib",
     "esm",
+    "amd",
     "index.js"
   ],
   "keywords": [
@@ -86,6 +89,9 @@
   "directories": {
     "example": "examples",
     "test": "test"
+  },
+  "engines": {
+    "install-node": "^18.0.0"
   },
   "license": "MIT"
 }
