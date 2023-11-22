@@ -46,7 +46,7 @@ Convert Han to pinyin. useful for phonetic notation, sorting, and searching.
 via npm:
 
 ```bash
-npm install pinyin@alpha --save
+npm install pinyin --save
 ```
 
 ## Usage

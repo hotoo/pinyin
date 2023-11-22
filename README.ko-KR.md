@@ -46,7 +46,7 @@ README: [简体中文](README.md) | [English](README.en-US.md) | 한국어
 via npm:
 
 ```bash
-npm install pinyin@alpha --save
+npm install pinyin --save
 ```
 
 ## 사용법
