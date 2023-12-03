@@ -2,6 +2,15 @@
 
 ----
 
+## 4.0.0-alpha.0
+
+- optionalPeerDependencies nodejieba, @node-rs/jieba, and segmentit.
+- 打包为 esm 和 umd 格式。
+
+## 3.1.0
+
+- release 3.1.0, with output amd format.
+
 ## 3.0.0-alpha.7 (2023-11-20)
 
 - feat: dynamic import optional dependencies.

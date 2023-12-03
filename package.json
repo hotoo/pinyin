@@ -1,6 +1,6 @@
 {
   "name": "pinyin",
-  "version": "3.1.0",
+  "version": "4.0.0-alpha.0",
   "description": "汉语拼音转换工具。",
   "main": "./dist/pinyin.js",
   "module": "./dist/pinyin.mjs",
@@ -35,10 +35,21 @@
   "dependencies": {
     "commander": "~1.1.1"
   },
-  "optionalDependencies": {
+  "peerDependencies": {
     "@node-rs/jieba": "^1.6.0",
     "nodejieba": "2.5.2",
     "segmentit": "^2.0.3"
+  },
+  "peerDependenciesMeta": {
+    "@node-rs/jieba": {
+      "optional": true
+    },
+    "nodejieba": {
+      "optional": true
+    },
+    "segmentit": {
+      "optional": true
+    }
   },
   "devDependencies": {
     "@babel/preset-env": "^7.15.6",
