@@ -14,6 +14,10 @@ export function segment(hans: string, segment?: IPinyinSegment): string[] {
     if (segment === "@node-rs/jieba") {
       // eslint-disable-next-line @typescript-eslint/no-var-requires
       const { load, cut /*, tag */ } = require("@node-rs/jieba");
+      if (!load || !cut) {
+        console.error("pinyin v4: \"@node-rs/jieba\" is peerDependencies");
+        return [hans];
+      }
       if (!nodeRsJiebaLoaded) {
         nodeRsJiebaLoaded = true;
         load();
@@ -26,6 +30,10 @@ export function segment(hans: string, segment?: IPinyinSegment): string[] {
     if (segment === "segmentit") {
       // eslint-disable-next-line @typescript-eslint/no-var-requires
       const { Segment, useDefault } = require("segmentit");
+      if (!Segment) {
+        console.error("pinyin v4: \"segmentit\" is peerDependencies");
+        return [hans];
+      }
       if (!segmentit) {
         segmentit = useDefault(new Segment());
       }
@@ -48,6 +56,10 @@ export function segment(hans: string, segment?: IPinyinSegment): string[] {
 
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     const nodejieba = require("nodejieba");
+    if (!nodejieba) {
+      console.error("pinyin v4: \"nodejieba\" is peerDependencies");
+      return [hans];
+    }
     // 默认使用 nodejieba (C++)
     // return nodejieba.tag(hans);
     // nodejieba 定义的类型返回值错误，先忽略。
