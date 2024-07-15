@@ -1,6 +1,6 @@
 {
   "name": "pinyin",
-  "version": "4.0.0-alpha.0",
+  "version": "4.0.0-alpha.2",
   "description": "汉语拼音转换工具。",
   "main": "./dist/pinyin.js",
   "module": "./dist/pinyin.mjs",
@@ -94,6 +94,7 @@
     "build/",
     "bin",
     "data",
+    "dist",
     "lib",
     "esm",
     "amd",
