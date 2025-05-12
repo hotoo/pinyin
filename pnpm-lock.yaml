@@ -15,8 +15,8 @@ importers:
         specifier: ~1.1.1
         version: 1.1.1
       nodejieba:
-        specifier: 2.5.2
-        version: 2.5.2(encoding@0.1.13)
+        specifier: ^3.4.4
+        version: 3.4.4(encoding@0.1.13)
       segmentit:
         specifier: ^2.0.3
         version: 2.0.3
@@ -3981,8 +3981,8 @@ packages:
     deprecated: Use uuid module instead
     hasBin: true
 
-  nodejieba@2.5.2:
-    resolution: {integrity: sha512-ByskJvaBrQ2eV+5M0OeD80S5NKoGaHc9zi3Z/PTKl/95eac2YF8RmWduq9AknLpkQLrLAIcqurrtC6BzjpKwwg==}
+  nodejieba@3.4.4:
+    resolution: {integrity: sha512-yqx89UYqTQoIL04reK6cRWBGpzUEeahwX65Qrj8+6d4FN/DOE3h26gBD2KmLAY5lTEQt0Uc42uZqKjlNUuIReA==}
     engines: {node: '>= 10.20.0'}
 
   nopt@5.0.0:
@@ -10925,7 +10925,7 @@ snapshots:
 
   node-uuid@1.4.8: {}
 
-  nodejieba@2.5.2(encoding@0.1.13):
+  nodejieba@3.4.4(encoding@0.1.13):
     dependencies:
       '@mapbox/node-pre-gyp': 1.0.11(encoding@0.1.13)
       node-addon-api: 3.2.1

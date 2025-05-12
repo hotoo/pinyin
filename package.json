@@ -22,12 +22,12 @@
   },
   "scripts": {
     "start": "dumi dev",
-    "prepublishOnly": "npm run build",
+    "prepublishOnly": "pnpm build",
     "build": "rollup -c && rollup -c rollup.esm.config.js",
-    "build:tsc": "tsc --downlevelIteration -p tsconfig-es5.json & tsc --downlevelIteration -p tsconfig.json & npm run build:amd",
+    "build:tsc": "tsc --downlevelIteration -p tsconfig-es5.json & tsc --downlevelIteration -p tsconfig.json & pnpm build:amd",
     "build:amd": "tsc --downlevelIteration -p tsconfig-amd.json",
     "doc:build": "rm -rf ./src/.umi && dumi build",
-    "doc:deploy": "npm run doc:build && cp CNAME docs-dist/dist && gh-pages -d docs-dist/dist",
+    "doc:deploy": "pnpm doc:build && cp CNAME docs-dist/dist && gh-pages -d docs-dist/dist",
     "lint": "eslint ./src/ ./test/",
     "test": "jest --coverage",
     "debug": "npx ts-node tools/debug.ts"
@@ -37,7 +37,7 @@
   },
   "peerDependencies": {
     "@node-rs/jieba": "^1.6.0",
-    "nodejieba": "2.5.2",
+    "nodejieba": "^3.4.4",
     "segmentit": "^2.0.3"
   },
   "peerDependenciesMeta": {
