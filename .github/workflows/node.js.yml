@@ -25,10 +25,15 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: ${{ matrix.node-version }}
-    - run: npm install
-    - run: npm run lint
-    - run: npm run build
-    - run: npm test
+        cache: 'pnpm'
+    - name: Install dependencies
+      - run: pnpm install
+    - name: Lint
+      - run: pnpm lint
+    - name: Build project
+      - run: pnpm build
+    - name: Test project
+      - run: pnpm test
 
     - name: Coveralls
       uses: coverallsapp/github-action@master
