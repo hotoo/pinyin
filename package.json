@@ -1,12 +1,12 @@
 {
   "name": "pinyin",
-  "version": "3.1.0",
+  "version": "4.0.0-alpha.2",
   "description": "汉语拼音转换工具。",
-  "main": "./lib/pinyin.js",
-  "module": "./esm/pinyin.js",
+  "main": "./dist/pinyin.js",
+  "module": "./dist/pinyin.mjs",
   "browser": {
-    "./lib/pinyin.js": "./lib/pinyin-web.js",
-    "./esm/pinyin.js": "./esm/pinyin-web.js"
+    "./dist/pinyin.js": "./lib/pinyin-web.js",
+    "./dist/pinyin.mjs": "./esm/pinyin-web.js"
   },
   "bin": {
     "pinyin": "./bin/pinyin"
@@ -22,11 +22,12 @@
   },
   "scripts": {
     "start": "dumi dev",
-    "prepublishOnly": "npm run build",
-    "build": "tsc --downlevelIteration -p tsconfig-es5.json & tsc --downlevelIteration -p tsconfig.json & npm run build:amd",
+    "prepublishOnly": "pnpm build",
+    "build": "rollup -c && rollup -c rollup.esm.config.js",
+    "build:tsc": "tsc --downlevelIteration -p tsconfig-es5.json & tsc --downlevelIteration -p tsconfig.json & pnpm build:amd",
     "build:amd": "tsc --downlevelIteration -p tsconfig-amd.json",
     "doc:build": "rm -rf ./src/.umi && dumi build",
-    "doc:deploy": "npm run doc:build && cp CNAME docs-dist/dist && gh-pages -d docs-dist/dist",
+    "doc:deploy": "pnpm doc:build && cp CNAME docs-dist/dist && gh-pages -d docs-dist/dist",
     "lint": "eslint ./src/ ./test/",
     "test": "jest --coverage",
     "debug": "npx ts-node tools/debug.ts"
@@ -34,15 +35,30 @@
   "dependencies": {
     "commander": "~1.1.1"
   },
-  "optionalDependencies": {
+  "peerDependencies": {
     "@node-rs/jieba": "^1.6.0",
-    "nodejieba": "2.5.2",
+    "nodejieba": "^3.4.4",
     "segmentit": "^2.0.3"
+  },
+  "peerDependenciesMeta": {
+    "@node-rs/jieba": {
+      "optional": true
+    },
+    "nodejieba": {
+      "optional": true
+    },
+    "segmentit": {
+      "optional": true
+    }
   },
   "devDependencies": {
     "@babel/preset-env": "^7.15.6",
     "@babel/preset-typescript": "^7.15.0",
+    "@rollup/plugin-commonjs": "^17.1.0",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^11.2.0",
     "@types/jest": "^27.0.2",
+    "@types/node": "^22.15.17",
     "@typescript-eslint/eslint-plugin": "^5.14.0",
     "@typescript-eslint/parser": "^5.14.0",
     "aurl": "^1.2.0",
@@ -62,6 +78,11 @@
     "prettier": "^2.6.0",
     "react-json-view": "^1.21.3",
     "request": "~2.68.0",
+    "rollup": "2.60.0",
+    "rollup-plugin-alias": "^2.2.0",
+    "rollup-plugin-cleanup": "^3.2.1",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-typescript2": "^0.34.1",
     "ts-node": "^10.5.0",
     "typescript": "^4.4.4"
   },
@@ -74,6 +95,7 @@
     "build/",
     "bin",
     "data",
+    "dist",
     "lib",
     "esm",
     "amd",
@@ -92,6 +114,9 @@
   },
   "engines": {
     "install-node": "^18.0.0"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": ["nodejieba"]
   },
   "license": "MIT"
 }
