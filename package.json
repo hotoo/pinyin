@@ -65,7 +65,7 @@
     "aws-sdk": "^2.1011.0",
     "beautify-benchmark": "^0.2.4",
     "benchmark": "~1.0.0",
-    "dumi": "^1.1.30",
+    "dumi": "^2.4.21",
     "eslint": "^8.11.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-import-resolver-typescript": "^2.5.0",

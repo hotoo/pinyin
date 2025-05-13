@@ -1,0 +1,2833 @@
+{
+  "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+  "pkg": {
+    "name": "pinyin",
+    "version": "4.0.0-alpha.2",
+    "description": "汉语拼音转换工具。",
+    "main": "./dist/pinyin.js",
+    "module": "./dist/pinyin.mjs",
+    "browser": {
+      "./dist/pinyin.js": "./lib/pinyin-web.js",
+      "./dist/pinyin.mjs": "./esm/pinyin-web.js"
+    },
+    "bin": {
+      "pinyin": "./bin/pinyin"
+    },
+    "homepage": "https://pinyin.js.org/",
+    "author": "闲耘 <hotoo.cn@gmail.com>",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/hotoo/pinyin.git"
+    },
+    "bugs": {
+      "url": "https://github.com/hotoo/pinyin/issues"
+    },
+    "scripts": {
+      "start": "dumi dev",
+      "prepublishOnly": "pnpm build",
+      "build": "rollup -c && rollup -c rollup.esm.config.js",
+      "build:tsc": "tsc --downlevelIteration -p tsconfig-es5.json & tsc --downlevelIteration -p tsconfig.json & pnpm build:amd",
+      "build:amd": "tsc --downlevelIteration -p tsconfig-amd.json",
+      "doc:build": "rm -rf ./src/.umi && dumi build",
+      "doc:deploy": "pnpm doc:build && cp CNAME docs-dist/dist && gh-pages -d docs-dist/dist",
+      "lint": "eslint ./src/ ./test/",
+      "test": "jest --coverage",
+      "debug": "npx ts-node tools/debug.ts"
+    },
+    "dependencies": {
+      "commander": "~1.1.1"
+    },
+    "peerDependencies": {
+      "@node-rs/jieba": "^1.6.0",
+      "nodejieba": "^3.4.4",
+      "segmentit": "^2.0.3"
+    },
+    "peerDependenciesMeta": {
+      "@node-rs/jieba": {
+        "optional": true
+      },
+      "nodejieba": {
+        "optional": true
+      },
+      "segmentit": {
+        "optional": true
+      }
+    },
+    "devDependencies": {
+      "@babel/preset-env": "^7.15.6",
+      "@babel/preset-typescript": "^7.15.0",
+      "@rollup/plugin-commonjs": "^17.1.0",
+      "@rollup/plugin-json": "^4.1.0",
+      "@rollup/plugin-node-resolve": "^11.2.0",
+      "@types/jest": "^27.0.2",
+      "@types/node": "^22.15.17",
+      "@typescript-eslint/eslint-plugin": "^5.14.0",
+      "@typescript-eslint/parser": "^5.14.0",
+      "aurl": "^1.2.0",
+      "aws-sdk": "^2.1011.0",
+      "beautify-benchmark": "^0.2.4",
+      "benchmark": "~1.0.0",
+      "dumi": "^2.4.21",
+      "eslint": "^8.11.0",
+      "eslint-config-prettier": "^8.5.0",
+      "eslint-import-resolver-typescript": "^2.5.0",
+      "eslint-plugin-prettier": "^4.0.0",
+      "gh-pages": "^3.2.3",
+      "jest": "^27.2.3",
+      "mock-aws-s3": "^4.0.2",
+      "nock": "^13.1.4",
+      "npx": "^10.2.2",
+      "prettier": "^2.6.0",
+      "react-json-view": "^1.21.3",
+      "request": "~2.68.0",
+      "rollup": "2.60.0",
+      "rollup-plugin-alias": "^2.2.0",
+      "rollup-plugin-cleanup": "^3.2.1",
+      "rollup-plugin-terser": "^7.0.2",
+      "rollup-plugin-typescript2": "^0.34.1",
+      "ts-node": "^10.5.0",
+      "typescript": "^4.4.4"
+    },
+    "registry": "https://registry.npmmirror.com",
+    "publishConfig": {
+      "registry": "https://registry.npmjs.org/"
+    },
+    "files": [
+      "package.json",
+      "build/",
+      "bin",
+      "data",
+      "dist",
+      "lib",
+      "esm",
+      "amd",
+      "index.js"
+    ],
+    "keywords": [
+      "拼音",
+      "汉语",
+      "汉字",
+      "中文",
+      "Pinyin"
+    ],
+    "directories": {
+      "example": "examples",
+      "test": "test"
+    },
+    "engines": {
+      "install-node": "^18.0.0"
+    },
+    "pnpm": {
+      "onlyBuiltDependencies": [
+        "nodejieba"
+      ]
+    },
+    "license": "MIT"
+  },
+  "pkgPath": "/Users/hotoo/workbench/github.com/hotoo/pinyin/package.json",
+  "plugins": {
+    "./node_modules/.pnpm/@umijs+core@4.4.10/node_modules/@umijs/core/dist/service/servicePlugin": {
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 0
+      },
+      "enableBy": "register",
+      "type": "preset",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/@umijs+core@4.4.10/node_modules/@umijs/core/dist/service/servicePlugin.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/@umijs+core@4.4.10/node_modules/@umijs/core/dist/service/servicePlugin",
+      "key": "servicePlugin"
+    },
+    "@umijs/preset-umi": {
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 2
+      },
+      "enableBy": "register",
+      "type": "preset",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/index.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "@umijs/preset-umi",
+      "key": "umi"
+    },
+    "./node_modules/.pnpm/dumi@2.4.21_@babel+core@7.27.1_@swc+helpers@0.5.1_@types+node@22.15.17_eslint@8.57.1_jest@27._k52o7bsjhc7apl3at7eg3h22hq/node_modules/dumi/dist/preset": {
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 0
+      },
+      "enableBy": "register",
+      "type": "preset",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/dumi@2.4.21_@babel+core@7.27.1_@swc+helpers@0.5.1_@types+node@22.15.17_eslint@8.57.1_jest@27._k52o7bsjhc7apl3at7eg3h22hq/node_modules/dumi/dist/preset.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/dumi@2.4.21_@babel+core@7.27.1_@swc+helpers@0.5.1_@types+node@22.15.17_eslint@8.57.1_jest@27._k52o7bsjhc7apl3at7eg3h22hq/node_modules/dumi/dist/preset",
+      "key": "dumi-preset"
+    },
+    "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/registerMethods": {
+      "config": {},
+      "time": {
+        "hooks": {
+          "onStart": [
+            0
+          ]
+        },
+        "register": 1
+      },
+      "enableBy": "register",
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/registerMethods.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/registerMethods",
+      "key": "registerMethods"
+    },
+    "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/404/404": {
+      "config": {},
+      "time": {
+        "hooks": {
+          "modifyRoutes": [
+            0
+          ]
+        },
+        "register": 0
+      },
+      "enableBy": "register",
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/404/404.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/404/404",
+      "key": "404"
+    },
+    "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/appData/appData": {
+      "config": {},
+      "time": {
+        "hooks": {
+          "modifyAppData": [
+            4
+          ]
+        },
+        "register": 10
+      },
+      "enableBy": "register",
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/appData/appData.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/appData/appData",
+      "key": "appData"
+    },
+    "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/appData/umiInfo": {
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 0
+      },
+      "enableBy": "register",
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/appData/umiInfo.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/appData/umiInfo",
+      "key": "umiInfo"
+    },
+    "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/check/check": {
+      "config": {},
+      "time": {
+        "hooks": {
+          "onCheckConfig": [
+            0
+          ],
+          "onCheck": [
+            0
+          ]
+        },
+        "register": 0
+      },
+      "enableBy": "register",
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/check/check.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/check/check",
+      "key": "check"
+    },
+    "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/check/babel722": {
+      "config": {},
+      "time": {
+        "hooks": {
+          "onCheck": [
+            0
+          ]
+        },
+        "register": 1
+      },
+      "enableBy": "register",
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/check/babel722.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/check/babel722",
+      "key": "babel722"
+    },
+    "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/codeSplitting/codeSplitting": {
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 0
+      },
+      "enableBy": "config",
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/codeSplitting/codeSplitting.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/codeSplitting/codeSplitting",
+      "key": "codeSplitting"
+    },
+    "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/configPlugins/configPlugins": {
+      "config": {},
+      "time": {
+        "hooks": {
+          "modifyConfig": [
+            0
+          ]
+        },
+        "register": 2
+      },
+      "enableBy": "register",
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/configPlugins/configPlugins.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/configPlugins/configPlugins",
+      "key": "configPlugins"
+    },
+    "virtual: config-title": {
+      "id": "virtual: config-title",
+      "key": "title",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-styles": {
+      "id": "virtual: config-styles",
+      "key": "styles",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-scripts": {
+      "id": "virtual: config-scripts",
+      "key": "scripts",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-routes": {
+      "id": "virtual: config-routes",
+      "key": "routes",
+      "config": {
+        "onChange": "regenerateTmpFiles"
+      },
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-routeLoader": {
+      "id": "virtual: config-routeLoader",
+      "key": "routeLoader",
+      "config": {
+        "default": {
+          "moduleType": "esm"
+        }
+      },
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-reactRouter5Compat": {
+      "id": "virtual: config-reactRouter5Compat",
+      "key": "reactRouter5Compat",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-presets": {
+      "id": "virtual: config-presets",
+      "key": "presets",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-plugins": {
+      "id": "virtual: config-plugins",
+      "key": "plugins",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-npmClient": {
+      "id": "virtual: config-npmClient",
+      "key": "npmClient",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-mountElementId": {
+      "id": "virtual: config-mountElementId",
+      "key": "mountElementId",
+      "config": {
+        "default": "root"
+      },
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-metas": {
+      "id": "virtual: config-metas",
+      "key": "metas",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-links": {
+      "id": "virtual: config-links",
+      "key": "links",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-historyWithQuery": {
+      "id": "virtual: config-historyWithQuery",
+      "key": "historyWithQuery",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-history": {
+      "id": "virtual: config-history",
+      "key": "history",
+      "config": {
+        "default": {
+          "type": "browser"
+        }
+      },
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-headScripts": {
+      "id": "virtual: config-headScripts",
+      "key": "headScripts",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-esbuildMinifyIIFE": {
+      "id": "virtual: config-esbuildMinifyIIFE",
+      "key": "esbuildMinifyIIFE",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-conventionRoutes": {
+      "id": "virtual: config-conventionRoutes",
+      "key": "conventionRoutes",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-conventionLayout": {
+      "id": "virtual: config-conventionLayout",
+      "key": "conventionLayout",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-base": {
+      "id": "virtual: config-base",
+      "key": "base",
+      "config": {
+        "default": "/"
+      },
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-analyze": {
+      "id": "virtual: config-analyze",
+      "key": "analyze",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-writeToDisk": {
+      "id": "virtual: config-writeToDisk",
+      "key": "writeToDisk",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-theme": {
+      "id": "virtual: config-theme",
+      "key": "theme",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-targets": {
+      "id": "virtual: config-targets",
+      "key": "targets",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-svgr": {
+      "id": "virtual: config-svgr",
+      "key": "svgr",
+      "config": {
+        "default": {}
+      },
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-svgo": {
+      "id": "virtual: config-svgo",
+      "key": "svgo",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-stylusLoader": {
+      "id": "virtual: config-stylusLoader",
+      "key": "stylusLoader",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-styleLoader": {
+      "id": "virtual: config-styleLoader",
+      "key": "styleLoader",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-srcTranspilerOptions": {
+      "id": "virtual: config-srcTranspilerOptions",
+      "key": "srcTranspilerOptions",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-srcTranspiler": {
+      "id": "virtual: config-srcTranspiler",
+      "key": "srcTranspiler",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-sassLoader": {
+      "id": "virtual: config-sassLoader",
+      "key": "sassLoader",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-runtimePublicPath": {
+      "id": "virtual: config-runtimePublicPath",
+      "key": "runtimePublicPath",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-purgeCSS": {
+      "id": "virtual: config-purgeCSS",
+      "key": "purgeCSS",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-publicPath": {
+      "id": "virtual: config-publicPath",
+      "key": "publicPath",
+      "config": {
+        "default": "/"
+      },
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-proxy": {
+      "id": "virtual: config-proxy",
+      "key": "proxy",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-postcssLoader": {
+      "id": "virtual: config-postcssLoader",
+      "key": "postcssLoader",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-outputPath": {
+      "id": "virtual: config-outputPath",
+      "key": "outputPath",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-normalCSSLoaderModules": {
+      "id": "virtual: config-normalCSSLoaderModules",
+      "key": "normalCSSLoaderModules",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-mfsu": {
+      "id": "virtual: config-mfsu",
+      "key": "mfsu",
+      "config": {
+        "default": {
+          "strategy": "eager"
+        }
+      },
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-mdx": {
+      "id": "virtual: config-mdx",
+      "key": "mdx",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-manifest": {
+      "id": "virtual: config-manifest",
+      "key": "manifest",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-lessLoader": {
+      "id": "virtual: config-lessLoader",
+      "key": "lessLoader",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-jsMinifierOptions": {
+      "id": "virtual: config-jsMinifierOptions",
+      "key": "jsMinifierOptions",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-jsMinifier": {
+      "id": "virtual: config-jsMinifier",
+      "key": "jsMinifier",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-inlineLimit": {
+      "id": "virtual: config-inlineLimit",
+      "key": "inlineLimit",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-ignoreMomentLocale": {
+      "id": "virtual: config-ignoreMomentLocale",
+      "key": "ignoreMomentLocale",
+      "config": {
+        "default": true
+      },
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-https": {
+      "id": "virtual: config-https",
+      "key": "https",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-hash": {
+      "id": "virtual: config-hash",
+      "key": "hash",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-forkTSChecker": {
+      "id": "virtual: config-forkTSChecker",
+      "key": "forkTSChecker",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-fastRefresh": {
+      "id": "virtual: config-fastRefresh",
+      "key": "fastRefresh",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-extraPostCSSPlugins": {
+      "id": "virtual: config-extraPostCSSPlugins",
+      "key": "extraPostCSSPlugins",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-extraBabelPresets": {
+      "id": "virtual: config-extraBabelPresets",
+      "key": "extraBabelPresets",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-extraBabelPlugins": {
+      "id": "virtual: config-extraBabelPlugins",
+      "key": "extraBabelPlugins",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-extraBabelIncludes": {
+      "id": "virtual: config-extraBabelIncludes",
+      "key": "extraBabelIncludes",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-externals": {
+      "id": "virtual: config-externals",
+      "key": "externals",
+      "config": {
+        "default": {}
+      },
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-esm": {
+      "id": "virtual: config-esm",
+      "key": "esm",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-devtool": {
+      "id": "virtual: config-devtool",
+      "key": "devtool",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-depTranspiler": {
+      "id": "virtual: config-depTranspiler",
+      "key": "depTranspiler",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-define": {
+      "id": "virtual: config-define",
+      "key": "define",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-deadCode": {
+      "id": "virtual: config-deadCode",
+      "key": "deadCode",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-cssPublicPath": {
+      "id": "virtual: config-cssPublicPath",
+      "key": "cssPublicPath",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-cssMinifierOptions": {
+      "id": "virtual: config-cssMinifierOptions",
+      "key": "cssMinifierOptions",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-cssMinifier": {
+      "id": "virtual: config-cssMinifier",
+      "key": "cssMinifier",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-cssLoaderModules": {
+      "id": "virtual: config-cssLoaderModules",
+      "key": "cssLoaderModules",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-cssLoader": {
+      "id": "virtual: config-cssLoader",
+      "key": "cssLoader",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-copy": {
+      "id": "virtual: config-copy",
+      "key": "copy",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-checkDepCssModules": {
+      "id": "virtual: config-checkDepCssModules",
+      "key": "checkDepCssModules",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-chainWebpack": {
+      "id": "virtual: config-chainWebpack",
+      "key": "chainWebpack",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-cacheDirectoryPath": {
+      "id": "virtual: config-cacheDirectoryPath",
+      "key": "cacheDirectoryPath",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-babelLoaderCustomize": {
+      "id": "virtual: config-babelLoaderCustomize",
+      "key": "babelLoaderCustomize",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-autoprefixer": {
+      "id": "virtual: config-autoprefixer",
+      "key": "autoprefixer",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-autoCSSModules": {
+      "id": "virtual: config-autoCSSModules",
+      "key": "autoCSSModules",
+      "config": {
+        "default": true
+      },
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-alias": {
+      "id": "virtual: config-alias",
+      "key": "alias",
+      "config": {
+        "default": {
+          "umi": "@@/exports",
+          "react": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/react@18.3.1/node_modules/react",
+          "react-dom": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom",
+          "react-router": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/react-router@6.3.0_react@18.3.1/node_modules/react-router",
+          "react-router-dom": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/react-router-dom@6.3.0_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-router-dom"
+        }
+      },
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/crossorigin/crossorigin": {
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 0
+      },
+      "enableBy": "config",
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/crossorigin/crossorigin.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/crossorigin/crossorigin",
+      "key": "crossorigin"
+    },
+    "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/depsOnDemand/depsOnDemand": {
+      "config": {},
+      "time": {
+        "hooks": {
+          "onStart": [
+            1
+          ]
+        },
+        "register": 0
+      },
+      "enableBy": "register",
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/depsOnDemand/depsOnDemand.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/depsOnDemand/depsOnDemand",
+      "key": "depsOnDemand"
+    },
+    "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/devTool/devTool": {
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 0
+      },
+      "enableBy": "register",
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/devTool/devTool.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/devTool/devTool",
+      "key": "devTool"
+    },
+    "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/esbuildHelperChecker/esbuildHelperChecker": {
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 39
+      },
+      "enableBy": "register",
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/esbuildHelperChecker/esbuildHelperChecker.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/esbuildHelperChecker/esbuildHelperChecker",
+      "key": "esbuildHelperChecker"
+    },
+    "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/esmi/esmi": {
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 24
+      },
+      "enableBy": "config",
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/esmi/esmi.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/esmi/esmi",
+      "key": "esmi"
+    },
+    "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/exportStatic/exportStatic": {
+      "config": {},
+      "time": {
+        "hooks": {
+          "onCheck": [
+            0
+          ]
+        },
+        "register": 1
+      },
+      "enableBy": "config",
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/exportStatic/exportStatic.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/exportStatic/exportStatic",
+      "key": "exportStatic"
+    },
+    "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/favicons/favicons": {
+      "config": {},
+      "time": {
+        "hooks": {
+          "modifyAppData": [
+            0
+          ]
+        },
+        "register": 0
+      },
+      "enableBy": "register",
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/favicons/favicons.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/favicons/favicons",
+      "key": "favicons"
+    },
+    "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/helmet/helmet": {
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 0
+      },
+      "enableBy": "register",
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/helmet/helmet.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/helmet/helmet",
+      "key": "helmet"
+    },
+    "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/icons/icons": {
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      },
+      "enableBy": "config",
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/icons/icons.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/icons/icons",
+      "key": "icons"
+    },
+    "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/mock/mock": {
+      "config": {},
+      "time": {
+        "hooks": {
+          "onStart": [
+            0
+          ]
+        },
+        "register": 14
+      },
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/mock/mock.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/mock/mock",
+      "key": "mock"
+    },
+    "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/mpa/mpa": {
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      },
+      "enableBy": "config",
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/mpa/mpa.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/mpa/mpa",
+      "key": "mpa"
+    },
+    "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/okam/okam": {
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 0
+      },
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/okam/okam.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/okam/okam",
+      "key": "okam"
+    },
+    "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/overrides/overrides": {
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 0
+      },
+      "enableBy": "register",
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/overrides/overrides.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/overrides/overrides",
+      "key": "overrides"
+    },
+    "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/phantomDependency/phantomDependency": {
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 0
+      },
+      "enableBy": "config",
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/phantomDependency/phantomDependency.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/phantomDependency/phantomDependency",
+      "key": "phantomDependency"
+    },
+    "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/polyfill/polyfill": {
+      "config": {},
+      "time": {
+        "hooks": {
+          "modifyConfig": [
+            0
+          ]
+        },
+        "register": 1
+      },
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/polyfill/polyfill.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/polyfill/polyfill",
+      "key": "polyfill"
+    },
+    "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/polyfill/publicPathPolyfill": {
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 0
+      },
+      "enableBy": "register",
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/polyfill/publicPathPolyfill.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/polyfill/publicPathPolyfill",
+      "key": "publicPathPolyfill"
+    },
+    "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/prepare/prepare": {
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      },
+      "enableBy": "register",
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/prepare/prepare.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/prepare/prepare",
+      "key": "prepare"
+    },
+    "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/routePrefetch/routePrefetch": {
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 0
+      },
+      "enableBy": "config",
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/routePrefetch/routePrefetch.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/routePrefetch/routePrefetch",
+      "key": "routePrefetch"
+    },
+    "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/terminal/terminal": {
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 0
+      },
+      "enableBy": "register",
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/terminal/terminal.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/terminal/terminal",
+      "key": "terminal"
+    },
+    "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/tmpFiles/tmpFiles": {
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      },
+      "enableBy": "register",
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/tmpFiles/tmpFiles.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/tmpFiles/tmpFiles",
+      "key": "tmpFiles"
+    },
+    "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/clientLoader/clientLoader": {
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      },
+      "enableBy": "config",
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/clientLoader/clientLoader.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/clientLoader/clientLoader",
+      "key": "clientLoader"
+    },
+    "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/routeProps/routeProps": {
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 0
+      },
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/routeProps/routeProps.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/routeProps/routeProps",
+      "key": "routeProps"
+    },
+    "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/ssr/ssr": {
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      },
+      "enableBy": "config",
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/ssr/ssr.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/ssr/ssr",
+      "key": "ssr"
+    },
+    "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/tmpFiles/configTypes": {
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 0
+      },
+      "enableBy": "register",
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/tmpFiles/configTypes.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/tmpFiles/configTypes",
+      "key": "configTypes"
+    },
+    "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/transform/transform": {
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 2
+      },
+      "enableBy": "register",
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/transform/transform.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/transform/transform",
+      "key": "transform"
+    },
+    "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/lowImport/lowImport": {
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 0
+      },
+      "enableBy": "config",
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/lowImport/lowImport.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/lowImport/lowImport",
+      "key": "lowImport"
+    },
+    "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/vite/vite": {
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      },
+      "enableBy": "config",
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/vite/vite.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/vite/vite",
+      "key": "vite"
+    },
+    "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/apiRoute/apiRoute": {
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      },
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/apiRoute/apiRoute.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/apiRoute/apiRoute",
+      "key": "apiRoute"
+    },
+    "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/monorepo/redirect": {
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 10
+      },
+      "enableBy": "config",
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/monorepo/redirect.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/monorepo/redirect",
+      "key": "monorepoRedirect"
+    },
+    "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/test/test": {
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 0
+      },
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/test/test.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/test/test",
+      "key": "test"
+    },
+    "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/clickToComponent/clickToComponent": {
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 0
+      },
+      "enableBy": "config",
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/clickToComponent/clickToComponent.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/clickToComponent/clickToComponent",
+      "key": "clickToComponent"
+    },
+    "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/legacy/legacy": {
+      "config": {},
+      "time": {
+        "hooks": {
+          "modifyConfig": [
+            0
+          ]
+        },
+        "register": 1
+      },
+      "enableBy": "config",
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/legacy/legacy.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/legacy/legacy",
+      "key": "legacy"
+    },
+    "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/classPropertiesLoose/classPropertiesLoose": {
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 0
+      },
+      "enableBy": "config",
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/classPropertiesLoose/classPropertiesLoose.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/classPropertiesLoose/classPropertiesLoose",
+      "key": "classPropertiesLoose"
+    },
+    "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/webpack/webpack": {
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 0
+      },
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/webpack/webpack.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/webpack/webpack",
+      "key": "preset-umi:webpack"
+    },
+    "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/swc/swc": {
+      "config": {},
+      "time": {
+        "hooks": {
+          "addOnDemandDeps": [
+            0
+          ]
+        },
+        "register": 0
+      },
+      "enableBy": "register",
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/swc/swc.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/swc/swc",
+      "key": "swc"
+    },
+    "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/ui/ui": {
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      },
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/ui/ui.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/ui/ui",
+      "key": "ui"
+    },
+    "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/mako/mako": {
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      },
+      "enableBy": "config",
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/mako/mako.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/mako/mako",
+      "key": "mako"
+    },
+    "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/hmrGuardian/hmrGuardian": {
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      },
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/hmrGuardian/hmrGuardian.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/hmrGuardian/hmrGuardian",
+      "key": "hmrGuardian"
+    },
+    "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/routePreloadOnLoad/routePreloadOnLoad": {
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 0
+      },
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/routePreloadOnLoad/routePreloadOnLoad.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/routePreloadOnLoad/routePreloadOnLoad",
+      "key": "routePreloadOnLoad"
+    },
+    "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/forget/forget": {
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      },
+      "enableBy": "config",
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/forget/forget.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/features/forget/forget",
+      "key": "forget"
+    },
+    "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/commands/build": {
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      },
+      "enableBy": "register",
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/commands/build.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/commands/build",
+      "key": "build"
+    },
+    "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/commands/config/config": {
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 17
+      },
+      "enableBy": "register",
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/commands/config/config.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/commands/config/config",
+      "key": "config"
+    },
+    "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/commands/dev/dev": {
+      "config": {},
+      "time": {
+        "hooks": {
+          "modifyAppData": [
+            7
+          ],
+          "onStart": [
+            0
+          ]
+        },
+        "register": 7
+      },
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/commands/dev/dev.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/commands/dev/dev",
+      "key": "dev"
+    },
+    "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/commands/help": {
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 0
+      },
+      "enableBy": "register",
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/commands/help.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/commands/help",
+      "key": "help"
+    },
+    "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/commands/lint": {
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 0
+      },
+      "enableBy": "register",
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/commands/lint.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/commands/lint",
+      "key": "lint"
+    },
+    "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/commands/setup": {
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      },
+      "enableBy": "register",
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/commands/setup.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/commands/setup",
+      "key": "setup"
+    },
+    "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/commands/deadcode": {
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 0
+      },
+      "enableBy": "register",
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/commands/deadcode.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/commands/deadcode",
+      "key": "deadcode"
+    },
+    "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/commands/version": {
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 0
+      },
+      "enableBy": "register",
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/commands/version.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/commands/version",
+      "key": "version"
+    },
+    "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/commands/generators/page": {
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      },
+      "enableBy": "register",
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/commands/generators/page.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/commands/generators/page",
+      "key": "generator:page"
+    },
+    "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/commands/generators/prettier": {
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 0
+      },
+      "enableBy": "register",
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/commands/generators/prettier.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/commands/generators/prettier",
+      "key": "generator:prettier"
+    },
+    "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/commands/generators/tsconfig": {
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 0
+      },
+      "enableBy": "register",
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/commands/generators/tsconfig.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/commands/generators/tsconfig",
+      "key": "generator:tsconfig"
+    },
+    "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/commands/generators/jest": {
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      },
+      "enableBy": "register",
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/commands/generators/jest.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/commands/generators/jest",
+      "key": "generator:jest"
+    },
+    "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/commands/generators/tailwindcss": {
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 0
+      },
+      "enableBy": "register",
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/commands/generators/tailwindcss.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/commands/generators/tailwindcss",
+      "key": "generator:tailwindcss"
+    },
+    "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/commands/generators/dva": {
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 0
+      },
+      "enableBy": "register",
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/commands/generators/dva.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/commands/generators/dva",
+      "key": "generator:dva"
+    },
+    "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/commands/generators/component": {
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 0
+      },
+      "enableBy": "register",
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/commands/generators/component.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/commands/generators/component",
+      "key": "generator:component"
+    },
+    "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/commands/generators/mock": {
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 0
+      },
+      "enableBy": "register",
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/commands/generators/mock.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/commands/generators/mock",
+      "key": "generator:mock"
+    },
+    "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/commands/generators/cypress": {
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 0
+      },
+      "enableBy": "register",
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/commands/generators/cypress.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/commands/generators/cypress",
+      "key": "generator:cypress"
+    },
+    "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/commands/generators/api": {
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      },
+      "enableBy": "register",
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/commands/generators/api.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/commands/generators/api",
+      "key": "generator:api"
+    },
+    "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/commands/generators/precommit": {
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 0
+      },
+      "enableBy": "register",
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/commands/generators/precommit.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/commands/generators/precommit",
+      "key": "generator:precommit"
+    },
+    "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/commands/plugin": {
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 0
+      },
+      "enableBy": "register",
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/commands/plugin.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/commands/plugin",
+      "key": "command:plugin"
+    },
+    "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/commands/verify-commit": {
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 0
+      },
+      "enableBy": "register",
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/commands/verify-commit.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/commands/verify-commit",
+      "key": "verifyCommit"
+    },
+    "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/commands/preview": {
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      },
+      "enableBy": "register",
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/commands/preview.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/commands/preview",
+      "key": "preview"
+    },
+    "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/commands/mfsu/mfsu": {
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 0
+      },
+      "enableBy": "register",
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/commands/mfsu/mfsu.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/@umijs+preset-umi@4.4.10_@types+node@22.15.17_lightningcss@1.22.1_rollup@2.60.0_sass@1.88.0_t_gqnqhz7oamyqkafmgaxres343y/node_modules/@umijs/preset-umi/dist/commands/mfsu/mfsu",
+      "key": "mfsu-cli"
+    },
+    "@umijs/plugin-run": {
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 0
+      },
+      "enableBy": "register",
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/@umijs+plugin-run@4.4.10/node_modules/@umijs/plugin-run/dist/index.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "@umijs/plugin-run",
+      "key": "run"
+    },
+    "./node_modules/.pnpm/dumi@2.4.21_@babel+core@7.27.1_@swc+helpers@0.5.1_@types+node@22.15.17_eslint@8.57.1_jest@27._k52o7bsjhc7apl3at7eg3h22hq/node_modules/dumi/dist/registerMethods": {
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 0
+      },
+      "enableBy": "register",
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/dumi@2.4.21_@babel+core@7.27.1_@swc+helpers@0.5.1_@types+node@22.15.17_eslint@8.57.1_jest@27._k52o7bsjhc7apl3at7eg3h22hq/node_modules/dumi/dist/registerMethods.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/dumi@2.4.21_@babel+core@7.27.1_@swc+helpers@0.5.1_@types+node@22.15.17_eslint@8.57.1_jest@27._k52o7bsjhc7apl3at7eg3h22hq/node_modules/dumi/dist/registerMethods",
+      "key": "dumi:registerMethods"
+    },
+    "./node_modules/.pnpm/dumi@2.4.21_@babel+core@7.27.1_@swc+helpers@0.5.1_@types+node@22.15.17_eslint@8.57.1_jest@27._k52o7bsjhc7apl3at7eg3h22hq/node_modules/dumi/dist/features/configPlugins/index": {
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      },
+      "enableBy": "register",
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/dumi@2.4.21_@babel+core@7.27.1_@swc+helpers@0.5.1_@types+node@22.15.17_eslint@8.57.1_jest@27._k52o7bsjhc7apl3at7eg3h22hq/node_modules/dumi/dist/features/configPlugins/index.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/dumi@2.4.21_@babel+core@7.27.1_@swc+helpers@0.5.1_@types+node@22.15.17_eslint@8.57.1_jest@27._k52o7bsjhc7apl3at7eg3h22hq/node_modules/dumi/dist/features/configPlugins/index",
+      "key": "index"
+    },
+    "virtual: config-live": {
+      "id": "virtual: config-live",
+      "key": "live",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-logo": {
+      "id": "virtual: config-logo",
+      "key": "logo",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-themeConfig": {
+      "id": "virtual: config-themeConfig",
+      "key": "themeConfig",
+      "config": {
+        "default": {
+          "footer": "Copyright © 2025 | Powered by <a href=\"https://d.umijs.org\" target=\"_blank\" rel=\"noreferrer\">dumi</a>",
+          "prefersColor": {
+            "default": "light",
+            "switch": true
+          },
+          "nprogress": true,
+          "lastUpdated": true
+        }
+      },
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-extraRehypePlugins": {
+      "id": "virtual: config-extraRehypePlugins",
+      "key": "extraRehypePlugins",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-extraRemarkPlugins": {
+      "id": "virtual: config-extraRemarkPlugins",
+      "key": "extraRemarkPlugins",
+      "config": {},
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "virtual: config-resolve": {
+      "id": "virtual: config-resolve",
+      "key": "resolve",
+      "config": {
+        "default": {
+          "docDirs": [
+            "docs"
+          ],
+          "atomDirs": [
+            {
+              "type": "component",
+              "dir": "src"
+            }
+          ],
+          "codeBlockMode": "active",
+          "forceKebabCaseRouting": true
+        }
+      },
+      "type": "plugin",
+      "enableBy": "register",
+      "time": {
+        "hooks": {},
+        "register": 0
+      }
+    },
+    "./node_modules/.pnpm/dumi@2.4.21_@babel+core@7.27.1_@swc+helpers@0.5.1_@types+node@22.15.17_eslint@8.57.1_jest@27._k52o7bsjhc7apl3at7eg3h22hq/node_modules/dumi/dist/features/autoAlias": {
+      "config": {},
+      "time": {
+        "hooks": {
+          "modifyConfig": [
+            1
+          ]
+        },
+        "register": 1
+      },
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/dumi@2.4.21_@babel+core@7.27.1_@swc+helpers@0.5.1_@types+node@22.15.17_eslint@8.57.1_jest@27._k52o7bsjhc7apl3at7eg3h22hq/node_modules/dumi/dist/features/autoAlias.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/dumi@2.4.21_@babel+core@7.27.1_@swc+helpers@0.5.1_@types+node@22.15.17_eslint@8.57.1_jest@27._k52o7bsjhc7apl3at7eg3h22hq/node_modules/dumi/dist/features/autoAlias",
+      "key": "autoAlias"
+    },
+    "./node_modules/.pnpm/dumi@2.4.21_@babel+core@7.27.1_@swc+helpers@0.5.1_@types+node@22.15.17_eslint@8.57.1_jest@27._k52o7bsjhc7apl3at7eg3h22hq/node_modules/dumi/dist/features/derivative": {
+      "config": {},
+      "time": {
+        "hooks": {
+          "modifyConfig": [
+            0,
+            0
+          ],
+          "modifyDefaultConfig": [
+            0
+          ],
+          "onCheck": [
+            1
+          ]
+        },
+        "register": 0
+      },
+      "enableBy": "register",
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/dumi@2.4.21_@babel+core@7.27.1_@swc+helpers@0.5.1_@types+node@22.15.17_eslint@8.57.1_jest@27._k52o7bsjhc7apl3at7eg3h22hq/node_modules/dumi/dist/features/derivative.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/dumi@2.4.21_@babel+core@7.27.1_@swc+helpers@0.5.1_@types+node@22.15.17_eslint@8.57.1_jest@27._k52o7bsjhc7apl3at7eg3h22hq/node_modules/dumi/dist/features/derivative",
+      "key": "dumi:derivative"
+    },
+    "@umijs/plugins": {
+      "config": {
+        "onChange": "reload"
+      },
+      "time": {
+        "hooks": {},
+        "register": 1
+      },
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/dumi@2.4.21_@babel+core@7.27.1_@swc+helpers@0.5.1_@types+node@22.15.17_eslint@8.57.1_jest@27._k52o7bsjhc7apl3at7eg3h22hq/node_modules/dumi/compiled/@umijs/plugins/index.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "@umijs/plugins",
+      "key": "analytics"
+    },
+    "./node_modules/.pnpm/dumi@2.4.21_@babel+core@7.27.1_@swc+helpers@0.5.1_@types+node@22.15.17_eslint@8.57.1_jest@27._k52o7bsjhc7apl3at7eg3h22hq/node_modules/dumi/dist/features/sideEffects/index": {
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 0
+      },
+      "enableBy": "register",
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/dumi@2.4.21_@babel+core@7.27.1_@swc+helpers@0.5.1_@types+node@22.15.17_eslint@8.57.1_jest@27._k52o7bsjhc7apl3at7eg3h22hq/node_modules/dumi/dist/features/sideEffects/index.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/dumi@2.4.21_@babel+core@7.27.1_@swc+helpers@0.5.1_@types+node@22.15.17_eslint@8.57.1_jest@27._k52o7bsjhc7apl3at7eg3h22hq/node_modules/dumi/dist/features/sideEffects/index",
+      "key": "dumi:sideEffects"
+    },
+    "./node_modules/.pnpm/dumi@2.4.21_@babel+core@7.27.1_@swc+helpers@0.5.1_@types+node@22.15.17_eslint@8.57.1_jest@27._k52o7bsjhc7apl3at7eg3h22hq/node_modules/dumi/dist/features/exports": {
+      "config": {},
+      "time": {
+        "hooks": {
+          "modifyConfig": [
+            0
+          ]
+        },
+        "register": 0
+      },
+      "enableBy": "register",
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/dumi@2.4.21_@babel+core@7.27.1_@swc+helpers@0.5.1_@types+node@22.15.17_eslint@8.57.1_jest@27._k52o7bsjhc7apl3at7eg3h22hq/node_modules/dumi/dist/features/exports.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/dumi@2.4.21_@babel+core@7.27.1_@swc+helpers@0.5.1_@types+node@22.15.17_eslint@8.57.1_jest@27._k52o7bsjhc7apl3at7eg3h22hq/node_modules/dumi/dist/features/exports",
+      "key": "dumi:exports"
+    },
+    "./node_modules/.pnpm/dumi@2.4.21_@babel+core@7.27.1_@swc+helpers@0.5.1_@types+node@22.15.17_eslint@8.57.1_jest@27._k52o7bsjhc7apl3at7eg3h22hq/node_modules/dumi/dist/features/compile/index": {
+      "config": {},
+      "time": {
+        "hooks": {
+          "modifyConfig": [
+            0,
+            0,
+            1
+          ]
+        },
+        "register": 4
+      },
+      "enableBy": "register",
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/dumi@2.4.21_@babel+core@7.27.1_@swc+helpers@0.5.1_@types+node@22.15.17_eslint@8.57.1_jest@27._k52o7bsjhc7apl3at7eg3h22hq/node_modules/dumi/dist/features/compile/index.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/dumi@2.4.21_@babel+core@7.27.1_@swc+helpers@0.5.1_@types+node@22.15.17_eslint@8.57.1_jest@27._k52o7bsjhc7apl3at7eg3h22hq/node_modules/dumi/dist/features/compile/index",
+      "key": "dumi:compile"
+    },
+    "./node_modules/.pnpm/dumi@2.4.21_@babel+core@7.27.1_@swc+helpers@0.5.1_@types+node@22.15.17_eslint@8.57.1_jest@27._k52o7bsjhc7apl3at7eg3h22hq/node_modules/dumi/dist/features/routes": {
+      "config": {},
+      "time": {
+        "hooks": {
+          "modifyDefaultConfig": [
+            1
+          ],
+          "addLayouts": [
+            0
+          ],
+          "modifyRoutes": [
+            2
+          ]
+        },
+        "register": 1
+      },
+      "enableBy": "register",
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/dumi@2.4.21_@babel+core@7.27.1_@swc+helpers@0.5.1_@types+node@22.15.17_eslint@8.57.1_jest@27._k52o7bsjhc7apl3at7eg3h22hq/node_modules/dumi/dist/features/routes.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/dumi@2.4.21_@babel+core@7.27.1_@swc+helpers@0.5.1_@types+node@22.15.17_eslint@8.57.1_jest@27._k52o7bsjhc7apl3at7eg3h22hq/node_modules/dumi/dist/features/routes",
+      "key": "dumi:routes"
+    },
+    "./node_modules/.pnpm/dumi@2.4.21_@babel+core@7.27.1_@swc+helpers@0.5.1_@types+node@22.15.17_eslint@8.57.1_jest@27._k52o7bsjhc7apl3at7eg3h22hq/node_modules/dumi/dist/features/meta": {
+      "config": {},
+      "time": {
+        "hooks": {
+          "modifyRoutes": [
+            0
+          ]
+        },
+        "register": 1
+      },
+      "enableBy": "register",
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/dumi@2.4.21_@babel+core@7.27.1_@swc+helpers@0.5.1_@types+node@22.15.17_eslint@8.57.1_jest@27._k52o7bsjhc7apl3at7eg3h22hq/node_modules/dumi/dist/features/meta.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/dumi@2.4.21_@babel+core@7.27.1_@swc+helpers@0.5.1_@types+node@22.15.17_eslint@8.57.1_jest@27._k52o7bsjhc7apl3at7eg3h22hq/node_modules/dumi/dist/features/meta",
+      "key": "meta"
+    },
+    "./node_modules/.pnpm/dumi@2.4.21_@babel+core@7.27.1_@swc+helpers@0.5.1_@types+node@22.15.17_eslint@8.57.1_jest@27._k52o7bsjhc7apl3at7eg3h22hq/node_modules/dumi/dist/features/tabs": {
+      "config": {},
+      "time": {
+        "hooks": {
+          "modifyConfig": [
+            0
+          ],
+          "modifyRoutes": [
+            0
+          ]
+        },
+        "register": 0
+      },
+      "enableBy": "register",
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/dumi@2.4.21_@babel+core@7.27.1_@swc+helpers@0.5.1_@types+node@22.15.17_eslint@8.57.1_jest@27._k52o7bsjhc7apl3at7eg3h22hq/node_modules/dumi/dist/features/tabs.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/dumi@2.4.21_@babel+core@7.27.1_@swc+helpers@0.5.1_@types+node@22.15.17_eslint@8.57.1_jest@27._k52o7bsjhc7apl3at7eg3h22hq/node_modules/dumi/dist/features/tabs",
+      "key": "tabs"
+    },
+    "./node_modules/.pnpm/dumi@2.4.21_@babel+core@7.27.1_@swc+helpers@0.5.1_@types+node@22.15.17_eslint@8.57.1_jest@27._k52o7bsjhc7apl3at7eg3h22hq/node_modules/dumi/dist/features/theme/index": {
+      "config": {},
+      "time": {
+        "hooks": {
+          "modifyConfig": [
+            0,
+            15
+          ],
+          "modifyAppData": [
+            0,
+            1
+          ]
+        },
+        "register": 11
+      },
+      "enableBy": "register",
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/dumi@2.4.21_@babel+core@7.27.1_@swc+helpers@0.5.1_@types+node@22.15.17_eslint@8.57.1_jest@27._k52o7bsjhc7apl3at7eg3h22hq/node_modules/dumi/dist/features/theme/index.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/dumi@2.4.21_@babel+core@7.27.1_@swc+helpers@0.5.1_@types+node@22.15.17_eslint@8.57.1_jest@27._k52o7bsjhc7apl3at7eg3h22hq/node_modules/dumi/dist/features/theme/index",
+      "key": "dumi:theme"
+    },
+    "./node_modules/.pnpm/dumi@2.4.21_@babel+core@7.27.1_@swc+helpers@0.5.1_@types+node@22.15.17_eslint@8.57.1_jest@27._k52o7bsjhc7apl3at7eg3h22hq/node_modules/dumi/dist/features/locales": {
+      "config": {
+        "default": [
+          {
+            "id": "zh-CN",
+            "name": "中文",
+            "base": "/"
+          }
+        ]
+      },
+      "time": {
+        "hooks": {
+          "modifyConfig": [
+            0
+          ],
+          "onCheck": [
+            0
+          ]
+        },
+        "register": 1
+      },
+      "enableBy": "register",
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/dumi@2.4.21_@babel+core@7.27.1_@swc+helpers@0.5.1_@types+node@22.15.17_eslint@8.57.1_jest@27._k52o7bsjhc7apl3at7eg3h22hq/node_modules/dumi/dist/features/locales.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/dumi@2.4.21_@babel+core@7.27.1_@swc+helpers@0.5.1_@types+node@22.15.17_eslint@8.57.1_jest@27._k52o7bsjhc7apl3at7eg3h22hq/node_modules/dumi/dist/features/locales",
+      "key": "locales"
+    },
+    "./node_modules/.pnpm/dumi@2.4.21_@babel+core@7.27.1_@swc+helpers@0.5.1_@types+node@22.15.17_eslint@8.57.1_jest@27._k52o7bsjhc7apl3at7eg3h22hq/node_modules/dumi/dist/features/parser": {
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 0
+      },
+      "enableBy": "config",
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/dumi@2.4.21_@babel+core@7.27.1_@swc+helpers@0.5.1_@types+node@22.15.17_eslint@8.57.1_jest@27._k52o7bsjhc7apl3at7eg3h22hq/node_modules/dumi/dist/features/parser.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/dumi@2.4.21_@babel+core@7.27.1_@swc+helpers@0.5.1_@types+node@22.15.17_eslint@8.57.1_jest@27._k52o7bsjhc7apl3at7eg3h22hq/node_modules/dumi/dist/features/parser",
+      "key": "apiParser"
+    },
+    "./node_modules/.pnpm/dumi@2.4.21_@babel+core@7.27.1_@swc+helpers@0.5.1_@types+node@22.15.17_eslint@8.57.1_jest@27._k52o7bsjhc7apl3at7eg3h22hq/node_modules/dumi/dist/features/assets": {
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 0
+      },
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/dumi@2.4.21_@babel+core@7.27.1_@swc+helpers@0.5.1_@types+node@22.15.17_eslint@8.57.1_jest@27._k52o7bsjhc7apl3at7eg3h22hq/node_modules/dumi/dist/features/assets.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/dumi@2.4.21_@babel+core@7.27.1_@swc+helpers@0.5.1_@types+node@22.15.17_eslint@8.57.1_jest@27._k52o7bsjhc7apl3at7eg3h22hq/node_modules/dumi/dist/features/assets",
+      "key": "assets"
+    },
+    "./node_modules/.pnpm/dumi@2.4.21_@babel+core@7.27.1_@swc+helpers@0.5.1_@types+node@22.15.17_eslint@8.57.1_jest@27._k52o7bsjhc7apl3at7eg3h22hq/node_modules/dumi/dist/features/exportStatic": {
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 1
+      },
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/dumi@2.4.21_@babel+core@7.27.1_@swc+helpers@0.5.1_@types+node@22.15.17_eslint@8.57.1_jest@27._k52o7bsjhc7apl3at7eg3h22hq/node_modules/dumi/dist/features/exportStatic.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/dumi@2.4.21_@babel+core@7.27.1_@swc+helpers@0.5.1_@types+node@22.15.17_eslint@8.57.1_jest@27._k52o7bsjhc7apl3at7eg3h22hq/node_modules/dumi/dist/features/exportStatic",
+      "key": "dumi:exportStatic"
+    },
+    "./node_modules/.pnpm/dumi@2.4.21_@babel+core@7.27.1_@swc+helpers@0.5.1_@types+node@22.15.17_eslint@8.57.1_jest@27._k52o7bsjhc7apl3at7eg3h22hq/node_modules/dumi/dist/features/sitemap": {
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 3
+      },
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/dumi@2.4.21_@babel+core@7.27.1_@swc+helpers@0.5.1_@types+node@22.15.17_eslint@8.57.1_jest@27._k52o7bsjhc7apl3at7eg3h22hq/node_modules/dumi/dist/features/sitemap.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/dumi@2.4.21_@babel+core@7.27.1_@swc+helpers@0.5.1_@types+node@22.15.17_eslint@8.57.1_jest@27._k52o7bsjhc7apl3at7eg3h22hq/node_modules/dumi/dist/features/sitemap",
+      "key": "sitemap"
+    },
+    "./node_modules/.pnpm/dumi@2.4.21_@babel+core@7.27.1_@swc+helpers@0.5.1_@types+node@22.15.17_eslint@8.57.1_jest@27._k52o7bsjhc7apl3at7eg3h22hq/node_modules/dumi/dist/features/html2sketch": {
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 0
+      },
+      "enableBy": "register",
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/dumi@2.4.21_@babel+core@7.27.1_@swc+helpers@0.5.1_@types+node@22.15.17_eslint@8.57.1_jest@27._k52o7bsjhc7apl3at7eg3h22hq/node_modules/dumi/dist/features/html2sketch.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/dumi@2.4.21_@babel+core@7.27.1_@swc+helpers@0.5.1_@types+node@22.15.17_eslint@8.57.1_jest@27._k52o7bsjhc7apl3at7eg3h22hq/node_modules/dumi/dist/features/html2sketch",
+      "key": "html2sketch"
+    },
+    "./node_modules/.pnpm/@umijs+core@4.4.10/node_modules/@umijs/core/dist/service/generatePlugin": {
+      "config": {},
+      "time": {
+        "hooks": {},
+        "register": 0
+      },
+      "enableBy": "register",
+      "type": "plugin",
+      "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/@umijs+core@4.4.10/node_modules/@umijs/core/dist/service/generatePlugin.js",
+      "cwd": "/Users/hotoo/workbench/github.com/hotoo/pinyin",
+      "id": "./node_modules/.pnpm/@umijs+core@4.4.10/node_modules/@umijs/core/dist/service/generatePlugin",
+      "key": "generatePlugin"
+    }
+  },
+  "presets": [],
+  "name": "dev",
+  "args": {
+    "_": []
+  },
+  "userConfig": {
+    "title": "pīnyīn",
+    "favicons": [
+      "https://gw.alipayobjects.com/mdn/rms_f6322a/afts/img/A*VqPXS4ODZTMAAAAAAAAAAAAAARQnAQ"
+    ],
+    "logo": "https://gw.alipayobjects.com/mdn/rms_f6322a/afts/img/A*bGz9QbNudekAAAAAAAAAAAAAARQnAQ",
+    "outputPath": "docs-dist/dist",
+    "exportStatic": {},
+    "hash": true,
+    "themeConfig": {
+      "nav": {
+        "zh-CN": [
+          {
+            "title": "首页",
+            "link": "/"
+          },
+          {
+            "title": "API文档",
+            "link": "/api/v3/"
+          },
+          {
+            "title": "演示文档",
+            "link": "/example/"
+          },
+          {
+            "title": "更新历史",
+            "link": "/CHANGELOG/"
+          }
+        ],
+        "en-US": [
+          {
+            "title": "Home",
+            "link": "/en-US/"
+          },
+          {
+            "title": "API",
+            "link": "/en-US/api/v3/"
+          },
+          {
+            "title": "Example",
+            "link": "/en-US/example/"
+          },
+          {
+            "title": "CHANGELOG",
+            "link": "/CHANGELOG/"
+          }
+        ],
+        "ko-KR": [
+          {
+            "title": "Home",
+            "link": "/ko-KR/"
+          },
+          {
+            "title": "API",
+            "link": "/ko-KR/api/v3/"
+          },
+          {
+            "title": "Example",
+            "link": "/ko-KR/example/"
+          },
+          {
+            "title": "CHANGELOG",
+            "link": "/CHANGELOG/"
+          }
+        ]
+      }
+    },
+    "locales": [
+      {
+        "id": "zh-CN",
+        "name": "中文"
+      },
+      {
+        "id": "en-US",
+        "name": "English"
+      },
+      {
+        "id": "ko-KR",
+        "name": "한국어"
+      }
+    ],
+    "base": "/",
+    "publicPath": "/",
+    "mfsu": {
+      "esbuild": true,
+      "ignoreNodeBuiltInModules": true
+    },
+    "legacy": {
+      "nodeModulesTransform": false
+    },
+    "extraBabelIncludes": [
+      "nodejieba",
+      "@node-rs/jieba"
+    ],
+    "analytics": {
+      "ga_v2": "G-B24X7338JP"
+    }
+  },
+  "mainConfigFile": "/Users/hotoo/workbench/github.com/hotoo/pinyin/.dumirc.ts",
+  "config": {
+    "routeLoader": {
+      "moduleType": "esm"
+    },
+    "mountElementId": "root",
+    "history": {
+      "type": "browser"
+    },
+    "base": "/",
+    "svgr": {},
+    "publicPath": "/",
+    "mfsu": false,
+    "ignoreMomentLocale": true,
+    "externals": {},
+    "autoCSSModules": true,
+    "alias": {
+      "umi": "@@/exports",
+      "react": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/react@18.3.1/node_modules/react",
+      "react-dom": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom",
+      "react-router": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/react-router@6.3.0_react@18.3.1/node_modules/react-router",
+      "react-router-dom": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/react-router-dom@6.3.0_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-router-dom",
+      "@": "/Users/hotoo/workbench/github.com/hotoo/pinyin/src",
+      "@@": "/Users/hotoo/workbench/github.com/hotoo/pinyin/.dumi/tmp",
+      "regenerator-runtime": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/regenerator-runtime@0.13.11/node_modules/regenerator-runtime",
+      "pinyin": "/Users/hotoo/workbench/github.com/hotoo/pinyin/src",
+      "dumi$": "@@/dumi/exports",
+      "dumi/theme": "dumi/theme-original",
+      "dumi/theme-original": "/Users/hotoo/workbench/github.com/hotoo/pinyin/.dumi/tmp/dumi/theme",
+      "dumi/theme-default": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/dumi@2.4.21_@babel+core@7.27.1_@swc+helpers@0.5.1_@types+node@22.15.17_eslint@8.57.1_jest@27._k52o7bsjhc7apl3at7eg3h22hq/node_modules/dumi/theme-default"
+    },
+    "themeConfig": {
+      "footer": "Copyright © 2025 | Powered by <a href=\"https://d.umijs.org\" target=\"_blank\" rel=\"noreferrer\">dumi</a>",
+      "prefersColor": {
+        "default": "light",
+        "switch": true
+      },
+      "nprogress": true,
+      "lastUpdated": true,
+      "nav": {
+        "zh-CN": [
+          {
+            "title": "首页",
+            "link": "/"
+          },
+          {
+            "title": "API文档",
+            "link": "/api/v3/"
+          },
+          {
+            "title": "演示文档",
+            "link": "/example/"
+          },
+          {
+            "title": "更新历史",
+            "link": "/CHANGELOG/"
+          }
+        ],
+        "en-US": [
+          {
+            "title": "Home",
+            "link": "/en-US/"
+          },
+          {
+            "title": "API",
+            "link": "/en-US/api/v3/"
+          },
+          {
+            "title": "Example",
+            "link": "/en-US/example/"
+          },
+          {
+            "title": "CHANGELOG",
+            "link": "/CHANGELOG/"
+          }
+        ],
+        "ko-KR": [
+          {
+            "title": "Home",
+            "link": "/ko-KR/"
+          },
+          {
+            "title": "API",
+            "link": "/ko-KR/api/v3/"
+          },
+          {
+            "title": "Example",
+            "link": "/ko-KR/example/"
+          },
+          {
+            "title": "CHANGELOG",
+            "link": "/CHANGELOG/"
+          }
+        ]
+      },
+      "sourceLink": "https://github.com/hotoo/pinyin/tree/feat%2Frollup/{fileName}#L{line}",
+      "editLink": "https://github.com/hotoo/pinyin/edit/feat%2Frollup/{filename}"
+    },
+    "resolve": {
+      "docDirs": [
+        "docs"
+      ],
+      "atomDirs": [
+        {
+          "type": "component",
+          "dir": "src"
+        }
+      ],
+      "codeBlockMode": "active",
+      "forceKebabCaseRouting": true
+    },
+    "locales": [
+      {
+        "id": "zh-CN",
+        "name": "中文",
+        "base": "/"
+      },
+      {
+        "id": "en-US",
+        "name": "English",
+        "base": "/en-US"
+      },
+      {
+        "id": "ko-KR",
+        "name": "한국어",
+        "base": "/ko-KR"
+      }
+    ],
+    "conventionRoutes": {
+      "base": "/Users/hotoo/workbench/github.com/hotoo/pinyin/.dumi/pages",
+      "exclude": [
+        {}
+      ]
+    },
+    "hash": true,
+    "exportStatic": {},
+    "esbuildMinifyIIFE": true,
+    "title": "pīnyīn",
+    "favicons": [
+      "https://gw.alipayobjects.com/mdn/rms_f6322a/afts/img/A*VqPXS4ODZTMAAAAAAAAAAAAAARQnAQ"
+    ],
+    "logo": "https://gw.alipayobjects.com/mdn/rms_f6322a/afts/img/A*bGz9QbNudekAAAAAAAAAAAAAARQnAQ",
+    "outputPath": "docs-dist/dist",
+    "legacy": {
+      "nodeModulesTransform": false
+    },
+    "extraBabelIncludes": [
+      "nodejieba",
+      "@node-rs/jieba",
+      {},
+      {},
+      "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/dumi@2.4.21_@babel+core@7.27.1_@swc+helpers@0.5.1_@types+node@22.15.17_eslint@8.57.1_jest@27._k52o7bsjhc7apl3at7eg3h22hq/node_modules/dumi/dist/client/theme-api"
+    ],
+    "analytics": {
+      "ga_v2": "G-B24X7338JP"
+    },
+    "targets": {
+      "chrome": 80
+    },
+    "theme": {
+      "dark-selector": "~'[data-prefers-color=\"dark\"]'"
+    },
+    "babelLoaderCustomize": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/dumi@2.4.21_@babel+core@7.27.1_@swc+helpers@0.5.1_@types+node@22.15.17_eslint@8.57.1_jest@27._k52o7bsjhc7apl3at7eg3h22hq/node_modules/dumi/dist/features/compile/babelLoaderCustomize.js",
+    "define": {
+      "SEARCH_WORKER_CODE": "\"use strict\";(()=>{var P=Object.create;var I=Object.defineProperty;var z=Object.getOwnPropertyDescriptor;var D=Object.getOwnPropertyNames,R=Object.getOwnPropertySymbols,B=Object.getPrototypeOf,E=Object.prototype.hasOwnProperty,L=Object.prototype.propertyIsEnumerable;var O=(e,t,i)=>t in e?I(e,t,{enumerable:!0,configurable:!0,writable:!0,value:i}):e[t]=i,M=(e,t)=>{for(var i in t||(t={}))E.call(t,i)&&O(e,i,t[i]);if(R)for(var i of R(t))L.call(t,i)&&O(e,i,t[i]);return e};var F=(e,t)=>()=>(t||e((t={exports:{}}).exports,t),t.exports);var N=(e,t,i,h)=>{if(t&&typeof t==\"object\"||typeof t==\"function\")for(let a of D(t))!E.call(e,a)&&a!==i&&I(e,a,{get:()=>t[a],enumerable:!(h=z(t,a))||h.enumerable});return e};var W=(e,t,i)=>(i=e!=null?P(B(e)):{},N(t||!e||!e.__esModule?I(i,\"default\",{value:e,enumerable:!0}):i,e));var j=F((K,w)=>{w.exports=function(e){var t={};function i(h){if(t[h])return t[h].exports;var a=t[h]={exports:{},id:h,loaded:!1};return e[h].call(a.exports,a,a.exports,i),a.loaded=!0,a.exports}return i.m=e,i.c=t,i.p=\"\",i(0)}([function(e,t,i){e.exports=i(1)},function(e,t,i){\"use strict\";Object.defineProperty(t,\"__esModule\",{value:!0});var h=i(2);Object.defineProperty(t,\"combineChunks\",{enumerable:!0,get:function(){return h.combineChunks}}),Object.defineProperty(t,\"fillInChunks\",{enumerable:!0,get:function(){return h.fillInChunks}}),Object.defineProperty(t,\"findAll\",{enumerable:!0,get:function(){return h.findAll}}),Object.defineProperty(t,\"findChunks\",{enumerable:!0,get:function(){return h.findChunks}})},function(e,t){\"use strict\";Object.defineProperty(t,\"__esModule\",{value:!0});var i=t.findAll=function(s){var n=s.autoEscape,g=s.caseSensitive,f=g===void 0?!1:g,p=s.findChunks,u=p===void 0?a:p,c=s.sanitize,v=s.searchWords,T=s.textToHighlight;return l({chunksToHighlight:h({chunks:u({autoEscape:n,caseSensitive:f,sanitize:c,searchWords:v,textToHighlight:T})}),totalLength:T?T.length:0})},h=t.combineChunks=function(s){var n=s.chunks;return n=n.sort(function(g,f){return g.start-f.start}).reduce(function(g,f){if(g.length===0)return[f];var p=g.pop();if(f.start<=p.end){var u=Math.max(p.end,f.end);g.push({highlight:!1,start:p.start,end:u})}else g.push(p,f);return g},[]),n},a=function(s){var n=s.autoEscape,g=s.caseSensitive,f=s.sanitize,p=f===void 0?d:f,u=s.searchWords,c=s.textToHighlight;return c=p(c),u.filter(function(v){return v}).reduce(function(v,T){T=p(T),n&&(T=r(T));for(var m=new RegExp(T,g?\"g\":\"gi\"),x=void 0;x=m.exec(c);){var S=x.index,$=m.lastIndex;$>S&&v.push({highlight:!1,start:S,end:$}),x.index===m.lastIndex&&m.lastIndex++}return v},[])};t.findChunks=a;var l=t.fillInChunks=function(s){var n=s.chunksToHighlight,g=s.totalLength,f=[],p=function(v,T,m){T-v>0&&f.push({start:v,end:T,highlight:m})};if(n.length===0)p(0,g,!1);else{var u=0;n.forEach(function(c){p(u,c.start,!1),p(c.start,c.end,!0),u=c.end}),p(u,g,!1)}return f};function d(o){return o}function r(o){return o.replace(/[\\-\\[\\]\\/\\{\\}\\(\\)\\*\\+\\?\\.\\\\\\^\\$\\|]/g,\"\\\\$&\")}}])});var C=W(j());var H=\"tab\";function k(e,t,i,h,a){let l=a!==void 0;return h.reduce((r,o)=>(o.tocIndex===a&&(r[o.paraId]=(r[o.paraId]||\"\").concat(o.value)),r),[]).filter(Boolean).length||l?{rawTitle:e,title:t,link:i,paragraphs:h.reduce((r,o)=>{var s,n;return o.tocIndex===a&&((n=r[s=o.paraId])!=null||(r[s]=\"\"),r[o.paraId]+=o.value),r},[]).filter(Boolean)}:null}function y(e){return[e.title,e.subtitle].filter(Boolean).join(\" \")}function _(e,t,i){let h=[],a=Object.values(t).reduce((l,d)=>{var r,o;return d.asset&&((o=l[r=d.routeId])!=null||(l[r]=[]),l[d.routeId].push(d)),l},{});return Object.values(e).forEach(l=>{var d;if(\"meta\"in l&&!(\"isLayout\"in l)){let r=l.meta,o=l.path.replace(/^([^/])/,\"/$1\")||\"/\",s=i.find(u=>o===u.link||o.startsWith(`${u.activePath}/`)),n=(a[l.id]||[]).map(u=>{var c;return(c=u.asset)==null?void 0:c.id}),g=k(\"\",y(r.frontmatter),o,r.texts),f=r.toc.reduce((u,c,v)=>{if(!n.includes(c.id)&&c.depth>=1){let T=y(r.frontmatter);c.depth!==1&&(T=`${T} - ${c.title}`),u.push(k(c.title,T,`${o}#${c.id}`,r.texts,v))}return u},[]),p=(r.tabs||[]).reduce((u,{key:c,meta:v})=>{let T=k(\"\",`${y(r.frontmatter)} - ${v.frontmatter.title}`,`${o}?${H}=${c}`,v.texts);return T&&u.push(T),u.push(...v.toc.map((m,x)=>k(m.title,`${y(r.frontmatter)} - ${v.frontmatter.title} - ${m.title}`,`${o}?${H}=${c}#${m.id}`,v.texts,x))),u},[]);h.push({navTitle:s==null?void 0:s.title,navOrder:s?i.indexOf(s):1/0,title:y(r.frontmatter),link:o,sections:[...g?[g]:[],...f,...p],demos:((d=a[l.id])==null?void 0:d.map(u=>({link:`${o}#${u.asset.id}`,rawTitle:u.asset.title||\"\",title:u.asset.title||y(r.frontmatter),description:u.asset.description||\"\",keywords:u.asset.keywords||[]})))||[]})}}),h}function b(e=\"\",t,i=1){let h=(0,C.findAll)({textToHighlight:e,searchWords:t,autoEscape:!0}),a={};return[h.map(({start:l,end:d,highlight:r},o)=>{let s={text:e.slice(l,d)};return o===0&&!r&&h.length>1&&s.text.length>20&&(s.text=`...${s.text.slice(-20)}`),r&&(s.highlighted=!0,a[t.find(n=>s.text.includes(n))]=i),s}),a]}function Y(e,t){let i=t.split(\" \"),h=new RegExp(t.replace(/[.*+?^${}()|[\\]\\\\]/g,\"\\\\$&\").replace(/\\s+/g,\"|\"),\"i\"),a={};return e.forEach(l=>{var o,s;let d=l.title,r=[];if(l.sections.forEach(n=>{for(let g of n.paragraphs)if(h.test(g)){let[f,p]=b(n.title,i,10),[u,c]=b(g,i);r.push({type:\"content\",link:n.link,priority:Object.values(M(M({},c),p)).reduce((v,T)=>v+T,0),highlightTitleTexts:f,highlightTexts:u,pageTitle:d});return}if(h.test(n.rawTitle)&&!h.test(l.title)){let[g,f]=b(n.title,i,10);r.push({type:\"title\",link:n.link,priority:Object.values(f).reduce((p,u)=>p+u,0),highlightTitleTexts:g,highlightTexts:b(n.paragraphs[0]||\"\",i)[0],pageTitle:d})}}),l.demos.forEach(n=>{if(h.test(n.rawTitle)||h.test(n.description)){let[g,f]=b(n.title,i,10),[p,u]=b(n.description,i);r.push({type:\"demo\",link:n.link,priority:Object.values(M(M({},u),f)).reduce((c,v)=>c+v,0),highlightTitleTexts:g,highlightTexts:p,pageTitle:d})}}),h.test(l.title)){let[n,g]=b(l.title,i,100);r.push({type:\"page\",link:l.link,priority:Object.values(g).reduce((f,p)=>f+p,0),highlightTitleTexts:n,highlightTexts:b(((o=l.sections[0])==null?void 0:o.paragraphs[0])||\"\",i)[0],pageTitle:d})}if(r.length){let n=l.navTitle||\"$ROOT\";(s=a[n])!=null||(a[n]={title:l.navTitle,priority:l.navOrder*1e3,hints:[]}),a[n].hints.push(...r)}}),Object.values(a).forEach(({hints:l})=>{l.sort((d,r)=>r.priority-d.priority)}),Object.values(a).sort((l,d)=>d.priority-l.priority)}var A;self.onmessage=({data:e})=>{switch(e.action){case\"generate-metadata\":A=_(e.args.routes,e.args.demos,e.args.nav);break;case\"get-search-result\":self.postMessage(Y(A,e.args.keywords));break;default:}};})();\n"
+    }
+  },
+  "routes": {
+    "404": {
+      "id": "404",
+      "path": "*",
+      "absPath": "/*",
+      "parentId": "DocLayout",
+      "file": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/dumi@2.4.21_@babel+core@7.27.1_@swc+helpers@0.5.1_@types+node@22.15.17_eslint@8.57.1_jest@27._k52o7bsjhc7apl3at7eg3h22hq/node_modules/dumi/dist/client/pages/404.js"
+    },
+    "dumi-context-layout": {
+      "id": "dumi-context-layout",
+      "path": "/",
+      "file": "/Users/hotoo/workbench/github.com/hotoo/pinyin/.dumi/tmp/dumi/theme/ContextWrapper",
+      "absPath": "/",
+      "isLayout": true,
+      "__absFile": "/Users/hotoo/workbench/github.com/hotoo/pinyin/.dumi/tmp/dumi/theme/ContextWrapper"
+    },
+    "DocLayout": {
+      "id": "DocLayout",
+      "path": "/",
+      "file": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/dumi@2.4.21_@babel+core@7.27.1_@swc+helpers@0.5.1_@types+node@22.15.17_eslint@8.57.1_jest@27._k52o7bsjhc7apl3at7eg3h22hq/node_modules/dumi/theme-default/layouts/DocLayout/index.js",
+      "parentId": "dumi-context-layout",
+      "absPath": "/",
+      "isLayout": true
+    },
+    "docs/api/v2/index.en-US": {
+      "path": "en-US/api/v2",
+      "id": "docs/api/v2/index.en-US",
+      "parentId": "DocLayout",
+      "file": "/Users/hotoo/workbench/github.com/hotoo/pinyin/docs/api/v2/index.en-US.md",
+      "absPath": "/en-US/api/v2"
+    },
+    "docs/api/v2/index.ko-KR": {
+      "path": "ko-KR/api/v2",
+      "id": "docs/api/v2/index.ko-KR",
+      "parentId": "DocLayout",
+      "file": "/Users/hotoo/workbench/github.com/hotoo/pinyin/docs/api/v2/index.ko-KR.md",
+      "absPath": "/ko-KR/api/v2"
+    },
+    "docs/api/v3/index.en-US": {
+      "path": "en-US/api/v3",
+      "id": "docs/api/v3/index.en-US",
+      "parentId": "DocLayout",
+      "file": "/Users/hotoo/workbench/github.com/hotoo/pinyin/docs/api/v3/index.en-US.md",
+      "absPath": "/en-US/api/v3"
+    },
+    "docs/api/v3/index.ko-KR": {
+      "path": "ko-KR/api/v3",
+      "id": "docs/api/v3/index.ko-KR",
+      "parentId": "DocLayout",
+      "file": "/Users/hotoo/workbench/github.com/hotoo/pinyin/docs/api/v3/index.ko-KR.md",
+      "absPath": "/ko-KR/api/v3"
+    },
+    "docs/CHANGELOG.en-US": {
+      "path": "en-US/Changelog",
+      "id": "docs/CHANGELOG.en-US",
+      "parentId": "DocLayout",
+      "file": "/Users/hotoo/workbench/github.com/hotoo/pinyin/docs/CHANGELOG.en-US.md",
+      "absPath": "/en-US/Changelog"
+    },
+    "docs/CHANGELOG.ko-KR": {
+      "path": "ko-KR/Changelog",
+      "id": "docs/CHANGELOG.ko-KR",
+      "parentId": "DocLayout",
+      "file": "/Users/hotoo/workbench/github.com/hotoo/pinyin/docs/CHANGELOG.ko-KR.md",
+      "absPath": "/ko-KR/Changelog"
+    },
+    "docs/EXAMPLE.en-US": {
+      "path": "en-US/Example",
+      "id": "docs/EXAMPLE.en-US",
+      "parentId": "DocLayout",
+      "file": "/Users/hotoo/workbench/github.com/hotoo/pinyin/docs/EXAMPLE.en-US.md",
+      "absPath": "/en-US/Example"
+    },
+    "docs/EXAMPLE.ko-KR": {
+      "path": "ko-KR/Example",
+      "id": "docs/EXAMPLE.ko-KR",
+      "parentId": "DocLayout",
+      "file": "/Users/hotoo/workbench/github.com/hotoo/pinyin/docs/EXAMPLE.ko-KR.md",
+      "absPath": "/ko-KR/Example"
+    },
+    "docs/api/v2/index": {
+      "path": "api/v2",
+      "id": "docs/api/v2/index",
+      "parentId": "DocLayout",
+      "file": "/Users/hotoo/workbench/github.com/hotoo/pinyin/docs/api/v2/index.md",
+      "absPath": "/api/v2"
+    },
+    "docs/api/v3/index": {
+      "path": "api/v3",
+      "id": "docs/api/v3/index",
+      "parentId": "DocLayout",
+      "file": "/Users/hotoo/workbench/github.com/hotoo/pinyin/docs/api/v3/index.md",
+      "absPath": "/api/v3"
+    },
+    "docs/index.en-US": {
+      "path": "en-US/",
+      "id": "docs/index.en-US",
+      "parentId": "DocLayout",
+      "file": "/Users/hotoo/workbench/github.com/hotoo/pinyin/docs/index.en-US.md",
+      "absPath": "/en-US/"
+    },
+    "docs/index.ko-KR": {
+      "path": "ko-KR/",
+      "id": "docs/index.ko-KR",
+      "parentId": "DocLayout",
+      "file": "/Users/hotoo/workbench/github.com/hotoo/pinyin/docs/index.ko-KR.md",
+      "absPath": "/ko-KR/"
+    },
+    "docs/CHANGELOG": {
+      "path": "Changelog",
+      "id": "docs/CHANGELOG",
+      "parentId": "DocLayout",
+      "file": "/Users/hotoo/workbench/github.com/hotoo/pinyin/docs/CHANGELOG.md",
+      "absPath": "/changelog"
+    },
+    "docs/EXAMPLE": {
+      "path": "Example",
+      "id": "docs/EXAMPLE",
+      "parentId": "DocLayout",
+      "file": "/Users/hotoo/workbench/github.com/hotoo/pinyin/docs/EXAMPLE.md",
+      "absPath": "/example"
+    },
+    "docs/index": {
+      "path": "",
+      "id": "docs/index",
+      "parentId": "DocLayout",
+      "file": "/Users/hotoo/workbench/github.com/hotoo/pinyin/docs/index.md",
+      "absPath": "/"
+    },
+    "demo-render": {
+      "id": "demo-render",
+      "path": "~demos/:id",
+      "absPath": "/~demos/:id",
+      "parentId": "dumi-context-layout",
+      "file": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/dumi@2.4.21_@babel+core@7.27.1_@swc+helpers@0.5.1_@types+node@22.15.17_eslint@8.57.1_jest@27._k52o7bsjhc7apl3at7eg3h22hq/node_modules/dumi/dist/client/pages/Demo/index.js"
+    }
+  },
+  "apiRoutes": {},
+  "hasSrcDir": false,
+  "npmClient": "pnpm",
+  "umi": {
+    "version": "4.4.10",
+    "name": "Umi",
+    "importSource": "umi",
+    "cliName": "umi"
+  },
+  "bundleStatus": {
+    "done": false
+  },
+  "react": {
+    "version": "18.3.1",
+    "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/react@18.3.1/node_modules/react"
+  },
+  "react-dom": {
+    "version": "18.3.1",
+    "path": "/Users/hotoo/workbench/github.com/hotoo/pinyin/node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom"
+  },
+  "appJS": null,
+  "locale": "en-US",
+  "globalCSS": [],
+  "globalJS": [],
+  "overridesCSS": [],
+  "bundler": "webpack",
+  "git": {
+    "originUrl": "git@github.com:hotoo/pinyin.git"
+  },
+  "framework": "react",
+  "typescript": {
+    "tsVersion": "4.9.5",
+    "tslibVersion": "2.8.1"
+  },
+  "port": 8000,
+  "host": "0.0.0.0",
+  "ip": "192.168.50.2",
+  "_2LevelNavAvailable": true
+}

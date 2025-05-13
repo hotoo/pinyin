@@ -4,8 +4,10 @@
 
 ```jsx
 import React, { useState, useEffect } from 'react';
-import pinyin from 'pinyin';
+import pinyin from '../lib/pinyin-web';
 import JSONViewer from 'react-json-view';
+
+// const pinyin = (p) => {return [p]};
 
 export default function() {
   const han = '中文汉字';
