@@ -113,8 +113,6 @@
     "test": "test"
   },
   "engines": {
-    "node": "22.15.x",
-    "pnpm": "9.15.x",
     "install-node": "^18.0.0"
   },
   "license": "MIT"
