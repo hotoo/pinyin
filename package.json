@@ -26,7 +26,7 @@
     "build": "rollup -c && rollup -c rollup.esm.config.js",
     "build:tsc": "tsc --downlevelIteration -p tsconfig-es5.json & tsc --downlevelIteration -p tsconfig.json & pnpm build:amd",
     "build:amd": "tsc --downlevelIteration -p tsconfig-amd.json",
-    "doc:build": "rm -rf ./.dumi ./docs-dist && dumi build &&  && cp CNAME docs-dist",
+    "doc:build": "rm -rf ./.dumi ./docs-dist && dumi build && cp CNAME docs-dist",
     "doc:deploy": "pnpm doc:build && gh-pages -d docs-dist",
     "lint": "eslint ./src/ ./test/",
     "test": "jest --coverage",
