@@ -20,6 +20,8 @@ jobs:
           version: 10
       - name: Install dependencies
         run: pnpm install
+      - name: Build project
+        run: pnpm build & pnpm build:tsc & pnpm build:amd
       - name: Build with dumi
         # 文档编译命令，如果是 react 模板需要修改为 npm run docs:build
         run: pnpm doc:build
