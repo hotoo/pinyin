@@ -22,7 +22,7 @@ pīnyīn, 汉字拼音转换工具。
 [lgtm-url]: https://lgtm.com/projects/g/hotoo/pinyin/context:javascript
 
 
-Web Site: 简体中文 | [English](/en-US/) | [한국어](/ko-KR/)
+Web Site: 简体中文 | [English](https://pinyin.js.org/en-US/) | [한국어](https://pinyin.js.org/ko-KR/)
 
 GitHub: 简体中文 | [English](/docs/index.en-US.md) | [한국어](/docs/index.ko-KR.md)
 
