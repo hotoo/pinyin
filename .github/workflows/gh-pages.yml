@@ -1,0 +1,31 @@
+name: github pages
+
+on:
+  push:
+    branches:
+      - master # default branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # 如果配置 themeConfig.lastUpdated 为 false，则不需要添加该参数以加快检出速度
+          fetch-depth: 0
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+      - name: Install dependencies
+        run: pnpm install
+      - name: Build with dumi
+        # 文档编译命令，如果是 react 模板需要修改为 npm run docs:build
+        run: pnpm doc:build
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          # 文档目录，如果是 react 模板需要修改为 docs-dist
+          publish_dir: ./docs-dist

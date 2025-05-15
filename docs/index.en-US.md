@@ -1,4 +1,4 @@
-# pīnyīn (v2)
+# pīnyīn (v3)
 
 pinyin, The convert tool of chinese pinyin.
 
@@ -22,9 +22,9 @@ pinyin, The convert tool of chinese pinyin.
 [lgtm-url]: https://lgtm.com/projects/g/hotoo/pinyin/context:javascript
 
 
-Web Site: [简体中文](/README-v2) | English
+Web Site: [简体中文](/) | English | [한국어](/ko-KR/)
 
-README: [简体中文](README-v2.md) | English
+README: [简体中文](/docs/index.md) | English | [한국어](/docs/index.ko-KR.md)
 
 
 Convert Han to pinyin. useful for phonetic notation, sorting, and searching.
@@ -46,32 +46,40 @@ Convert Han to pinyin. useful for phonetic notation, sorting, and searching.
 via npm:
 
 ```bash
-npm install pinyin@2.0 --save
+npm install pinyin --save
 ```
 
 ## Usage
 
 for developer:
 
-```js
-var pinyin = require("pinyin");
+```typescript
+import pinyin from "pinyin";
 
 console.log(pinyin("中心"));    // [ [ 'zhōng' ], [ 'xīn' ] ]
+
 console.log(pinyin("中心", {
   heteronym: true                // Enable heteronym mode.
 }));                            // [ [ 'zhōng', 'zhòng' ], [ 'xīn' ] ]
+
 console.log(pinyin("中心", {
   heteronym: true,              // Enable heteronym mode.
   segment: true                 // Enable Chinese words segmentation, fix most heteronym problem.
 }));                            // [ [ 'zhōng' ], [ 'xīn' ] ]
+
 console.log(pinyin("我喜欢你", {
   segment: true,                // Enable segmentation. Needed for grouping.
   group: true                   // Group pinyin segments
 }));                            // [ [ 'wǒ' ], [ 'xǐhuān' ], [ 'nǐ' ] ]
+
 console.log(pinyin("中心", {
   style: pinyin.STYLE_INITIALS, // Setting pinyin style.
   heteronym: true
 }));                            // [ [ 'zh' ], [ 'x' ] ]
+
+console.log(pinyin("华夫人", {
+  mode: "surname",              // 姓名模式。
+}));                            // [ ['huà'], ['fū'], ['rén'] ]
 ```
 
 for cli:
@@ -81,6 +89,59 @@ $ pinyin 中心
 zhōng xīn
 $ pinyin -h
 ```
+
+## Types
+
+### IPinyinOptions
+
+The types for the second argument of pinyin method.
+
+```typescript
+export interface IPinyinOptions {
+  style?: IPinyinStyle; // output style of pinyin.
+  mode?: IPinyinMode, // mode of pinyin.
+  segment?: IPinyinSegment | boolean;
+  heteronym?: boolean;
+  group?: boolean;
+  compact?: boolean;
+}
+```
+
+### IPinyinStyle
+
+The output style of pinyin.
+
+```typescript
+export type IPinyinStyle =
+  "normal" | "tone" | "tone2" | "to3ne" | "initials" | "first_letter" | // Suggest.
+  "NORMAL" | "TONE" | "TONE2" | "TO3NE" | "INITIALS" | "FIRST_LETTER" |
+  0        | 1      | 2       | 5       | 3          | 4;               // compatibility.
+```
+
+### IPinyinMode
+
+The mode of pinyin.
+
+```typescript
+// - NORMAL: Default mode is normal mode.
+// - SURNAME: surname mode, for chinese surname.
+export type IPinyinMode =
+  "normal" | "surname" |
+  "NORMAL" | "SURNAME";
+```
+
+### IPinyinSegment
+
+The segment method.
+
+- Default is disable segment: `false`，
+- If set `true`, use "Intl.Segmenter" module default for segment on Web and Node.
+- Also specify follow string for segment (bug just "Intl.Segmenter", "segmentit" is support on web):
+
+```typescript
+export type IPinyinSegment = "Intl.Segmenter" | "nodejieba" | "segmentit" | "@node-rs/jieba";
+```
+
 
 ## API
 
@@ -185,23 +246,6 @@ npm test
 ```
 
 ## Q&A
-
-### What's the different Node version and Web version?
-
-`pinyin` support Node and Web browser now, the API and usage is complete same.
-
-But the Web version is simple than Node version. Just frequently-used dict,
-without segmentation, and the dict is compress for web.
-
-Because of Traditional and Segmentation, the convert result will be not complete same.
-and the test case have some different too.
-
-| Feature      | Web version                     | Node version                     |
-|--------------|---------------------------------|----------------------------------|
-| Dict         | Frequently-used Dict, Compress. | Complete Dict, without Compress. |
-| Segmentation | NO                              | Segmentation options.            |
-| Traditional  | NO                              | Full Traditional support.        |
-
 
 ### How to sort by pinyin?
 

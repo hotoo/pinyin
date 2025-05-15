@@ -24,7 +24,7 @@ pīnyīn, 한자 병음 전환 툴。
 
 Web Site: [简体中文](/) | [English](/en-US/) | 한국어
 
-README: [简体中文](README.md) | [English](README.en-US.md) | 한국어
+GitHub: [简体中文](/docs/index.md) | [English](/docs/index.en-US.md) | 한국어
 
 
 중국어 한자를 병음으로 변경할 수 있습니다. 한자의 발음을 표시하거나, 정렬, 검색할 수 있습니다. 

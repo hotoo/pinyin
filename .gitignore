@@ -40,3 +40,5 @@ yarn.lock
 .nyc_output
 .pnpm-debug.log
 .umi-production
+.dumi/
+server/
