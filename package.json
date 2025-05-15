@@ -76,7 +76,7 @@
     "nock": "^13.1.4",
     "npx": "^10.2.2",
     "prettier": "^2.6.0",
-    "react-json-view": "^1.21.3",
+    "@textea/json-viewer": "^4.0.1",
     "request": "~2.68.0",
     "rollup": "2.60.0",
     "rollup-plugin-alias": "^2.2.0",

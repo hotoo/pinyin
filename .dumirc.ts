@@ -25,6 +25,7 @@ export default defineConfig({
   outputPath: 'docs-dist/dist',
   // mode: 'doc',
   exportStatic: {},
+  ssr: { mode: 'stream' },
   hash: true,
   themeConfig: {
     nav: {
