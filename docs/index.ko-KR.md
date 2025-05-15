@@ -22,9 +22,9 @@ pīnyīn, 한자 병음 전환 툴。
 [lgtm-url]: https://lgtm.com/projects/g/hotoo/pinyin/context:javascript
 
 
-Web Site: [简体中文](/) | [English](/en-US/) | 한국어
+Web Site: [简体中文](https://pinyin.js.org/) | [English](https://pinyin.js.org/en-US/) | 한국어
 
-GitHub: [简体中文](/docs/index.md) | [English](/docs/index.en-US.md) | 한국어
+GitHub: [简体中文](https://github.com/hotoo/pinyin/blob/master/docs/index.md) | [English](https://github.com/hotoo/pinyin/blob/master/docs/index.en-US.md) | 한국어
 
 
 중국어 한자를 병음으로 변경할 수 있습니다. 한자의 발음을 표시하거나, 정렬, 검색할 수 있습니다. 
