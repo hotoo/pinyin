@@ -27,7 +27,7 @@
     "build:tsc": "tsc --downlevelIteration -p tsconfig-es5.json & tsc --downlevelIteration -p tsconfig.json & pnpm build:amd",
     "build:amd": "tsc --downlevelIteration -p tsconfig-amd.json",
     "doc:build": "rm -rf ./src/.umi && dumi build",
-    "doc:deploy": "pnpm doc:build && cp CNAME docs-dist/dist && gh-pages -d docs-dist/dist",
+    "doc:deploy": "pnpm doc:build && cp CNAME docs-dist && gh-pages -d docs-dist",
     "lint": "eslint ./src/ ./test/",
     "test": "jest --coverage",
     "debug": "npx ts-node tools/debug.ts"

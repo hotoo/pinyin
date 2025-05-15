@@ -22,7 +22,7 @@ export default defineConfig({
   ],
   logo:
     'https://gw.alipayobjects.com/mdn/rms_f6322a/afts/img/A*bGz9QbNudekAAAAAAAAAAAAAARQnAQ',
-  outputPath: 'docs-dist/dist',
+  outputPath: 'docs-dist',
   // mode: 'doc',
   exportStatic: {},
   ssr: { mode: 'stream' },

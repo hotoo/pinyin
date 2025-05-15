@@ -41,4 +41,5 @@ yarn.lock
 .pnpm-debug.log
 .umi-production
 .dumi/
+docs-dist/
 server/
