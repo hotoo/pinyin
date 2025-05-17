@@ -4,10 +4,11 @@
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "declaration": true,
-    "outDir": "esm",
-    "module": "esnext",
-    "target": "es6",
-    "lib": ["esnext"],
+    "declarationDir": "lib/types",
+    "outDir": "lib",
+    "target": "ES6",
+    "lib": ["ESNext"],
+    "module": "ESNext",
     "sourceMap": true,
     "baseUrl": "./src/",
     "jsx": "preserve",
@@ -15,7 +16,6 @@
     "moduleResolution": "node",
     "forceConsistentCasingInFileNames": true,
     "noImplicitReturns": true,
-    "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": true,
     "allowJs": true,
     "skipLibCheck": true,
@@ -31,6 +31,6 @@
   ],
   "exclude": [
     "node_modules",
-    "dist"
+    "lib"
   ]
 }

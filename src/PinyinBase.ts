@@ -222,7 +222,7 @@ export default class PinyinBase {
     let prefixIndex = 0;
     let result: string[][] = [];
     for (let i = 0; i < len; i++) {
-      const twowords = hans.substring(i, i + 2);
+      const twowords: string = hans.substring(i, i + 2);
       if (hasKey(CompoundSurnamePinyinData, twowords)) {
         if (prefixIndex <= i - 1) {
           result = result.concat(

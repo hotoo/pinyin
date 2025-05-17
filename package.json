@@ -1,13 +1,11 @@
 {
   "name": "pinyin",
-  "version": "4.0.0-alpha.2",
+  "version": "4.0.0-alpha.3",
   "description": "汉语拼音转换工具。",
-  "main": "./dist/pinyin.js",
-  "module": "./dist/pinyin.mjs",
-  "browser": {
-    "./dist/pinyin.js": "./lib/pinyin-web.js",
-    "./dist/pinyin.mjs": "./esm/pinyin-web.js"
-  },
+  "types": "./lib/types/pinyin.d.ts",
+  "main": "./lib/cjs/pinyin.js",
+  "module": "./lib/esm/pinyin.js",
+  "browser": "./lib/umd/pinyin.js",
   "bin": {
     "pinyin": "./bin/pinyin"
   },
@@ -23,7 +21,9 @@
   "scripts": {
     "start": "dumi dev",
     "prepublishOnly": "pnpm build",
-    "build": "rollup -c && rollup -c rollup.esm.config.js",
+    "build": "pnpm build:rollup",
+    "build:rollup": "rm -rf lib && rollup -c",
+    "build:tsup": "tsup src/pinyin.ts src/pinyin-web.ts --format cjs,esm --global-name pinyin --dts --out-dir lib",
     "build:tsc": "tsc --downlevelIteration -p tsconfig-es5.json & tsc --downlevelIteration -p tsconfig.json & pnpm build:amd",
     "build:amd": "tsc --downlevelIteration -p tsconfig-amd.json",
     "doc:build": "rm -rf ./.dumi ./docs-dist && dumi build && cp CNAME docs-dist",
@@ -57,6 +57,7 @@
     "@rollup/plugin-commonjs": "^17.1.0",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^11.2.0",
+    "@textea/json-viewer": "^4.0.1",
     "@types/jest": "^27.0.2",
     "@types/node": "^22.15.17",
     "@typescript-eslint/eslint-plugin": "^5.14.0",
@@ -76,7 +77,6 @@
     "nock": "^13.1.4",
     "npx": "^10.2.2",
     "prettier": "^2.6.0",
-    "@textea/json-viewer": "^4.0.1",
     "request": "~2.68.0",
     "rollup": "2.60.0",
     "rollup-plugin-alias": "^2.2.0",
@@ -84,6 +84,7 @@
     "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-typescript2": "^0.34.1",
     "ts-node": "^10.5.0",
+    "tsup": "^8.4.0",
     "typescript": "^4.4.4"
   },
   "registry": "https://registry.npmmirror.com",
@@ -95,7 +96,6 @@
     "build/",
     "bin",
     "data",
-    "dist",
     "lib",
     "esm",
     "amd",
@@ -116,7 +116,9 @@
     "install-node": "^18.0.0"
   },
   "pnpm": {
-    "onlyBuiltDependencies": ["nodejieba"]
+    "onlyBuiltDependencies": [
+      "nodejieba"
+    ]
   },
   "license": "MIT"
 }

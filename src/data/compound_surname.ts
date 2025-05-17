@@ -60,4 +60,4 @@ export default {
   "闾丘": [["lǘ"], ["qiū"]],
   "颛孙": [["zhuān"], ["sūn"]],
   "鲜于": [["xiān"], ["yú"]],
-};
+} as Record<string, string[][]>;

@@ -1,37 +1,57 @@
-import path from "path";
-import json from "@rollup/plugin-json";
-import { terser } from "rollup-plugin-terser";
-import { nodeResolve } from "@rollup/plugin-node-resolve";
-import commonjs from "@rollup/plugin-commonjs"; // commonjs模块转换插件
-import cleanup from "rollup-plugin-cleanup";
-import ts from "rollup-plugin-typescript2";
-import alias from "rollup-plugin-alias";
+import resolve from "@rollup/plugin-node-resolve";
+import commonjs from "@rollup/plugin-commonjs";
+import typescript from "rollup-plugin-typescript2";
+import pkg from "./package.json";
 
-const plugins = [
-  cleanup(),
-  json(),
-  nodeResolve(),
-  ts({
-    tsconfig: path.resolve(__dirname, "./tsconfig.json"), // 导入本地ts配置
-    clean: true,
-    useTsconfigDeclarationDir: true,
-  }),
-  commonjs(),
-  alias({
-    entries: [{ find: "@", replacement: "./src" }],
-  }),
-  terser(),
-];
-
-module.exports = {
-  input: path.resolve("./src/pinyin.ts"),
-  output: [
-    {
-      exports: "auto",
-      file: path.resolve(__dirname, "./dist/pinyin.js"),
-      format: "umd",
-      name: "pinyin",
+export default [
+  // ESM
+  {
+    input: "src/pinyin.ts",
+    output: {
+      file: pkg.module,  // package.json 中 module 字段指定
+      format: "esm",
+      sourcemap: true,
     },
-  ],
-  plugins,
-};
+    plugins: [
+      resolve(),
+      commonjs(),
+      typescript({ useTsconfigDeclarationDir: true }),
+    ],
+    external: Object.keys(pkg.dependencies || {}),
+  },
+
+  // CJS
+  {
+    input: "src/pinyin.ts",
+    output: {
+      file: pkg.main,    // package.json 中 main 字段指定
+      format: "cjs",
+      sourcemap: true,
+      exports: "named",
+    },
+    plugins: [
+      resolve(),
+      commonjs(),
+      typescript({ useTsconfigDeclarationDir: true, clean: true }),
+    ],
+    external: Object.keys(pkg.dependencies || {}),
+  },
+
+  // UMD
+  {
+    input: "src/pinyin.ts",
+    output: {
+      file: pkg.browser, // package.json 中 browser 字段指定
+      format: "umd",
+      name: "pinyin",     // UMD 全局变量名
+      sourcemap: true,
+      exports: "named",
+    },
+    plugins: [
+      resolve(),
+      commonjs(),
+      typescript({ useTsconfigDeclarationDir: false }), // UMD不产声明文件
+    ],
+    external: Object.keys(pkg.dependencies || []),
+  },
+];

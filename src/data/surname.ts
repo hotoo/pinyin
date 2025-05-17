@@ -413,4 +413,4 @@ export default {
   "言": [["yán"]],
   "福": [["fú"]],
   "朴": [["piáo"]],
-};
+} as Record<string, string[][]>;
