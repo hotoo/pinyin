@@ -1,4 +1,4 @@
-# pīnyīn (v3)
+# pīnyīn (v4)
 
 pīnyīn, 한자 병음 전환 툴。
 
@@ -22,7 +22,7 @@ pīnyīn, 한자 병음 전환 툴。
 [lgtm-url]: https://lgtm.com/projects/g/hotoo/pinyin/context:javascript
 
 
-[简体中文](https://pinyin.js.org/api/v3/) | [English](https://pinyin.js.org/en-US/api/v3/) | 한국어
+[简体中文](https://pinyin.js.org/api/v4/) | [English](https://pinyin.js.org/en-US/api/v4/) | 한국어
 
 
 중국어 한자를 병음으로 변경할 수 있습니다. 한자의 발음을 표시하거나, 정렬, 검색할 수 있습니다. 

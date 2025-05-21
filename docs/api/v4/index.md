@@ -6,7 +6,7 @@ nav:
     order: 1
 ---
 
-# pīnyīn (v3)
+# pīnyīn (v4)
 
 pīnyīn, 汉字拼音转换工具。
 
@@ -30,7 +30,7 @@ pīnyīn, 汉字拼音转换工具。
 [lgtm-url]: https://lgtm.com/projects/g/hotoo/pinyin/context:javascript
 
 
-简体中文 | [English](https://pinyin.js.org/en-US/api/v3/) | [한국어](https://pinyin.js.org/ko-KR/api/v3/)
+简体中文 | [English](https://pinyin.js.org/en-US/api/v4/) | [한국어](https://pinyin.js.org/ko-KR/api/v4/)
 
 
 转换中文字符为拼音。可以用于汉字注音、排序、检索。

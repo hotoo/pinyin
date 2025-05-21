@@ -30,9 +30,7 @@ pīnyīn, 汉字拼音转换工具。
 [lgtm-url]: https://lgtm.com/projects/g/hotoo/pinyin/context:javascript
 
 
-Web Site: 简体中文 | [English](/en-US/v2/)
-
-GitHub: 简体中文 | [English](/docs/v2/index.en-US.md)
+简体中文 | [English](https://pinyin.js.org/en-US/api/v2/)
 
 
 转换中文字符为拼音。可以用于汉字注音、排序、检索。

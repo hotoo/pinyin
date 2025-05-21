@@ -31,23 +31,28 @@ export default defineConfig({
     nav: {
       'zh-CN': [
         { title: '首页', link: '/' },
-        { title: 'API文档', link: '/api/v3/' },
+        { title: 'API文档', link: '/api/v4/' },
         { title: '演示文档', link: '/example/' },
         { title: '更新历史', link: '/CHANGELOG/' },
       ],
       'en-US': [
         { title: 'Home', link: '/en-US/' },
-        { title: 'API', link: '/en-US/api/v3/' },
+        { title: 'API', link: '/en-US/api/v4/' },
         { title: 'Example', link: '/en-US/example/' },
         { title: 'CHANGELOG', link: '/CHANGELOG/' },
       ],
       'ko-KR': [
         { title: 'Home', link: '/ko-KR/' },
-        { title: 'API', link: '/ko-KR/api/v3/' },
+        { title: 'API', link: '/ko-KR/api/v4/' },
         { title: 'Example', link: '/ko-KR/example/' },
         { title: 'CHANGELOG', link: '/CHANGELOG/' },
       ],
     },
+    prefersColor: { default: 'auto' },
+    socialLinks: {
+      github: 'https://github.com/hotoo/pinyin',
+    },
+    footer: `Open-source <a href="http://hotoo.mit-license.org/" target="_blank">MIT</a> Licensed | Copyright © 2019-${new Date().getFullYear()}`,
   },
   // resolve: {
   //   includes: ['.'],
