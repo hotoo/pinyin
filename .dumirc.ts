@@ -31,19 +31,37 @@ export default defineConfig({
     nav: {
       'zh-CN': [
         { title: '首页', link: '/' },
-        { title: 'API文档', link: '/api/v4/' },
+        { title: 'API文档', link: '/api/v4/',
+          children: [
+            { title: 'v4', link: '/api/v4/' },
+            { title: 'v3', link: '/api/v3/' },
+            { title: 'v2', link: '/api/v2/' },
+          ],
+        },
         { title: '演示文档', link: '/example/' },
         { title: '更新历史', link: '/CHANGELOG/' },
       ],
       'en-US': [
         { title: 'Home', link: '/en-US/' },
-        { title: 'API', link: '/en-US/api/v4/' },
+        { title: 'API', link: '/en-US/api/v4/',
+          children: [
+            { title: 'v4', link: '/en-US/api/v4/' },
+            { title: 'v3', link: '/en-US/api/v3/' },
+            { title: 'v2', link: '/en-US/api/v2/' },
+          ],
+        },
         { title: 'Example', link: '/en-US/example/' },
         { title: 'CHANGELOG', link: '/CHANGELOG/' },
       ],
       'ko-KR': [
         { title: 'Home', link: '/ko-KR/' },
-        { title: 'API', link: '/ko-KR/api/v4/' },
+        { title: 'API', link: '/ko-KR/api/v4/',
+          children: [
+            { title: 'v4', link: '/ko-KR/api/v4/' },
+            { title: 'v3', link: '/ko-KR/api/v3/' },
+            { title: 'v2', link: '/ko-KR/api/v2/' },
+          ],
+        },
         { title: 'Example', link: '/ko-KR/example/' },
         { title: 'CHANGELOG', link: '/CHANGELOG/' },
       ],

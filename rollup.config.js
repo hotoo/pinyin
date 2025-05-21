@@ -38,8 +38,24 @@ export default [
   },
 
   // UMD
+  // {
+  //   input: "src/pinyin.ts",
+  //   output: {
+  //     file: pkg.browser, // package.json 中 browser 字段指定
+  //     format: "umd",
+  //     name: "pinyin",     // UMD 全局变量名
+  //     sourcemap: true,
+  //     exports: "named",
+  //   },
+  //   plugins: [
+  //     resolve(),
+  //     commonjs(),
+  //     typescript({ useTsconfigDeclarationDir: false }), // UMD不产声明文件
+  //   ],
+  //   external: Object.keys(pkg.dependencies || []),
+  // },
   {
-    input: "src/pinyin.ts",
+    input: "src/pinyin-web.ts",
     output: {
       file: pkg.browser, // package.json 中 browser 字段指定
       format: "umd",
