@@ -52,7 +52,7 @@ npm install pinyin --save
 개발자：
 
 ```typescript
-import pinyin from "pinyin";
+import { pinyin } from "pinyin";
 
 console.log(pinyin("中心"));    // [ [ 'zhōng' ], [ 'xīn' ] ]
 
