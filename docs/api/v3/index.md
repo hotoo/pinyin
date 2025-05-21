@@ -309,7 +309,7 @@ npm test
 
 如果你坚持在客户端使用，你可以考虑使用 [Webpack](http://webpack.github.io/) + [Babel](http://babeljs.io/) 来转换成低端浏览器的可执行代码。
 
-实在不想折腾，可以试试 https://github.com/hotoo/pinyin/tree/gh-pages/dist
+实在不想折腾，可以试试 https://www.jsdelivr.com/package/npm/pinyin
 
 ### 为什么没有 `y`, `w`, `yu` 几个声母？
 

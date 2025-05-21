@@ -293,7 +293,7 @@ npm test
 
 만약 클라이언트단에서 사용하기로 했다면, [Webpack](http://webpack.github.io/) + [Babel](http://babeljs.io/)을 이용하여 번들링 할 수 있다.
 
-고민하고 싶지 않다면 여기서 테스트 해볼 수 있다. https://github.com/hotoo/pinyin/tree/gh-pages/dist
+고민하고 싶지 않다면 여기서 테스트 해볼 수 있다. https://www.jsdelivr.com/package/npm/pinyin
 
 ### 왜 `y`, `w`, `yu` 일부 성모가 없나요？
 
