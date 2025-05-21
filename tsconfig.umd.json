@@ -1,0 +1,11 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "resolveJsonModule": false,
+    "module": "umd",
+    "target": "es5",
+    "outDir": "dist/umd",
+    "library": "pinyin", 
+     "declaration": true
+  }
+}

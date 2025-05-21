@@ -2,10 +2,15 @@
   "name": "pinyin",
   "version": "4.0.0-alpha.3",
   "description": "汉语拼音转换工具。",
+  "type": "module",
   "types": "./lib/types/pinyin.d.ts",
   "main": "./lib/cjs/pinyin.js",
   "module": "./lib/esm/pinyin.js",
   "browser": "./lib/umd/pinyin.js",
+  "exports": {
+    "require": "./lib/cjs/pinyin.js",
+    "import": "./lib/esm/pinyin.js"
+  },
   "bin": {
     "pinyin": "./bin/pinyin"
   },
@@ -21,9 +26,15 @@
   "scripts": {
     "start": "dumi dev",
     "prepublishOnly": "pnpm build",
-    "build": "pnpm build:rollup",
-    "build:rollup": "rm -rf lib && rollup -c",
-    "build:tsup": "tsup src/pinyin.ts src/pinyin-web.ts --format cjs,esm --global-name pinyin --dts --out-dir lib",
+
+    "build:cjs": "rm -rf dist/cjs && tsc --downlevelIteration -p tsconfig.cjs.json",
+    "build:esm": "rm -rf dist/esm && tsc --downlevelIteration -p tsconfig.esm.json",
+    "build:umd": "rm -rf dist/umd && tsc --downlevelIteration -p tsconfig.umd.json",
+    "build": "rm -rf dist && pnpm build:cjs & pnpm build:esm & pnpm build:umd",
+
+    "build2": "pnpm build:rollup",
+    "build:rollup": "rm -rf lib && rollup -c && rollup -c rollup.esm.config.js",
+    "build:tsup": "rm -rf lib && tsup src/pinyin.ts src/pinyin-web.ts --format cjs,esm --global-name pinyin --dts --out-dir lib",
     "build:tsc": "tsc --downlevelIteration -p tsconfig-es5.json & tsc --downlevelIteration -p tsconfig.json & pnpm build:amd",
     "build:amd": "tsc --downlevelIteration -p tsconfig-amd.json",
     "doc:build": "rm -rf ./.dumi ./docs-dist && dumi build && cp CNAME docs-dist",
