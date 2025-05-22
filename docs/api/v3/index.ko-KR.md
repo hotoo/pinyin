@@ -7,7 +7,6 @@ pīnyīn, 한자 병음 전환 툴。
 [![NPM version][npm-badge]][npm-url]
 [![Build Status][build-badge]][build-url]
 [![Coverage Status][coveralls-badge]][coveralls-url]
-[![Language Grade: JavaScript][lgtm-badge]][lgtm-url]
 [![NPM downloads][npm-downloads]][npm-url]
 
 
@@ -18,8 +17,6 @@ pīnyīn, 한자 병음 전환 툴。
 [build-url]: https://github.com/hotoo/pinyin/actions
 [coveralls-badge]: https://coveralls.io/repos/hotoo/pinyin/badge.svg?branch=master
 [coveralls-url]: https://coveralls.io/r/hotoo/pinyin
-[lgtm-badge]: https://img.shields.io/lgtm/grade/javascript/g/hotoo/pinyin.svg?logo=lgtm&logoWidth=18
-[lgtm-url]: https://lgtm.com/projects/g/hotoo/pinyin/context:javascript
 
 
 [简体中文](https://pinyin.js.org/api/v3/) | [English](https://pinyin.js.org/en-US/api/v3/) | 한국어
