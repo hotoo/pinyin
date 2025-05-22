@@ -284,6 +284,7 @@ export default class PinyinBase {
   compact(pys: string[][]): string[][] {
     return compact(pys);
   }
+
 }
 
 export function getPinyinInstance(py: PinyinBase) {
