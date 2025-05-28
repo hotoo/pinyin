@@ -18,10 +18,10 @@ import { defineConfig } from 'dumi';
 export default defineConfig({
   title: 'pīnyīn',
   favicons: [
+    '/favicon.png',
     'https://gw.alipayobjects.com/mdn/rms_f6322a/afts/img/A*VqPXS4ODZTMAAAAAAAAAAAAAARQnAQ',
   ],
-  logo:
-    'https://gw.alipayobjects.com/mdn/rms_f6322a/afts/img/A*bGz9QbNudekAAAAAAAAAAAAAARQnAQ',
+  logo: '/logo.png',
   outputPath: 'docs-dist',
   // mode: 'doc',
   exportStatic: {},
@@ -38,7 +38,11 @@ export default defineConfig({
             { title: 'v2', link: '/api/v2/' },
           ],
         },
-        { title: '演示文档', link: '/example/' },
+        { title: '演示文档', link: '/example/',
+          children: [
+            { title: '拼音表', link: '/pinyin-table' },
+          ],
+        },
         { title: '更新历史', link: '/CHANGELOG/' },
       ],
       'en-US': [
@@ -50,7 +54,11 @@ export default defineConfig({
             { title: 'v2', link: '/en-US/api/v2/' },
           ],
         },
-        { title: 'Example', link: '/en-US/example/' },
+        { title: 'Example', link: '/en-US/example/',
+          children: [
+            { title: 'Pinyin Table', link: '/pinyin-table' },
+          ],
+        },
         { title: 'CHANGELOG', link: '/CHANGELOG/' },
       ],
       'ko-KR': [
@@ -62,7 +70,12 @@ export default defineConfig({
             { title: 'v2', link: '/ko-KR/api/v2/' },
           ],
         },
-        { title: 'Example', link: '/ko-KR/example/' },
+        {
+          title: 'Example', link: '/ko-KR/example/',
+          children: [
+            { title: 'Pinyin Table', link: '/pinyin-table' },
+          ],
+        },
         { title: 'CHANGELOG', link: '/CHANGELOG/' },
       ],
     },
@@ -83,6 +96,9 @@ export default defineConfig({
   // Because of using GitHub Pages
   base: '/',
   publicPath: '/',
+  copy: [
+    'CNAME', 'public',
+  ],
   // alias,
   mfsu: {
     esbuild: true,
