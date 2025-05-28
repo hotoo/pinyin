@@ -1,0 +1,126 @@
+
+* {
+    box-sizing: border-box;
+}
+h1 {
+    font-size: 55px;
+}
+
+.container {
+    max-width: 1170px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.top-wrapper {
+    padding: 90px 0 50px 0;
+    /* background-image: url(./image/chinese-background.jpg); */
+    background-size: cover;
+    color: white;
+    text-align: center;
+    opacity: 0.7;
+}
+
+.top-wrapper p {
+    margin: 0;
+}
+
+.tablewrapper {
+    overflow: scroll;
+    -webkit-overflow-scrolling: touch;
+    overflow-scrolling: touch;
+}
+
+table,
+td,
+th {
+    border: 1px solid #eee !important;
+    border-collapse: collapse;
+    text-align: center;
+    font-size: 12px!important;
+    /*謾ｹ陦後＆縺帙↑縺�*/
+    white-space: nowrap;
+}
+
+td,
+th {
+    padding: 3px!important;
+    width: 30px!important;
+    height: 25px!important;
+}
+
+th {
+    background: #f0e6cc;
+    font-weight: normal;
+}
+
+.even {
+    background: #fbf8f0;
+}
+
+.odd {
+    background: #fefcf9;
+}
+
+.light_green {
+    color: #777;
+    background-color: #f6f6f6;
+    /* background-color: #CEF6CE; */
+}
+
+.pink {
+    background-color: #F8E0F1;
+}
+
+.orange {
+    background-color: #F5D0A9;
+}
+
+.blue {
+    background-color: #CED8F6;
+}
+
+.yellow {
+    background-color: #F5F6CE;
+}
+
+.purple {
+    background-color: #E3CEF6;
+}
+
+.emerald {
+    background-color: #A9F5E1;
+}
+
+.pink,
+.orange,
+.blue,
+.yellow,
+.purple,
+.emerald {
+    opacity: 0.4;
+}
+
+.pinyin_audio {
+    opacity: 1.0;
+    cursor: pointer;
+    box-shadow: inset -0px -1px 1px -0px rgba(0, 0, 0, 0.2);
+    /* box-shadow: inset -1px -2px 2px 1px rgba(0, 0, 0, 0.4); */
+}
+
+
+.loading-audio {
+    box-shadow: inset 1px 1px 1px 0px rgba(0, 0, 0, 0.2);
+}
+
+.playing-audio {
+    box-shadow: inset 1px 1px 1px 0px rgba(0, 0, 0, 0.2);
+    color: red;
+}
+
+
+
+#loader {
+    display: none;
+    pointer-events: none
+}

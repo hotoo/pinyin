@@ -1,6 +1,10 @@
 # 演示文档
 
 ```jsx
+/**
+ * inline: true
+ */
+
 import React, { useState, useEffect } from 'react';
 import { pinyin } from '../lib/umd/pinyin';
 import { JsonViewer } from '@textea/json-viewer';
