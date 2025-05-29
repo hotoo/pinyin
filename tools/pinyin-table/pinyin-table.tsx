@@ -5,7 +5,13 @@ import React, { useState, useEffect, useRef } from "react";
 import { PinyinTableProvider, usePinyinTable } from "./context";
 import "./pinyin-table.css";
 
-function PinyinCell({ className, pinyin, children }) {
+interface PinyinCellProps {
+  className?: string;
+  pinyin?: string;
+  children?: React.ReactNode;
+}
+
+function PinyinCell({ className, pinyin, children }: PinyinCellProps) {
   const { playingPinyin, handlePlay } = usePinyinTable();
   const CLS = `pinyin_audio ${className}`;
   const [cls, setCls] = useState(CLS);
@@ -52,8 +58,8 @@ export default function PinyinTable() {
       <table>
         <thead>
           <tr>
-            <th className="light_green "></th>
-            <th className="light_green " colSpan="18">无介母音</th>
+            <th className="light_green ">声母</th>
+            <th className="light_green " colSpan="18">韵母</th>
             <th className="light_green " colSpan="9">介母音i</th>
             <th className="light_green " colSpan="8">介母音u</th>
             <th className="light_green " colSpan="3">介母音ü</th>
@@ -112,11 +118,11 @@ export default function PinyinTable() {
             <PinyinCell className="pink">wu</PinyinCell>
             <PinyinCell className="pink">yu</PinyinCell>
             <PinyinCell className="pink">er</PinyinCell>
-            <PinyinCell className="pink">ai</PinyinCell>
-            <PinyinCell className="pink">ei</PinyinCell>
-            <PinyinCell className="pink">ao</PinyinCell>
-            <PinyinCell className="pink">ou</PinyinCell>
-            <PinyinCell className="pink">an</PinyinCell>
+            <PinyinCell className="orange">ai</PinyinCell>
+            <PinyinCell className="orange">ei</PinyinCell>
+            <PinyinCell className="orange">ao</PinyinCell>
+            <PinyinCell className="orange">ou</PinyinCell>
+            <PinyinCell className="blue">an</PinyinCell>
             <PinyinCell className="blue ">en</PinyinCell>
             <PinyinCell className="blue ">ang</PinyinCell>
             <PinyinCell className="blue ">eng</PinyinCell>

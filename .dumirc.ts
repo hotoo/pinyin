@@ -38,12 +38,8 @@ export default defineConfig({
             { title: 'v2', link: '/api/v2/' },
           ],
         },
-        { title: '演示文档', link: '/example/',
-          children: [
-            { title: '拼音表', link: '/pinyin-table' },
-          ],
-        },
-        { title: '更新历史', link: '/CHANGELOG/' },
+        { title: '演示文档', link: '/example/' },
+        { title: '拼音表', link: '/pinyin-table' },
       ],
       'en-US': [
         { title: 'Home', link: '/en-US/' },
@@ -54,12 +50,8 @@ export default defineConfig({
             { title: 'v2', link: '/en-US/api/v2/' },
           ],
         },
-        { title: 'Example', link: '/en-US/example/',
-          children: [
-            { title: 'Pinyin Table', link: '/pinyin-table' },
-          ],
-        },
-        { title: 'CHANGELOG', link: '/CHANGELOG/' },
+        { title: 'Example', link: '/en-US/example/' },
+        { title: 'Pinyin Table', link: '/pinyin-table' },
       ],
       'ko-KR': [
         { title: 'Home', link: '/ko-KR/' },
@@ -70,13 +62,8 @@ export default defineConfig({
             { title: 'v2', link: '/ko-KR/api/v2/' },
           ],
         },
-        {
-          title: 'Example', link: '/ko-KR/example/',
-          children: [
-            { title: 'Pinyin Table', link: '/pinyin-table' },
-          ],
-        },
-        { title: 'CHANGELOG', link: '/CHANGELOG/' },
+        { title: 'Example', link: '/ko-KR/example/' },
+        { title: 'Pinyin Table', link: '/pinyin-table' },
       ],
     },
     prefersColor: { default: 'auto' },
