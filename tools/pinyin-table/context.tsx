@@ -8,7 +8,6 @@ export function PinyinTableProvider({ children }) {
   // 切换播放状态
   const handlePlay = (pinyin: string) => {
     setPlayingPinyin(pinyin);
-    // setPlayingPinyin((prevId) => (prevId === id ? null : id));
   };
 
   return (
