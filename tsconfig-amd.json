@@ -1,7 +1,7 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "outFile": "./amd/pinyin.js",
+    "outDir": "./dist/amd/",
     "module": "amd",
     "target": "ES5"
   }
