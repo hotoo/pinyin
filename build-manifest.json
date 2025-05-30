@@ -411,12 +411,12 @@
     "public/audio/zui.mp3": "/audio/zui.mp3",
     "public/audio/zuo.mp3": "/audio/zuo.mp3",
     "umi.css": "/umi.b45b6443.css",
-    "umi.js": "/umi.9dc0cfda.js",
+    "umi.js": "/umi.377ca583.js",
     "meta__docs__en-US.js": "/meta__docs__en-US.9509f8b5.async.js",
     "meta__docs__ko-KR.js": "/meta__docs__ko-KR.1883260b.async.js",
     "meta__docs.js": "/meta__docs.62be063a.async.js",
     "nm__dumi__dist__client__pages__404.js": "/nm__dumi__dist__client__pages__404.a9fa1494.async.js",
-    "dumi__tmp-production__dumi__theme__ContextWrapper.js": "/dumi__tmp-production__dumi__theme__ContextWrapper.454a79f4.async.js",
+    "dumi__tmp-production__dumi__theme__ContextWrapper.js": "/dumi__tmp-production__dumi__theme__ContextWrapper.9cd5573f.async.js",
     "nm__dumi__theme-default__layouts__DocLayout__index.js": "/nm__dumi__theme-default__layouts__DocLayout__index.07e24147.async.js",
     "docs__api__v2__index.en-US.md.js": "/docs__api__v2__index.en-US.md.8686c80a.async.js",
     "docs__api__v2__index.ko-KR.md.js": "/docs__api__v2__index.ko-KR.md.5dbbffe3.async.js",
@@ -438,6 +438,6 @@
     "docs__EXAMPLE.md.js": "/docs__EXAMPLE.md.14074e40.async.js",
     "docs__index.md.js": "/docs__index.md.71ad44d7.async.js",
     "nm__dumi__dist__client__pages__Demo__index.js": "/nm__dumi__dist__client__pages__Demo__index.639ced33.async.js",
-    "demos.js": "/demos.e261ac3b.async.js"
+    "demos.js": "/demos.dccd8481.async.js"
   }
 }
