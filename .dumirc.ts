@@ -18,8 +18,8 @@ import { defineConfig } from 'dumi';
 export default defineConfig({
   title: 'pīnyīn',
   favicons: [
-    '/favicon.png',
     'https://gw.alipayobjects.com/mdn/rms_f6322a/afts/img/A*VqPXS4ODZTMAAAAAAAAAAAAAARQnAQ',
+    '/favicon.png',
   ],
   logo: '/logo.png',
   outputPath: 'docs-dist',
@@ -28,6 +28,10 @@ export default defineConfig({
   ssr: { mode: 'stream' },
   hash: true,
   themeConfig: {
+    metas: [
+      { name: 'keywords', content: 'pinyin, 拼音, 中文, 汉字, 中国' },
+      { name: 'description', content: 'pinyin, 中文汉字拼音解决方案' },
+    ],
     nav: {
       'zh-CN': [
         { title: '首页', link: '/' },
@@ -39,7 +43,7 @@ export default defineConfig({
           ],
         },
         { title: '演示文档', link: '/example/' },
-        { title: '拼音表', link: '/pinyin-table' },
+        { title: '👂🏼拼音表', link: '/pinyin-table' },
       ],
       'en-US': [
         { title: 'Home', link: '/en-US/' },
@@ -70,7 +74,7 @@ export default defineConfig({
     socialLinks: {
       github: 'https://github.com/hotoo/pinyin',
     },
-    footer: `Open-source <a href="http://hotoo.mit-license.org/" target="_blank">MIT</a> Licensed | Copyright © 2019-${new Date().getFullYear()}`,
+    footer: `<div class="footer">Open-source <a href="http://hotoo.mit-license.org/" target="_blank">MIT</a> Licensed | Copyright © 2010-${new Date().getFullYear()}</div>`,
   },
   // resolve: {
   //   includes: ['.'],
