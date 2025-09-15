@@ -43,3 +43,4 @@ yarn.lock
 .dumi/
 docs-dist/
 server/
+doc_build/

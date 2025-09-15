@@ -55,7 +55,8 @@ function PinyinCell({ className, pinyin, children }: PinyinCellProps) {
 export default function PinyinTable() {
   return (
     <PinyinTableProvider>
-      <table>
+      <div className="tablewrapper">
+      <table className="pinyin-table">
         <thead>
           <tr>
             <th className="light_green ">声母</th>
@@ -1011,6 +1012,7 @@ export default function PinyinTable() {
           </tr>
         </tbody>
       </table>
+      </div>
     </PinyinTableProvider>
   );
 };
