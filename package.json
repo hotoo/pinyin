@@ -20,8 +20,9 @@
   },
   "scripts": {
     "dev": "rspress dev",
-    "doc:build": "rm -rf ./.dumi ./docs-dist && dumi build",
+    "doc:build": "rm -rf ./doc_build && rspress build",
     "doc:preview": "rspress preview",
+    "doc:build:dumi": "rm -rf ./.dumi ./docs-dist && dumi build",
     "start": "rspress dev",
     "prepublishOnly": "pnpm build",
     "build": "pnpm build:rollup",

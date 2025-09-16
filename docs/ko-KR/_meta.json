@@ -6,7 +6,7 @@
     "position": "left"
   },
   {
-    "text": "API",
+    "text": "🛠️ API",
     "link": "/api/v4/",
     "activeMatch": "^/(?:en-US/|ko-KR/|zh-TW/)?api/",
     "position": "left",
@@ -26,13 +26,13 @@
     ]
   },
   {
-    "text": "데모",
+    "text": "✏️ 데모",
     "link": "/example/",
     "activeMatch": "^/(?:en-US/|ko-KR/|zh-TW/)?example/",
     "position": "left"
   },
   {
-    "text": "병음표",
+    "text": "🥁 병음표",
     "link": "/pinyin-table/",
     "activeMatch": "^/(?:en-US/|ko-KR/|zh-TW/)?pinyin-table/",
     "position": "left"
