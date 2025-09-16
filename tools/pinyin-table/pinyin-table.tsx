@@ -76,7 +76,6 @@ export default function PinyinTable(props: IPinyinTableProps) {
 
   return (
     <PinyinTableProvider>
-      <div className="tablewrapper">
       <table className="pinyin-table">
         <thead>
           <tr>
@@ -1033,7 +1032,6 @@ export default function PinyinTable(props: IPinyinTableProps) {
           </tr>
         </tbody>
       </table>
-      </div>
     </PinyinTableProvider>
   );
 };

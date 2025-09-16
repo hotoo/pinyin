@@ -26,16 +26,22 @@ h1 {
 }
 
 .tablewrapper {
-    -webkit-overflow-scrolling: touch;
-    overflow-scrolling: touch;
     overflow: visible;
     padding-right: 50px;
     margin-right: 50px;
 }
 
 table.pinyin-table {
+    -webkit-overflow-scrolling: touch;
+    overflow-scrolling: touch;
     overflow: visible;
     margin-right: 20px;
+}
+
+@media screen and (min-width: 1280px) {
+    table.pinyin-table {
+        margin-left: -200px;
+    }
 }
 
 table,
