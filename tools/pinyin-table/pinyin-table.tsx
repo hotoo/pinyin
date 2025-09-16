@@ -11,6 +11,18 @@ interface PinyinCellProps {
   children?: React.ReactNode;
 }
 
+interface IPinyinTableI18n {
+  initials?: string;
+  finals?: string;
+  medial_vowels_i?: string;
+  medial_vowels_u?: string;
+  medial_vowels_v?: string;
+}
+
+interface IPinyinTableProps {
+  i18n?: IPinyinTableI18n;
+}
+
 function PinyinCell({ className, pinyin, children }: PinyinCellProps) {
   const { playingPinyin, handlePlay } = usePinyinTable();
   const CLS = `pinyin_audio ${className}`;
@@ -52,17 +64,26 @@ function PinyinCell({ className, pinyin, children }: PinyinCellProps) {
   );
 }
 
-export default function PinyinTable() {
+export default function PinyinTable(props: IPinyinTableProps) {
+  const defaultI18n: IPinyinTableI18n = {
+    initials: "声母",
+    finals: "韵母",
+    medial_vowels_i: "介母音 (i)",
+    medial_vowels_u: "介母音 (u)",
+    medial_vowels_v: "介母音 (ü)",
+  };
+  const i18n = props.i18n ? { ...defaultI18n, ...props.i18n } : defaultI18n;
+
   return (
     <PinyinTableProvider>
-      <table>
+      <table className="pinyin-table">
         <thead>
           <tr>
-            <th className="light_green ">声母</th>
-            <th className="light_green " colSpan="18">韵母</th>
-            <th className="light_green " colSpan="9">介母音i</th>
-            <th className="light_green " colSpan="8">介母音u</th>
-            <th className="light_green " colSpan="3">介母音ü</th>
+            <th className="light_green ">{i18n.initials}</th>
+            <th className="light_green " colSpan="18">{i18n.finals}</th>
+            <th className="light_green " colSpan="9">{i18n.medial_vowels_i}</th>
+            <th className="light_green " colSpan="8">{i18n.medial_vowels_u}</th>
+            <th className="light_green " colSpan="3">{i18n.medial_vowels_v}</th>
           </tr>
           <tr>
             <th className="light_green "></th>

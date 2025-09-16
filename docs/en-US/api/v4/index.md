@@ -1,4 +1,4 @@
-# pīnyīn (v3)
+# pīnyīn (v4)
 
 pinyin, The convert tool of chinese pinyin.
 

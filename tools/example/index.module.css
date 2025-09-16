@@ -1,0 +1,27 @@
+textarea.example, pre.example {
+  width: 99%;
+  height: 100px;
+  border: 1px solid #eee;
+  padding: 10px;
+}
+label.example {
+  margin-left: 4px;
+  margin-right: 16px;
+}
+pre.example {
+  /* background-color: #fcfcfc; */
+}
+.options-box {
+  border: 1px solid #eee;
+  border-radius: 4px;
+  /* background: #fcfcfc; */
+  padding: 8px;
+}
+.options-line {
+  padding: 8px 0;
+}
+.json-view {
+  border: 1px solid #eee;
+  padding: 8px;
+  background-color: #fcfcfc;
+}
