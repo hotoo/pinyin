@@ -22,8 +22,7 @@ jobs:
         run: pnpm install
       - name: Build project
         run: pnpm build
-      - name: Build with dumi
-        # 文档编译命令，如果是 react 模板需要修改为 npm run docs:build
+      - name: Build document with rspress
         run: pnpm doc:build
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
