@@ -29,12 +29,12 @@ export default defineConfig({
       title: "汉字拼音",
       description: "汉字拼音",
     },
-    // {
-    //   lang: "zh-TW",
-    //   label: "繁體中文",
-    //   title: "漢字拼音",
-    //   description: "漢字拼音",
-    // },
+    {
+      lang: "zh-TW",
+      label: "繁體中文",
+      title: "漢字拼音",
+      description: "漢字拼音",
+    },
     {
       lang: "en-US",
       label: "English",
@@ -55,11 +55,11 @@ export default defineConfig({
         label: "简体中文",
         outlineTitle: "大纲",
       },
-      // {
-      //   lang: "zh-TW",
-      //   label: "繁體中文",
-      //   outlineTitle: "大綱",
-      // },
+      {
+        lang: "zh-TW",
+        label: "繁體中文",
+        outlineTitle: "大綱",
+      },
       {
         lang: "en-US",
         label: "English",
