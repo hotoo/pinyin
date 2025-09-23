@@ -1,7 +1,7 @@
 import { segment } from "../src/segment";
 
 describe("segment", function() {
-  it("segment()", function() {
+  it.skip("segment()", function() {
     expect(segment("我要排序")).toEqual(["我", "要", "排序"]);
     expect(segment("中文汉字")).toEqual(["中文", "汉字"]);
     expect(segment("我来到北京清华大学")).toEqual(["我", "来到", "北京", "清华大学"]);

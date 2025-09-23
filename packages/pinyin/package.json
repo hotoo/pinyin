@@ -35,14 +35,10 @@
   },
   "peerDependencies": {
     "@node-rs/jieba": "^1.6.0",
-    "nodejieba": "^3.4.4",
     "segmentit": "^2.0.3"
   },
   "peerDependenciesMeta": {
     "@node-rs/jieba": {
-      "optional": true
-    },
-    "nodejieba": {
       "optional": true
     },
     "segmentit": {
@@ -110,11 +106,6 @@
   },
   "engines": {
     "install-node": "^18.0.0"
-  },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "nodejieba"
-    ]
   },
   "license": "MIT"
 }

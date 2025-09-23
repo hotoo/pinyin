@@ -30,7 +30,7 @@ if (commander.args.length === 0) {
   commander.help();
 }
 
-var pinyin = require("../").default;
+var pinyin = require("pinyin").default;
 var options = {
   style: commander.style || "TONE",
   mode: commander.mode || "NORMAL",

@@ -1,0 +1,61 @@
+{
+  "name": "pinyin-cli",
+  "version": "4.0.0",
+  "description": "汉语拼音转换命令行工具。",
+  "bin": {
+    "pinyin": "./bin/pinyin"
+  },
+  "homepage": "https://pinyin.js.org/cli",
+  "author": "闲耘 <hotoo.cn@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hotoo/pinyin.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hotoo/pinyin/issues"
+  },
+  "scripts": {
+    "lint": "eslint ./src/ ./test/",
+    "test": "jest --coverage"
+  },
+  "dependencies": {
+    "commander": "~1.1.1",
+    "pinyin": "workspace:^"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.15.6",
+    "@babel/preset-typescript": "^7.15.0",
+    "@rollup/plugin-commonjs": "^17.1.0",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^11.2.0",
+    "@types/jest": "^27.0.2",
+    "@types/node": "^22.15.17",
+    "@typescript-eslint/eslint-plugin": "^5.14.0",
+    "@typescript-eslint/parser": "^5.14.0",
+    "eslint": "^8.11.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-import-resolver-typescript": "^2.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "jest": "^27.2.3",
+    "npx": "^10.2.2",
+    "prettier": "^2.6.0",
+    "ts-node": "^10.5.0",
+    "typescript": "^4.4.4"
+  },
+  "registry": "https://registry.npmmirror.com",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "files": [
+    "package.json",
+    "bin"
+  ],
+  "keywords": [
+    "拼音",
+    "汉语",
+    "汉字",
+    "中文",
+    "Pinyin"
+  ],
+  "license": "MIT"
+}
