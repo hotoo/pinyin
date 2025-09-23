@@ -1,0 +1,25 @@
+{
+  "name": "pinyin-website",
+  "private": true,
+  "scripts": {
+    "start": "rspress dev",
+    "dev": "rspress dev",
+    "build": "rm -rf ./doc_build && rspress build",
+    "preview": "rspress preview",
+    "doc:build": "pnpm build",
+    "doc:preview": "pnpm preview"
+  },
+  "dependencies": {
+    "pinyin": "workspace:^",
+    "@textea/json-viewer": "^4.0.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@rsbuild/plugin-sass": "^1.4.0",
+    "rsbuild-plugin-google-analytics": "^1.0.4",
+    "rspress": "^1.45.5",
+    "rspress-plugin-sitemap": "^1.2.1",
+    "gh-pages": "^3.2.3"
+  }
+}

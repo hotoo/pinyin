@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { pinyin } from "../../lib/umd/pinyin";
+// import { pinyin } from "../../lib/umd/pinyin";
+import { pinyin } from "pinyin";
 import { JsonViewer } from "@textea/json-viewer";
 import styles from "./index.module.css";
 
