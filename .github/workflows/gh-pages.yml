@@ -2,6 +2,9 @@ name: github pages
 
 on:
   push:
+    paths:
+      - 'apps/website/**'
+      - '.github/workflows/gh-pages.yml'
     branches:
       - master # default branch
 
