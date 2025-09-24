@@ -15,7 +15,7 @@
     "url": "https://github.com/hotoo/pinyin/issues"
   },
   "scripts": {
-    "lint": "eslint ./src/ ./test/",
+    "lint": "eslint ./test/",
     "test": "jest --coverage"
   },
   "dependencies": {
