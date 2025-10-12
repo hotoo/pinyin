@@ -26,6 +26,12 @@
     ]
   },
   {
+    "text": "🪛 명령줄",
+    "link": "/cli/",
+    "activeMatch": "^/(?:en-US/|ko-KR/|zh-TW/)?cli/",
+    "position": "left"
+  },
+  {
     "text": "✏️ 데모",
     "link": "/example/",
     "activeMatch": "^/(?:en-US/|ko-KR/|zh-TW/)?example/",

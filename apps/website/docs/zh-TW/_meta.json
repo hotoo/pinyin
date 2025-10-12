@@ -26,6 +26,12 @@
     ]
   },
   {
+    "text": "🪛 命令行",
+    "link": "/cli/",
+    "activeMatch": "^/(?:en-US/|ko-KR/|zh-TW/)?cli/",
+    "position": "left"
+  },
+  {
     "text": "✏️ 演示",
     "link": "/example/",
     "activeMatch": "^/(?:en-US/|ko-KR/|zh-TW/)?example/",

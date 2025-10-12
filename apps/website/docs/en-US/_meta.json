@@ -26,6 +26,12 @@
     ]
   },
   {
+    "text": "🪛 CLI",
+    "link": "/cli/",
+    "activeMatch": "^/(?:en-US/|ko-KR/|zh-TW/)?cli/",
+    "position": "left"
+  },
+  {
     "text": "✏️ EXAMPLE",
     "link": "/example/",
     "activeMatch": "^/(?:en-US/|ko-KR/|zh-TW/)?example/",

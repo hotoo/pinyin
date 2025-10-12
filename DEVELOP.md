@@ -13,3 +13,18 @@ This monorepo use by TypeScript, [turbo](https://turborepo.com/) and [pnpm](http
 ```bash
 pnpm i
 ```
+
+## Lint
+
+```bash
+turbo lint
+```
+
+## Test
+
+```bash
+turbo test
+```
+
+## Publish
+
