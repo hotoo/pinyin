@@ -1,4 +1,7 @@
-pinyin 命令行界面 (command line interface)。
+---
+sidebar: false
+---
+
 # pinyin cli
 
 pinyin 명령줄 인터페이스(command line interface)입니다.

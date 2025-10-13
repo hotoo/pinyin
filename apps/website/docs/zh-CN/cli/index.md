@@ -1,3 +1,7 @@
+---
+sidebar: false
+---
+
 # pinyin cli 
 
 pinyin 命令行界面 (command line interface)。

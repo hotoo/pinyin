@@ -1,3 +1,7 @@
+---
+sidebar: false
+---
+
 # pinyin cli 
 
 pinyin command line interface.
