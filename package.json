@@ -3,6 +3,14 @@
     "apps/*",
     "packages/*"
   ],
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint",
+    "test": "turbo run test",
+    "doc:build": "turbo run doc:build",
+    "doc:preview": "turbo run doc:preview"
+  },
   "packageManager": "pnpm@10.0.0",
   "pnpm": {
     "onlyBuiltDependencies": [
@@ -10,5 +18,11 @@
     ]
   },
   "registry": "https://registry.npmmirror.com",
+  "devDependencies": {
+    "turbo": "^2.5.8"
+  },
+  "engines": {
+    "node": ">=18"
+  },
   "private": true
 }
