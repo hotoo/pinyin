@@ -1,0 +1,46 @@
+[
+  {
+    "text": "🛖 首页",
+    "link": "/",
+    "activeMatch": "^(?:/|/index.html|/(?:zh-CN/|zh-TW/)?index.html)$",
+    "position": "left"
+  },
+  {
+    "text": "🛠️ API",
+    "link": "/api/v4/",
+    "activeMatch": "^/(?:en-US/|ko-KR/|zh-TW/)?api/",
+    "position": "left",
+    "items": [
+      {
+        "text": "v4 (最新)",
+        "link": "/api/v4/"
+      },
+      {
+        "text": "v3",
+        "link": "/api/v3/"
+      },
+      {
+        "text": "v2",
+        "link": "/api/v2/"
+      }
+    ]
+  },
+  {
+    "text": "🪛 命令行",
+    "link": "/cli/",
+    "activeMatch": "^/(?:en-US/|ko-KR/|zh-TW/)?cli/",
+    "position": "left"
+  },
+  {
+    "text": "✏️ 演示",
+    "link": "/example/",
+    "activeMatch": "^/(?:en-US/|ko-KR/|zh-TW/)?example/",
+    "position": "left"
+  },
+  {
+    "text": "🥁 拼音表",
+    "link": "/pinyin-table/",
+    "activeMatch": "^/(?:en-US/|ko-KR/|zh-TW/)?pinyin-table/",
+    "position": "left"
+  }
+]

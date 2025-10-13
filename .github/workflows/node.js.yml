@@ -5,9 +5,17 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ master, v3.x, v2.x ]
+    paths:
+      - 'packages/pinyin/**'
+      - 'packages/pinyin-cli/**'
+      - '.github/workflows/node.js.yml'
+    branches: [ master ]
   pull_request:
-    branches: [ master, v3.x, v2.x ]
+    paths:
+      - 'packages/pinyin/**'
+      - 'packages/pinyin-cli/**'
+      - '.github/workflows/node.js.yml'
+    branches: [ master ]
 
 jobs:
   build:
@@ -23,8 +31,6 @@ jobs:
     - uses: actions/checkout@v4
     - name: Install pnpm
       uses: pnpm/action-setup@v4
-      with:
-        version: 10
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4
       with:
@@ -42,3 +48,4 @@ jobs:
       uses: coverallsapp/github-action@master
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
+        path-to-lcov: packages/pinyin/coverage/lcov.info

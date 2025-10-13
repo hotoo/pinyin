@@ -1,132 +1,28 @@
 {
-  "name": "pinyin",
-  "version": "4.0.0",
-  "description": "汉语拼音转换工具。",
-  "types": "./lib/types/pinyin.d.ts",
-  "main": "./lib/cjs/pinyin.js",
-  "module": "./lib/esm/pinyin.js",
-  "browser": "./lib/umd/pinyin.js",
-  "bin": {
-    "pinyin": "./bin/pinyin"
-  },
-  "homepage": "https://pinyin.js.org/",
-  "author": "闲耘 <hotoo.cn@gmail.com>",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/hotoo/pinyin.git"
-  },
-  "bugs": {
-    "url": "https://github.com/hotoo/pinyin/issues"
-  },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "scripts": {
-    "dev": "rspress dev",
-    "doc:build": "rm -rf ./doc_build && rspress build",
-    "doc:preview": "rspress preview",
-    "doc:build:dumi": "rm -rf ./.dumi ./docs-dist && dumi build",
-    "start": "rspress dev",
-    "prepublishOnly": "pnpm build",
-    "build": "pnpm build:rollup",
-    "build:rollup": "rm -rf lib && rollup -c",
-    "build:tsup": "rm -rf dist && tsup src/pinyin.ts src/pinyin-web.ts --format cjs,esm --global-name pinyin --dts --out-dir dist",
-    "build:tsc": "tsc --downlevelIteration -p tsconfig-es5.json & tsc --downlevelIteration -p tsconfig.json & pnpm build:amd",
-    "build:amd": "tsc --downlevelIteration -p tsconfig-amd.json",
-    "doc:deploy": "pnpm doc:build && gh-pages -d docs-dist",
-    "lint": "eslint ./src/ ./test/",
-    "test": "jest --coverage",
-    "debug": "npx ts-node tools/debug.ts"
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint",
+    "test": "turbo run test",
+    "doc:build": "turbo run doc:build",
+    "doc:preview": "turbo run doc:preview"
   },
-  "dependencies": {
-    "commander": "~1.1.1"
-  },
-  "peerDependencies": {
-    "@node-rs/jieba": "^1.6.0",
-    "nodejieba": "^3.4.4",
-    "segmentit": "^2.0.3"
-  },
-  "peerDependenciesMeta": {
-    "@node-rs/jieba": {
-      "optional": true
-    },
-    "nodejieba": {
-      "optional": true
-    },
-    "segmentit": {
-      "optional": true
-    }
-  },
-  "devDependencies": {
-    "@babel/preset-env": "^7.15.6",
-    "@babel/preset-typescript": "^7.15.0",
-    "@rollup/plugin-commonjs": "^17.1.0",
-    "@rollup/plugin-json": "^4.1.0",
-    "@rollup/plugin-node-resolve": "^11.2.0",
-    "@rsbuild/plugin-sass": "^1.4.0",
-    "@textea/json-viewer": "^4.0.1",
-    "@types/jest": "^27.0.2",
-    "@types/node": "^22.15.17",
-    "@typescript-eslint/eslint-plugin": "^5.14.0",
-    "@typescript-eslint/parser": "^5.14.0",
-    "aurl": "^1.2.0",
-    "aws-sdk": "^2.1011.0",
-    "beautify-benchmark": "^0.2.4",
-    "benchmark": "~1.0.0",
-    "dumi": "^2.4.21",
-    "eslint": "^8.11.0",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-import-resolver-typescript": "^2.5.0",
-    "eslint-plugin-prettier": "^4.0.0",
-    "gh-pages": "^3.2.3",
-    "jest": "^27.2.3",
-    "mock-aws-s3": "^4.0.2",
-    "nock": "^13.1.4",
-    "npx": "^10.2.2",
-    "prettier": "^2.6.0",
-    "react": "^18.0.0",
-    "request": "~2.68.0",
-    "rollup": "2.60.0",
-    "rollup-plugin-alias": "^2.2.0",
-    "rollup-plugin-cleanup": "^3.2.1",
-    "rollup-plugin-terser": "^7.0.2",
-    "rollup-plugin-typescript2": "^0.34.1",
-    "rsbuild-plugin-google-analytics": "^1.0.4",
-    "rspress": "^1.45.5",
-    "rspress-plugin-sitemap": "^1.2.1",
-    "ts-node": "^10.5.0",
-    "tsup": "^8.4.0",
-    "typescript": "^4.4.4"
-  },
-  "registry": "https://registry.npmmirror.com",
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
-  },
-  "files": [
-    "package.json",
-    "build/",
-    "bin",
-    "data",
-    "lib",
-    "esm",
-    "amd",
-    "index.js"
-  ],
-  "keywords": [
-    "拼音",
-    "汉语",
-    "汉字",
-    "中文",
-    "Pinyin"
-  ],
-  "directories": {
-    "example": "examples",
-    "test": "test"
-  },
-  "engines": {
-    "install-node": "^18.0.0"
-  },
+  "packageManager": "pnpm@10.0.0",
   "pnpm": {
     "onlyBuiltDependencies": [
       "nodejieba"
     ]
   },
-  "license": "MIT"
+  "registry": "https://registry.npmmirror.com",
+  "devDependencies": {
+    "turbo": "^2.5.8"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "private": true
 }
