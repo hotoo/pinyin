@@ -32,7 +32,7 @@
     "position": "left"
   },
   {
-    "text": "✏️ 데모",
+    "text": "🔍 병음 확인",
     "link": "/example/",
     "activeMatch": "^/(?:en-US/|ko-KR/|zh-TW/)?example/",
     "position": "left"

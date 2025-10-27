@@ -32,7 +32,7 @@
     "position": "left"
   },
   {
-    "text": "✏️ EXAMPLE",
+    "text": "🔍️ Check Pinyin",
     "link": "/example/",
     "activeMatch": "^/(?:en-US/|ko-KR/|zh-TW/)?example/",
     "position": "left"
