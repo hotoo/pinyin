@@ -19,7 +19,6 @@
     "@rsbuild/plugin-sass": "^1.4.0",
     "rsbuild-plugin-google-analytics": "^1.0.4",
     "rspress": "^1.45.5",
-    "rspress-plugin-sitemap": "^1.2.1",
-    "gh-pages": "^3.2.3"
+    "rspress-plugin-sitemap": "^1.2.1"
   }
 }
