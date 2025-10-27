@@ -1,6 +1,6 @@
 {
   "name": "pinyin-cli",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "汉语拼音转换命令行工具。",
   "bin": {
     "pinyin": "./bin/pinyin"

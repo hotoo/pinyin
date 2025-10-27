@@ -12,6 +12,7 @@
   "dependencies": {
     "pinyin": "workspace:^",
     "@textea/json-viewer": "^4.0.1",
+    "@types/react": "^18.3.12",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
@@ -19,7 +20,6 @@
     "@rsbuild/plugin-sass": "^1.4.0",
     "rsbuild-plugin-google-analytics": "^1.0.4",
     "rspress": "^1.45.5",
-    "rspress-plugin-sitemap": "^1.2.1",
-    "gh-pages": "^3.2.3"
+    "rspress-plugin-sitemap": "^1.2.1"
   }
 }

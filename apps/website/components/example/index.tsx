@@ -29,7 +29,7 @@ export default function(props?: IExampleProps) {
   const han = "中文汉字";
   const [text, setText] = useState(han);
   const [style, setStyle] = useState("TONE");
-  const [segment, setSegment] = useState("");
+  const [segment, setSegment] = useState("segmentit");
   const [group, setGroup] = useState(false);
   const [compact, setCompact] = useState(false);
   const [heteronym, setHeteronym] = useState(false);
