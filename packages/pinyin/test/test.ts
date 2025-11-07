@@ -71,6 +71,18 @@ const cases: any[] = [
     STYLE_INITIALS:     [["l"]],
     STYLE_FIRST_LETTER: [["l"]],
   } ],
+  ["略", {
+    STYLE_NORMAL:       [["lve"]],
+    STYLE_PASSPORT:     [["LUE"]],
+    STYLE_TONE:         [["lüè"]],
+    STYLE_TONE2:        [["lve4"]],
+  } ],
+  ["虐", {
+    STYLE_NORMAL:       [["nve"]],
+    STYLE_PASSPORT:     [["NUE"]],
+    STYLE_TONE:         [["nüè"]],
+    STYLE_TONE2:        [["nve4"]],
+  } ],
 
   // 单音词
   [ "我是谁", {
@@ -304,7 +316,7 @@ function makeTest(han: string, opt: any, style: string){
     pys = py.segment;
     py = py.normal;
   }
-  const single_pinyin = [];
+  const single_pinyin: string[][] = [];
   for(let i = 0, l = py.length; i < l; i++){
     single_pinyin[i] = [py[i][0]];
   }
