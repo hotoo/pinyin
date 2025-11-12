@@ -53,12 +53,17 @@ export function toFixed(pinyin: string, style: ENUM_PINYIN_STYLE): string {
     const normalized = pinyin.replace(RE_PHONETIC_SYMBOL, function($0: string, $1_phonetic: string) {
       return PHONETIC_SYMBOL[$1_phonetic].replace(RE_TONE2, "$1");
     });
-    return normalized
-      // ü represented as 'v' before 'e' becomes 'U'
-      .replace(/v(?=e)/g, "U")
-      // remaining ü ('v') becomes 'YU'
-      .replace(/v/g, "YU")
-      .toUpperCase();
+
+    let out = normalized;
+    // Handle 'v' followed by 'e' (e.g., "lve" => "lue").
+    if (out.includes("ve")) {
+      out = out.replace(/ve/g, "ue");
+    }
+    // Map remaining 'v' (represents ü) to "yu".
+    if (out.includes("v")) {
+      out = out.replace(/v/g, "yu");
+    }
+    return out.toUpperCase();
 
   case ENUM_PINYIN_STYLE.TO3NE:
     return pinyin.replace(RE_PHONETIC_SYMBOL, function($0: string, $1_phonetic: string) {
