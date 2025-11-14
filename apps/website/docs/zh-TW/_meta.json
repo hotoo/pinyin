@@ -32,7 +32,7 @@
     "position": "left"
   },
   {
-    "text": "🔍 ️查拼音",
+    "text": "🔍 查拼音",
     "link": "/example/",
     "activeMatch": "^/(?:en-US/|ko-KR/|zh-TW/)?example/",
     "position": "left"
