@@ -21,6 +21,8 @@ jobs:
         uses: pnpm/action-setup@v4
       - name: Install dependencies
         run: pnpm install
+      - name: Build project
+        run: pnpm build
       - name: Build document with rspress
         run: pnpm doc:build
       - name: Deploy
