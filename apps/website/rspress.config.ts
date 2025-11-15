@@ -106,7 +106,7 @@ export default defineConfig({
       {
         icon: "discord",
         mode: "link",
-        content: "https://discord.gg/zqUS5uke",
+        content: "https://discord.gg/cxapDFhy",
       }
     ],
     footer: {
