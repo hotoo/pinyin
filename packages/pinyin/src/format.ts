@@ -46,8 +46,14 @@ export function toFixed(pinyin: string, style: ENUM_PINYIN_STYLE): string {
     });
 
   case ENUM_PINYIN_STYLE.PASSPORT:
+    // Normalize tones to plain letters first (like NORMAL), then apply
+    // passport-specific ü rules:
+    // - "lü"/"nü" -> "LYU"/"NYU"
+    // - "lüe"/"nüe" -> "LUE"/"NUE" (i.e., ü before 'e' maps to 'U')
     return pinyin.replace(RE_PHONETIC_SYMBOL, function($0: string, $1_phonetic: string) {
-      return PHONETIC_SYMBOL[$1_phonetic].replace(RE_TONE2, "$1").replace("v", "YU");
+      return PHONETIC_SYMBOL[$1_phonetic].replace(RE_TONE2, "$1");
+    }).replace(/v(e)?$/, function($0: string, $1_is_ve: string) {
+      return $1_is_ve ? "UE" : "YU";
     }).toUpperCase();
 
   case ENUM_PINYIN_STYLE.TO3NE:
