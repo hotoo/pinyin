@@ -106,8 +106,8 @@ export default defineConfig({
       {
         icon: "discord",
         mode: "link",
-        content: "https://discord.gg/cxapDFhy",
-      }
+        content: "https://discord.gg/DPCNusPrhy",
+      },
     ],
     footer: {
       message: `Open-source MIT Licensed | Copyright © 2010-${new Date().getFullYear()}`,
