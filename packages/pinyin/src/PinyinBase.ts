@@ -276,8 +276,8 @@ export default class PinyinBase {
    * @return {Number} 返回 -1，0，或 1。
    */
   compare(hanA: string, hanB: string): number {
-    const pinyinA = this.pinyin(hanA);
-    const pinyinB = this.pinyin(hanB);
+    const pinyinA = this.pinyin(hanA, { style: ENUM_PINYIN_STYLE.TONE2 });
+    const pinyinB = this.pinyin(hanB, { style: ENUM_PINYIN_STYLE.TONE2 });
     return String(pinyinA).localeCompare(String(pinyinB));
   }
 
