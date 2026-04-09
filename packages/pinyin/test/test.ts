@@ -367,6 +367,12 @@ describe("pinyin.compare", function() {
     const sortedData = data.sort(compare);
     expect(sortedData).toEqual("排我序要".split(""));
   });
+
+  it("同音节不同声调排序", function() {
+    const data = "马骂妈麻".split("");
+    const sortedData = data.sort(compare);
+    expect(sortedData).toEqual("妈麻马骂".split(""));
+  });
 });
 
 describe("pinyin group", function() {
